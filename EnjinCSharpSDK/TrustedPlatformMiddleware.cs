@@ -12,16 +12,16 @@ namespace EnjinSDK
         public readonly HttpClient HttpClient;
         public readonly GraphqlQueryRegistry Registry;
 
-        public TrustedPlatformMiddleware(Uri baseAddress)
+        public TrustedPlatformMiddleware(Uri baseAddress, bool debug)
         {
             HttpHandler = new TrustedPlatformHandler();
-            HttpClient = CreateHttpClient(baseAddress);
+            HttpClient = CreateHttpClient(baseAddress, debug);
             Registry = new GraphqlQueryRegistry();
         }
 
-        private HttpClient CreateHttpClient(Uri baseAddress)
+        private HttpClient CreateHttpClient(Uri baseAddress, bool debug)
         {
-            var client = new HttpClient(HttpHandler)
+            var client = new HttpClient(debug ? (HttpMessageHandler) new HttpLoggingHandler(HttpHandler) : HttpHandler)
             {
                 BaseAddress = baseAddress
             };

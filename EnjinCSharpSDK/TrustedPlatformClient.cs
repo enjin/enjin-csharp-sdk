@@ -16,9 +16,9 @@ namespace EnjinSDK
         public TrustedPlatformMiddleware Middleware { get; }
         public IAppService AppService { get; }
         
-        public TrustedPlatformClient(Uri baseUri)
+        public TrustedPlatformClient(Uri baseUri, bool debug)
         {
-            Middleware = new TrustedPlatformMiddleware(baseUri);
+            Middleware = new TrustedPlatformMiddleware(baseUri, debug);
             AppService = new AppService(Middleware);
         }
     }
