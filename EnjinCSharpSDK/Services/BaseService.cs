@@ -1,6 +1,8 @@
-using System;
 using EnjinSDK.Graphql;
+using EnjinSDK.Serialization;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Refit;
 
 namespace EnjinSDK.Services
 {
@@ -20,8 +22,28 @@ namespace EnjinSDK.Services
                 {"query", Middleware.Registry.GetOperationForName(template).CompiledContents},
                 {"variables", JToken.FromObject(holder.Variables)}
             };
-            Console.Out.WriteLine(obj);
             return obj;
+        }
+
+        protected T CreateService<T>()
+        {
+            return RestService.For<T>(Middleware.HttpClient, CreateRefitSettings());
+        }
+
+        private RefitSettings CreateRefitSettings()
+        {
+            return new RefitSettings()
+            {
+                ContentSerializer = new NewtonsoftJsonContentSerializer(CreateSerializerSettings())
+            };
+        }
+
+        private JsonSerializerSettings CreateSerializerSettings()
+        {
+            return new JsonSerializerSettings()
+            {
+                ContractResolver = new PrivateSetterContractResolver()
+            };
         }
     }
 }

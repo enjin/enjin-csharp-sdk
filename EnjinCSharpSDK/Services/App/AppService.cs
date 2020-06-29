@@ -13,7 +13,7 @@ namespace EnjinSDK.Services.App
 
         public AppService(TrustedPlatformMiddleware middleware) : base(middleware)
         {
-            _service = RestService.For<IRefitAppService>(middleware.HttpClient);
+            _service = CreateService<IRefitAppService>();
         }
 
         public Task<ApiResponse<GraphqlResponse<AccessToken>>> AuthApp(AuthApp query)
