@@ -1,0 +1,117 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>EnjinSDK</RootNamespace>
+        <AssemblyName>EnjinCSharpSDK</AssemblyName>
+        <PackageId>EnjinCSharpSDK</PackageId>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Title>Enjin C# SDK</Title>
+        <Authors>Evan Lindsay</Authors>
+        <Copyright>Enjin PTE LTD</Copyright>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="PusherClient" Version="1.1.2" />
+      <PackageReference Include="Refit" Version="5.1.67" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\app\AppFragment.gql" />
+      <None Remove="Resources\app\AuthAppQuery.gql" />
+      <None Remove="Resources\app\CreateAppMutation.gql" />
+      <None Remove="Resources\app\DeleteAppMutation.gql" />
+      <None Remove="Resources\app\GetAppQuery.gql" />
+      <None Remove="Resources\app\GetAppsPaginatedQuery.gql" />
+      <None Remove="Resources\app\GetAppsQuery.gql" />
+      <None Remove="Resources\app\UnlinkAppMutation.gql" />
+      <None Remove="Resources\app\UpdateAppMutation.gql" />
+      <None Remove="Resources\balance\BalanceFragment.gql" />
+      <None Remove="Resources\balance\GetBalancesPaginatedQuery.gql" />
+      <None Remove="Resources\balance\GetBalancesQuery.gql" />
+      <None Remove="Resources\identity\CreateIdentityMutation.gql" />
+      <None Remove="Resources\identity\DeleteIdentityMutation.gql" />
+      <None Remove="Resources\identity\GetIdentitiesPaginatedQuery.gql" />
+      <None Remove="Resources\identity\GetIdentitiesQuery.gql" />
+      <None Remove="Resources\identity\GetIdentityQuery.gql" />
+      <None Remove="Resources\identity\IdentityFragment.gql" />
+      <None Remove="Resources\identity\UpdateIdentityMutation.gql" />
+      <None Remove="Resources\PaginationCursorFragment.gql" />
+      <None Remove="Resources\platform\GetPlatformQuery.gql" />
+      <None Remove="Resources\request\CreateRequestMutation.gql" />
+      <None Remove="Resources\request\DeleteRequestMutation.gql" />
+      <None Remove="Resources\request\GetRequestsPaginatedQuery.gql" />
+      <None Remove="Resources\request\GetRequestsQuery.gql" />
+      <None Remove="Resources\request\TransactionFragment.gql" />
+      <None Remove="Resources\request\UpdateRequestMutation.gql" />
+      <None Remove="Resources\token\event\GetTokenEventsPaginatedQuery.gql" />
+      <None Remove="Resources\token\event\GetTokenEventsQuery.gql" />
+      <None Remove="Resources\token\event\TokenEventFragment.gql" />
+      <None Remove="Resources\token\GetTokenQuery.gql" />
+      <None Remove="Resources\token\GetTokensPaginatedQuery.gql" />
+      <None Remove="Resources\token\GetTokensQuery.gql" />
+      <None Remove="Resources\token\InvalidateTokenMetadataMutation.gql" />
+      <None Remove="Resources\token\TokenFragment.gql" />
+      <None Remove="Resources\token\TokenTransferFeeSettingsFragment.gql" />
+      <None Remove="Resources\user\AuthPlayerQuery.gql" />
+      <None Remove="Resources\user\CreateUserMutation.gql" />
+      <None Remove="Resources\user\GetUserQuery.gql" />
+      <None Remove="Resources\user\GetUsersPaginatedQuery.gql" />
+      <None Remove="Resources\user\GetUsersQuery.gql" />
+      <None Remove="Resources\user\LoginUserQuery.gql" />
+      <None Remove="Resources\user\UserFragment.gql" />
+      <None Remove="Resources\wallet\GetWalletQuery.gql" />
+      <None Remove="Resources\wallet\UnlinkAppMutation.gql" />
+      <None Remove="Resources\wallet\UnlinkIdentityMutation.gql" />
+      <None Remove="Resources\wallet\WalletFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\AppFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\AuthAppQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\CreateAppMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\DeleteAppMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\GetAppQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\GetAppsPaginatedQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\GetAppsQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\UnlinkAppMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\app\UpdateAppMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\balance\BalanceFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\balance\GetBalancesPaginatedQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\balance\GetBalancesQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\identity\CreateIdentityMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\identity\DeleteIdentityMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\identity\GetIdentitiesPaginatedQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\identity\GetIdentitiesQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\identity\GetIdentityQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\identity\IdentityFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\identity\UpdateIdentityMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\PaginationCursorFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\platform\GetPlatformQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\request\CreateRequestMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\request\DeleteRequestMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\request\GetRequestsPaginatedQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\request\GetRequestsQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\request\TransactionFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\request\UpdateRequestMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\event\GetTokenEventsPaginatedQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\event\GetTokenEventsQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\event\TokenEventFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\GetTokenQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\GetTokensPaginatedQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\GetTokensQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\InvalidateTokenMetadataMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\TokenFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\token\TokenTransferFeeSettingsFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\user\AuthPlayerQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\user\CreateUserMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\user\GetUserQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\user\GetUsersPaginatedQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\user\GetUsersQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\user\LoginUserQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\user\UserFragment.gql" />
+      <EmbeddedResource Include="Graphql\Templates\wallet\GetWalletQuery.gql" />
+      <EmbeddedResource Include="Graphql\Templates\wallet\UnlinkIdentityMutation.gql" />
+      <EmbeddedResource Include="Graphql\Templates\wallet\WalletFragment.gql" />
+    </ItemGroup>
+
+</Project>

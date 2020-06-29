@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnjinCSharpSDK", "EnjinCSharpSDK\EnjinCSharpSDK.csproj", "{1CD3B4B9-A021-4080-8581-EE6CFD7B6C2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSuite", "TestSuite\TestSuite.csproj", "{4528214B-8912-4A38-B73A-20D5080E6EBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CD3B4B9-A021-4080-8581-EE6CFD7B6C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD3B4B9-A021-4080-8581-EE6CFD7B6C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD3B4B9-A021-4080-8581-EE6CFD7B6C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD3B4B9-A021-4080-8581-EE6CFD7B6C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4528214B-8912-4A38-B73A-20D5080E6EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4528214B-8912-4A38-B73A-20D5080E6EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4528214B-8912-4A38-B73A-20D5080E6EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4528214B-8912-4A38-B73A-20D5080E6EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
