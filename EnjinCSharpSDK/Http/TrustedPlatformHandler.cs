@@ -1,6 +1,5 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,11 +17,11 @@ namespace EnjinSDK.Http
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(_authToken))
+            if (!string.IsNullOrWhiteSpace(_authToken))
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _authToken);
             }
-
+            
             return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
         }
     }
