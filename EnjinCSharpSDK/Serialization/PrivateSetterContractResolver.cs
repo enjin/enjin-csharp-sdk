@@ -4,7 +4,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace EnjinSDK.Serialization
 {
-    class PrivateSetterContractResolver : DefaultContractResolver
+    internal class PrivateSetterContractResolver : DefaultContractResolver
     {
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -11,8 +9,10 @@ namespace EnjinSDK.Http
 {
     public class HttpLoggingHandler : DelegatingHandler
     {
-        public HttpLoggingHandler(HttpMessageHandler innerHandler = null)
-            : base(innerHandler ?? new HttpClientHandler())
+        private readonly string[] _types = {"html", "text", "xml", "json", "txt", "x-www-form-urlencoded"};
+
+        public HttpLoggingHandler(HttpMessageHandler innerHandler = null) : base(
+            innerHandler ?? new HttpClientHandler())
         {
         }
 
@@ -24,7 +24,8 @@ namespace EnjinSDK.Http
             var msg = $"[{id} -   Request]";
 
             Console.Out.WriteLine($"{msg}========Start==========");
-            Console.Out.WriteLine($"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
+            Console.Out.WriteLine(
+                $"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
             Console.Out.WriteLine($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
 
             foreach (var header in req.Headers)
@@ -87,16 +88,13 @@ namespace EnjinSDK.Http
             return response;
         }
 
-        readonly string[] types = new[] {"html", "text", "xml", "json", "txt", "x-www-form-urlencoded"};
-
-        bool IsTextBasedContentType(HttpHeaders headers)
+        private bool IsTextBasedContentType(HttpHeaders headers)
         {
-            IEnumerable<string> values;
-            if (!headers.TryGetValues("Content-Type", out values))
+            if (!headers.TryGetValues("Content-Type", out var values))
                 return false;
             var header = string.Join(" ", values).ToLowerInvariant();
 
-            return types.Any(t => header.Contains(t));
+            return _types.Any(t => header.Contains(t));
         }
     }
 }

@@ -1,7 +1,9 @@
 using EnjinSDK.Graphql;
+using JetBrains.Annotations;
 
 namespace EnjinSDK.Models.App
 {
+    [PublicAPI]
     public class AuthApp<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
     {
         public T Id(int appId)

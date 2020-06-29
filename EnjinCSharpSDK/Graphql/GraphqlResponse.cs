@@ -1,22 +1,33 @@
+using JetBrains.Annotations;
+using Newtonsoft.Json;
+
 namespace EnjinSDK.Graphql
 {
     public class GraphqlResponse<T>
     {
-        public GraphqlData<T> data { get; private set; }
+
+        public T Result { get; private set; }
+        
+        [JsonConstructor]
+        public GraphqlResponse(GraphqlData<T> data)
+        {
+            Result = data.Result;
+        }
 
         public override string ToString()
         {
-            return $"{nameof(data)}: {data}";
+            return $"{nameof(Result)}: {Result}";
         }
     }
 
+    [UsedImplicitly]
     public class GraphqlData<T>
     {
-        public T result { get; private set; }
+        public T Result { get; private set; }
 
         public override string ToString()
         {
-            return $"{nameof(result)}: {result}";
+            return $"{nameof(Result)}: {Result}";
         }
     }
 }

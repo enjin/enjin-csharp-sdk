@@ -1,13 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Net.Http;
 using EnjinSDK.Services.App;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Refit;
+using JetBrains.Annotations;
 
 namespace EnjinSDK
 {
+    [PublicAPI]
     public class TrustedPlatformClient : ITrustedPlatformClient
     {
         public static readonly Uri KovanUrl = new Uri("https://kovan.cloud.enjin.io/");

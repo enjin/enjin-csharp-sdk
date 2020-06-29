@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static EnjinSDK.Utils.TextFormatting;
 
 namespace EnjinSDK.Graphql
 {
@@ -13,6 +14,9 @@ namespace EnjinSDK.Graphql
     }
     public class GraphqlTemplate
     {
+        private const string FragmentToken = "...";
+        private const string ParameterToken = "$";
+        
         public string Name { get; }
         public TemplateType TemplateType { get; }
         public string Contents { get; }
@@ -38,15 +42,15 @@ namespace EnjinSDK.Graphql
             foreach (var line in contents)
             {
                 var trimmed = line.Trim();
-                if (trimmed.StartsWith("$"))
+                if (trimmed.StartsWith(ParameterToken))
                 {
                     Parameters.Add(line);
                 }
                 else if (!string.IsNullOrWhiteSpace(trimmed))
                 {
-                    if (trimmed.StartsWith("..."))
+                    if (trimmed.StartsWith(FragmentToken))
                     {
-                        ReferencedFragments.Add(trimmed.Replace("...", ""));
+                        ReferencedFragments.Add(trimmed.Replace(FragmentToken, EmptyString));
                     }
 
                     builder.Append(line).AppendLine();
@@ -91,7 +95,7 @@ namespace EnjinSDK.Graphql
             }
 
             var replaceTerm = TemplateType.ToString().ToLower();
-            var formattedParams = string.Join(", ", parameters);
+            var formattedParams = string.Join(CommaSpaceDelimiter, parameters);
             CompiledContents = builder.ToString().Replace(replaceTerm, $"{replaceTerm} {Name}({formattedParams})");
         }
     }

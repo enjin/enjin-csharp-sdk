@@ -9,12 +9,12 @@ namespace EnjinSDK.Services
     public class BaseService
     {
         protected readonly TrustedPlatformMiddleware Middleware;
-        
-        public BaseService(TrustedPlatformMiddleware middleware)
+
+        protected BaseService(TrustedPlatformMiddleware middleware)
         {
             Middleware = middleware;
         }
-        
+
         protected JObject CreateRequestBody(IVariableHolder holder, string template)
         {
             var obj = new JObject

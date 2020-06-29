@@ -3,9 +3,11 @@ using System.Net.Http;
 using System.Reflection;
 using EnjinSDK.Graphql;
 using EnjinSDK.Http;
+using JetBrains.Annotations;
 
 namespace EnjinSDK
 {
+    [PublicAPI]
     public class TrustedPlatformMiddleware
     {
         public readonly TrustedPlatformHandler HttpHandler;

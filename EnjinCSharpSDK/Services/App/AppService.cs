@@ -2,11 +2,13 @@ using System.Threading.Tasks;
 using EnjinSDK.Graphql;
 using EnjinSDK.Models;
 using EnjinSDK.Models.App;
+using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 using Refit;
 
 namespace EnjinSDK.Services.App
 {
+    [PublicAPI]
     public class AppService : BaseService, IAppService
     {
         private readonly IRefitAppService _service;
@@ -23,7 +25,7 @@ namespace EnjinSDK.Services.App
     }
 
     [Headers("Content-Type: application/json")]
-    interface IRefitAppService
+    internal interface IRefitAppService
     {
         [Post("/graphql")]
         Task<ApiResponse<GraphqlResponse<AccessToken>>> AuthApp([Body(BodySerializationMethod.Serialized)] JObject body);

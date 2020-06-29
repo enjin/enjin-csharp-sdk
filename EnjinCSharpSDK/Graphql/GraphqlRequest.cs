@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
+using JetBrains.Annotations;
 
 namespace EnjinSDK.Graphql
 {
+    [PublicAPI]
     public class GraphqlRequest<T> : IVariableHolder<T> where T : GraphqlRequest<T>, new()
     {
         protected readonly T This;
@@ -14,7 +14,7 @@ namespace EnjinSDK.Graphql
             This = (T) this;
         }
 
-        public GraphqlRequest() : this(new Dictionary<string, object>()) {}
+        protected GraphqlRequest() : this(new Dictionary<string, object>()) {}
 
         public T SetVariable(string key, object value)
         {
@@ -25,13 +25,16 @@ namespace EnjinSDK.Graphql
         public Dictionary<string, object> Variables { get; }
     }
     
+    [PublicAPI]
     public class GraphqlRequest : GraphqlRequest<GraphqlRequest> {}
 
-    public interface IVariableHolder<T> : IVariableHolder
+    [PublicAPI]
+    public interface IVariableHolder<out T> : IVariableHolder
     {
         T SetVariable(string key, object value);
     }
 
+    [PublicAPI]
     public interface IVariableHolder
     {
         Dictionary<string, object> Variables { get; }

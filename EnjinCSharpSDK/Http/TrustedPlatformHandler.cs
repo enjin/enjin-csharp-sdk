@@ -2,12 +2,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace EnjinSDK.Http
 {
     public class TrustedPlatformHandler : HttpClientHandler
     {
-        private readonly string _agent;
         private string _authToken;
 
         public string AuthToken

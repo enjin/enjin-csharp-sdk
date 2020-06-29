@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 
 namespace EnjinSDK.Graphql
 {
+    [PublicAPI]
     public class GraphqlQueryRegistry
     {
         private const string FragmentId = "Fragment";
@@ -16,22 +17,22 @@ namespace EnjinSDK.Graphql
         private static readonly Regex TemplateRegex =
             new Regex("^(?:[.a-zA-Z]{0,}\\.)(?<query>[a-zA-Z]{1,}?(?<type>Fragment|Mutation|Query))\\.gql$");
 
-        private Dictionary<string, GraphqlTemplate> _fragments = new Dictionary<string, GraphqlTemplate>();
-        private Dictionary<string, GraphqlTemplate> _operations = new Dictionary<string, GraphqlTemplate>();
+        private readonly Dictionary<string, GraphqlTemplate> _fragments = new Dictionary<string, GraphqlTemplate>();
+        private readonly Dictionary<string, GraphqlTemplate> _operations = new Dictionary<string, GraphqlTemplate>();
 
         public GraphqlQueryRegistry()
         {
             RegisterSdkTemplates();
         }
-        
-        private string[] LoadTemplateContents(Assembly assembly, string name)
+
+        private static string[] LoadTemplateContents(Assembly assembly, string name)
         {
             using (var stream = assembly.GetManifestResourceStream(name))
             {
                 if (stream == null) return null;
                 using (var reader = new StreamReader(stream))
                 {
-                    List<string> contents = new List<string>();
+                    var contents = new List<string>();
 
                     while (!reader.EndOfStream)
                     {
@@ -43,22 +44,17 @@ namespace EnjinSDK.Graphql
             }
         }
 
-        private void LoadAndCacheTemplateContents(Assembly assembly, string name, string query, TemplateType templateType)
+        private void LoadAndCacheTemplateContents(Assembly assembly, string name, string query,
+            TemplateType templateType)
         {
             var contents = LoadTemplateContents(assembly, name);
 
             if (contents == null) return;
 
-            switch (templateType)
-            {
-                case TemplateType.Fragment:
-                    _fragments.Add(query, new GraphqlTemplate(query, templateType, contents, _fragments));
-                    break;
-                case TemplateType.Mutation:
-                case TemplateType.Query:
-                    _operations.Add(query, new GraphqlTemplate(query, templateType, contents, _fragments));
-                    break;
-            }
+            if (templateType == TemplateType.Fragment)
+                _fragments.Add(query, new GraphqlTemplate(query, templateType, contents, _fragments));
+            else if (templateType == TemplateType.Mutation || templateType == TemplateType.Query)
+                _operations.Add(query, new GraphqlTemplate(query, templateType, contents, _fragments));
         }
 
         private void LoadTemplatesInAssembly(Assembly assembly)

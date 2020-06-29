@@ -1,13 +1,19 @@
+using JetBrains.Annotations;
+using Newtonsoft.Json;
+
 namespace EnjinSDK.Models
 {
+    [PublicAPI]
     public class AccessToken
     {
-        public string accessToken { get; private set; }
-        public long expiresIn { get; private set; }
+        [JsonProperty("accessToken")]
+        public string Token { get; private set; }
+        [JsonProperty("expiresIn")]
+        public long ExpiresIn { get; private set; }
 
         public override string ToString()
         {
-            return $"{nameof(accessToken)}: {accessToken}, {nameof(expiresIn)}: {expiresIn}";
+            return $"{nameof(Token)}: {Token}, {nameof(ExpiresIn)}: {ExpiresIn}";
         }
     }
 }
