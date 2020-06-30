@@ -1,13 +1,13 @@
-using System.Threading.Tasks;
 using EnjinSDK.Graphql;
 using EnjinSDK.Models;
 using EnjinSDK.Models.App;
-using Refit;
+using JetBrains.Annotations;
 
 namespace EnjinSDK.Services.App
 {
+    [PublicAPI]
     public interface IAppService
     {
-        Task<ApiResponse<GraphqlResponse<AccessToken>>> AuthApp(AuthApp query);
+        GraphqlResponse<AccessToken> AuthApp(AuthApp query);
     }
 }

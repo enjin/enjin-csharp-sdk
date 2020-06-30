@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using EnjinSDK.Graphql;
 using EnjinSDK.Serialization;
 using Newtonsoft.Json;
@@ -44,6 +45,17 @@ namespace EnjinSDK.Services
             {
                 ContractResolver = new PrivateSetterContractResolver()
             };
+        }
+
+        protected static async Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn)
+        {
+            return await taskIn.ContinueWith(task =>
+            {
+                var result = task.Result;
+                return result.IsSuccessStatusCode
+                    ? result.Content
+                    : JsonConvert.DeserializeObject<GraphqlResponse<T>>(result.Error.Content);
+            });
         }
     }
 }
