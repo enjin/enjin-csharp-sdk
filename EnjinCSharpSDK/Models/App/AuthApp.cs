@@ -6,18 +6,23 @@ namespace EnjinSDK.Models.App
     [PublicAPI]
     public class AuthApp<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
     {
+        internal AuthApp()
+        {
+        }
+
         public T Id(int appId)
         {
-            SetVariable("id", appId);
-            return This;
+            return SetVariable("id", appId);
         }
 
         public T Secret(string secret)
         {
-            SetVariable("secret", secret);
-            return This;
+            return SetVariable("secret", secret);
         }
     }
-    
-    public class AuthApp : AuthApp<AuthApp> {}
+
+    [PublicAPI]
+    public class AuthApp : AuthApp<AuthApp>
+    {
+    }
 }

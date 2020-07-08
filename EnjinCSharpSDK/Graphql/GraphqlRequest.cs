@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 
 namespace EnjinSDK.Graphql
 {
@@ -7,6 +8,7 @@ namespace EnjinSDK.Graphql
     public class GraphqlRequest<T> : IVariableHolder<T> where T : GraphqlRequest<T>, new()
     {
         protected readonly T This;
+        public Dictionary<string, object> Variables { get; }
 
         protected GraphqlRequest(Dictionary<string, object> variables)
         {
@@ -21,8 +23,16 @@ namespace EnjinSDK.Graphql
             Variables.Add(key, value);
             return This;
         }
-        
-        public Dictionary<string, object> Variables { get; }
+
+        public bool IsSet(string key)
+        {
+            return Variables.ContainsKey(key);
+        }
+
+        Dictionary<string, object> IVariableHolder.Variables()
+        {
+            return Variables;
+        }
     }
     
     [PublicAPI]
@@ -32,11 +42,42 @@ namespace EnjinSDK.Graphql
     public interface IVariableHolder<out T> : IVariableHolder
     {
         T SetVariable(string key, object value);
+        
+        bool IsSet(string key);
+        
     }
 
     [PublicAPI]
     public interface IVariableHolder
     {
-        Dictionary<string, object> Variables { get; }
+        Dictionary<string, object> Variables();
+    }
+    
+    [PublicAPI]
+    public class PaginationRequest<T> : GraphqlRequest<T> where T : PaginationRequest<T>, new()
+    {
+        public T Paginate(PaginationOptions pagination)
+        {
+            return SetVariable("pagination", pagination);
+        }
+
+        public T Paginate(int page, int limit = 10)
+        {
+            return Paginate(new PaginationOptions()
+            {
+                Page = page,
+                Limit = limit
+            });
+        }
+    }
+    
+    [PublicAPI]
+    public class PaginationOptions
+    {
+        [JsonProperty("page")]
+        public int Page { get; set; }
+        
+        [JsonProperty("limit")]
+        public int Limit { get; set; }
     }
 }

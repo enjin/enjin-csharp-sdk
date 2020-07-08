@@ -21,7 +21,7 @@ namespace EnjinSDK.Services
             var obj = new JObject
             {
                 {"query", Middleware.Registry.GetOperationForName(template).CompiledContents},
-                {"variables", JToken.FromObject(holder.Variables)}
+                {"variables", JToken.FromObject(holder.Variables())}
             };
             return obj;
         }
@@ -31,7 +31,7 @@ namespace EnjinSDK.Services
             return RestService.For<T>(Middleware.HttpClient, CreateRefitSettings());
         }
 
-        private RefitSettings CreateRefitSettings()
+        private static RefitSettings CreateRefitSettings()
         {
             return new RefitSettings()
             {
@@ -39,7 +39,7 @@ namespace EnjinSDK.Services
             };
         }
 
-        private JsonSerializerSettings CreateSerializerSettings()
+        private static JsonSerializerSettings CreateSerializerSettings()
         {
             return new JsonSerializerSettings()
             {

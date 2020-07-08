@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace EnjinSDK.Graphql
 {
-    public class GraphqlResponse<T>
+    public class GraphqlResponse<T> : Exception
     {
 
         public T Result { get; private set; }
