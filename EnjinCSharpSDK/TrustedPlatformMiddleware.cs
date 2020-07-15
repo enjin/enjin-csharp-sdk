@@ -1,11 +1,11 @@
 using System;
 using System.Net.Http;
 using System.Reflection;
-using EnjinSDK.Graphql;
-using EnjinSDK.Http;
+using Enjin.SDK.Graphql;
+using Enjin.SDK.Http;
 using JetBrains.Annotations;
 
-namespace EnjinSDK
+namespace Enjin.SDK
 {
     [PublicAPI]
     public class TrustedPlatformMiddleware

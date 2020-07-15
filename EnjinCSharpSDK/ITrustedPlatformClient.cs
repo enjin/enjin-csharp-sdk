@@ -1,12 +1,13 @@
-﻿using System;
-using EnjinSDK.Services.App;
+using Enjin.SDK.Shared;
+using JetBrains.Annotations;
 
-namespace EnjinSDK
+namespace Enjin.SDK
 {
+    [PublicAPI]
     public interface ITrustedPlatformClient
     {
         TrustedPlatformMiddleware Middleware { get; }
         
-        IAppService AppService { get;  }
+        ISharedSchema Schema { get; }
     }
 }

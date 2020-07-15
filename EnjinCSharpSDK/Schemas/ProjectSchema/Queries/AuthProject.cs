@@ -1,12 +1,12 @@
-using EnjinSDK.Graphql;
+using Enjin.SDK.Graphql;
 using JetBrains.Annotations;
 
-namespace EnjinSDK.Models.App
+namespace Enjin.SDK.ProjectSchema
 {
     [PublicAPI]
-    public class AuthApp<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
+    public class AuthProject<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
     {
-        internal AuthApp()
+        internal AuthProject()
         {
         }
 
@@ -22,7 +22,7 @@ namespace EnjinSDK.Models.App
     }
 
     [PublicAPI]
-    public class AuthApp : AuthApp<AuthApp>
+    public class AuthProject : AuthProject<AuthProject>
     {
     }
 }

@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EnjinSDK.Http
+namespace Enjin.SDK.Http
 {
     public class HttpLoggingHandler : DelegatingHandler
     {

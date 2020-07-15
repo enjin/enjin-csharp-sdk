@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <RootNamespace>EnjinSDK</RootNamespace>
+        <RootNamespace>Enjin.SDK</RootNamespace>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
         <PackageId>EnjinCSharpSDK</PackageId>
         <PackageVersion>0.1.0</PackageVersion>

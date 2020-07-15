@@ -1,13 +1,12 @@
-using System.Collections.Generic;
-using EnjinSDK.Graphql;
+using Enjin.SDK.Graphql;
 using JetBrains.Annotations;
 
-namespace EnjinSDK.Models.App
+namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class GetApps<T> : PaginationRequest<T>, IAppFragment<T> where T : PaginationRequest<T>, new()
+    public class GetProject<T> : GraphqlRequest<T>, IProjectFragmentArguments<T> where T : GraphqlRequest<T>, new()
     {
-        internal GetApps()
+        internal GetProject()
         {
         }
 
@@ -23,6 +22,6 @@ namespace EnjinSDK.Models.App
     }
     
     [PublicAPI]
-    public class GetApps : GetApps<GetApps>
+    public class GetProject : GetProject<GetProject>
     {}
 }

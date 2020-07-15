@@ -1,22 +1,22 @@
 using System;
-using EnjinSDK.Services.App;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
-namespace EnjinSDK
+namespace Enjin.SDK
 {
     [PublicAPI]
-    public class TrustedPlatformClient : ITrustedPlatformClient
+    public abstract class TrustedPlatformClient : ITrustedPlatformClient
     {
         public static readonly Uri KovanUrl = new Uri("https://kovan.cloud.enjin.io/");
         public static readonly Uri MainNetUrl = new Uri("https://cloud.enjin.io/");
-
-        public TrustedPlatformMiddleware Middleware { get; }
-        public IAppService AppService { get; }
         
-        public TrustedPlatformClient(Uri baseUri, bool debug)
+        public TrustedPlatformMiddleware Middleware { get; }
+        public ISharedSchema Schema { get; }
+
+        protected TrustedPlatformClient(Uri baseUri, bool debug)
         {
             Middleware = new TrustedPlatformMiddleware(baseUri, debug);
-            AppService = new AppService(Middleware);
+            Schema = new SchemaImpl(Middleware);
         }
     }
 }

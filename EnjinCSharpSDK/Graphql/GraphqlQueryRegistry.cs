@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 
-namespace EnjinSDK.Graphql
+namespace Enjin.SDK.Graphql
 {
     [PublicAPI]
     public class GraphqlQueryRegistry

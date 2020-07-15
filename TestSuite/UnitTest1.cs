@@ -1,11 +1,6 @@
 using System;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using EnjinSDK;
-using EnjinSDK.Graphql;
-using EnjinSDK.Models;
-using EnjinSDK.Models.App;
+using Enjin.SDK;
+using Enjin.SDK.ProjectSchema;
 using NUnit.Framework;
 using Refit;
 
@@ -13,7 +8,7 @@ namespace TestSuite
 {
     public class Tests
     {
-        private ITrustedPlatformClient _client;
+        private IProjectClient _client;
         
         [SetUp]
         public void Setup()

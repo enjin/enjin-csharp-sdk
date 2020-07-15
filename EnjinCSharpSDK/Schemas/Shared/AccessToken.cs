@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace EnjinSDK.Models
+namespace Enjin.SDK.Shared
 {
     [PublicAPI]
     public class AccessToken

@@ -1,15 +1,15 @@
-using EnjinSDK.Graphql;
+using Enjin.SDK.Graphql;
 using JetBrains.Annotations;
 
-namespace EnjinSDK.Models.App
+namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public interface IAppFragment<out T> : IVariableHolder<T>
+    public interface IProjectFragmentArguments<out T> : IVariableHolder<T>
     {
     }
 
     [PublicAPI]
-    public static class AppFragment
+    public static class ProjectFragmentArguments
     {
         public static T WithSecret<T>(this T instance) where T : IVariableHolder<T>
         {

@@ -1,4 +1,4 @@
-namespace EnjinSDK.Utils
+namespace Enjin.SDK.Utils
 {
     public static class TextFormatting
     {

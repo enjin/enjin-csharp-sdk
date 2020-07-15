@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace EnjinSDK.Graphql
+namespace Enjin.SDK.Graphql
 {
     [PublicAPI]
     public class GraphqlRequest<T> : IVariableHolder<T> where T : GraphqlRequest<T>, new()

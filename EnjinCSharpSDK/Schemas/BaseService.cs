@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using EnjinSDK.Graphql;
-using EnjinSDK.Serialization;
+using Enjin.SDK.Graphql;
+using Enjin.SDK.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Refit;
 
-namespace EnjinSDK.Services
+namespace Enjin.SDK
 {
     public class BaseService
     {

@@ -2,7 +2,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace EnjinSDK.Serialization
+namespace Enjin.SDK.Serialization
 {
     internal class PrivateSetterContractResolver : DefaultContractResolver
     {

@@ -1,4 +1,4 @@
-namespace EnjinSDK.Events
+namespace Enjin.SDK.Events
 {
     public interface IEventService
     {

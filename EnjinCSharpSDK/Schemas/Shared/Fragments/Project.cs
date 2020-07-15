@@ -1,10 +1,10 @@
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace EnjinSDK.Models.App
+namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class Application
+    public class Project
     {
         [JsonProperty("id")]
         public int Id { get; private set; }

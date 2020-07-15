@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using static EnjinSDK.Utils.TextFormatting;
+using static Enjin.SDK.Utils.TextFormatting;
 
-namespace EnjinSDK.Graphql
+namespace Enjin.SDK.Graphql
 {
     public enum TemplateType
     {

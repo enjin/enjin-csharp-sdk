@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace EnjinSDK.Graphql
+namespace Enjin.SDK.Graphql
 {
     public class GraphqlResponse<T> : Exception
     {
