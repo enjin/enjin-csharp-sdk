@@ -10,10 +10,14 @@ namespace Enjin.SDK.ProjectSchema
     {
         GraphqlResponse<AccessToken> AuthProject(AuthProject query);
 
+        GraphqlResponse<AccessToken> CreatePlayer(CreatePlayer query);
+
         GraphqlResponse<AccessToken> AuthPlayer(AuthPlayer query);
 
         GraphqlResponse<Player> GetPlayer(GetPlayer query);
 
         GraphqlResponse<List<Player>> GetPlayers(GetPlayers query);
+
+        GraphqlResponse<bool> DeletePlayer(DeletePlayer query);
     }
 }

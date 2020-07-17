@@ -30,6 +30,11 @@ namespace Enjin.SDK
             return SendRequest(_projectService.GetOne(CreateRequestBody(query, ""))).Result;
         }
 
+        public GraphqlResponse<AccessToken> CreatePlayer(CreatePlayer query)
+        {
+            return SendRequest(_playerService.Auth(CreateRequestBody(query, ""))).Result;
+        }
+
         public GraphqlResponse<AccessToken> AuthPlayer(AuthPlayer query)
         {
             return SendRequest(_playerService.Auth(CreateRequestBody(query, ""))).Result;
@@ -43,6 +48,11 @@ namespace Enjin.SDK
         public GraphqlResponse<List<Player>> GetPlayers(GetPlayers query)
         {
             return SendRequest(_playerService.GetMany(CreateRequestBody(query, ""))).Result;
+        }
+
+        public GraphqlResponse<bool> DeletePlayer(DeletePlayer query)
+        {
+            return SendRequest(_playerService.Delete(CreateRequestBody(query, ""))).Result;
         }
 
         public GraphqlResponse<Player> GetPlayer(PlayerSchema.GetPlayer query)
@@ -59,6 +69,9 @@ namespace Enjin.SDK
     [Headers("Content-Type: application/json")]
     internal interface IPlayerService : IAuth, IGetOne<Player>, IGetMany<Player>
     {
+        [Post("/graphql")]
+        Task<ApiResponse<GraphqlResponse<bool>>> Delete([Body(BodySerializationMethod.Serialized)]
+            JObject body);
     }
 
     [Headers("Content-Type: application/json")]
