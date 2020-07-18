@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Refit;
 
@@ -43,7 +44,8 @@ namespace Enjin.SDK
         {
             return new JsonSerializerSettings()
             {
-                ContractResolver = new PrivateSetterContractResolver()
+                ContractResolver = new PrivateSetterContractResolver(),
+                Converters = {new StringEnumConverter()}
             };
         }
 
