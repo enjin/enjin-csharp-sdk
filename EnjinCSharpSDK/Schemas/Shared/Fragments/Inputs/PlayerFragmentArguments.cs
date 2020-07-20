@@ -26,9 +26,9 @@ namespace Enjin.SDK.Shared
             return instance.SetVariable("withPlayerWallet", true);
         }
         
-        public static T QrSize<T>(this T instance) where T : IVariableHolder<T>
+        public static T QrSize<T>(this T instance, int size) where T : IVariableHolder<T>
         {
-            return instance.SetVariable("linkingCodeQrSize", true);
+            return instance.SetVariable("linkingCodeQrSize", size);
         }
     }
 }

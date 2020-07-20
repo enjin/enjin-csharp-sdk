@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class GetProject<T> : GraphqlRequest<T>, IProjectFragmentArguments<T> where T : GraphqlRequest<T>, new()
+    public class GetProject<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
     {
         internal GetProject()
         {
