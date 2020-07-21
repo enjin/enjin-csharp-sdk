@@ -87,13 +87,13 @@ namespace Enjin.SDK.Shared
     public class TokenTransferFeeSettings
     {
         [JsonProperty("type")]
-        public TokenTransferFeeType Type { get; private set; }
+        public TokenTransferFeeType Type { get; set; }
         
         [JsonProperty("tokenId")]
-        public string TokenId { get; private set; }
+        public string TokenId { get; set; }
         
         [JsonProperty("value")]
-        public string Value { get; private set; }
+        public string Value { get; set; }
     }
 
     [PublicAPI]
