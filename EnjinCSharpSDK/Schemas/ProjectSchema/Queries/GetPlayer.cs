@@ -7,6 +7,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class GetPlayer<T> : GraphqlRequest<T>, IPlayerFragmentArguments<T> where T : GraphqlRequest<T>, new()
     {
+        public T Id(string id)
+        {
+            return SetVariable("id", id);
+        }
     }
 
     [PublicAPI]
