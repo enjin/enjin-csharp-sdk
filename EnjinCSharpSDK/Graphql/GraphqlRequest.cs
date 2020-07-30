@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using Newtonsoft.Json;
 
 namespace Enjin.SDK.Graphql
 {
@@ -37,47 +36,4 @@ namespace Enjin.SDK.Graphql
     
     [PublicAPI]
     public class GraphqlRequest : GraphqlRequest<GraphqlRequest> {}
-
-    [PublicAPI]
-    public interface IVariableHolder<out T> : IVariableHolder
-    {
-        T SetVariable(string key, object value);
-        
-        bool IsSet(string key);
-        
-    }
-
-    [PublicAPI]
-    public interface IVariableHolder
-    {
-        Dictionary<string, object> Variables();
-    }
-    
-    [PublicAPI]
-    public class PaginationRequest<T> : GraphqlRequest<T> where T : PaginationRequest<T>, new()
-    {
-        public T Paginate(PaginationOptions pagination)
-        {
-            return SetVariable("pagination", pagination);
-        }
-
-        public T Paginate(int page, int limit = 10)
-        {
-            return Paginate(new PaginationOptions()
-            {
-                Page = page,
-                Limit = limit
-            });
-        }
-    }
-    
-    [PublicAPI]
-    public class PaginationOptions
-    {
-        [JsonProperty("page")]
-        public int Page { get; set; }
-        
-        [JsonProperty("limit")]
-        public int Limit { get; set; }
-    }
 }

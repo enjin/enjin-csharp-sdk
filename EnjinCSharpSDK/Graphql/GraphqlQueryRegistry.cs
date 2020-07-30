@@ -7,6 +7,7 @@ using JetBrains.Annotations;
 
 namespace Enjin.SDK.Graphql
 {
+    // TODO: Rewrite to support v2 template scheme.
     [PublicAPI]
     public class GraphqlQueryRegistry
     {

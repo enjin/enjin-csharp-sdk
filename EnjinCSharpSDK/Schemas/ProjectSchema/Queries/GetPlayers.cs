@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Shared;
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 
 namespace Enjin.SDK.ProjectSchema
 {
     [PublicAPI]
-    public class GetPlayers<T> : PaginationRequest<T>, IPlayerFragmentArguments<T> where T : PaginationRequest<T>, new()
+    public class GetPlayers<T>
+        : GraphqlRequest<T>, IPaginationArguments<T>, IPlayerFragmentArguments<T> where T : GraphqlRequest<T>, new()
     {
         public T Filter(PlayerFilter filter)
         {
@@ -22,9 +24,13 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class PlayerFilter
     {
+        [JsonProperty("id")]
         private string _id;
+        [JsonProperty("id_in")]
         private List<string> _idIn;
+        [JsonProperty("and")]
         private List<PlayerFilter> _and;
+        [JsonProperty("or")]
         private List<PlayerFilter> _or;
 
         public PlayerFilter Id(string id)

@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.Models
 {
     [PublicAPI]
     public class Project

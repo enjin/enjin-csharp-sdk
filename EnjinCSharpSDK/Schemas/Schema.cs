@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Models;
 using Enjin.SDK.PlayerSchema;
 using Enjin.SDK.ProjectSchema;
 using Enjin.SDK.Shared;

@@ -1,5 +1,5 @@
-using System.Runtime.Serialization;
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Models;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.Shared
@@ -31,25 +31,5 @@ namespace Enjin.SDK.Shared
         {
             return instance.SetVariable("withBalWalletAddress", true);
         }
-    }
-
-    [PublicAPI]
-    public enum TokenIdFormat
-    {
-        [EnumMember(Value = "hex64")]
-        HEX64,
-        [EnumMember(Value = "hex256")]
-        HEX256,
-        [EnumMember(Value = "uint256")]
-        UINT256
-    }
-
-    [PublicAPI]
-    public enum TokenIndexFormat
-    {
-        [EnumMember(Value = "hex64")]
-        HEX64,
-        [EnumMember(Value = "uint64")]
-        UINT64
     }
 }
