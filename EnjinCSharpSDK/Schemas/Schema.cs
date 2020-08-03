@@ -21,44 +21,44 @@ namespace Enjin.SDK
             _playerService = CreateService<IPlayerService>();
         }
 
-        public GraphqlResponse<AccessToken> AuthProject(AuthProject query)
+        public GraphqlResponse<AccessToken> AuthProject(AuthProject request)
         {
-            return SendRequest(_projectService.Auth(CreateRequestBody(query, ""))).Result;
+            return SendRequest(_projectService.Auth(Middleware.Schema, CreateRequestBody(request))).Result;
         }
         
-        public GraphqlResponse<Project> GetProject(GetProject query)
+        public GraphqlResponse<Project> GetProject(GetProject request)
         {
-            return SendRequest(_projectService.GetOne(CreateRequestBody(query, ""))).Result;
+            return SendRequest(_projectService.GetOne(Middleware.Schema, CreateRequestBody(request))).Result;
         }
 
-        public GraphqlResponse<AccessToken> CreatePlayer(CreatePlayer query)
+        public GraphqlResponse<AccessToken> CreatePlayer(CreatePlayer request)
         {
-            return SendRequest(_playerService.Auth(CreateRequestBody(query, ""))).Result;
+            return SendRequest(_playerService.Auth(Middleware.Schema, CreateRequestBody(request))).Result;
         }
 
-        public GraphqlResponse<AccessToken> AuthPlayer(AuthPlayer query)
+        public GraphqlResponse<AccessToken> AuthPlayer(AuthPlayer request)
         {
-            return SendRequest(_playerService.Auth(CreateRequestBody(query, ""))).Result;
+            return SendRequest(_playerService.Auth(Middleware.Schema, CreateRequestBody(request))).Result;
         }
 
-        public GraphqlResponse<Player> GetPlayer(ProjectSchema.GetPlayer query)
+        public GraphqlResponse<Player> GetPlayer(ProjectSchema.GetPlayer request)
         {
-            return SendRequest(_playerService.GetOne(CreateRequestBody(query, ""))).Result;
+            return SendRequest(_playerService.GetOne(Middleware.Schema, CreateRequestBody(request))).Result;
         }
 
-        public GraphqlResponse<List<Player>> GetPlayers(GetPlayers query)
+        public GraphqlResponse<List<Player>> GetPlayers(GetPlayers request)
         {
-            return SendRequest(_playerService.GetMany(CreateRequestBody(query, ""))).Result;
+            return SendRequest(_playerService.GetMany(Middleware.Schema, CreateRequestBody(request))).Result;
         }
 
-        public GraphqlResponse<bool> DeletePlayer(DeletePlayer query)
+        public GraphqlResponse<bool> DeletePlayer(DeletePlayer request)
         {
-            return SendRequest(_playerService.Delete(CreateRequestBody(query, ""))).Result;
+            return SendRequest(_playerService.Delete(Middleware.Schema, CreateRequestBody(request))).Result;
         }
 
-        public GraphqlResponse<Player> GetPlayer(PlayerSchema.GetPlayer query)
+        public GraphqlResponse<Player> GetPlayer(PlayerSchema.GetPlayer request)
         {
-            return SendRequest(_playerService.GetOne(CreateRequestBody(query, ""))).Result;
+            return SendRequest(_playerService.GetOne(Middleware.Schema, CreateRequestBody(request))).Result;
         }
     }
 
@@ -70,32 +70,32 @@ namespace Enjin.SDK
     [Headers("Content-Type: application/json")]
     internal interface IPlayerService : IAuth, IGetOne<Player>, IGetMany<Player>
     {
-        [Post("/graphql")]
-        Task<ApiResponse<GraphqlResponse<bool>>> Delete([Body(BodySerializationMethod.Serialized)]
+        [Post("/graphql/{schema}")]
+        Task<ApiResponse<GraphqlResponse<bool>>> Delete(string schema, [Body(BodySerializationMethod.Serialized)]
             JObject body);
     }
 
     [Headers("Content-Type: application/json")]
     internal interface IAuth
     {
-        [Post("/graphql")]
-        Task<ApiResponse<GraphqlResponse<AccessToken>>> Auth([Body(BodySerializationMethod.Serialized)]
+        [Post("/graphql/{schema}")]
+        Task<ApiResponse<GraphqlResponse<AccessToken>>> Auth(string schema, [Body(BodySerializationMethod.Serialized)]
             JObject body);
     }
     
     [Headers("Content-Type: application/json")]
     internal interface IGetOne<T>
     {
-        [Post("/graphql")]
-        Task<ApiResponse<GraphqlResponse<T>>> GetOne([Body(BodySerializationMethod.Serialized)]
+        [Post("/graphql/{schema}")]
+        Task<ApiResponse<GraphqlResponse<T>>> GetOne(string schema, [Body(BodySerializationMethod.Serialized)]
             JObject body);
     }
     
     [Headers("Content-Type: application/json")]
     internal interface IGetMany<T>
     {
-        [Post("/graphql")]
-        Task<ApiResponse<GraphqlResponse<List<T>>>> GetMany([Body(BodySerializationMethod.Serialized)]
+        [Post("/graphql/{schema}")]
+        Task<ApiResponse<GraphqlResponse<List<T>>>> GetMany(string schema, [Body(BodySerializationMethod.Serialized)]
             JObject body);
     }
 }

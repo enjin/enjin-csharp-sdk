@@ -13,9 +13,9 @@ namespace Enjin.SDK
         public TrustedPlatformMiddleware Middleware { get; }
         public ISharedSchema Schema { get; }
 
-        protected TrustedPlatformClient(Uri baseUri, bool debug)
+        protected TrustedPlatformClient(Uri baseUri, bool debug, string schema)
         {
-            Middleware = new TrustedPlatformMiddleware(baseUri, debug);
+            Middleware = new TrustedPlatformMiddleware(baseUri, debug, schema);
             Schema = new SchemaImpl(Middleware);
         }
     }

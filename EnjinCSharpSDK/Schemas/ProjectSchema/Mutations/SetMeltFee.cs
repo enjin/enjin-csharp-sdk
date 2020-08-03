@@ -7,6 +7,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetMeltFee<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
     {
+        protected SetMeltFee() : base("enjin.sdk.project.SetMeltFee")
+        {
+        }
+        
         public T TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);

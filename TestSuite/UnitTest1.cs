@@ -8,7 +8,7 @@ namespace TestSuite
 {
     public class Tests
     {
-        private IProjectClient _client;
+        private ProjectClient _client;
         
         [SetUp]
         public void Setup()

@@ -17,12 +17,12 @@ namespace Enjin.SDK
             Middleware = middleware;
         }
 
-        protected JObject CreateRequestBody(IVariableHolder holder, string template)
+        protected JObject CreateRequestBody(IGraphqlRequest request)
         {
             var obj = new JObject
             {
-                {"query", Middleware.Registry.GetOperationForName(template).CompiledContents},
-                {"variables", JToken.FromObject(holder.Variables())}
+                {"query", Middleware.Registry.GetOperationForName(request.Namespace).CompiledContents},
+                {"variables", JToken.FromObject(request.Variables)}
             };
             return obj;
         }

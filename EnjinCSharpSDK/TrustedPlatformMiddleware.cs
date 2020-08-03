@@ -13,12 +13,14 @@ namespace Enjin.SDK
         public readonly TrustedPlatformHandler HttpHandler;
         public readonly HttpClient HttpClient;
         public readonly GraphqlQueryRegistry Registry;
+        public readonly string Schema;
 
-        public TrustedPlatformMiddleware(Uri baseAddress, bool debug)
+        public TrustedPlatformMiddleware(Uri baseAddress, bool debug, string schema)
         {
             HttpHandler = new TrustedPlatformHandler();
             HttpClient = CreateHttpClient(baseAddress, debug);
             Registry = new GraphqlQueryRegistry();
+            Schema = schema;
         }
 
         private HttpClient CreateHttpClient(Uri baseAddress, bool debug)

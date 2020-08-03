@@ -6,10 +6,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class AuthPlayer<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
     {
-        internal AuthPlayer()
+        protected AuthPlayer() : base("enjin.sdk.project.AuthPlayer")
         {
         }
-
+        
         public T Id(string id)
         {
             return SetVariable("id", id);

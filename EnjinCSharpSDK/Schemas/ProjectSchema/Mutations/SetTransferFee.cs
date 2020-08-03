@@ -8,6 +8,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetTransferFee<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
     {
+        protected SetTransferFee() : base("enjin.sdk.project.SetTransferFee")
+        {
+        }
+        
         public T TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);

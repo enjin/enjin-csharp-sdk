@@ -7,6 +7,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class InvalidateTokenMetadata<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
     {
+        protected InvalidateTokenMetadata() : base("enjin.sdk.project.InvalidateTokenMetadata")
+        {
+        }
+        
         public T Id(string id)
         {
             return SetVariable("id", id);
