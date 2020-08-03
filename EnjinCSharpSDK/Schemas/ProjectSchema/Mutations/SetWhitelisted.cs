@@ -1,4 +1,5 @@
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
@@ -36,16 +37,5 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetWhitelisted : SetWhitelisted<SetWhitelisted>
     {
-    }
-
-    [PublicAPI]
-    public enum Whitelisted
-    {
-        NONE,
-        SEND_AND_RECEIVE,
-        SEND,
-        RECEIVE,
-        NO_FEES,
-        ADDRESS
     }
 }

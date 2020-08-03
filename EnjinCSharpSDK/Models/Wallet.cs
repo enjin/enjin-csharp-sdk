@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.Models
 {
     [PublicAPI]
     public class Wallet
