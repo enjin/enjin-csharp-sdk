@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
 {
+    [PublicAPI]
+    public class MintToken : MintToken<MintToken>
+    {
+    }
+    
     [PublicAPI]
     public class MintToken<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
     {

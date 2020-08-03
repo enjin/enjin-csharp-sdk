@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace Enjin.SDK.ProjectSchema
+namespace Enjin.SDK.Models
 {
     [PublicAPI]
     public enum Whitelisted

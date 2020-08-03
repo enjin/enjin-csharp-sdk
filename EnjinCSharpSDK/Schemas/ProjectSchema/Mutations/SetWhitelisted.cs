@@ -1,4 +1,5 @@
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 

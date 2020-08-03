@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace Enjin.SDK.ProjectSchema
+namespace Enjin.SDK.Models
 {
     [PublicAPI]
     public class PlayerFilter
