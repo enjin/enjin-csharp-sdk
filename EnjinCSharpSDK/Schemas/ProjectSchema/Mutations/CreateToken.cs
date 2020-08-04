@@ -9,6 +9,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class CreateToken<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
     {
+        protected CreateToken() : base("enjin.sdk.project.CreateToken")
+        {
+        }
+        
         public T Name(string name)
         {
             return SetVariable("name", name);

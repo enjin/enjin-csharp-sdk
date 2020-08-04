@@ -4,18 +4,20 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Graphql
 {
     [PublicAPI]
-    public class GraphqlRequest<T> : IVariableHolder<T> where T : GraphqlRequest<T>, new()
+    public class GraphqlRequest<T> : IVariableHolder<T>, IGraphqlRequest where T : GraphqlRequest<T>
     {
         protected readonly T This;
         public Dictionary<string, object> Variables { get; }
+        public string Namespace { get; }
 
-        protected GraphqlRequest(Dictionary<string, object> variables)
+        protected GraphqlRequest(Dictionary<string, object> variables, string templateKey)
         {
             Variables = variables;
             This = (T) this;
+            Namespace = templateKey;
         }
 
-        protected GraphqlRequest() : this(new Dictionary<string, object>()) {}
+        protected GraphqlRequest(string templateKey) : this(new Dictionary<string, object>(), templateKey) {}
 
         public T SetVariable(string key, object value)
         {
@@ -35,5 +37,10 @@ namespace Enjin.SDK.Graphql
     }
     
     [PublicAPI]
-    public class GraphqlRequest : GraphqlRequest<GraphqlRequest> {}
+    public interface IGraphqlRequest
+    {
+        Dictionary<string, object> Variables { get; }
+        
+        string Namespace { get; }
+    }
 }

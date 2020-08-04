@@ -7,6 +7,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetUri<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
     {
+        protected SetUri() : base("enjin.sdk.project.SetUri")
+        {
+        }
+        
         public T TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);

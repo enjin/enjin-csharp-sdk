@@ -7,6 +7,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class DecreaseMaxTransferFee<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
     {
+        protected DecreaseMaxTransferFee() : base("enjin.sdk.project.DecreaseMaxTransferFee")
+        {
+        }
+        
         public T TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);

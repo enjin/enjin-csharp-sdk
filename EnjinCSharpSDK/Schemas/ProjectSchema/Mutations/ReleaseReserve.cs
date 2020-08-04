@@ -7,6 +7,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class ReleaseReserve<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
     {
+        protected ReleaseReserve() : base("enjin.sdk.project.ReleaseReserve")
+        {
+        }
+        
         public T TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);

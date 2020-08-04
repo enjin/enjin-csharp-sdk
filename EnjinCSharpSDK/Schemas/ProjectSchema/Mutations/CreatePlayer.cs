@@ -7,6 +7,10 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class CreatePlayer<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
     {
+        protected CreatePlayer() : base("enjin.sdk.project.CreatePlayer")
+        {
+        }
+        
         public T Id(string id)
         {
             return SetVariable("id", id);

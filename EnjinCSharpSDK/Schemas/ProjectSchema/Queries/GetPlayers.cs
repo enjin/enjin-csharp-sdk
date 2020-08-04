@@ -9,6 +9,10 @@ namespace Enjin.SDK.ProjectSchema
     public class GetPlayers<T>
         : GraphqlRequest<T>, IPaginationArguments<T>, IPlayerFragmentArguments<T> where T : GraphqlRequest<T>, new()
     {
+        protected GetPlayers() : base("enjin.sdk.project.GetPlayers")
+        {
+        }
+        
         public T Filter(PlayerFilter filter)
         {
             return SetVariable("filter", filter);
