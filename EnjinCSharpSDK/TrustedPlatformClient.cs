@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK
 {
     [PublicAPI]
-    public abstract class TrustedPlatformClient : ITrustedPlatformClient
+    public abstract class TrustedPlatformClient
     {
         public static readonly Uri KovanUrl = new Uri("https://kovan.cloud.enjin.io/");
         public static readonly Uri MainNetUrl = new Uri("https://cloud.enjin.io/");

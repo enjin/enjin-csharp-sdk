@@ -48,7 +48,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("transferable", transferable);
         }
         
-        public T TransferFeeSettings(TokenTransferFeeSettings transferFeeSettings)
+        public T TransferFeeSettings(TokenTransferFeeSettingsInput transferFeeSettings)
         {
             return SetVariable("transferFeeSettings", transferFeeSettings);
         }
