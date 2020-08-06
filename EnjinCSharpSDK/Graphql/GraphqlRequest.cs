@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
@@ -6,14 +7,12 @@ namespace Enjin.SDK.Graphql
     [PublicAPI]
     public class GraphqlRequest<T> : IVariableHolder<T>, IGraphqlRequest where T : GraphqlRequest<T>
     {
-        protected readonly T This;
         public Dictionary<string, object> Variables { get; }
         public string Namespace { get; }
 
         protected GraphqlRequest(Dictionary<string, object> variables, string templateKey)
         {
             Variables = variables;
-            This = (T) this;
             Namespace = templateKey;
         }
 
@@ -22,7 +21,7 @@ namespace Enjin.SDK.Graphql
         public T SetVariable(string key, object value)
         {
             Variables.Add(key, value);
-            return This;
+            return this as T;
         }
 
         public bool IsSet(string key)

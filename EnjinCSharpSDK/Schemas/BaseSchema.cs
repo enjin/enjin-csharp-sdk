@@ -8,11 +8,11 @@ using Refit;
 
 namespace Enjin.SDK
 {
-    public class BaseService
+    public class BaseSchema
     {
         protected readonly TrustedPlatformMiddleware Middleware;
 
-        protected BaseService(TrustedPlatformMiddleware middleware)
+        protected BaseSchema(TrustedPlatformMiddleware middleware)
         {
             Middleware = middleware;
         }

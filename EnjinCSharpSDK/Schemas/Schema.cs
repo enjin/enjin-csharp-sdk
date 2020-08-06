@@ -10,12 +10,12 @@ using Refit;
 
 namespace Enjin.SDK
 {
-    public class SchemaImpl : BaseService, IProjectSchema, IPlayerSchema
+    public class Schema : BaseSchema, IProjectSchema, IPlayerSchema
     {
         private readonly IProjectService _projectService;
         private readonly IPlayerService _playerService;
 
-        public SchemaImpl(TrustedPlatformMiddleware middleware) : base(middleware)
+        public Schema(TrustedPlatformMiddleware middleware) : base(middleware)
         {
             _projectService = CreateService<IProjectService>();
             _playerService = CreateService<IPlayerService>();
