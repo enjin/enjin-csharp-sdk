@@ -1,0 +1,14 @@
+#namespace enjin.sdk.shared.Wallet
+#import enjin.sdk.shared.Token
+
+#arg withTokensCreated Boolean false
+
+fragment Wallet on EnjinWallet {
+    ethAddress
+    enjAllowance
+    enjBalance
+    ethBalance
+    tokensCreated @include(if: $withTokensCreated) {
+        ...Token
+    }
+}

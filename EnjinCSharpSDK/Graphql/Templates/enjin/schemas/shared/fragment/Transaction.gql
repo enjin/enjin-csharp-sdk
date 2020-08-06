@@ -1,0 +1,33 @@
+#namespace enjin.sdk.shared.Transaction
+
+#arg withMeta Boolean false
+#arg withEncodedData Boolean false
+#arg withTokenData Boolean false
+#arg withSignedTxs Boolean false
+#arg withError Boolean false
+#arg withNonce Boolean false
+#arg withState Boolean false
+#arg withReceipt Boolean false
+
+fragment Transaction on EnjinTransaction {
+    id
+    transactionId
+    title @include(if: $withMeta)
+    contract @include(if: $withMeta)
+    encodedData @include(if: $withEncodedData)
+    type
+    icon @include(if: $withMeta)
+    value @include(if: $withTokenData)
+    signedTransaction @include(if: $withSignedTxs)
+    signedBackupTransaction @include(if: $withSignedTxs)
+    signedCancelTransaction @include(if: $withSignedTxs)
+    error @include(if: $withError)
+    nonce @include(if: $withNonce)
+    retryState @include(if: $withState)
+    state @include(if: $withState)
+    accepted @include(if: $withState)
+    receipt @include(if: $withReceipt)
+    tokenId @include(if: $withTokenData)
+    createdAt
+    updatedAt
+}

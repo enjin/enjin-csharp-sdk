@@ -1,0 +1,18 @@
+#namespace enjin.sdk.shared.Player
+#import enjin.sdk.shared.Wallet
+
+#arg withLinkingCode Boolean false
+#arg withLinkingCodeQr Boolean false
+#arg withPlayerWallet Boolean false
+#arg linkingCodeQrSize Int
+
+fragment Player on Player {
+    id
+    linkingCode @include(if: $withLinkingCode)
+    linkingCodeQr(size: $linkingCodeQrSize) @include(if: $withLinkingCodeQr)
+    wallet @include(if: $withPlayerWallet) {
+        ...Wallet
+    }
+    createdAt
+    updatedAt
+}
