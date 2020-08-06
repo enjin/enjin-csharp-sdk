@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class GetRequest<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class GetRequest<T> : GraphqlRequest<T>, ITransactionFragmentArguments<T> where T : GraphqlRequest<T>, new()
     {
         protected GetRequest() : base("enjin.sdk.shared.GetRequest")
         {

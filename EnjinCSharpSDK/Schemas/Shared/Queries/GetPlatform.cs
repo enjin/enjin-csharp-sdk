@@ -10,14 +10,14 @@ namespace Enjin.SDK.Shared
         {
         }
         
-        public T WithContracts(bool value)
+        public T WithContracts()
         {
-            return SetVariable("withContracts", value);
+            return SetVariable("withContracts", true);
         }
 
-        public T WithNotificationDrivers(bool value)
+        public T WithNotificationDrivers()
         {
-            return SetVariable("withNotificationDrivers", value);
+            return SetVariable("withNotificationDrivers", true);
         }
     }
     

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     [PublicAPI]
-    public class Filter<T> where T: Filter<T>
+    public abstract class Filter<T> where T: Filter<T>
     {
         [JsonProperty("and")]
         private List<T> _and;
