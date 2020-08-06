@@ -1,11 +1,14 @@
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 
 namespace Enjin.SDK.Models
 {
     [PublicAPI]
     public class TransactionSort
     {
+        [JsonProperty("field")]
         private TransactionField _field;
+        [JsonProperty("direction")]
         private SortDirection _direction;
 
         public TransactionSort Field(TransactionField field)
