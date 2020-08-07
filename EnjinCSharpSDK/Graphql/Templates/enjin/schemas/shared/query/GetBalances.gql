@@ -1,6 +1,6 @@
 #namespace enjin.sdk.shared.GetBalances
 #import enjin.sdk.shared.Balance
-#import enjin.sdk.shared.PaginationInput
+#import enjin.sdk.shared.PaginationCursor
 
 #arg filter BalanceFilter
 #arg pagination PaginationInput {page:1,limit:100}

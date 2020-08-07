@@ -1,6 +1,6 @@
 #namespace enjin.sdk.shared.GetTokens
 #import enjin.sdk.shared.Token
-#import enjin.sdk.shared.PaginationInput
+#import enjin.sdk.shared.PaginationCursor
 
 #arg filter TokenFilter
 #arg sort TokenSortInput
