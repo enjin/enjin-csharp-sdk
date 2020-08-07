@@ -115,11 +115,16 @@ namespace Enjin.SDK.Graphql
         private static string ProcessArg(string line)
         {
             var parts = line.Split(' ');
-            if (parts.Length < 3 || parts.Length > 4)
-                return null;
-            return parts.Length == 3
-                ? $"${parts[1]}: {parts[2]}"
-                : $"${parts[1]}: {parts[2]} = {parts[3]}";
+
+            switch (parts.Length)
+            {
+                case 3:
+                    return $"${parts[1]}: {parts[2]}";
+                case 4:
+                    return $"${parts[1]}: {parts[2]} = {parts[3]}";
+                default:
+                    return null;
+            }
         }
 
         private static string ProcessImport(string line)
