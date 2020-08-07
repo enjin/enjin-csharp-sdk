@@ -21,44 +21,44 @@ namespace Enjin.SDK
             _playerService = CreateService<IPlayerService>();
         }
 
-        public GraphqlResponse<AccessToken> AuthProject(AuthProject request)
+        public Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject request)
         {
-            return SendRequest(_projectService.Auth(Middleware.Schema, CreateRequestBody(request))).Result;
+            return SendRequest(_projectService.Auth(Middleware.Schema, CreateRequestBody(request)));
         }
         
-        public GraphqlResponse<Project> GetProject(GetProject request)
+        public Task<GraphqlResponse<Project>> GetProject(GetProject request)
         {
-            return SendRequest(_projectService.GetOne(Middleware.Schema, CreateRequestBody(request))).Result;
+            return SendRequest(_projectService.GetOne(Middleware.Schema, CreateRequestBody(request)));
         }
 
-        public GraphqlResponse<AccessToken> CreatePlayer(CreatePlayer request)
+        public Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request)
         {
-            return SendRequest(_playerService.Auth(Middleware.Schema, CreateRequestBody(request))).Result;
+            return SendRequest(_playerService.Auth(Middleware.Schema, CreateRequestBody(request)));
         }
 
-        public GraphqlResponse<AccessToken> AuthPlayer(AuthPlayer request)
+        public Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer request)
         {
-            return SendRequest(_playerService.Auth(Middleware.Schema, CreateRequestBody(request))).Result;
+            return SendRequest(_playerService.Auth(Middleware.Schema, CreateRequestBody(request)));
         }
 
-        public GraphqlResponse<Player> GetPlayer(ProjectSchema.GetPlayer request)
+        public Task<GraphqlResponse<Player>> GetPlayer(ProjectSchema.GetPlayer request)
         {
-            return SendRequest(_playerService.GetOne(Middleware.Schema, CreateRequestBody(request))).Result;
+            return SendRequest(_playerService.GetOne(Middleware.Schema, CreateRequestBody(request)));
         }
 
-        public GraphqlResponse<List<Player>> GetPlayers(GetPlayers request)
+        public Task<GraphqlResponse<List<Player>>> GetPlayers(GetPlayers request)
         {
-            return SendRequest(_playerService.GetMany(Middleware.Schema, CreateRequestBody(request))).Result;
+            return SendRequest(_playerService.GetMany(Middleware.Schema, CreateRequestBody(request)));
         }
 
-        public GraphqlResponse<bool> DeletePlayer(DeletePlayer request)
+        public Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer request)
         {
-            return SendRequest(_playerService.Delete(Middleware.Schema, CreateRequestBody(request))).Result;
+            return SendRequest(_playerService.Delete(Middleware.Schema, CreateRequestBody(request)));
         }
 
-        public GraphqlResponse<Player> GetPlayer(PlayerSchema.GetPlayer request)
+        public Task<GraphqlResponse<Player>> GetPlayer(PlayerSchema.GetPlayer request)
         {
-            return SendRequest(_playerService.GetOne(Middleware.Schema, CreateRequestBody(request))).Result;
+            return SendRequest(_playerService.GetOne(Middleware.Schema, CreateRequestBody(request)));
         }
     }
 

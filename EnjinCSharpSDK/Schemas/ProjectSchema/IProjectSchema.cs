@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
@@ -9,16 +10,16 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public interface IProjectSchema : ISharedSchema
     {
-        GraphqlResponse<AccessToken> AuthProject(AuthProject query);
+        Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject query);
 
-        GraphqlResponse<AccessToken> CreatePlayer(CreatePlayer query);
+        Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer query);
 
-        GraphqlResponse<AccessToken> AuthPlayer(AuthPlayer query);
+        Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer query);
 
-        GraphqlResponse<Player> GetPlayer(GetPlayer query);
+        Task<GraphqlResponse<Player>> GetPlayer(GetPlayer query);
 
-        GraphqlResponse<List<Player>> GetPlayers(GetPlayers query);
+        Task<GraphqlResponse<List<Player>>> GetPlayers(GetPlayers query);
 
-        GraphqlResponse<bool> DeletePlayer(DeletePlayer query);
+        Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer query);
     }
 }

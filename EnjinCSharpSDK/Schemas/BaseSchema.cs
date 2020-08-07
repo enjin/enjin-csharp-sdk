@@ -49,9 +49,9 @@ namespace Enjin.SDK
             };
         }
 
-        protected static async Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn)
+        protected static Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn)
         {
-            return await taskIn.ContinueWith(task =>
+            return taskIn.ContinueWith(task =>
             {
                 var result = task.Result;
                 return result.IsSuccessStatusCode
