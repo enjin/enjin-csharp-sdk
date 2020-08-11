@@ -7,10 +7,12 @@ namespace Enjin.SDK
     [PublicAPI]
     public class PlayerClient : TrustedPlatformClient
     {
-        public new IPlayerSchema Schema { get; }
-
-        public PlayerClient(Uri baseUri, bool debug) : base(baseUri, debug, "player")
+        private const string SCHEMA = "player";
+        
+        public PlayerClient(Uri baseUri, bool debug = false) : base(baseUri, debug, SCHEMA)
         {
         }
+
+        public IPlayerSchema Schema => SchemaInstance;
     }
 }

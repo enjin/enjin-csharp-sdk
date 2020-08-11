@@ -1,0 +1,22 @@
+#namespace enjin.sdk.shared.GetTokens
+#import enjin.sdk.shared.Token
+#import enjin.sdk.shared.PaginationCursor
+
+#arg filter TokenFilter
+#arg sort TokenSortInput
+#arg pagination PaginationInput {page:1,limit:100}
+
+mutation {
+    result: Tokens(
+        filter: $filter,
+        sort: $sort,
+        pagination: $pagination
+    ) {
+        items {
+            ...Token
+        }
+        cursor {
+            ...PaginationCursor
+        }
+    }
+}

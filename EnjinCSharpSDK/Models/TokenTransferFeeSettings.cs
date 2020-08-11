@@ -7,12 +7,34 @@ namespace Enjin.SDK.Models
     public class TokenTransferFeeSettings
     {
         [JsonProperty("type")]
-        public TokenTransferFeeType Type { get; set; }
+        public TokenTransferFeeType Type { get; internal set; }
         
         [JsonProperty("tokenId")]
-        public string TokenId { get; set; }
+        public string TokenId { get; internal set; }
         
         [JsonProperty("value")]
-        public string Value { get; set; }
+        public string Value { get; internal set; }
+    }
+
+    [PublicAPI]
+    public class TokenTransferFeeSettingsInput: TokenTransferFeeSettings
+    {
+        public TokenTransferFeeSettingsInput Type(TokenTransferFeeType type)
+        {
+            base.Type = type;
+            return this;
+        }
+
+        public TokenTransferFeeSettingsInput TokenId(string tokenId)
+        {
+            base.TokenId = tokenId;
+            return this;
+        }
+
+        public TokenTransferFeeSettingsInput Value(string value)
+        {
+            base.Value = value;
+            return this;
+        }
     }
 }

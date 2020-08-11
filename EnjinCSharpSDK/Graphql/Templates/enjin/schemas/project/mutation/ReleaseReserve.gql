@@ -1,0 +1,20 @@
+#namespace enjin.sdk.project.ReleaseReserve
+#import enjin.sdk.shared.Transaction
+
+#arg tokenId String!
+#arg value BigInt!
+#arg ethAddress EthAddress
+#arg test Boolean true
+#arg send Boolean true
+
+mutation {
+    result: ReleaseReserve(
+        tokenId: $tokenId,
+        value: $value,
+        wallet: $ethAddress,
+        test: $test,
+        send: $send
+    ) {
+        ...Transaction
+    }
+}

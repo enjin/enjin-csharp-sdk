@@ -1,0 +1,16 @@
+#namespace enjin.sdk.shared.ResetEnjApproval
+#import enjin.sdk.shared.Transaction
+
+#arg ethAddress EthAddress
+#arg test Boolean true
+#arg send Boolean true
+
+mutation {
+    result: ResetEnjApproval(
+        wallet: $ethAddress,
+        test: $test,
+        send: $send
+    ) {
+        ...Transaction
+    }
+}

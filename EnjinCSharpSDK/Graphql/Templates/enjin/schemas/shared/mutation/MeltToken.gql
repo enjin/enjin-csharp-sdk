@@ -1,0 +1,18 @@
+#namespace enjin.sdk.shared.MeltToken
+#import enjin.sdk.shared.Transaction
+
+#arg melts [MeltInput]!
+#arg ethAddress EthAddress
+#arg test Boolean true
+#arg send Boolean true
+
+mutation {
+    result: MeltToken(
+        melts: $melts,
+        wallet: $ethAddress,
+        test: $test,
+        send: $send
+    ) {
+        ...Transaction
+    }
+}

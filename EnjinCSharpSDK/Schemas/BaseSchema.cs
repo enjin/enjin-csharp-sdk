@@ -8,11 +8,11 @@ using Refit;
 
 namespace Enjin.SDK
 {
-    public class BaseService
+    public class BaseSchema
     {
         protected readonly TrustedPlatformMiddleware Middleware;
 
-        protected BaseService(TrustedPlatformMiddleware middleware)
+        protected BaseSchema(TrustedPlatformMiddleware middleware)
         {
             Middleware = middleware;
         }
@@ -49,9 +49,9 @@ namespace Enjin.SDK
             };
         }
 
-        protected static async Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn)
+        protected static Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn)
         {
-            return await taskIn.ContinueWith(task =>
+            return taskIn.ContinueWith(task =>
             {
                 var result = task.Result;
                 return result.IsSuccessStatusCode

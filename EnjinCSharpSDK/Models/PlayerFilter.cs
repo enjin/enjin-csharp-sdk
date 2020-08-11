@@ -1,20 +1,17 @@
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Enjin.SDK.Models
 {
     [PublicAPI]
-    public class PlayerFilter
+    public class PlayerFilter: Filter<PlayerFilter>
     {
         [JsonProperty("id")]
         private string _id;
         [JsonProperty("id_in")]
         private List<string> _idIn;
-        [JsonProperty("and")]
-        private List<PlayerFilter> _and;
-        [JsonProperty("or")]
-        private List<PlayerFilter> _or;
 
         public PlayerFilter Id(string id)
         {
@@ -22,21 +19,9 @@ namespace Enjin.SDK.Models
             return this;
         }
 
-        public PlayerFilter IdIn(List<string> ids)
+        public PlayerFilter IdIn(params string[] ids)
         {
-            _idIn = ids;
-            return this;
-        }
-
-        public PlayerFilter And(List<PlayerFilter> others)
-        {
-            _and = others;
-            return this;
-        }
-        
-        public PlayerFilter Or(List<PlayerFilter> others)
-        {
-            _or = others;
+            _idIn = ids.ToList();
             return this;
         }
     }

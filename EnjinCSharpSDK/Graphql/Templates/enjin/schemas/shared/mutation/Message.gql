@@ -1,0 +1,18 @@
+#namespace enjin.sdk.shared.Message
+#import enjin.sdk.shared.Transaction
+
+#arg message String!
+#arg ethAddress EthAddress
+#arg test Boolean true
+#arg send Boolean true
+
+mutation {
+    result: Message(
+        message: $message,
+        wallet: $ethAddress,
+        test: $test,
+        send: $send
+    ) {
+        ...Transaction
+    }
+}

@@ -22,7 +22,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("tokenIndex", tokenIndex);
         }
         
-        public T TransferFeeSettings(TokenTransferFeeSettings transferFeeSettings)
+        public T TransferFeeSettings(TokenTransferFeeSettingsInput transferFeeSettings)
         {
             return SetVariable("transferFeeSettings", transferFeeSettings);
         }

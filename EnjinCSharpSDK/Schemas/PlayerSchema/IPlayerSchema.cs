@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
@@ -8,6 +9,6 @@ namespace Enjin.SDK.PlayerSchema
     [PublicAPI]
     public interface IPlayerSchema : ISharedSchema
     {
-        GraphqlResponse<Player> GetPlayer(GetPlayer query);
+        Task<GraphqlResponse<Player>> GetPlayer(GetPlayer query);
     }
 }

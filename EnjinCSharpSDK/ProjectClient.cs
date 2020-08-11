@@ -7,10 +7,12 @@ namespace Enjin.SDK
     [PublicAPI]
     public class ProjectClient : TrustedPlatformClient
     {
-        public new IProjectSchema Schema { get; }
-
-        public ProjectClient(Uri baseUri, bool debug) : base(baseUri, debug, "app")
+        private const string SCHEMA = "app";
+        
+        public ProjectClient(Uri baseUri, bool debug = false) : base(baseUri, debug, SCHEMA)
         {
         }
+        
+        public IProjectSchema Schema => SchemaInstance;
     }
 }

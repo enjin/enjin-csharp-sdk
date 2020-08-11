@@ -2,21 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.Graphql
 {
-    // TODO: Rewrite to support v2 template scheme.
     [PublicAPI]
     public class GraphqlQueryRegistry
     {
-        private const string FragmentId = "Fragment";
-        private const string MutationId = "Mutation";
-        private const string QueryId = "Query";
-
-        private static readonly Regex TemplateRegex =
-            new Regex("^(?:[.a-zA-Z]{0,}\\.)(?<query>[a-zA-Z]{1,}?(?<type>Fragment|Mutation|Query))\\.gql$");
+        private static readonly Regex TEMPLATE_REGEX =
+            new Regex(new StringBuilder("^(?:[.a-zA-Z]{0,}\\.)") // Handles arbitrary number of path elements.
+                .Append("schemas\\.(?:project|player|shared)\\.") // Validate schema.
+                .Append("(?<type>fragment|mutation|query)\\.") // Gets the template type.
+                .Append("(?:[a-zA-Z]{1,}?)\\.gql$") // Validates the query name.
+                .ToString());
 
         private readonly Dictionary<string, GraphqlTemplate> _fragments = new Dictionary<string, GraphqlTemplate>();
         private readonly Dictionary<string, GraphqlTemplate> _operations = new Dictionary<string, GraphqlTemplate>();
@@ -45,31 +45,32 @@ namespace Enjin.SDK.Graphql
             }
         }
 
-        private void LoadAndCacheTemplateContents(Assembly assembly, string name, string query,
-            TemplateType templateType)
+        private void LoadAndCacheTemplateContents(string[] contents, TemplateType templateType)
         {
-            var contents = LoadTemplateContents(assembly, name);
-
-            if (contents == null) return;
-
-            if (templateType == TemplateType.Fragment)
-                _fragments.Add(query, new GraphqlTemplate(query, templateType, contents, _fragments));
-            else if (templateType == TemplateType.Mutation || templateType == TemplateType.Query)
-                _operations.Add(query, new GraphqlTemplate(query, templateType, contents, _fragments));
+            if (contents == null)
+                return;
+            
+            var id = GraphqlTemplate.ReadNamespace(contents);
+            if (id == null)
+                return;
+            
+            if (templateType == TemplateType.FRAGMENT)
+                _fragments.Add(id, new GraphqlTemplate(id, templateType, contents, _fragments));
+            else if (templateType == TemplateType.MUTATION || templateType == TemplateType.QUERY)
+                _operations.Add(id, new GraphqlTemplate(id, templateType, contents, _fragments));
         }
 
         private void LoadTemplatesInAssembly(Assembly assembly)
         {
             foreach (var name in assembly.GetManifestResourceNames())
             {
-                var match = TemplateRegex.Match(name);
-                if (!match.Success) continue;
-                var query = match.Groups["query"].Value;
-                var typeParseResult = Enum.TryParse(match.Groups["type"].Value, true, out TemplateType type);
-
-                if (!typeParseResult) continue;
-
-                LoadAndCacheTemplateContents(assembly, name, query, type);
+                var match = TEMPLATE_REGEX.Match(name);
+                if (!match.Success)
+                    continue;
+                
+                var type = match.Groups["type"].Value;
+                if (Enum.TryParse(type, true, out TemplateType templateType))
+                    LoadAndCacheTemplateContents(LoadTemplateContents(assembly, name), templateType);
             }
 
             foreach (var operation in _operations.Values)

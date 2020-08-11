@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public interface ITransactionRequestArguments<out T> : IVariableHolder<T>
+    public interface ITransactionRequestArguments<out T> : ITransactionFragmentArguments<T>
     {
     }
     

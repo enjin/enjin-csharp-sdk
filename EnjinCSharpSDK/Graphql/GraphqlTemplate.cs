@@ -7,15 +7,18 @@ namespace Enjin.SDK.Graphql
 {
     public enum TemplateType
     {
-        Fragment,
-        Mutation,
-        Query
+        FRAGMENT,
+        MUTATION,
+        QUERY
     }
+
     public class GraphqlTemplate
     {
-        private const string FragmentToken = "...";
-        private const string ParameterToken = "$";
-        
+        internal const string NAMESPACE_KEY = "#namespace";
+        internal const string IMPORT_KEY = "#import";
+        internal const string ARG_KEY = "#arg";
+
+        public string NameSpace { get; }
         public string Name { get; }
         public TemplateType TemplateType { get; }
         public string Contents { get; }
@@ -28,30 +31,31 @@ namespace Enjin.SDK.Graphql
         public GraphqlTemplate(string name, TemplateType templateType, string[] contents,
             Dictionary<string, GraphqlTemplate> fragments)
         {
-            Name = name;
+            var parts = name.Split('.');
+            NameSpace = name;
+            Name = parts[parts.Length - 1];
             TemplateType = templateType;
             Contents = ParseContents(contents);
             _fragments = fragments;
         }
 
-        private string ParseContents(string[] contents)
+        private string ParseContents(IEnumerable<string> contents)
         {
             var builder = new StringBuilder();
 
             foreach (var line in contents)
             {
                 var trimmed = line.Trim();
-                if (trimmed.StartsWith(ParameterToken))
+                if (trimmed.StartsWith(ARG_KEY))
                 {
-                    Parameters.Add(line);
+                    Parameters.Add(ProcessArg(trimmed));
                 }
-                else if (!string.IsNullOrWhiteSpace(trimmed))
+                else if (trimmed.StartsWith(IMPORT_KEY))
                 {
-                    if (trimmed.StartsWith(FragmentToken))
-                    {
-                        ReferencedFragments.Add(trimmed.Replace(FragmentToken, EmptyString));
-                    }
-
+                    ReferencedFragments.Add(ProcessImport(trimmed));
+                }
+                else if (!string.IsNullOrWhiteSpace(trimmed) && !trimmed.StartsWith("#"))
+                {
                     builder.Append(line).AppendLine();
                 }
             }
@@ -61,13 +65,14 @@ namespace Enjin.SDK.Graphql
 
         internal void Compile()
         {
-            if (TemplateType == TemplateType.Fragment) return;
+            if (TemplateType == TemplateType.FRAGMENT)
+                return;
 
             var parameters = new List<string>(Parameters);
             var processedFragments = new List<string>();
             var fragmentQueue = new Stack<GraphqlTemplate>();
             var builder = new StringBuilder(Contents).AppendLine();
-            
+
             foreach (var fragment in ReferencedFragments)
             {
                 fragmentQueue.Push(_fragments[fragment]);
@@ -77,25 +82,54 @@ namespace Enjin.SDK.Graphql
             {
                 var template = fragmentQueue.Pop();
 
-                if (processedFragments.Contains(template.Name)) continue;
-                
+                if (processedFragments.Contains(template.NameSpace))
+                    continue;
+
                 foreach (var fragment in template.ReferencedFragments)
                 {
                     fragmentQueue.Push(_fragments[fragment]);
                 }
-                
+
                 foreach (var parameter in template.Parameters.Where(parameter => !parameters.Contains(parameter)))
                 {
                     parameters.Add(parameter);
                 }
 
                 builder.Append(template.Contents).AppendLine();
-                processedFragments.Add(template.Name);
+                processedFragments.Add(template.NameSpace);
             }
 
             var replaceTerm = TemplateType.ToString().ToLower();
             var formattedParams = string.Join(CommaSpaceDelimiter, parameters);
             CompiledContents = builder.ToString().Replace(replaceTerm, $"{replaceTerm} {Name}({formattedParams})");
+        }
+
+        internal static string ReadNamespace(IEnumerable<string> contents)
+        {
+            return (from line in contents
+                    where line.StartsWith(NAMESPACE_KEY)
+                    select line.Split(' ')[1])
+                .FirstOrDefault();
+        }
+
+        private static string ProcessArg(string line)
+        {
+            var parts = line.Split(' ');
+
+            switch (parts.Length)
+            {
+                case 3:
+                    return $"${parts[1]}: {parts[2]}";
+                case 4:
+                    return $"${parts[1]}: {parts[2]} = {parts[3]}";
+                default:
+                    return null;
+            }
+        }
+
+        private static string ProcessImport(string line)
+        {
+            return line.Split(' ')[1];
         }
     }
 }
