@@ -27,10 +27,10 @@ namespace Enjin.SDK.Models
         private List<string> _tokenIdIn;
 
         [JsonProperty("type")]
-        private TransactionType _type;
+        private RequestType _type;
 
         [JsonProperty("type_in")]
-        private List<TransactionType> _typeIn;
+        private List<RequestType> _typeIn;
 
         [JsonProperty("value")]
         private int _value;
@@ -48,10 +48,10 @@ namespace Enjin.SDK.Models
         private int _valueLte;
 
         [JsonProperty("state")]
-        private TransactionState _state;
+        private RequestState _state;
 
         [JsonProperty("state_in")]
-        private List<TransactionState> _stateIn;
+        private List<RequestState> _stateIn;
         
         [JsonProperty("wallet")]
         private string _wallet;
@@ -95,13 +95,13 @@ namespace Enjin.SDK.Models
             return this;
         }
         
-        public TransactionFilter Type(TransactionType type)
+        public TransactionFilter Type(RequestType type)
         {
             _type = type;
             return this;
         }
 
-        public TransactionFilter Types(params TransactionType[] types)
+        public TransactionFilter Types(params RequestType[] types)
         {
             _typeIn = types.ToList();
             return this;
@@ -137,13 +137,13 @@ namespace Enjin.SDK.Models
             return this;
         }
         
-        public TransactionFilter State(TransactionState state)
+        public TransactionFilter State(RequestState state)
         {
             _state = state;
             return this;
         }
 
-        public TransactionFilter StateIn(params TransactionState[] states)
+        public TransactionFilter StateIn(params RequestState[] states)
         {
             _stateIn = states.ToList();
             return this;
