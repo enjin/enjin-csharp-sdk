@@ -5,24 +5,20 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class AdvancedSendToken<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class AdvancedSendToken : GraphqlRequest<AdvancedSendToken>, ITransactionRequestArguments<AdvancedSendToken>
     {
         protected AdvancedSendToken() : base("enjin.sdk.shared.AdvancedSendToken")
         {
         }
 
-        public T Transfers(params Transfer[] transfers)
+        public AdvancedSendToken Transfers(params Transfer[] transfers)
         {
             return SetVariable("transfers", transfers);
         }
 
-        public T Data(string data)
+        public AdvancedSendToken Data(string data)
         {
             return SetVariable("data", data);
         }
     }
-    
-    [PublicAPI]
-    public class AdvancedSendToken : AdvancedSendToken<AdvancedSendToken>
-    {}
 }

@@ -5,19 +5,15 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class CompleteTrade<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class CompleteTrade : GraphqlRequest<CompleteTrade>, ITransactionRequestArguments<CompleteTrade>
     {
         protected CompleteTrade() : base("enjin.sdk.shared.CompleteTrade")
         {
         }
 
-        public T TradeId(string id)
+        public CompleteTrade TradeId(string id)
         {
             return SetVariable("tradeId", id);
         }
     }
-    
-    [PublicAPI]
-    public class CompleteTrade : CompleteTrade<CompleteTrade>
-    {}
 }

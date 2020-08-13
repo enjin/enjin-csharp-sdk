@@ -11,7 +11,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public static class WalletFragmentArguments
     {
-        public static T WithTokensCreated<T>(this T instance) where T : IVariableHolder<T>
+        public static T WithTokensCreated<T>(this T instance) where T : IWalletFragmentArguments<T>
         {
             return instance.SetVariable("withTokensCreated", true);
         }

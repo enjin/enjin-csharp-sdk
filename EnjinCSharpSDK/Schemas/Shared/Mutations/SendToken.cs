@@ -5,39 +5,35 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class SendToken<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class SendToken : GraphqlRequest<SendToken>, ITransactionRequestArguments<SendToken>
     {
         protected SendToken() : base("enjin.sdk.shared.SendToken")
         {
         }
 
-        public T RecipientAddress(string recipientAddress)
+        public SendToken RecipientAddress(string recipientAddress)
         {
             return SetVariable("recipientAddress", recipientAddress);
         }
 
-        public T TokenId(string tokenId)
+        public SendToken TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);
         }
 
-        public T TokenIndex(string tokenIndex)
+        public SendToken TokenIndex(string tokenIndex)
         {
             return SetVariable("tokenIndex", tokenIndex);
         }
 
-        public T Value(string value)
+        public SendToken Value(string value)
         {
             return SetVariable("value", value);
         }
 
-        public T Data(string data)
+        public SendToken Data(string data)
         {
             return SetVariable("data", data);
         }
     }
-    
-    [PublicAPI]
-    public class SendToken : SendToken<SendToken>
-    {}
 }

@@ -4,14 +4,10 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.PlayerSchema
 {
     [PublicAPI]
-    public class UnlinkWallet<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
+    public class UnlinkWallet : GraphqlRequest<UnlinkWallet>
     {
         protected UnlinkWallet() : base("enjin.sdk.player.UnlinkWallet")
         {
         }
     }
-    
-    [PublicAPI]
-    public class UnlinkWallet : UnlinkWallet<UnlinkWallet>
-    {}
 }

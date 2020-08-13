@@ -5,30 +5,25 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     [PublicAPI]
-    public class UpdateName<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class UpdateName : GraphqlRequest<UpdateName>, ITransactionRequestArguments<UpdateName>
     {
         protected UpdateName() : base("enjin.sdk.project.UpdateName")
         {
         }
         
-        public T TokenId(string tokenId)
+        public UpdateName TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);
         }
         
-        public T TokenIndex(string tokenIndex)
+        public UpdateName TokenIndex(string tokenIndex)
         {
             return SetVariable("tokenIndex", tokenIndex);
         }
         
-        public T Name(string name)
+        public UpdateName Name(string name)
         {
             return SetVariable("name", name);
         }
-    }
-
-    [PublicAPI]
-    public class UpdateName : UpdateName<UpdateName>
-    {
     }
 }

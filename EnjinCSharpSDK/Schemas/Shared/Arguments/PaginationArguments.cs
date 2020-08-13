@@ -12,12 +12,12 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public static class PaginationArguments
     {
-        public static T Paginate<T>(this T instance, PaginationOptions pagination) where T : IVariableHolder<T>
+        public static T Paginate<T>(this T instance, PaginationOptions pagination) where T : IPaginationArguments<T>
         {
             return instance.SetVariable("pagination", pagination);
         }
 
-        public static T Paginate<T>(this T instance, int page, int limit = 10) where T : IVariableHolder<T>
+        public static T Paginate<T>(this T instance, int page, int limit = 10) where T : IPaginationArguments<T>
         {
             return Paginate(instance, new PaginationOptions()
             {

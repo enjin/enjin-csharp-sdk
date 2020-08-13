@@ -5,25 +5,20 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     [PublicAPI]
-    public class ReleaseReserve<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class ReleaseReserve : GraphqlRequest<ReleaseReserve>, ITransactionRequestArguments<ReleaseReserve>
     {
         protected ReleaseReserve() : base("enjin.sdk.project.ReleaseReserve")
         {
         }
         
-        public T TokenId(string tokenId)
+        public ReleaseReserve TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);
         }
         
-        public T Value(string value)
+        public ReleaseReserve Value(string value)
         {
             return SetVariable("value", value);
         }
-    }
-
-    [PublicAPI]
-    public class ReleaseReserve : ReleaseReserve<ReleaseReserve>
-    {
     }
 }

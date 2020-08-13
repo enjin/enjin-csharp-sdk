@@ -5,15 +5,10 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class ResetEnjApproval<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class ResetEnjApproval : GraphqlRequest<ResetEnjApproval>, ITransactionRequestArguments<ResetEnjApproval>
     {
         protected ResetEnjApproval() : base("enjin.sdk.shared.ResetEnjApproval")
         {
         }
-    }
-    
-    [PublicAPI]
-    public class ResetEnjApproval : ResetEnjApproval<ResetEnjApproval>
-    {
     }
 }

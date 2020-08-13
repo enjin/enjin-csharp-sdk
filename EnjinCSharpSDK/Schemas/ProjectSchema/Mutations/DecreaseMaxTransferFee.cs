@@ -5,30 +5,25 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     [PublicAPI]
-    public class DecreaseMaxTransferFee<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class DecreaseMaxTransferFee : GraphqlRequest<DecreaseMaxTransferFee>, ITransactionRequestArguments<DecreaseMaxTransferFee>
     {
         protected DecreaseMaxTransferFee() : base("enjin.sdk.project.DecreaseMaxTransferFee")
         {
         }
         
-        public T TokenId(string tokenId)
+        public DecreaseMaxTransferFee TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);
         }
         
-        public T TokenIndex(string tokenIndex)
+        public DecreaseMaxTransferFee TokenIndex(string tokenIndex)
         {
             return SetVariable("tokenIndex", tokenIndex);
         }
         
-        public T MaxTransferFee(int maxTransferFee)
+        public DecreaseMaxTransferFee MaxTransferFee(int maxTransferFee)
         {
             return SetVariable("maxTransferFee", maxTransferFee);
         }
-    }
-
-    [PublicAPI]
-    public class DecreaseMaxTransferFee : DecreaseMaxTransferFee<DecreaseMaxTransferFee>
-    {
     }
 }

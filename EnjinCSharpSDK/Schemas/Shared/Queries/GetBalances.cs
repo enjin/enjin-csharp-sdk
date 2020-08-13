@@ -5,20 +5,15 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class GetBalances<T> : GraphqlRequest<T>, IBalanceFragmentArguments<T>, IPaginationArguments<T>
-        where T : GraphqlRequest<T>, new()
+    public class GetBalances : GraphqlRequest<GetBalances>, IBalanceFragmentArguments<GetBalances>, IPaginationArguments<GetBalances>
     {
         protected GetBalances() : base("enjin.sdk.shared.GetBalances")
         {
         }
 
-        public T Filter(BalanceFilter filter)
+        public GetBalances Filter(BalanceFilter filter)
         {
             return SetVariable("filter", filter);
         }
     }
-    
-    [PublicAPI]
-    public class GetBalances : GetBalances<GetBalances>
-    {}
 }
