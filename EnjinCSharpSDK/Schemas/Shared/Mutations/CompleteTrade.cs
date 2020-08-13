@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class CompleteTrade : GraphqlRequest<CompleteTrade>, ITransactionRequestArguments<CompleteTrade>
     {
-        protected CompleteTrade() : base("enjin.sdk.shared.CompleteTrade")
+        public CompleteTrade() : base("enjin.sdk.shared.CompleteTrade")
         {
         }
 

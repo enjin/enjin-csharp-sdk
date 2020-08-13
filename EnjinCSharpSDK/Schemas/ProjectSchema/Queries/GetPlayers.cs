@@ -9,7 +9,7 @@ namespace Enjin.SDK.ProjectSchema
     public class GetPlayers
         : GraphqlRequest<GetPlayers>, IPaginationArguments<GetPlayers>, IPlayerFragmentArguments<GetPlayers>
     {
-        protected GetPlayers() : base("enjin.sdk.project.GetPlayers")
+        public GetPlayers() : base("enjin.sdk.project.GetPlayers")
         {
         }
 

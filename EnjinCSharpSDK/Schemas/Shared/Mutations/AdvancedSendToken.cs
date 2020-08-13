@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class AdvancedSendToken : GraphqlRequest<AdvancedSendToken>, ITransactionRequestArguments<AdvancedSendToken>
     {
-        protected AdvancedSendToken() : base("enjin.sdk.shared.AdvancedSendToken")
+        public AdvancedSendToken() : base("enjin.sdk.shared.AdvancedSendToken")
         {
         }
 

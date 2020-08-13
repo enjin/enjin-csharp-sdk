@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetMeltFee : GraphqlRequest<SetMeltFee>, ITransactionRequestArguments<SetMeltFee>
     {
-        protected SetMeltFee() : base("enjin.sdk.project.SetMeltFee")
+        public SetMeltFee() : base("enjin.sdk.project.SetMeltFee")
         {
         }
         

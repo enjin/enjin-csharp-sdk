@@ -9,7 +9,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class MintToken : GraphqlRequest<MintToken>, ITransactionRequestArguments<MintToken>
     {
-        protected MintToken() : base("enjin.sdk.project.MintToken")
+        public MintToken() : base("enjin.sdk.project.MintToken")
         {
         }
         

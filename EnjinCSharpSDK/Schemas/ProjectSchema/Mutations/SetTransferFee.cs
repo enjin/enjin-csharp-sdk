@@ -8,7 +8,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetTransferFee : GraphqlRequest<SetTransferFee>, ITransactionRequestArguments<SetTransferFee>
     {
-        protected SetTransferFee() : base("enjin.sdk.project.SetTransferFee")
+        public SetTransferFee() : base("enjin.sdk.project.SetTransferFee")
         {
         }
         

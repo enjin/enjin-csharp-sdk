@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class UpdateName : GraphqlRequest<UpdateName>, ITransactionRequestArguments<UpdateName>
     {
-        protected UpdateName() : base("enjin.sdk.project.UpdateName")
+        public UpdateName() : base("enjin.sdk.project.UpdateName")
         {
         }
         

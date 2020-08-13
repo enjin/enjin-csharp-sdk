@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class MeltToken : GraphqlRequest<MeltToken>, ITransactionRequestArguments<MeltToken>
     {
-        protected MeltToken() : base("enjin.sdk.shared.MeltToken")
+        public MeltToken() : base("enjin.sdk.shared.MeltToken")
         {
         }
 

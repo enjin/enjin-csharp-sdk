@@ -6,7 +6,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class AuthProject : GraphqlRequest<AuthProject>
     {
-        protected AuthProject() : base("enjin.sdk.project.AuthProject")
+        public AuthProject() : base("enjin.sdk.project.AuthProject")
         {
         }
 

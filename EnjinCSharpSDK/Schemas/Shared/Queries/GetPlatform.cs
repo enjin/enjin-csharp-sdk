@@ -6,7 +6,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class GetPlatform : GraphqlRequest<GetPlatform>
     {
-        protected GetPlatform() : base("enjin.sdk.shared.GetPlatform")
+        public GetPlatform() : base("enjin.sdk.shared.GetPlatform")
         {
         }
         

@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class SetApprovalForAll : GraphqlRequest<SetApprovalForAll>, ITransactionRequestArguments<SetApprovalForAll>
     {
-        protected SetApprovalForAll() : base("enjin.sdk.shared.SetApprovalForAll")
+        public SetApprovalForAll() : base("enjin.sdk.shared.SetApprovalForAll")
         {
         }
 

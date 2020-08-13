@@ -6,7 +6,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class GetProject : GraphqlRequest<GetProject>
     {
-        protected GetProject() : base("enjin.sdk.shared.GetProject")
+        public GetProject() : base("enjin.sdk.shared.GetProject")
         {
         }
 

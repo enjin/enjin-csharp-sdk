@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class DecreaseMaxTransferFee : GraphqlRequest<DecreaseMaxTransferFee>, ITransactionRequestArguments<DecreaseMaxTransferFee>
     {
-        protected DecreaseMaxTransferFee() : base("enjin.sdk.project.DecreaseMaxTransferFee")
+        public DecreaseMaxTransferFee() : base("enjin.sdk.project.DecreaseMaxTransferFee")
         {
         }
         

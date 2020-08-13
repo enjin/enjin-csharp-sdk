@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class GetPlayer : GraphqlRequest<GetPlayer>, IPlayerFragmentArguments<GetPlayer>
     {
-        protected GetPlayer() : base("enjin.sdk.project.GetPlayer")
+        public GetPlayer() : base("enjin.sdk.project.GetPlayer")
         {
         }
         

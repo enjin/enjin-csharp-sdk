@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class GetBalances : GraphqlRequest<GetBalances>, IBalanceFragmentArguments<GetBalances>, IPaginationArguments<GetBalances>
     {
-        protected GetBalances() : base("enjin.sdk.shared.GetBalances")
+        public GetBalances() : base("enjin.sdk.shared.GetBalances")
         {
         }
 

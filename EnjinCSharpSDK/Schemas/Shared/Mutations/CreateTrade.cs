@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class CreateTrade : GraphqlRequest<CreateTrade>, ITransactionRequestArguments<CreateTrade>
     {
-        protected CreateTrade() : base("enjin.sdk.shared.CreateTrade")
+        public CreateTrade() : base("enjin.sdk.shared.CreateTrade")
         {
         }
 

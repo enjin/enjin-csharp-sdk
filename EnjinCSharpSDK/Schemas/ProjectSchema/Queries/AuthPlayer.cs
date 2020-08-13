@@ -6,7 +6,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class AuthPlayer : GraphqlRequest<AuthPlayer>
     {
-        protected AuthPlayer() : base("enjin.sdk.project.AuthPlayer")
+        public AuthPlayer() : base("enjin.sdk.project.AuthPlayer")
         {
         }
         

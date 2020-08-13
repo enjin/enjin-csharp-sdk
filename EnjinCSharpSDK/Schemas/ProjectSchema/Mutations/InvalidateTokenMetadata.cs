@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class InvalidateTokenMetadata : GraphqlRequest<InvalidateTokenMetadata>
     {
-        protected InvalidateTokenMetadata() : base("enjin.sdk.project.InvalidateTokenMetadata")
+        public InvalidateTokenMetadata() : base("enjin.sdk.project.InvalidateTokenMetadata")
         {
         }
         

@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class SendEnj : GraphqlRequest<SendEnj>, ITransactionRequestArguments<SendEnj>
     {
-        protected SendEnj() : base("enjin.sdk.shared.SendEnj")
+        public SendEnj() : base("enjin.sdk.shared.SendEnj")
         {
         }
 

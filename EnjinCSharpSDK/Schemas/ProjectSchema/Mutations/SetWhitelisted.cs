@@ -8,7 +8,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetWhitelisted : GraphqlRequest<SetWhitelisted>, ITransactionRequestArguments<SetWhitelisted>
     {
-        protected SetWhitelisted() : base("enjin.sdk.project.SetWhitelisted")
+        public SetWhitelisted() : base("enjin.sdk.project.SetWhitelisted")
         {
         }
         

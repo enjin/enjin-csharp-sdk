@@ -6,7 +6,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class UnlinkWallet : GraphqlRequest<UnlinkWallet>
     {
-        protected UnlinkWallet() : base("enjin.sdk.project.UnlinkWallet")
+        public UnlinkWallet() : base("enjin.sdk.project.UnlinkWallet")
         {
         }
         

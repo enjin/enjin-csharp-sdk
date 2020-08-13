@@ -6,7 +6,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class GetGasPrices : GraphqlRequest<GetGasPrices>
     {
-        protected GetGasPrices() : base("enjin.sdk.shared.GetGasPrices")
+        public GetGasPrices() : base("enjin.sdk.shared.GetGasPrices")
         {
         }
     }

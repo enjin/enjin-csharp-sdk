@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class ApproveEnj : GraphqlRequest<ApproveEnj>, ITransactionRequestArguments<ApproveEnj>
     {
-        protected ApproveEnj() : base("enjin.sdk.shared.ApproveEnj")
+        public ApproveEnj() : base("enjin.sdk.shared.ApproveEnj")
         {
         }
 

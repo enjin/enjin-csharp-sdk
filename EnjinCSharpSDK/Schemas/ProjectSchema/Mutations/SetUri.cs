@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetUri : GraphqlRequest<SetUri>, ITransactionRequestArguments<SetUri>
     {
-        protected SetUri() : base("enjin.sdk.project.SetUri")
+        public SetUri() : base("enjin.sdk.project.SetUri")
         {
         }
         

@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class ResetEnjApproval : GraphqlRequest<ResetEnjApproval>, ITransactionRequestArguments<ResetEnjApproval>
     {
-        protected ResetEnjApproval() : base("enjin.sdk.shared.ResetEnjApproval")
+        public ResetEnjApproval() : base("enjin.sdk.shared.ResetEnjApproval")
         {
         }
     }

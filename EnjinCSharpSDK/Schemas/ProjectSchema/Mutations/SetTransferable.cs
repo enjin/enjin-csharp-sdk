@@ -8,7 +8,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class SetTransferable : GraphqlRequest<SetTransferable>, ITransactionRequestArguments<SetTransferable>
     {
-        protected SetTransferable() : base("enjin.sdk.project.SetTransferable")
+        public SetTransferable() : base("enjin.sdk.project.SetTransferable")
         {
         }
         

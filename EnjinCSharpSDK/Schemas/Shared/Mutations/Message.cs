@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class Message : GraphqlRequest<Message>, ITransactionRequestArguments<Message>
     {
-        protected Message(string message) : base("enjin.sdk.shared.Message")
+        public Message(string message) : base("enjin.sdk.shared.Message")
         {
             SetVariable("message", message);
         }

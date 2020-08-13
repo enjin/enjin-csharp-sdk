@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class GetRequests : GraphqlRequest<GetRequests>, ITransactionFragmentArguments<GetRequests>, IPaginationArguments<GetRequests>
     {
-        protected GetRequests() : base("enjin.sdk.shared.GetRequests")
+        public GetRequests() : base("enjin.sdk.shared.GetRequests")
         {
         }
 

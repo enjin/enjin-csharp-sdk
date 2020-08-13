@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class DeletePlayer : GraphqlRequest<DeletePlayer>
     {
-        protected DeletePlayer() : base("enjin.sdk.project.DeletePlayer")
+        public DeletePlayer() : base("enjin.sdk.project.DeletePlayer")
         {
         }
         

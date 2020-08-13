@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class ReleaseReserve : GraphqlRequest<ReleaseReserve>, ITransactionRequestArguments<ReleaseReserve>
     {
-        protected ReleaseReserve() : base("enjin.sdk.project.ReleaseReserve")
+        public ReleaseReserve() : base("enjin.sdk.project.ReleaseReserve")
         {
         }
         

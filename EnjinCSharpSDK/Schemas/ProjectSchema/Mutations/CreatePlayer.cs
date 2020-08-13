@@ -7,7 +7,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class CreatePlayer : GraphqlRequest<CreatePlayer>
     {
-        protected CreatePlayer() : base("enjin.sdk.project.CreatePlayer")
+        public CreatePlayer() : base("enjin.sdk.project.CreatePlayer")
         {
         }
         

@@ -7,7 +7,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class GetTokens : GraphqlRequest<GetTokens>, ITokenFragmentArguments<GetTokens>, IPaginationArguments<GetTokens>
     {
-        protected GetTokens() : base("enjin.sdk.shared.GetTokens")
+        public GetTokens() : base("enjin.sdk.shared.GetTokens")
         {
         }
 

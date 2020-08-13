@@ -9,7 +9,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class CreateToken : GraphqlRequest<CreateToken>, ITransactionRequestArguments<CreateToken>
     {
-        protected CreateToken() : base("enjin.sdk.project.CreateToken")
+        public CreateToken() : base("enjin.sdk.project.CreateToken")
         {
         }
         
