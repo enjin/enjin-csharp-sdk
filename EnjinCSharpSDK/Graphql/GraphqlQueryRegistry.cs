@@ -86,7 +86,7 @@ namespace Enjin.SDK.Graphql
 
         internal void RegisterSdkTemplates()
         {
-            RegisterTemplatesInAssembly(Assembly.GetExecutingAssembly());
+            RegisterTemplatesInAssembly(typeof(GraphqlQueryRegistry).Assembly);
         }
 
         public GraphqlTemplate GetOperationForName(string name)
