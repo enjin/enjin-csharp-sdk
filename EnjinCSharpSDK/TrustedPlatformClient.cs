@@ -6,7 +6,7 @@ namespace Enjin.SDK
     [PublicAPI]
     public abstract class TrustedPlatformClient
     {
-        public TrustedPlatformMiddleware Middleware { get; }
+        internal TrustedPlatformMiddleware Middleware { get; }
 
         private protected Schema SchemaInstance;
 
