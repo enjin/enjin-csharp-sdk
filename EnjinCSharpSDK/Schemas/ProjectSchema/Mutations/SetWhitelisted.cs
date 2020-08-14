@@ -22,7 +22,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("accountAddress", accountAddress);
         }
         
-        public SetWhitelisted Whitelisted(Whitelisted whitelisted)
+        public SetWhitelisted Whitelisted(Whitelisted? whitelisted)
         {
             return SetVariable("whitelisted", whitelisted);
         }
@@ -32,7 +32,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("whitelistedAddress", whitelistedAddress);
         }
         
-        public SetWhitelisted On(bool on)
+        public SetWhitelisted On(bool? on)
         {
             return SetVariable("on", on);
         }

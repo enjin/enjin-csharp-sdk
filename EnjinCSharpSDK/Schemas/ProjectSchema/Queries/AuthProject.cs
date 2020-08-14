@@ -10,7 +10,7 @@ namespace Enjin.SDK.ProjectSchema
         {
         }
 
-        public AuthProject Id(int appId)
+        public AuthProject Id(int? appId)
         {
             return SetVariable("id", appId);
         }

@@ -21,7 +21,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("tokenIndex", tokenIndex);
         }
         
-        public SetMeltFee MeltFee(int meltFee)
+        public SetMeltFee MeltFee(int? meltFee)
         {
             return SetVariable("meltFee", meltFee);
         }

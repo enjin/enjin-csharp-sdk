@@ -10,7 +10,7 @@ namespace Enjin.SDK.Shared
         {
         }
 
-        public GetRequest Id(int id)
+        public GetRequest Id(int? id)
         {
             return SetVariable("id", id);
         }

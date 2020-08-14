@@ -22,7 +22,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("tokenIndex", tokenIndex);
         }
         
-        public SetTransferable Transferable(TokenTransferable transferable)
+        public SetTransferable Transferable(TokenTransferable? transferable)
         {
             return SetVariable("transferable", transferable);
         }

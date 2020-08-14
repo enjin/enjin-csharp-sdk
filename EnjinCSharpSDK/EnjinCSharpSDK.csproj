@@ -10,6 +10,7 @@
         <Copyright>Enjin PTE LTD</Copyright>
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyVersion>0.1.0</AssemblyVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

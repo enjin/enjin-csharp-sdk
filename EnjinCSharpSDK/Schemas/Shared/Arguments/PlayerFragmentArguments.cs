@@ -26,7 +26,7 @@ namespace Enjin.SDK.Shared
             return instance.SetVariable("withPlayerWallet", true);
         }
         
-        public static T QrSize<T>(this T instance, int size) where T : IPlayerFragmentArguments<T>
+        public static T QrSize<T>(this T instance, int? size) where T : IPlayerFragmentArguments<T>
         {
             return instance.SetVariable("linkingCodeQrSize", size);
         }

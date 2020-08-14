@@ -12,7 +12,7 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public static class TokenFragmentArguments
     {
-        public static T TokenIdFormat<T>(this T instance, TokenIdFormat tokenIdFormat) where T : ITokenFragmentArguments<T>
+        public static T TokenIdFormat<T>(this T instance, TokenIdFormat? tokenIdFormat) where T : ITokenFragmentArguments<T>
         {
             return instance.SetVariable("tokenIdFormat", tokenIdFormat);
         }

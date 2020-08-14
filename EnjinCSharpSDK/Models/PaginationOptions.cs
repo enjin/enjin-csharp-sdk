@@ -7,9 +7,9 @@ namespace Enjin.SDK.Models
     public class PaginationOptions
     {
         [JsonProperty("page")]
-        public int Page { get; set; }
+        public int? Page { get; set; }
         
         [JsonProperty("limit")]
-        public int Limit { get; set; }
+        public int? Limit { get; set; }
     }
 }

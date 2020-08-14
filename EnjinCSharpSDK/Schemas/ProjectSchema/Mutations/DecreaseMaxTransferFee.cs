@@ -21,7 +21,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("tokenIndex", tokenIndex);
         }
         
-        public DecreaseMaxTransferFee MaxTransferFee(int maxTransferFee)
+        public DecreaseMaxTransferFee MaxTransferFee(int? maxTransferFee)
         {
             return SetVariable("maxTransferFee", maxTransferFee);
         }

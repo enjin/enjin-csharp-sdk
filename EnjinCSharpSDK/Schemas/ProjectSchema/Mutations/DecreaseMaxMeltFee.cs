@@ -21,7 +21,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("tokenIndex", tokenIndex);
         }
         
-        public DecreaseMaxMeltFee MaxMeltFee(int maxMeltFee)
+        public DecreaseMaxMeltFee MaxMeltFee(int? maxMeltFee)
         {
             return SetVariable("maxMeltFee", maxMeltFee);
         }

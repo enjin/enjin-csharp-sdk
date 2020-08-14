@@ -41,7 +41,7 @@ namespace Enjin.SDK.Models
         public string Reserve { get; private set; }
         
         [JsonProperty("supplyModel")]
-        public TokenSupplyModel SupplyModel { get; private set; }
+        public TokenSupplyModel? SupplyModel { get; private set; }
         
         [JsonProperty("circulatingSupply")]
         public string CirculatingSupply { get; private set; }
@@ -53,13 +53,13 @@ namespace Enjin.SDK.Models
         public string TotalSupply { get; private set; }
         
         [JsonProperty("transferable")]
-        public TokenTransferable Transferable { get; private set; }
+        public TokenTransferable? Transferable { get; private set; }
         
         [JsonProperty("transferFeeSettings")]
         public TokenTransferFeeSettings TransferFeeSettings { get; private set; }
         
         [JsonProperty("variantMode")]
-        public TokenVariantMode VariantMode { get; private set; }
+        public TokenVariantMode? VariantMode { get; private set; }
         
         [JsonProperty("variants")]
         public List<TokenVariant> Variants { get; private set; }

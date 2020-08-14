@@ -16,7 +16,7 @@ namespace Enjin.SDK.Shared
             return SetVariable("operatorAddress", operatorAddress);
         }
 
-        public SetApprovalForAll Approved(bool approved)
+        public SetApprovalForAll Approved(bool? approved)
         {
             return SetVariable("approved", approved);
         }

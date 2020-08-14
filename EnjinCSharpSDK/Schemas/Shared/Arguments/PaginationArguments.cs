@@ -17,7 +17,7 @@ namespace Enjin.SDK.Shared
             return instance.SetVariable("pagination", pagination);
         }
 
-        public static T Paginate<T>(this T instance, int page, int limit = 10) where T : IPaginationArguments<T>
+        public static T Paginate<T>(this T instance, int? page, int? limit = 10) where T : IPaginationArguments<T>
         {
             return Paginate(instance, new PaginationOptions()
             {

@@ -12,12 +12,12 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public static class BalanceFragmentArguments
     {
-        public static T BalIdFormat<T>(this T instance, TokenIdFormat balIdFormat) where T : IBalanceFragmentArguments<T>
+        public static T BalIdFormat<T>(this T instance, TokenIdFormat? balIdFormat) where T : IBalanceFragmentArguments<T>
         {
             return instance.SetVariable("balIdFormat", balIdFormat);
         }
         
-        public static T BalIndexFormat<T>(this T instance, TokenIndexFormat balIndexFormat) where T : IBalanceFragmentArguments<T>
+        public static T BalIndexFormat<T>(this T instance, TokenIndexFormat? balIndexFormat) where T : IBalanceFragmentArguments<T>
         {
             return instance.SetVariable("balIndexFormat", balIndexFormat);
         }

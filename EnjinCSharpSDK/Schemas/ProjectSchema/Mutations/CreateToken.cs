@@ -28,7 +28,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("initialReserve", initialReserve);
         }
         
-        public CreateToken SupplyModel(TokenSupplyModel supplyModel)
+        public CreateToken SupplyModel(TokenSupplyModel? supplyModel)
         {
             return SetVariable("supplyModel", supplyModel);
         }
@@ -38,12 +38,12 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("meltValue", meltValue);
         }
         
-        public CreateToken MeltFeeRatio(int meltFeeRatio)
+        public CreateToken MeltFeeRatio(int? meltFeeRatio)
         {
             return SetVariable("meltFeeRatio", meltFeeRatio);
         }
         
-        public CreateToken Transferable(TokenTransferable transferable)
+        public CreateToken Transferable(TokenTransferable? transferable)
         {
             return SetVariable("transferable", transferable);
         }
@@ -53,7 +53,7 @@ namespace Enjin.SDK.ProjectSchema
             return SetVariable("transferFeeSettings", transferFeeSettings);
         }
         
-        public CreateToken Nonfungible(bool nonfungible)
+        public CreateToken Nonfungible(bool? nonfungible)
         {
             return SetVariable("nonfungible", nonfungible);
         }
