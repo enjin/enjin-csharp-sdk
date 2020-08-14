@@ -9,6 +9,6 @@ namespace Enjin.SDK.PlayerSchema
     [PublicAPI]
     public interface IPlayerSchema : ISharedSchema
     {
-        Task<GraphqlResponse<Player>> GetPlayer(GetPlayer query);
+        Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request);
     }
 }

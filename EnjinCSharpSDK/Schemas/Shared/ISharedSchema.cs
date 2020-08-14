@@ -8,6 +8,6 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public interface ISharedSchema
     {
-        Task<GraphqlResponse<Project>> GetProject(GetProject query);
+        Task<GraphqlResponse<Project>> GetProject(GetProject request);
     }
 }

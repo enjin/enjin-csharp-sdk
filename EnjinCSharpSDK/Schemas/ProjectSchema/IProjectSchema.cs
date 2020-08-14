@@ -10,16 +10,16 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public interface IProjectSchema : ISharedSchema
     {
-        Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject query);
+        Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject request);
 
-        Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer query);
+        Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request);
 
-        Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer query);
+        Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer request);
 
-        Task<GraphqlResponse<Player>> GetPlayer(GetPlayer query);
+        Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request);
 
-        Task<GraphqlResponse<List<Player>>> GetPlayers(GetPlayers query);
+        Task<GraphqlResponse<List<Player>>> GetPlayers(GetPlayers request);
 
-        Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer query);
+        Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer request);
     }
 }

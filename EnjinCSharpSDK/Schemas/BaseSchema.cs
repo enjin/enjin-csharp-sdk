@@ -11,10 +11,12 @@ namespace Enjin.SDK
     public class BaseSchema
     {
         protected readonly TrustedPlatformMiddleware Middleware;
+        protected readonly string Schema;
 
-        protected BaseSchema(TrustedPlatformMiddleware middleware)
+        protected BaseSchema(TrustedPlatformMiddleware middleware, string schema)
         {
             Middleware = middleware;
+            Schema = schema;
         }
 
         protected JObject CreateRequestBody(IGraphqlRequest request)
