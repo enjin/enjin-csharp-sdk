@@ -5,26 +5,20 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class GetRequests<T>: GraphqlRequest<T>, ITransactionFragmentArguments<T>, IPaginationArguments<T>
-        where T : GraphqlRequest<T>, new()
+    public class GetRequests : GraphqlRequest<GetRequests>, ITransactionFragmentArguments<GetRequests>, IPaginationArguments<GetRequests>
     {
-        protected GetRequests() : base("enjin.sdk.shared.GetRequests")
+        public GetRequests() : base("enjin.sdk.shared.GetRequests")
         {
         }
 
-        public T Filter(TransactionFilter filter)
+        public GetRequests Filter(TransactionFilter filter)
         {
             return SetVariable("filter", filter);
         }
 
-        public T Sort(TransactionSort sort)
+        public GetRequests Sort(TransactionSort sort)
         {
             return SetVariable("sort", sort);
         }
-    }
-
-    [PublicAPI]
-    public class GetRequests : GetRequests<GetRequests>
-    {
     }
 }

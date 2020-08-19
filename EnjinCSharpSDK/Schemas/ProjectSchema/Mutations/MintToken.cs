@@ -7,25 +7,20 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     [PublicAPI]
-    public class MintToken<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class MintToken : GraphqlRequest<MintToken>, ITransactionRequestArguments<MintToken>
     {
-        protected MintToken() : base("enjin.sdk.project.MintToken")
+        public MintToken() : base("enjin.sdk.project.MintToken")
         {
         }
         
-        public T TokenId(string tokenId)
+        public MintToken TokenId(string tokenId)
         {
             return SetVariable("tokenId", tokenId);
         }
         
-        public T Mints(List<MintInput> mints)
+        public MintToken Mints(List<MintInput> mints)
         {
             return SetVariable("mints", mints);
         }
-    }
-    
-    [PublicAPI]
-    public class MintToken : MintToken<MintToken>
-    {
     }
 }

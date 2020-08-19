@@ -6,21 +6,16 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     [PublicAPI]
-    public class GetPlayers<T>
-        : GraphqlRequest<T>, IPaginationArguments<T>, IPlayerFragmentArguments<T> where T : GraphqlRequest<T>, new()
+    public class GetPlayers
+        : GraphqlRequest<GetPlayers>, IPaginationArguments<GetPlayers>, IPlayerFragmentArguments<GetPlayers>
     {
-        protected GetPlayers() : base("enjin.sdk.project.GetPlayers")
+        public GetPlayers() : base("enjin.sdk.project.GetPlayers")
         {
         }
-        
-        public T Filter(PlayerFilter filter)
+
+        public GetPlayers Filter(PlayerFilter filter)
         {
             return SetVariable("filter", filter);
         }
-    }
-
-    [PublicAPI]
-    public class GetPlayers : GetPlayers<GetPlayers>
-    {
     }
 }

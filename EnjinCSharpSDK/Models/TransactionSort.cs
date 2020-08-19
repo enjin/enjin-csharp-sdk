@@ -7,17 +7,17 @@ namespace Enjin.SDK.Models
     public class TransactionSort
     {
         [JsonProperty("field")]
-        private TransactionField _field;
+        private TransactionField? _field;
         [JsonProperty("direction")]
-        private SortDirection _direction;
+        private SortDirection? _direction;
 
-        public TransactionSort Field(TransactionField field)
+        public TransactionSort Field(TransactionField? field)
         {
             _field = field;
             return this;
         }
 
-        public TransactionSort Direction(SortDirection direction)
+        public TransactionSort Direction(SortDirection? direction)
         {
             _direction = direction;
             return this;

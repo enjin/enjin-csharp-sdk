@@ -14,19 +14,19 @@ namespace Enjin.SDK.Models
         public string Name { get; private set; }
         
         [JsonProperty("blockHeight")]
-        public int BlockHeight { get; private set; }
+        public int? BlockHeight { get; private set; }
         
         [JsonProperty("creator")]
         public string Creator { get; private set; }
         
         [JsonProperty("firstBlock")]
-        public int FirstBlock { get; private set; }
+        public int? FirstBlock { get; private set; }
         
         [JsonProperty("meltFeeRatio")]
-        public int MeltFeeRatio { get; private set; }
+        public int? MeltFeeRatio { get; private set; }
         
         [JsonProperty("meltFeeMaxRatio")]
-        public int MeltFeeMaxRatio { get; private set; }
+        public int? MeltFeeMaxRatio { get; private set; }
         
         [JsonProperty("meltValue")]
         public string MeltValue { get; private set; }
@@ -41,7 +41,7 @@ namespace Enjin.SDK.Models
         public string Reserve { get; private set; }
         
         [JsonProperty("supplyModel")]
-        public TokenSupplyModel SupplyModel { get; private set; }
+        public TokenSupplyModel? SupplyModel { get; private set; }
         
         [JsonProperty("circulatingSupply")]
         public string CirculatingSupply { get; private set; }
@@ -53,13 +53,13 @@ namespace Enjin.SDK.Models
         public string TotalSupply { get; private set; }
         
         [JsonProperty("transferable")]
-        public TokenTransferable Transferable { get; private set; }
+        public TokenTransferable? Transferable { get; private set; }
         
         [JsonProperty("transferFeeSettings")]
         public TokenTransferFeeSettings TransferFeeSettings { get; private set; }
         
         [JsonProperty("variantMode")]
-        public TokenVariantMode VariantMode { get; private set; }
+        public TokenVariantMode? VariantMode { get; private set; }
         
         [JsonProperty("variants")]
         public List<TokenVariant> Variants { get; private set; }

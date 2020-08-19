@@ -5,29 +5,25 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     [PublicAPI]
-    public class CreateTrade<T> : GraphqlRequest<T>, ITransactionRequestArguments<T> where T : GraphqlRequest<T>, new()
+    public class CreateTrade : GraphqlRequest<CreateTrade>, ITransactionRequestArguments<CreateTrade>
     {
-        protected CreateTrade() : base("enjin.sdk.shared.CreateTrade")
+        public CreateTrade() : base("enjin.sdk.shared.CreateTrade")
         {
         }
 
-        public T AskingTokens(params Trade[] tokens)
+        public CreateTrade AskingTokens(params Trade[] tokens)
         {
             return SetVariable("askingTokens", tokens);
         }
 
-        public T OfferingTokens(params Trade[] tokens)
+        public CreateTrade OfferingTokens(params Trade[] tokens)
         {
             return SetVariable("offeringTokens", tokens);
         }
 
-        public T RecipientAddress(string recipientAddress)
+        public CreateTrade RecipientAddress(string recipientAddress)
         {
             return SetVariable("recipientAddress", recipientAddress);
         }
     }
-    
-    [PublicAPI]
-    public class CreateTrade : CreateTrade<CreateTrade>
-    {}
 }

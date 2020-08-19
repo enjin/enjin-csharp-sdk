@@ -17,15 +17,15 @@ namespace Enjin.SDK.Models
         [JsonProperty("wallet_in")]
         private List<string> _walletIn;
         [JsonProperty("value")]
-        private int _value;
+        private int? _value;
         [JsonProperty("value_gt")]
-        private int _valueGt;
+        private int? _valueGt;
         [JsonProperty("value_gte")]
-        private int _valueGte;
+        private int? _valueGte;
         [JsonProperty("value_lt")]
-        private int _valueLt;
+        private int? _valueLt;
         [JsonProperty("value_lte")]
-        private int _valueLte;
+        private int? _valueLte;
         
         public BalanceFilter TokenId(string tokenId)
         {

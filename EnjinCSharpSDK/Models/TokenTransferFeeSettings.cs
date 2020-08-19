@@ -7,7 +7,7 @@ namespace Enjin.SDK.Models
     public class TokenTransferFeeSettings
     {
         [JsonProperty("type")]
-        public TokenTransferFeeType Type { get; internal set; }
+        public TokenTransferFeeType? Type { get; internal set; }
         
         [JsonProperty("tokenId")]
         public string TokenId { get; internal set; }
@@ -19,7 +19,7 @@ namespace Enjin.SDK.Models
     [PublicAPI]
     public class TokenTransferFeeSettingsInput: TokenTransferFeeSettings
     {
-        public TokenTransferFeeSettingsInput Type(TokenTransferFeeType type)
+        public TokenTransferFeeSettingsInput Type(TokenTransferFeeType? type)
         {
             base.Type = type;
             return this;

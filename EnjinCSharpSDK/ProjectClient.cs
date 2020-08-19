@@ -1,18 +1,14 @@
 using System;
-using Enjin.SDK.ProjectSchema;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK
 {
     [PublicAPI]
-    public class ProjectClient : TrustedPlatformClient
+    public class ProjectClient : ProjectSchema.ProjectSchema
     {
-        private const string SCHEMA = "app";
-        
-        public ProjectClient(Uri baseUri, bool debug = false) : base(baseUri, debug, SCHEMA)
+        public ProjectClient(Uri baseUri, bool debug = false)
+            : base(new TrustedPlatformMiddleware(baseUri, debug))
         {
         }
-        
-        public IProjectSchema Schema => SchemaInstance;
     }
 }

@@ -5,20 +5,15 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     [PublicAPI]
-    public class CreatePlayer<T> : GraphqlRequest<T> where T : GraphqlRequest<T>, new()
+    public class CreatePlayer : GraphqlRequest<CreatePlayer>
     {
-        protected CreatePlayer() : base("enjin.sdk.project.CreatePlayer")
+        public CreatePlayer() : base("enjin.sdk.project.CreatePlayer")
         {
         }
         
-        public T Id(string id)
+        public CreatePlayer Id(string id)
         {
             return SetVariable("id", id);
         }
-    }
-
-    [PublicAPI]
-    public class CreatePlayer : CreatePlayer<CreatePlayer>
-    {
     }
 }

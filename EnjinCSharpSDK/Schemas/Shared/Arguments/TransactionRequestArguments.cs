@@ -11,17 +11,17 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public static class TransactionRequestArguments
     {
-        public static T EthAddress<T>(this T instance, string ethAddress) where T : IVariableHolder<T>
+        public static T EthAddress<T>(this T instance, string ethAddress) where T : ITransactionRequestArguments<T>
         {
             return instance.SetVariable("ethAddress", ethAddress);
         }
         
-        public static T Test<T>(this T instance, string test) where T : IVariableHolder<T>
+        public static T Test<T>(this T instance, string test) where T : ITransactionRequestArguments<T>
         {
             return instance.SetVariable("test", test);
         }
         
-        public static T Send<T>(this T instance, string send) where T : IVariableHolder<T>
+        public static T Send<T>(this T instance, string send) where T : ITransactionRequestArguments<T>
         {
             return instance.SetVariable("send", send);
         }
