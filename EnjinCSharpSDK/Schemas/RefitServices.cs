@@ -8,11 +8,8 @@ using Refit;
 namespace Enjin.SDK
 {
     [Headers("Content-Type: application/json")]
-    internal interface IPlayerService : IAuth, IGetOne<Player>, IGetMany<Player>
+    internal interface IPlayerService : IAuth, IGetOne<Player>, IGetMany<Player>, IDelete
     {
-        [Post("/graphql/{schema}")]
-        Task<ApiResponse<GraphqlResponse<bool>>> Delete(string schema, [Body(BodySerializationMethod.Serialized)]
-            JObject body);
     }
     
     [Headers("Content-Type: application/json")]
@@ -21,26 +18,57 @@ namespace Enjin.SDK
     }
     
     [Headers("Content-Type: application/json")]
+    internal interface IBalanceService : IGetMany<Balance>
+    {
+    }
+    
+    [Headers("Content-Type: application/json")]
+    internal interface IPlatformService : IGetOne<Platform>
+    {
+        [Post("/graphql/{schema}")]
+        Task<ApiResponse<GraphqlResponse<GasPrices>>> GetGasPrices(string schema,
+            [Body(BodySerializationMethod.Serialized)] JObject body);
+    }
+    
+    [Headers("Content-Type: application/json")]
+    internal interface IRequestService : IGetOne<Request>, IGetMany<Request>
+    {
+    }
+    
+    [Headers("Content-Type: application/json")]
+    internal interface ITokenService : IGetOne<Token>, IGetMany<Token>, IDelete
+    {
+    }
+
+    [Headers("Content-Type: application/json")]
     internal interface IAuth
     {
         [Post("/graphql/{schema}")]
-        Task<ApiResponse<GraphqlResponse<AccessToken>>> Auth(string schema, [Body(BodySerializationMethod.Serialized)]
-            JObject body);
+        Task<ApiResponse<GraphqlResponse<AccessToken>>> Auth(string schema,
+            [Body(BodySerializationMethod.Serialized)] JObject body);
     }
     
     [Headers("Content-Type: application/json")]
     internal interface IGetMany<T>
     {
         [Post("/graphql/{schema}")]
-        Task<ApiResponse<GraphqlResponse<List<T>>>> GetMany(string schema, [Body(BodySerializationMethod.Serialized)]
-            JObject body);
+        Task<ApiResponse<GraphqlResponse<List<T>>>> GetMany(string schema,
+            [Body(BodySerializationMethod.Serialized)] JObject body);
     }
     
     [Headers("Content-Type: application/json")]
     internal interface IGetOne<T>
     {
         [Post("/graphql/{schema}")]
-        Task<ApiResponse<GraphqlResponse<T>>> GetOne(string schema, [Body(BodySerializationMethod.Serialized)]
-            JObject body);
+        Task<ApiResponse<GraphqlResponse<T>>> GetOne(string schema,
+            [Body(BodySerializationMethod.Serialized)] JObject body);
+    }
+
+    [Headers("Content-Type: application/json")]
+    internal interface IDelete
+    {
+        [Post("/graphql/{schema}")]
+        Task<ApiResponse<GraphqlResponse<bool>>> Delete(string schema,
+            [Body(BodySerializationMethod.Serialized)] JObject body);
     }
 }

@@ -22,5 +22,10 @@ namespace Enjin.SDK.PlayerSchema
         {
             return SendRequest(PlayerService.GetOne(Schema, CreateRequestBody(request)));
         }
+
+        public Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request)
+        {
+            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
+        }
     }
 }

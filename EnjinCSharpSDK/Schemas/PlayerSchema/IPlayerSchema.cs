@@ -10,5 +10,7 @@ namespace Enjin.SDK.PlayerSchema
     public interface IPlayerSchema : ISharedSchema
     {
         Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request);
+
+        Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request);
     }
 }

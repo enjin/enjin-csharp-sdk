@@ -18,20 +18,15 @@ namespace Enjin.SDK.ProjectSchema
         {
             PlayerService = CreateService<IPlayerService>();
         }
+        
+        public Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer request)
+        {
+            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
+        }
 
         public Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject request)
         {
             return SendRequest(ProjectService.Auth(Schema, CreateRequestBody(request)));
-        }
-
-        public Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request)
-        {
-            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
-        }
-
-        public Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer request)
-        {
-            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
         }
 
         public Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request)
@@ -43,10 +38,80 @@ namespace Enjin.SDK.ProjectSchema
         {
             return SendRequest(PlayerService.GetMany(Schema, CreateRequestBody(request)));
         }
+        
+        public Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request)
+        {
+            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
+        }
+
+        public Task<GraphqlResponse<Request>> CreateToken(CreateToken request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<Request>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<Request>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request)
+        {
+            return TransactionRequest(request);
+        }
 
         public Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer request)
         {
             return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
+        }
+
+        public Task<GraphqlResponse<bool>> InvalidateTokenMetadata(InvalidateTokenMetadata request)
+        {
+            return SendRequest(TokenService.Delete(Schema, CreateRequestBody(request)));
+        }
+
+        public Task<GraphqlResponse<Request>> MintToken(MintToken request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<Request>> ReleaseReserve(ReleaseReserve request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<Request>> SetMeltFee(SetMeltFee request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<Request>> SetTransferable(SetTransferable request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<Request>> SetTransferFee(SetTransferFee request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<Request>> SetUri(SetUri request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<Request>> SetWhitelisted(SetWhitelisted request)
+        {
+            return TransactionRequest(request);
+        }
+
+        public Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request)
+        {
+            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
+        }
+
+        public Task<GraphqlResponse<Request>> UpdateName(UpdateName request)
+        {
+            return TransactionRequest(request);
         }
     }
 }
