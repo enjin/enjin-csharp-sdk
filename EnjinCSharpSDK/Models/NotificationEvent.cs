@@ -24,10 +24,8 @@ namespace Enjin.SDK.Models
 
         internal static NotificationEventBuilder Builder() => new NotificationEventBuilder();
 
-        private JsonToken CreateEventData()
-        {
-            return JsonConvert.DeserializeObject<JsonToken>(Data ?? throw new InvalidOperationException());
-        }
+        private JsonToken CreateEventData() =>
+            JsonConvert.DeserializeObject<JsonToken>(Data ?? throw new InvalidOperationException("Cannot deserialize null data"));
 
         internal class NotificationEventBuilder
         {
