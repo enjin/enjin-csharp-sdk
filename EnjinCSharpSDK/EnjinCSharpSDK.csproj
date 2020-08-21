@@ -168,4 +168,8 @@
       <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetTokens.gql" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Events\IEventService.cs" />
+    </ItemGroup>
+
 </Project>
