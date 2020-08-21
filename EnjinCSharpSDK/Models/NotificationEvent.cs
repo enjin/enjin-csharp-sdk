@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     [PublicAPI]
-    public class NotificationEvent
+    public sealed class NotificationEvent
     {
         public EventType? Type { get; private set; }
         
