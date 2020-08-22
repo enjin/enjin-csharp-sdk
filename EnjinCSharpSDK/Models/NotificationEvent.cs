@@ -8,30 +8,34 @@ namespace Enjin.SDK.Models
     public sealed class NotificationEvent
     {
         public EventType? Type { get; private set; }
-        
+
         public string? Channel { get; private set; }
-        
-        public string? Data { get; private set; }
 
-        public JsonToken EventData => _lazyEventData.Value;
+        public string? Message { get; private set; }
 
-        private readonly Lazy<JsonToken> _lazyEventData;
-        
+        public JsonToken Data => _data.Value;
+
+        private readonly Lazy<JsonToken> _data;
+
         private NotificationEvent()
         {
-            _lazyEventData = new Lazy<JsonToken>(CreateEventData);
+            _data = new Lazy<JsonToken>(CreateEventData);
+        }
+
+        private JsonToken CreateEventData()
+        {
+            if (Message == null)
+                throw new InvalidOperationException("Cannot deserialize null message");
+            return JsonConvert.DeserializeObject<JsonToken>(Message);
         }
 
         internal static NotificationEventBuilder Builder() => new NotificationEventBuilder();
-
-        private JsonToken CreateEventData() =>
-            JsonConvert.DeserializeObject<JsonToken>(Data ?? throw new InvalidOperationException("Cannot deserialize null data"));
-
+        
         internal class NotificationEventBuilder
         {
             private EventType? _type;
             private string? _channel;
-            private string? _data;
+            private string? _message;
 
             public NotificationEventBuilder Type(EventType type)
             {
@@ -45,19 +49,19 @@ namespace Enjin.SDK.Models
                 return this;
             }
 
-            public NotificationEventBuilder Data(string data)
+            public NotificationEventBuilder Message(string message)
             {
-                _data = data;
+                _message = message;
                 return this;
             }
-            
+
             public NotificationEvent Build()
             {
                 return new NotificationEvent
                 {
                     Type = _type,
                     Channel = _channel,
-                    Data = _data
+                    Message = _message
                 };
             }
         }

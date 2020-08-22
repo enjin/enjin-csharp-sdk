@@ -7,7 +7,7 @@ namespace Enjin.SDK.Events
         private readonly Platform _platform;
         private readonly int _appId;
         
-        internal PusherAppChannel(Platform platform, int appId)
+        public PusherAppChannel(Platform platform, int appId)
         {
             _platform = platform;
             _appId = appId;
@@ -22,7 +22,7 @@ namespace Enjin.SDK.Events
         private readonly int _appId;
         private readonly string _playerId;
         
-        internal PusherPlayerChannel(Platform platform, int appId, string playerId)
+        public PusherPlayerChannel(Platform platform, int appId, string playerId)
         {
             _platform = platform;
             _appId = appId;
@@ -37,7 +37,7 @@ namespace Enjin.SDK.Events
         private readonly Platform _platform;
         private readonly string _tokenId;
 
-        internal PusherTokenChannel(Platform platform, string tokenId)
+        public PusherTokenChannel(Platform platform, string tokenId)
         {
             _platform = platform;
             _tokenId = tokenId;
@@ -51,7 +51,7 @@ namespace Enjin.SDK.Events
         private readonly Platform _platform;
         private readonly string _ethAddress;
 
-        internal PusherWalletChannel(Platform platform, string ethAddress)
+        public PusherWalletChannel(Platform platform, string ethAddress)
         {
             _platform = platform;
             _ethAddress = ethAddress;

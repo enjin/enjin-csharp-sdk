@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Enjin.SDK.Models;
+using Enjin.SDK.Utils;
 using PusherClient;
 
 namespace Enjin.SDK.Events
@@ -8,21 +9,21 @@ namespace Enjin.SDK.Events
     {
         private readonly PusherEventService _service;
 
-        internal PusherEventListener(PusherEventService service)
+        public PusherEventListener(PusherEventService service)
         {
             _service = service;
         }
-        
-        internal void OnEvent(PusherEvent pusherEvent)
+
+        public void OnEvent(PusherEvent pusherEvent)
         {
             string eventName = pusherEvent.EventName;
             string channelName = pusherEvent.ChannelName;
             string data = pusherEvent.Data;
-            
+
             Call(eventName, channelName, data);
         }
 
-        private void Call(string eventName, string channelName, string data)
+        private void Call(string @event, string channel, string data)
         {
             if (_service.RegisteredListeners.Count == 0)
             {
@@ -30,24 +31,23 @@ namespace Enjin.SDK.Events
                 return;
             }
 
-            var eventType = EventType.Values()
-                                     .FirstOrDefault(type => type.Type.Equals(eventName));
+            var def = EventTypeDef.GetFromKey(@event);
 
-            if (eventType == null)
+            if (def.Type == EventType.UNKNOWN)
             {
                 // TODO: Log that an unknown event type was encountered.
                 return;
             }
 
             NotificationEvent notificationEvent = NotificationEvent.Builder()
-                                                                   .Type(eventType)
-                                                                   .Channel(channelName)
-                                                                   .Data(data)
+                                                                   .Type(def.Type)
+                                                                   .Channel(channel)
+                                                                   .Message(data)
                                                                    .Build();
 
-            foreach (var registration in _service.RegisteredListeners
-                                                 .Where(registration => registration.Matcher(eventType)))
-                registration.Listener.NotificationReceived(notificationEvent);
+            _service.RegisteredListeners
+                    .Where(r => r.Matcher(def.Type))
+                    .Do(r => r.Listener.NotificationReceived(notificationEvent));
         }
     }
 }

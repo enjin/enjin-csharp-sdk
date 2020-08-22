@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Enjin.SDK.Models;
+using Enjin.SDK.Utils;
 using JetBrains.Annotations;
 using PusherClient;
 using static Enjin.SDK.Events.EventListenerRegistration;
@@ -35,7 +36,7 @@ namespace Enjin.SDK.Events
             var encrypted = pusher?.Options?.Encrypted;
             if (key == null || cluster == null || encrypted == null)
                 return;
-            
+
             PusherOptions options = new PusherOptions
             {
                 Cluster = cluster,
@@ -43,8 +44,8 @@ namespace Enjin.SDK.Events
             };
             _pusher = new Pusher(key, options);
             _listener = new PusherEventListener(this);
-            
-            _pusher.Error += (sender, error) => { /* TODO: Log error. */ };
+
+            _pusher.Error += (sender, error) => { }; // TODO: Log error.
             _pusher.ConnectAsync();
         }
 
@@ -58,94 +59,130 @@ namespace Enjin.SDK.Events
 
         public bool IsConnected() => _pusher?.State == ConnectionState.Connected;
 
-        public EventListenerRegistration RegisterListener(IEventListener listener) =>
-            Register(ConfigureListener(listener));
+        public EventListenerRegistration RegisterListener(IEventListener listener)
+        {
+            return Register(ConfigureListener(listener));
+        }
 
         public EventListenerRegistration RegisterListenerWithMatcher(IEventListener listener,
-                                                                     Func<EventType, bool> matcher) =>
-            Register(ConfigureListener(listener).WithMatcher(matcher));
+            Func<EventType, bool> matcher)
+        {
+            return Register(ConfigureListener(listener).WithMatcher(matcher));
+        }
 
         public EventListenerRegistration RegisterListenerIncludingTypes(IEventListener listener,
-                                                                        params EventType[] allowed) =>
-            Register(ConfigureListener(listener).WithAllowedEvents(allowed));
+            params EventType[] events)
+        {
+            return Register(ConfigureListener(listener).WithAllowedEvents(events));
+        }
 
         public EventListenerRegistration RegisterListenerExcludingTypes(IEventListener listener,
-                                                                        params EventType[] ignored) =>
-            Register(ConfigureListener(listener).WithIgnoredEvents(ignored));
+            params EventType[] events)
+        {
+            return Register(ConfigureListener(listener).WithIgnoredEvents(events));
+        }
 
-        private RegistrationListenerConfiguration ConfigureListener(IEventListener listener) =>
-            Configure(listener);
+        private RegistrationListenerConfiguration ConfigureListener(IEventListener listener)
+        {
+            return Configure(listener);
+        }
 
-        private EventListenerRegistration Register(RegistrationListenerConfiguration configuration) =>
-            configuration.Create();
+        private EventListenerRegistration Register(RegistrationListenerConfiguration configuration)
+        {
+            return configuration.Create();
+        }
 
         public void UnregisterListener(IEventListener listener)
         {
             EventListenerRegistration reg =
-                RegisteredListeners.FirstOrDefault(registration => registration.Listener == listener);
+                RegisteredListeners.FirstOrDefault(r => r.Listener == listener);
             if (reg != null)
                 RegisteredListeners.Remove(reg);
         }
 
-        public void SubscribeToApp(int appId) =>
-            Subscribe(new PusherAppChannel(Platform, appId).Channel());
-
-        public void UnsubscribeToApp(int appId) =>
-            Unsubscribe(new PusherAppChannel(Platform, appId).Channel());
-
-        public bool IsSubscribedToApp(int appId) =>
-            _subscribed.ContainsKey(new PusherAppChannel(Platform, appId).Channel());
-
-        public void SubscribeToPlayer(int appId, string playerId) =>
-            Subscribe(new PusherPlayerChannel(Platform, appId, playerId).Channel());
-
-        public void UnsubscribeToPlayer(int appId, string playerId) =>
-            Unsubscribe(new PusherPlayerChannel(Platform, appId, playerId).Channel());
-
-        public bool IsSubscribedToPlayer(int appId, string playerId) =>
-            _subscribed.ContainsKey(new PusherPlayerChannel(Platform, appId, playerId).Channel());
-
-        public void SubscribeToToken(string tokenId) =>
-            Subscribe(new PusherTokenChannel(Platform, tokenId).Channel());
-
-        public void UnsubscribeToToken(string tokenId) =>
-            Unsubscribe(new PusherTokenChannel(Platform, tokenId).Channel());
-
-        public bool IsSubscribedToToken(string tokenId) =>
-            _subscribed.ContainsKey(new PusherTokenChannel(Platform, tokenId).Channel());
-
-        public void SubscribeToWallet(string ethAddress) =>
-            Subscribe(new PusherWalletChannel(Platform, ethAddress).Channel());
-
-        public void UnsubscribeToWallet(string ethAddress) =>
-            Unsubscribe(new PusherWalletChannel(Platform, ethAddress).Channel());
-
-        public bool IsSubscribedToWallet(string ethAddress) =>
-            _subscribed.ContainsKey(new PusherWalletChannel(Platform, ethAddress).Channel());
-
-        private void Subscribe(string channelName)
+        public void SubscribeToApp(int app)
         {
-            if (_pusher == null || _subscribed.ContainsKey(channelName))
+            Subscribe(new PusherAppChannel(Platform, app).Channel());
+        }
+
+        public void UnsubscribeToApp(int app)
+        {
+            Unsubscribe(new PusherAppChannel(Platform, app).Channel());
+        }
+
+        public bool IsSubscribedToApp(int app)
+        {
+            return _subscribed.ContainsKey(new PusherAppChannel(Platform, app).Channel());
+        }
+
+        public void SubscribeToPlayer(int app, string player)
+        {
+            Subscribe(new PusherPlayerChannel(Platform, app, player).Channel());
+        }
+
+        public void UnsubscribeToPlayer(int app, string player)
+        {
+            Unsubscribe(new PusherPlayerChannel(Platform, app, player).Channel());
+        }
+
+        public bool IsSubscribedToPlayer(int app, string player)
+        {
+            return _subscribed.ContainsKey(new PusherPlayerChannel(Platform, app, player).Channel());
+        }
+
+        public void SubscribeToToken(string token)
+        {
+            Subscribe(new PusherTokenChannel(Platform, token).Channel());
+        }
+
+        public void UnsubscribeToToken(string token)
+        {
+            Unsubscribe(new PusherTokenChannel(Platform, token).Channel());
+        }
+
+        public bool IsSubscribedToToken(string token)
+        {
+            return _subscribed.ContainsKey(new PusherTokenChannel(Platform, token).Channel());
+        }
+
+        public void SubscribeToWallet(string wallet)
+        {
+            Subscribe(new PusherWalletChannel(Platform, wallet).Channel());
+        }
+
+        public void UnsubscribeToWallet(string wallet)
+        {
+            Unsubscribe(new PusherWalletChannel(Platform, wallet).Channel());
+        }
+
+        public bool IsSubscribedToWallet(string wallet)
+        {
+            return _subscribed.ContainsKey(new PusherWalletChannel(Platform, wallet).Channel());
+        }
+
+        private void Subscribe(string channel)
+        {
+            if (_pusher == null || _subscribed.ContainsKey(channel))
                 return;
 
-            Channel pusherChannel = _pusher.SubscribeAsync(channelName).Result;
+            Channel pusherChannel = _pusher.SubscribeAsync(channel).Result;
             Bind(pusherChannel);
-            _subscribed.Add(channelName, pusherChannel);
+            _subscribed.Add(channel, pusherChannel);
         }
 
-        private void Unsubscribe(string channelName)
+        private void Unsubscribe(string channel)
         {
-            if (_pusher == null || !_subscribed.ContainsKey(channelName))
+            if (_pusher == null || !_subscribed.ContainsKey(channel))
                 return;
 
-            _subscribed[channelName].Unsubscribe();
-            _subscribed.Remove(channelName);
+            _subscribed[channel].Unsubscribe();
+            _subscribed.Remove(channel);
         }
 
-        private void Bind(Channel pusherChannel)
+        private void Bind(Channel channel)
         {
-            foreach (EventType eventType in EventType.FilterByChannelTypes(pusherChannel.Name))
-                _pusher!.Bind(eventType.Type, _listener!.OnEvent);
+            EventTypeDef.FilterByChannelTypes(channel.Name)
+                        .Do(d => _pusher!.Bind(d.Key, _listener!.OnEvent));
         }
     }
 }

@@ -19,34 +19,34 @@ namespace Enjin.SDK.Events
         
         EventListenerRegistration RegisterListenerWithMatcher(IEventListener listener, Func<EventType, bool> matcher);
         
-        EventListenerRegistration RegisterListenerIncludingTypes(IEventListener listener, params EventType[] allowed);
+        EventListenerRegistration RegisterListenerIncludingTypes(IEventListener listener, params EventType[] events);
         
-        EventListenerRegistration RegisterListenerExcludingTypes(IEventListener listener, params EventType[] ignored);
+        EventListenerRegistration RegisterListenerExcludingTypes(IEventListener listener, params EventType[] events);
 
         void UnregisterListener(IEventListener listener);
 
-        void SubscribeToApp(int appId);
+        void SubscribeToApp(int app);
         
-        void UnsubscribeToApp(int appId);
+        void UnsubscribeToApp(int app);
 
-        bool IsSubscribedToApp(int appId);
+        bool IsSubscribedToApp(int app);
         
-        void SubscribeToPlayer(int appId, string playerId);
+        void SubscribeToPlayer(int app, string player);
         
-        void UnsubscribeToPlayer(int appId, string playerId);
+        void UnsubscribeToPlayer(int app, string player);
         
-        bool IsSubscribedToPlayer(int appId, string playerId);
+        bool IsSubscribedToPlayer(int app, string player);
         
-        void SubscribeToToken(string tokenId);
+        void SubscribeToToken(string token);
         
-        void UnsubscribeToToken(string tokenId);
+        void UnsubscribeToToken(string token);
         
-        bool IsSubscribedToToken(string tokenId);
+        bool IsSubscribedToToken(string token);
         
-        void SubscribeToWallet(string ethAddress);
+        void SubscribeToWallet(string wallet);
         
-        void UnsubscribeToWallet(string ethAddress);
+        void UnsubscribeToWallet(string wallet);
         
-        bool IsSubscribedToWallet(string ethAddress);
+        bool IsSubscribedToWallet(string wallet);
     }
 }
