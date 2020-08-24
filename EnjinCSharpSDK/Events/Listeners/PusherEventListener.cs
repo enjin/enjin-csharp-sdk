@@ -39,11 +39,7 @@ namespace Enjin.SDK.Events
                 return;
             }
 
-            NotificationEvent notificationEvent = NotificationEvent.Builder()
-                                                                   .Type(def.Type)
-                                                                   .Channel(channel)
-                                                                   .Message(data)
-                                                                   .Build();
+            NotificationEvent notificationEvent = new NotificationEvent(def.Type, channel, data);
 
             _service.RegisteredListeners
                     .Where(r => r.Matcher(def.Type))
