@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Enjin.SDK.Models;
+using Enjin.SDK.Utils;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.Events
@@ -156,12 +157,12 @@ namespace Enjin.SDK.Events
 
         public static EventTypeDef GetFromName(string name)
         {
-            return Values().FirstOrDefault(def => def.Name.Equals(name)) ?? UNKNOWN;
+            return Values().FirstOrDefault(def => def.Name.EqualsIgnoreCase(name)) ?? UNKNOWN;
         }
 
         public static EventTypeDef GetFromKey(string key)
         {
-            return Values().FirstOrDefault(def => def.Key.Equals(key)) ?? UNKNOWN;
+            return Values().FirstOrDefault(def => def.Key.EqualsIgnoreCase(key)) ?? UNKNOWN;
         }
     }
 }
