@@ -20,8 +20,8 @@ namespace Enjin.SDK.Models
         internal NotificationEvent(EventType type, string channel, string message)
         {
             Type = type;
-            Channel = channel;
-            Message = message;
+            Channel = channel ?? throw new ArgumentNullException(nameof(channel));
+            Message = message ?? throw new ArgumentNullException(nameof(message));
             _data = new Lazy<JsonToken>(CreateEventData);
         }
 
