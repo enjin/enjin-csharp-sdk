@@ -7,11 +7,11 @@ namespace Enjin.SDK.Models
     [PublicAPI]
     public sealed class NotificationEvent
     {
-        public EventType? Type { get; private set; }
+        public EventType Type { get; private set; }
 
-        public string? Channel { get; private set; }
+        public string Channel { get; private set; } = null!;
 
-        public string? Message { get; private set; }
+        public string Message { get; private set; } = null!;
 
         public JsonToken Data => _data.Value;
 
@@ -59,9 +59,9 @@ namespace Enjin.SDK.Models
             {
                 return new NotificationEvent
                 {
-                    Type = _type,
-                    Channel = _channel,
-                    Message = _message
+                    Type = _type ?? throw new InvalidOperationException("Type must be set"),
+                    Channel = _channel ?? throw new InvalidOperationException("Channel must be set"),
+                    Message = _message ?? throw new InvalidOperationException("Message must be set")
                 };
             }
         }
