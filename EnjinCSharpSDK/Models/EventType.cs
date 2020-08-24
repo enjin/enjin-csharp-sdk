@@ -1,5 +1,8 @@
-﻿namespace Enjin.SDK.Models
+﻿using JetBrains.Annotations;
+
+namespace Enjin.SDK.Models
 {
+    [PublicAPI]
     public enum EventType
     {
         UNKNOWN,
