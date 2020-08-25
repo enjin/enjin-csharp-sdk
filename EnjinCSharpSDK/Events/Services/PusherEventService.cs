@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Enjin.SDK.Models;
 using Enjin.SDK.Utils;
 using JetBrains.Annotations;
@@ -9,6 +10,7 @@ using static Enjin.SDK.Events.EventListenerRegistration;
 using Pusher = PusherClient.Pusher;
 using PusherOptions = PusherClient.PusherOptions;
 
+[assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Events
 {
     /// <summary>

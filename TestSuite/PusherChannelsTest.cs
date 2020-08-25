@@ -7,9 +7,6 @@ namespace TestSuite
     [TestFixture]
     public class PusherChannelsTest
     {
-        private const string Kovan = "kovan";
-        private const string Mainnet = "mainnet";
-        
         [Test]
         [TestCase(Kovan, 1234, ExpectedResult = "enjincloud.kovan.app.1234")]
         [TestCase(Mainnet, 1234, ExpectedResult = "enjincloud.mainnet.app.1234")]

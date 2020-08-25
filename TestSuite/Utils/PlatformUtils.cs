@@ -4,23 +4,55 @@ namespace TestSuite.Utils
 {
     public static class PlatformUtils
     {
-        public static readonly Platform KOVAN_PLATFORM;
-        public static readonly Platform MAINNET_PLATFORM;
+        public const string Kovan = "kovan";
+        public const string Mainnet = "mainnet";
 
-        static PlatformUtils()
-        {
-            KOVAN_PLATFORM = CreatePlatform("kovan");
-            MAINNET_PLATFORM = CreatePlatform("mainnet");
-        }
-        
         public static Platform CreatePlatform(string network)
         {
             var platform = new Platform();
 
             var networkProperty = platform.GetType().GetProperty("Network");
             networkProperty?.SetValue(platform, network);
+            var notificationsProperty = platform.GetType().GetProperty("Notifications");
+            notificationsProperty?.SetValue(platform, CreateNotifications());
             
             return platform;
+        }
+
+        private static Notifications CreateNotifications()
+        {
+            var notifications = new Notifications();
+            
+            var pusherProperty = notifications.GetType().GetProperty("Pusher");
+            pusherProperty?.SetValue(notifications, CreatePusher());
+            
+            return notifications;
+        }
+
+        private static Pusher CreatePusher()
+        {
+            var pusher = new Pusher();
+
+            var keyProperty = pusher.GetType().GetProperty("Key");
+            keyProperty?.SetValue(pusher, "xyz");
+            var namespaceProperty = pusher.GetType().GetProperty("Namespace");
+            namespaceProperty?.SetValue(pusher, "xyz");
+            var optionsProperty = pusher.GetType().GetProperty("Options");
+            optionsProperty?.SetValue(pusher, CreatePusherOptions());
+            
+            return pusher;
+        }
+
+        private static PusherOptions CreatePusherOptions()
+        {
+            var options = new PusherOptions();
+
+            var clusterProperty = options.GetType().GetProperty("Cluster");
+            clusterProperty?.SetValue(options, "xyz");
+            var encryptedProperty = options.GetType().GetProperty("Encrypted");
+            encryptedProperty?.SetValue(options, true);
+            
+            return options;
         }
     }
 }
