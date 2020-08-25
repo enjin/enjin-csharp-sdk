@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Enjin.SDK.Models;
 using JetBrains.Annotations;
 
+[assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Events
 {
     /// <summary>
