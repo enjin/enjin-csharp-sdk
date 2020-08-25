@@ -7,9 +7,13 @@ namespace TestSuite
     [TestFixture]
     public class PusherChannelsTest
     {
+        private const string Kovan = "kovan";
+        private const string Mainnet = "mainnet";
+        
         [Test]
-        public void Channel_MultipleAppChannels_ReturnsCorrectString([Values("kovan", "mainnet")] string network,
-                                                                     [Values(0, 1111)] int app)
+        [TestCase(Kovan, 1234, ExpectedResult = "enjincloud.kovan.app.1234")]
+        [TestCase(Mainnet, 1234, ExpectedResult = "enjincloud.mainnet.app.1234")]
+        public string Channel_MultipleAppChannels_ReturnsCorrectString(string network, int app)
         {
             // Arrange
             var platform = CreatePlatform(network);
@@ -19,14 +23,15 @@ namespace TestSuite
             var channel = appChannel.Channel();
 
             // Assert
-            Assert.AreEqual($"enjincloud.{network}.app.{app}", channel);
+            return channel;
         }
 
         [Test]
-        public void Channel_MultiplePlayerChannels_ReturnsCorrectString([Values("kovan", "mainnet")] string network,
-                                                                        [Values(0, 1111)] int app,
-                                                                        [Values("player1", "player@email.com")]
-                                                                        string player)
+        [TestCase(Kovan, 1234, "player1", ExpectedResult = "enjincloud.kovan.app.1234.player.player1")]
+        [TestCase(Mainnet, 1234, "player1", ExpectedResult = "enjincloud.mainnet.app.1234.player.player1")]
+        [TestCase(Kovan, 1234, "player@email.com", ExpectedResult = "enjincloud.kovan.app.1234.player.player@email.com")]
+        [TestCase(Mainnet, 1234, "player@email.com", ExpectedResult = "enjincloud.mainnet.app.1234.player.player@email.com")]
+        public string Channel_MultiplePlayerChannels_ReturnsCorrectString(string network, int app, string player)
         {
             // Arrange
             var platform = CreatePlatform(network);
@@ -36,12 +41,13 @@ namespace TestSuite
             var channel = playerChannel.Channel();
 
             // Assert
-            Assert.AreEqual($"enjincloud.{network}.app.{app}.player.{player}", channel);
+            return channel;
         }
 
         [Test]
-        public void Channel_MultipleTokenChannels_ReturnsCorrectString([Values("kovan", "mainnet")] string network,
-                                                                       [Values("0000000000000000")] string token)
+        [TestCase(Kovan, "0000000000000000", ExpectedResult = "enjincloud.kovan.token.0000000000000000")]
+        [TestCase(Mainnet, "0000000000000000", ExpectedResult = "enjincloud.mainnet.token.0000000000000000")]
+        public string Channel_MultipleTokenChannels_ReturnsCorrectString(string network, string token)
         {
             // Arrange
             var platform = CreatePlatform(network);
@@ -51,12 +57,13 @@ namespace TestSuite
             var channel = tokenChannel.Channel();
 
             // Assert
-            Assert.AreEqual($"enjincloud.{network}.token.{token}", channel);
+            return channel;
         }
 
         [Test]
-        public void Channel_MultipleWalletChannels_ReturnsCorrectString([Values("kovan", "mainnet")] string network,
-                                                                        [Values("0x0")] string wallet)
+        [TestCase(Kovan, "0x0", ExpectedResult = "enjincloud.kovan.wallet.0x0")]
+        [TestCase(Mainnet, "0x0", ExpectedResult = "enjincloud.mainnet.wallet.0x0")]
+        public string Channel_MultipleWalletChannels_ReturnsCorrectString(string network, string wallet)
         {
             // Arrange
             var platform = CreatePlatform(network);
@@ -66,7 +73,7 @@ namespace TestSuite
             var channel = walletChannel.Channel();
 
             // Assert
-            Assert.AreEqual($"enjincloud.{network}.wallet.{wallet}", channel);
+            return channel;
         }
     }
 }
