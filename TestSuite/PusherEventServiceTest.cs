@@ -43,44 +43,47 @@ namespace TestSuite
         public void RegisterListener_RegistrationHasListener()
         {
             // Arrange
-            var expectedListener = new EventListener();
+            var expected = new EventListener();
             var eventService = CreateEventService();
 
             // Act
-            var registration = eventService.RegisterListener(expectedListener);
+            var registration = eventService.RegisterListener(expected);
+            var actual = registration.Listener;
 
             // Assert
-            Assert.AreSame(expectedListener, registration.Listener);
+            Assert.AreSame(expected, actual);
         }
 
         [Test]
         public void RegisterListener_RegistrationUsesAllowAllMatcher()
         {
             // Arrange
-            var expectedMatcher = EventListenerRegistration.ALLOW_ALL_MATCHER;
+            var expected = EventListenerRegistration.ALLOW_ALL_MATCHER;
             var listener = new EventListener();
             var eventService = CreateEventService();
 
             // Act
             var registration = eventService.RegisterListener(listener);
+            var actual = registration.Matcher;
 
             // Assert
-            Assert.AreEqual(expectedMatcher, registration.Matcher);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
         public void RegisterListenerWithMatcher_RegistrationHasMatcher()
         {
             // Arrange
-            var expectedMatcher = new Func<EventType, bool>(type => true);
+            var expected = new Func<EventType, bool>(type => true);
             var listener = new EventListener();
             var eventService = CreateEventService();
 
             // Act
-            var registration = eventService.RegisterListenerWithMatcher(listener, expectedMatcher);
+            var registration = eventService.RegisterListenerWithMatcher(listener, expected);
+            var actual = registration.Matcher;
 
             // Assert
-            Assert.AreSame(expectedMatcher, registration.Matcher);
+            Assert.AreSame(expected, actual);
         }
 
         [Test]
@@ -96,14 +99,14 @@ namespace TestSuite
 
             // Act
             var registration = eventService.RegisterListenerIncludingTypes(listener, includedTypes);
+            var matcher = registration.Matcher;
 
             // Assert
             foreach (EventType type in types)
             {
-                if (includedTypes.Contains(type))
-                    Assert.IsTrue(registration.Matcher(type));
-                else
-                    Assert.IsFalse(registration.Matcher(type));
+                var expected = includedTypes.Contains(type);
+                var actual = matcher(type);
+                Assert.AreEqual(expected, actual);
             }
         }
 
@@ -120,14 +123,14 @@ namespace TestSuite
 
             // Act
             var registration = eventService.RegisterListenerExcludingTypes(listener, excludedTypes);
+            var matcher = registration.Matcher;
 
             // Assert
             foreach (EventType type in types)
             {
-                if (excludedTypes.Contains(type))
-                    Assert.IsFalse(registration.Matcher(type));
-                else
-                    Assert.IsTrue(registration.Matcher(type));
+                var expected = excludedTypes.Contains(type);
+                var actual = matcher(type);
+                Assert.AreNotEqual(expected, actual);
             }
         }
 

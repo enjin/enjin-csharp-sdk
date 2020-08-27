@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using Enjin.SDK.Events;
 using Enjin.SDK.Models;
@@ -68,29 +68,31 @@ namespace TestSuite
         public void Create_RegistrationHasListener()
         {
             // Arrange
-            var listener = new EventListener();
-            var configuration = Configure(listener);
+            var expected = new EventListener();
+            var configuration = Configure(expected);
             
             // Act
             var registration = configuration.Create();
+            var actual = registration.Listener;
 
             // Assert
-            Assert.AreSame(listener, registration.Listener);
+            Assert.AreSame(expected, actual);
         }
         
         [Test]
         public void WithMatcher_RegistrationHasMatcher()
         {
             // Arrange
-            var matcher = new Func<EventType, bool>(type => true);
+            var expected = new Func<EventType, bool>(type => true);
             var configuration = CreateConfiguration();
             
             // Act
-            var registration = configuration.WithMatcher(matcher)
+            var registration = configuration.WithMatcher(expected)
                                             .Create();
+            var actual = registration.Matcher;
 
             // Assert
-            Assert.AreSame(matcher, registration.Matcher);
+            Assert.AreSame(expected, actual);
         }
 
         [Test]
@@ -106,14 +108,14 @@ namespace TestSuite
             // Act
             var registration = configuration.WithAllowedEvents(includedTypes)
                                             .Create();
+            var matcher = registration.Matcher;
 
             // Assert
             foreach (EventType type in types)
             {
-                if (includedTypes.Contains(type))
-                    Assert.IsTrue(registration.Matcher(type));
-                else
-                    Assert.IsFalse(registration.Matcher(type));
+                var expected = includedTypes.Contains(type);
+                var actual = matcher(type);
+                Assert.AreEqual(expected, actual);
             }
         }
         
@@ -130,14 +132,14 @@ namespace TestSuite
             // Act
             var registration = configuration.WithIgnoredEvents(ignoredTypes)
                                             .Create();
+            var matcher = registration.Matcher;
 
             // Assert
             foreach (EventType type in types)
             {
-                if (ignoredTypes.Contains(type))
-                    Assert.IsFalse(registration.Matcher(type));
-                else
-                    Assert.IsTrue(registration.Matcher(type));
+                var expected = ignoredTypes.Contains(type);
+                var actual = matcher(type);
+                Assert.AreNotEqual(expected, actual);
             }
         }
 

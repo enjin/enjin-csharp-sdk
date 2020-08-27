@@ -24,10 +24,9 @@ namespace TestSuite
             // Assert
             foreach (var def in defs)
             {
-                if (def.Channels.Any(channels.Contains))
-                    Assert.IsTrue(filteredDefs.Contains(def));
-                else
-                    Assert.IsFalse(filteredDefs.Contains(def));
+                var expected = def.Channels.Any(channels.Contains);
+                var actual = filteredDefs.Contains(def);
+                Assert.AreEqual(expected, actual);
             }
         }
 

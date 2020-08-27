@@ -14,21 +14,22 @@ namespace TestSuite
         [TestCase('1')]
         [TestCase("1")]
         [TestCase(true)]
-        public void SetVariable_MultipleTypes_RequestContainsVariable(object v)
+        public void SetVariable_MultipleTypes_RequestContainsVariable(object expected)
         {
             // Arrange
             const string k = "variable";
             var request = new TestableGraphqlRequest();
 
             // Act
-            request.SetVariable(k, v);
+            request.SetVariable(k, expected);
+            var actual = request.Variables[k];
 
             // Assert
-            Assert.AreSame(v, request.Variables[k]);
+            Assert.AreSame(expected, actual);
         }
 
         [Test]
-        public void IsSet_ReturnTrue()
+        public void IsSet_VariableIsSet_ReturnTrue()
         {
             // Arrange
             const string k = "variable";
@@ -43,7 +44,7 @@ namespace TestSuite
         }
 
         [Test]
-        public void IsSet_ReturnFalse()
+        public void IsSet_VariableIsNotSet_ReturnFalse()
         {
             // Arrange
             const string k = "variable";
