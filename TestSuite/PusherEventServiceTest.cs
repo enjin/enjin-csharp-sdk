@@ -16,14 +16,14 @@ namespace TestSuite
             // Arrange
             var listener = new EventListener();
             var eventService = CreateEventService();
-            
+
             // Act
             var registration = eventService.RegisterListener(listener);
 
             // Assert
             Assert.IsTrue(eventService.RegisteredListeners.Contains(registration));
         }
-        
+
         [Test]
         public void UnregisterListener_DoesNotContainListenerRegistration()
         {
@@ -38,14 +38,14 @@ namespace TestSuite
             // Assert
             Assert.IsFalse(eventService.RegisteredListeners.Contains(registration));
         }
-        
+
         [Test]
         public void RegisterListener_RegistrationHasListener()
         {
             // Arrange
             var expectedListener = new EventListener();
             var eventService = CreateEventService();
-            
+
             // Act
             var registration = eventService.RegisterListener(expectedListener);
 
@@ -60,14 +60,14 @@ namespace TestSuite
             var expectedMatcher = EventListenerRegistration.ALLOW_ALL_MATCHER;
             var listener = new EventListener();
             var eventService = CreateEventService();
-            
+
             // Act
             var registration = eventService.RegisterListener(listener);
 
             // Assert
             Assert.AreEqual(expectedMatcher, registration.Matcher);
         }
-        
+
         [Test]
         public void RegisterListenerWithMatcher_RegistrationHasMatcher()
         {
@@ -87,42 +87,44 @@ namespace TestSuite
         [TestCase(EventType.PLAYER_LINKED)]
         [TestCase(EventType.TOKEN_MINTED, EventType.TOKEN_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
         [TestCase(EventType.APP_CREATED, EventType.APP_DELETED, EventType.APP_UPDATED)]
-        public void RegisterListenerIncludingTypes_MatcherIncludesEventTypes(params EventType[] types)
+        public void RegisterListenerIncludingTypes_MatcherIncludesEventTypes(params EventType[] includedTypes)
         {
             // Arrange
+            var types = Enum.GetValues(typeof(EventType));
             var listener = new EventListener();
             var eventService = CreateEventService();
 
             // Act
-            var registration = eventService.RegisterListenerIncludingTypes(listener, types);
+            var registration = eventService.RegisterListenerIncludingTypes(listener, includedTypes);
 
             // Assert
-            foreach (EventType type in Enum.GetValues(typeof(EventType)))
+            foreach (EventType type in types)
             {
-                if (types.Contains(type))
+                if (includedTypes.Contains(type))
                     Assert.IsTrue(registration.Matcher(type));
                 else
                     Assert.IsFalse(registration.Matcher(type));
             }
         }
-        
+
         [Test]
         [TestCase(EventType.PLAYER_LINKED)]
         [TestCase(EventType.TOKEN_MINTED, EventType.TOKEN_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
         [TestCase(EventType.APP_CREATED, EventType.APP_DELETED, EventType.APP_UPDATED)]
-        public void RegisterListenerExcludingTypes_MatcherExcludesEventTypes(params EventType[] types)
+        public void RegisterListenerExcludingTypes_MatcherExcludesEventTypes(params EventType[] excludedTypes)
         {
             // Arrange
+            var types = Enum.GetValues(typeof(EventType));
             var listener = new EventListener();
             var eventService = CreateEventService();
 
             // Act
-            var registration = eventService.RegisterListenerExcludingTypes(listener, types);
+            var registration = eventService.RegisterListenerExcludingTypes(listener, excludedTypes);
 
             // Assert
-            foreach (EventType type in Enum.GetValues(typeof(EventType)))
+            foreach (EventType type in types)
             {
-                if (types.Contains(type))
+                if (excludedTypes.Contains(type))
                     Assert.IsFalse(registration.Matcher(type));
                 else
                     Assert.IsTrue(registration.Matcher(type));
@@ -136,14 +138,14 @@ namespace TestSuite
             const int app = 1234;
             var eventService = CreateEventService();
             eventService.Start();
-            
+
             // Act
             eventService.SubscribeToApp(app);
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToApp(app));
         }
-        
+
         [Test]
         public void SubscribeToPlayer_SubscribedToChannel()
         {
@@ -159,7 +161,7 @@ namespace TestSuite
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToPlayer(app, player));
         }
-        
+
         [Test]
         public void SubscribeToToken_SubscribedToChannel()
         {
@@ -189,7 +191,7 @@ namespace TestSuite
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToWallet(wallet));
         }
-        
+
         [Test]
         public void UnsubscribeToApp_UnsubscribedToChannel()
         {
@@ -205,7 +207,7 @@ namespace TestSuite
             // Assert
             Assert.IsFalse(eventService.IsSubscribedToApp(app));
         }
-        
+
         [Test]
         public void UnsubscribeToPlayer_UnsubscribedToChannel()
         {
@@ -222,7 +224,7 @@ namespace TestSuite
             // Assert
             Assert.IsFalse(eventService.IsSubscribedToPlayer(app, player));
         }
-        
+
         [Test]
         public void UnsubscribeToToken_UnsubscribedToChannel()
         {
@@ -254,12 +256,14 @@ namespace TestSuite
             // Assert
             Assert.IsFalse(eventService.IsSubscribedToWallet(wallet));
         }
-        
+
         private static PusherEventService CreateEventService() => new PusherEventService(CreatePlatform(Kovan));
 
         private class EventListener : IEventListener
         {
-            public void NotificationReceived(NotificationEvent notificationEvent) {}
+            public void NotificationReceived(NotificationEvent notificationEvent)
+            {
+            }
         }
     }
 }
