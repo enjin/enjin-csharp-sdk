@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Enjin.SDK.Events;
 using Enjin.SDK.Models;
@@ -23,23 +23,44 @@ namespace TestSuite
         }
         
         [Test]
-        public void Configure_RegistrationMatcherUsesFilterAttribute()
+        public void Configure_AllowFilter_RegistrationMatcherUsesFilter()
         {
             // Arrange
             var types = Enum.GetValues(typeof(EventType));
-            var listener = new FilteredEventListener();
-            var allowedEvents = FilteredEventListener.AllowedEvents;
+            var listener = new AllowedFilteredEventListener();
+            var allowedEvents = AllowedFilteredEventListener.AllowedEvents;
 
             // Act
             var registration = Configure(listener).Create();
+            var matcher = registration.Matcher;
 
             // Assert
             foreach (EventType type in types)
             {
-                if (allowedEvents.Contains(type))
-                    Assert.IsTrue(registration.Matcher(type));
-                else
-                    Assert.IsFalse(registration.Matcher(type));
+                var expected = allowedEvents.Contains(type);
+                var actual = matcher(type);
+                Assert.AreEqual(expected, actual);
+            }
+        }
+        
+        [Test]
+        public void Configure_IgnoreFilter_RegistrationMatcherUsesFilter()
+        {
+            // Arrange
+            var types = Enum.GetValues(typeof(EventType));
+            var listener = new IgnoredFilteredEventListener();
+            var allowedEvents = IgnoredFilteredEventListener.IgnoredEvents;
+
+            // Act
+            var registration = Configure(listener).Create();
+            var matcher = registration.Matcher;
+
+            // Assert
+            foreach (EventType type in types)
+            {
+                var expected = allowedEvents.Contains(type);
+                var actual = matcher(type);
+                Assert.AreNotEqual(expected, actual);
             }
         }
 
@@ -133,9 +154,19 @@ namespace TestSuite
         }
 
         [EventFilter(true, EventType.PLAYER_LINKED, EventType.PLAYER_UNLINKED)]
-        private class FilteredEventListener : IEventListener
+        private class AllowedFilteredEventListener : IEventListener
         {
             public static EventType[] AllowedEvents { get; } = {EventType.PLAYER_LINKED, EventType.PLAYER_UNLINKED};
+
+            public void NotificationReceived(NotificationEvent notificationEvent)
+            {
+            }
+        }
+        
+        [EventFilter(false, EventType.PLAYER_LINKED, EventType.PLAYER_UNLINKED)]
+        private class IgnoredFilteredEventListener : IEventListener
+        {
+            public static EventType[] IgnoredEvents { get; } = {EventType.PLAYER_LINKED, EventType.PLAYER_UNLINKED};
 
             public void NotificationReceived(NotificationEvent notificationEvent)
             {
