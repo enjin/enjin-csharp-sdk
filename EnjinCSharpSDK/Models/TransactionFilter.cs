@@ -5,6 +5,10 @@ using Newtonsoft.Json;
 
 namespace Enjin.SDK.Models
 {
+    /// <summary>
+    /// Models a filter input for transaction queries.
+    /// </summary>
+    /// <seealso cref="Enjin.SDK.Shared.GetRequests"/>
     [PublicAPI]
     public class TransactionFilter: Filter<TransactionFilter>
     {
@@ -59,102 +63,187 @@ namespace Enjin.SDK.Models
         [JsonProperty("wallet_in")]
         private List<string> _walletIn;
         
+        /// <summary>
+        /// Sets the ID to filter for.
+        /// </summary>
+        /// <param name="id">The ID.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter Id(string id)
         {
             _id = id;
             return this;
         }
 
+        /// <summary>
+        /// Sets the IDs to filter for.
+        /// </summary>
+        /// <param name="ids">The IDs.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter IdIn(params string[] ids)
         {
             _idIn = ids.ToList();
             return this;
         }
         
+        /// <summary>
+        /// Sets the hash ID to filter for.
+        /// </summary>
+        /// <param name="transactionId">The hash ID.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter TransactionId(string transactionId)
         {
             _transactionId = transactionId;
             return this;
         }
 
+        /// <summary>
+        /// Sets the hash IDs to filter for.
+        /// </summary>
+        /// <param name="transactionIds">The hash IDs.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter TransactionIdIn(params string[] transactionIds)
         {
             _transactionIdIn = transactionIds.ToList();
             return this;
         }
         
+        /// <summary>
+        /// Sets the token (item) ID to filter for.
+        /// </summary>
+        /// <param name="tokenId">The ID.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter TokenId(string tokenId)
         {
             _tokenId = tokenId;
             return this;
         }
 
+        /// <summary>
+        /// Sets the token (item) IDs to filter for.
+        /// </summary>
+        /// <param name="tokenIds">The IDs.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter TokenIdIn(params string[] tokenIds)
         {
             _tokenIdIn = tokenIds.ToList();
             return this;
         }
         
+        /// <summary>
+        /// Sets the transaction type to filter for.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter Type(RequestType type)
         {
             _type = type;
             return this;
         }
 
+        /// <summary>
+        /// Sets the transaction types to filter for.
+        /// </summary>
+        /// <param name="types">The types.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter Types(params RequestType[] types)
         {
             _typeIn = types.ToList();
             return this;
         }
         
+        /// <summary>
+        /// Sets the filter to include transactions equal to the passed value.
+        /// </summary>
+        /// <param name="value">The value to compare by.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter Value(int value)
         {
             _value = value;
             return this;
         }
 
+        /// <summary>
+        /// Sets the filter to include transactions greater than the passed value.
+        /// </summary>
+        /// <param name="value">The value to compare by.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter ValueGreaterThan(int value)
         {
             _valueGt = value;
             return this;
         }
 
+        /// <summary>
+        /// Sets the filter to include transactions greater than or equal the passed value.
+        /// </summary>
+        /// <param name="value">The value to compare by.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter ValueGreaterThanOrEqual(int value)
         {
             _valueGte = value;
             return this;
         }
 
+        /// <summary>
+        /// Sets the filter to include transactions less than the passed value.
+        /// </summary>
+        /// <param name="value">The value to compare by.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter ValueLessThan(int value)
         {
             _valueLt = value;
             return this;
         }
 
+        /// <summary>
+        /// Sets the filter to include transactions less than or equal the passed value.
+        /// </summary>
+        /// <param name="value">The value to compare by.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter ValueLessThanOrEqual(int value)
         {
             _valueLte = value;
             return this;
         }
         
+        /// <summary>
+        /// Sets the transaction state to filter for.
+        /// </summary>
+        /// <param name="state">The state.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter State(RequestState state)
         {
             _state = state;
             return this;
         }
 
+        /// <summary>
+        /// Sets the transaction states to filter for.
+        /// </summary>
+        /// <param name="states">The states.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter StateIn(params RequestState[] states)
         {
             _stateIn = states.ToList();
             return this;
         }
         
+        /// <summary>
+        /// Sets the wallet to filter for.
+        /// </summary>
+        /// <param name="wallet">The wallet address.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter Wallet(string wallet)
         {
             _wallet = wallet;
             return this;
         }
 
+        /// <summary>
+        /// Sets the wallets to filter for.
+        /// </summary>
+        /// <param name="wallets">The wallet addresses.</param>
+        /// <returns>This filter for chaining.</returns>
         public TransactionFilter WalletIn(params string[] wallets)
         {
             _walletIn = wallets.ToList();

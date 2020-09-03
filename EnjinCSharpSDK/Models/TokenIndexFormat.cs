@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace Enjin.SDK.Models
 {
+    /// <summary>
+    /// Values used to specify the format to render an item's index.
+    /// </summary>
     [PublicAPI]
     public enum TokenIndexFormat
     {

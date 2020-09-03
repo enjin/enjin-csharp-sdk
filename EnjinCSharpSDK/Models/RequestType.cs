@@ -2,6 +2,10 @@ using JetBrains.Annotations;
 
 namespace Enjin.SDK.Models
 {
+    /// <summary>
+    /// Represents the transaction type when creating or updating a transaction.
+    /// </summary>
+    /// <seealso cref="Request"/>
     [PublicAPI]
     public enum RequestType
     {

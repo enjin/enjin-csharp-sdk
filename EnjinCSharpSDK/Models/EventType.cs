@@ -2,6 +2,10 @@
 
 namespace Enjin.SDK.Models
 {
+    /// <summary>
+    /// Enums defining the different types of notifications that may be received from the platform.
+    /// </summary>
+    /// <seealso cref="Enjin.SDK.Events.EventTypeDef"/>
     [PublicAPI]
     public enum EventType
     {
