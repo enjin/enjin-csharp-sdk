@@ -22,7 +22,7 @@ namespace Enjin.SDK.Events
         /// <summary>
         /// Represents the events to be filtered and allowed or ignored based on <see cref="Allowed"/>.
         /// </summary>
-        /// <value></value>
+        /// <value>The event types.</value>
         public EventType[] Types { get; }
 
         /// <summary>
