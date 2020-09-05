@@ -5,6 +5,9 @@ using static Enjin.SDK.Utils.TextFormatting;
 
 namespace Enjin.SDK.Graphql
 {
+    /// <summary>
+    /// Represents the types of templates.
+    /// </summary>
     public enum TemplateType
     {
         FRAGMENT,
@@ -12,22 +15,68 @@ namespace Enjin.SDK.Graphql
         QUERY
     }
 
+    /// <summary>
+    /// Class for compiling and caching a GraphQL template.
+    /// </summary>
+    /// <seealso cref="GraphqlQueryRegistry"/>
     public class GraphqlTemplate
     {
         internal const string NAMESPACE_KEY = "#namespace";
         internal const string IMPORT_KEY = "#import";
         internal const string ARG_KEY = "#arg";
 
+        /// <summary>
+        /// Represents the namespace of the template.
+        /// </summary>
+        /// <value>The namespace.</value>
         public string NameSpace { get; }
+        
+        /// <summary>
+        /// Represents the name of the template.
+        /// </summary>
+        /// <value>The name.</value>
         public string Name { get; }
+        
+        /// <summary>
+        /// Represents the type of the template.
+        /// </summary>
+        /// <value>The template type.</value>
         public TemplateType TemplateType { get; }
+        
+        /// <summary>
+        /// Represents the body of the raw template. Lacks the namespace, imports, and parameters.
+        /// </summary>
+        /// <value>The body contents.</value>
         public string Contents { get; }
+        
+        /// <summary>
+        /// Represents the compiled contents of the template. Replaces fragment references in contents with the fragment
+        /// bodies.
+        /// </summary>
+        /// <value>The compiled body contents.</value>
         public string CompiledContents { get; private set; }
+        
+        /// <summary>
+        /// Represents the parameters of this template.
+        /// </summary>
+        /// <value>The list of parameters.</value>
         public List<string> Parameters { get; } = new List<string>();
+        
+        /// <summary>
+        /// Represents the fragments that this template references.
+        /// </summary>
+        /// <value>The list of fragments.</value>
         public List<string> ReferencedFragments { get; } = new List<string>();
 
         private readonly Dictionary<string, GraphqlTemplate> _fragments;
 
+        /// <summary>
+        /// Sole constructor. Parses and compiles the passed contents.
+        /// </summary>
+        /// <param name="name">The namespace.</param>
+        /// <param name="templateType">The template type.</param>
+        /// <param name="contents">The raw line data.</param>
+        /// <param name="fragments">The template fragments.</param>
         public GraphqlTemplate(string name, TemplateType templateType, string[] contents,
             Dictionary<string, GraphqlTemplate> fragments)
         {
