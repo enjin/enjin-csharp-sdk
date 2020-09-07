@@ -7,15 +7,23 @@ using System.Threading.Tasks;
 
 namespace Enjin.SDK.Http
 {
+    /// <summary>
+    /// Handler used for debugging the HTTP client.
+    /// </summary>
     public class HttpLoggingHandler : DelegatingHandler
     {
         private readonly string[] _types = {"html", "text", "xml", "json", "txt", "x-www-form-urlencoded"};
 
+        /// <summary>
+        /// Constructs the handler with an optional inner handler.
+        /// </summary>
+        /// <param name="innerHandler">The handler to replace the default client handler.</param>
         public HttpLoggingHandler(HttpMessageHandler innerHandler = null) : base(
             innerHandler ?? new HttpClientHandler())
         {
         }
 
+        /// <inheritdoc/>
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
