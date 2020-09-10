@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
 using Newtonsoft.Json.Linq;
 using Refit;
 
+[assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK
 {
     [Headers("Content-Type: application/json")]

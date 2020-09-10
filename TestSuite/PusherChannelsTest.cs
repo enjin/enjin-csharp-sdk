@@ -13,7 +13,7 @@ namespace TestSuite
         public string Channel_MultipleAppChannels_ReturnsCorrectString(string network, int app)
         {
             // Arrange
-            var platform = CreatePlatform(network);
+            var platform = CreateFakePlatform(network);
             var appChannel = new PusherAppChannel(platform, app);
 
             // Act
@@ -31,7 +31,7 @@ namespace TestSuite
         public string Channel_MultiplePlayerChannels_ReturnsCorrectString(string network, int app, string player)
         {
             // Arrange
-            var platform = CreatePlatform(network);
+            var platform = CreateFakePlatform(network);
             var playerChannel = new PusherPlayerChannel(platform, app, player);
 
             // Act
@@ -47,7 +47,7 @@ namespace TestSuite
         public string Channel_MultipleTokenChannels_ReturnsCorrectString(string network, string token)
         {
             // Arrange
-            var platform = CreatePlatform(network);
+            var platform = CreateFakePlatform(network);
             var tokenChannel = new PusherTokenChannel(platform, token);
 
             // Act
@@ -63,7 +63,7 @@ namespace TestSuite
         public string Channel_MultipleWalletChannels_ReturnsCorrectString(string network, string wallet)
         {
             // Arrange
-            var platform = CreatePlatform(network);
+            var platform = CreateFakePlatform(network);
             var walletChannel = new PusherWalletChannel(platform, wallet);
 
             // Act

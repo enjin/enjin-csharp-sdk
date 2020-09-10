@@ -7,7 +7,7 @@ namespace TestSuite.Utils
         public const string Kovan = "kovan";
         public const string Mainnet = "mainnet";
 
-        public static Platform CreatePlatform(string network)
+        public static Platform CreateFakePlatform(string network)
         {
             var platform = new Platform();
 

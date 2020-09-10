@@ -260,7 +260,7 @@ namespace TestSuite
             Assert.IsFalse(eventService.IsSubscribedToWallet(wallet));
         }
 
-        private static PusherEventService CreateEventService() => new PusherEventService(CreatePlatform(Kovan));
+        private static PusherEventService CreateEventService() => new PusherEventService(CreateFakePlatform(Kovan));
 
         private class EventListener : IEventListener
         {
