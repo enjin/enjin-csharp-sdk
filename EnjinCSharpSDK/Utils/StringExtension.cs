@@ -3,7 +3,7 @@
 namespace Enjin.SDK.Utils
 {
     /// <summary>
-    /// Class with extension methods for LINQ expressions.
+    /// Class with extension methods for string objects.
     /// </summary>
     public static class StringExtension
     {
