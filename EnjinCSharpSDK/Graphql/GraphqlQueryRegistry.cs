@@ -8,6 +8,9 @@ using JetBrains.Annotations;
 
 namespace Enjin.SDK.Graphql
 {
+    /// <summary>
+    /// Class for registering and storing GraphQL templates.
+    /// </summary>
     [PublicAPI]
     public class GraphqlQueryRegistry
     {
@@ -21,6 +24,9 @@ namespace Enjin.SDK.Graphql
         private readonly Dictionary<string, GraphqlTemplate> _fragments = new Dictionary<string, GraphqlTemplate>();
         private readonly Dictionary<string, GraphqlTemplate> _operations = new Dictionary<string, GraphqlTemplate>();
 
+        /// <summary>
+        /// Sole constructor.
+        /// </summary>
         public GraphqlQueryRegistry()
         {
             RegisterSdkTemplates();
@@ -79,6 +85,10 @@ namespace Enjin.SDK.Graphql
             }
         }
 
+        /// <summary>
+        /// Registers the templates in an assembly.
+        /// </summary>
+        /// <param name="assembly">The assembly.</param>
         public void RegisterTemplatesInAssembly(Assembly assembly)
         {
             LoadTemplatesInAssembly(assembly);
@@ -89,6 +99,11 @@ namespace Enjin.SDK.Graphql
             RegisterTemplatesInAssembly(typeof(GraphqlQueryRegistry).Assembly);
         }
 
+        /// <summary>
+        /// Gets the template that is registered under the name provided.
+        /// </summary>
+        /// <param name="name">The name of the template.</param>
+        /// <returns>The template if one exists, else <c>null</c>.</returns>
         public GraphqlTemplate GetOperationForName(string name)
         {
             return _operations.ContainsKey(name) ? _operations[name] : null;

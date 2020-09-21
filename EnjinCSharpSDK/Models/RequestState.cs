@@ -2,6 +2,10 @@ using JetBrains.Annotations;
 
 namespace Enjin.SDK.Models
 {
+    /// <summary>
+    /// Represents the state of a request.
+    /// </summary>
+    /// <seealso cref="Request"/>
     [PublicAPI]
     public enum RequestState
     {

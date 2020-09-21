@@ -5,12 +5,29 @@ using JetBrains.Annotations;
 
 namespace Enjin.SDK.Events
 {
+    /// <summary>
+    /// Registration wrapper for a <see cref="IEventListener"/> .
+    /// </summary>
+    /// <seealso cref="IEventListener"/>
+    /// <seealso cref="IEventService"/>
     [PublicAPI]
     public sealed class EventListenerRegistration
     {
+        /// <summary>
+        /// A delegate that matches all event types.
+        /// </summary>
         public static readonly Func<EventType, bool> ALLOW_ALL_MATCHER = type => true;
 
+        /// <summary>
+        /// Represents the listener this registration is for.
+        /// </summary>
+        /// <value>The listener.</value>
         public IEventListener Listener { get; }
+        
+        /// <summary>
+        /// Represents the delegate event matcher for the <see cref="Listener"/> of this registration.
+        /// </summary>
+        /// <value>The delegate event matcher.</value>
         public Func<EventType, bool> Matcher { get; }
 
         internal EventListenerRegistration(IEventListener listener) : this(listener, ALLOW_ALL_MATCHER)
