@@ -19,19 +19,20 @@ namespace TestSuite
             FILTERS.Add(new TestableFilter());
         }
         
-        [Test]
+        [Theory]
         public void And_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = FILTERS.ToArray();
             var filter = new TestableFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.And(args);
             var actual = filter.GetAnd();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {
@@ -39,19 +40,20 @@ namespace TestSuite
             }
         }
 
-        [Test]
+        [Theory]
         public void Or_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = FILTERS.ToArray();
             var filter = new TestableFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.Or(args);
             var actual = filter.GetOr();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {

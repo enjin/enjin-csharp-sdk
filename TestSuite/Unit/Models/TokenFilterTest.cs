@@ -20,7 +20,7 @@ namespace TestSuite
         }
 
         [Test]
-        public void Id_PassedArguments_FieldContainsArgument()
+        public void Id_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -34,19 +34,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
+        [Theory]
         public void IdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
             var filter = new TestableTokenFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.IdIn(args);
             var actual = filter.GetIdIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {
@@ -55,7 +56,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void Name_PassedArguments_FieldContainsArgument()
+        public void Name_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -70,7 +71,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void NameContains_PassedArguments_FieldContainsArgument()
+        public void NameContains_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -84,19 +85,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
+        [Theory]
         public void NameIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
             var filter = new TestableTokenFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.NameIn(args);
             var actual = filter.GetNameIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {
@@ -105,7 +107,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void NameStartsWith_PassedArguments_FieldContainsArgument()
+        public void NameStartsWith_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -120,7 +122,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void NameEndsWith_PassedArguments_FieldContainsArgument()
+        public void NameEndsWith_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -135,7 +137,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void Wallet_PassedArguments_FieldContainsArgument()
+        public void Wallet_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -149,19 +151,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
+        [Theory]
         public void WalletIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
             var filter = new TestableTokenFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.WalletIn(args);
             var actual = filter.GetWalletIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {

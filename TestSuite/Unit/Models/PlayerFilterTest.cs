@@ -20,7 +20,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void Id_PassedArguments_FieldContainsArgument()
+        public void Id_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -34,19 +34,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
+        [Theory]
         public void IdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
             var filter = new TestablePlayerFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.IdIn(args);
             var actual = filter.GetIdIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {

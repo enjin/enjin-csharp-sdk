@@ -21,7 +21,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void Id_PassedArguments_FieldContainsArgument()
+        public void Id_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -35,19 +35,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
+        [Theory]
         public void IdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
             var filter = new TestableTransactionFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.IdIn(args);
             var actual = filter.GetIdIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {
@@ -56,7 +57,7 @@ namespace TestSuite
         }
 
         [Test]
-        public void TransactionId_PassedArguments_FieldContainsArgument()
+        public void TransactionId_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -70,19 +71,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
+        [Theory]
         public void TransactionIdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
             var filter = new TestableTransactionFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.TransactionIdIn(args);
             var actual = filter.GetTransactionIdIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {
@@ -91,7 +93,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void TokenId_PassedArguments_FieldContainsArgument()
+        public void TokenId_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -105,19 +107,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
+        [Theory]
         public void TokenIdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
             var filter = new TestableTransactionFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.TokenIdIn(args);
             var actual = filter.GetTokenIdIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {
@@ -125,9 +128,8 @@ namespace TestSuite
             }
         }
         
-        [Test]
         [Theory]
-        public void Type_PassedArguments_FieldContainsArgument(RequestType expected)
+        public void Type_FieldContainsArgument(RequestType expected)
         {
             // Arrange
             var filter = new TestableTransactionFilter();
@@ -161,7 +163,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void Value_PassedArguments_FieldContainsArgument()
+        public void Value_FieldContainsArgument()
         {
             // Arrange
             const int expected = 1;
@@ -176,7 +178,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void ValueGreaterThan_PassedArguments_FieldContainsArgument()
+        public void ValueGreaterThan_FieldContainsArgument()
         {
             // Arrange
             const int expected = 1;
@@ -191,7 +193,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void ValueGreaterThanOrEqual_PassedArguments_FieldContainsArgument()
+        public void ValueGreaterThanOrEqual_FieldContainsArgument()
         {
             // Arrange
             const int expected = 1;
@@ -206,7 +208,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void ValueLessThan_PassedArguments_FieldContainsArgument()
+        public void ValueLessThan_FieldContainsArgument()
         {
             // Arrange
             const int expected = 1;
@@ -221,7 +223,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void ValueLessThanOrEqual_PassedArguments_FieldContainsArgument()
+        public void ValueLessThanOrEqual_FieldContainsArgument()
         {
             // Arrange
             const int expected = 1;
@@ -235,9 +237,8 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
         [Theory]
-        public void State_PassedArguments_FieldContainsArgument(RequestState expected)
+        public void State_FieldContainsArgument(RequestState expected)
         {
             // Arrange
             var filter = new TestableTransactionFilter();
@@ -250,19 +251,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
+        [Theory]
         public void StateIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = (RequestState[]) Enum.GetValues(typeof(RequestState));
             var filter = new TestableTransactionFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.StateIn(args);
             var actual = filter.GetStateIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {
@@ -271,7 +273,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void Wallet_PassedArguments_FieldContainsArgument()
+        public void Wallet_FieldContainsArgument()
         {
             // Arrange
             const string expected = "0";
@@ -285,19 +287,20 @@ namespace TestSuite
             Assert.AreEqual(expected, actual);
         }
         
-        [Test]
+        [Theory]
         public void WalletIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
             var filter = new TestableTransactionFilter();
 
+            Assume.That(args, Is.Not.Empty);
+            
             // Act
             filter.WalletIn(args);
             var actual = filter.GetWalletIn();
 
             // Assert
-            Assume.That(args.Length > 0);
             Assert.NotNull(actual);
             foreach (var expected in args)
             {
