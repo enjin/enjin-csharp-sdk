@@ -7,5 +7,8 @@ namespace TestSuite.Utils
     {
         public static FieldInfo GetPrivateAttribute(Type type, string name) =>
             type.GetField(name, BindingFlags.Instance | BindingFlags.NonPublic);
+
+        public static PropertyInfo GetPublicProperty(Type type, string name) =>
+            type.GetProperty(name, BindingFlags.Instance | BindingFlags.Public);
     }
 }

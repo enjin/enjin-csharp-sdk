@@ -5,7 +5,7 @@ using static TestSuite.Utils.PlatformUtils;
 namespace TestSuite
 {
     [TestFixture]
-    public class PusherChannelsTest
+    public class ChannelsTest
     {
         [Test]
         [TestCase(Kovan, 1234, ExpectedResult = "enjincloud.kovan.app.1234")]
