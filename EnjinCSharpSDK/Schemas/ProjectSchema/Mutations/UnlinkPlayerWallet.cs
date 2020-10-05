@@ -1,4 +1,4 @@
-using Enjin.SDK.Graphql;
+﻿using Enjin.SDK.Graphql;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -8,12 +8,12 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class UnlinkWallet : GraphqlRequest<UnlinkWallet>
+    public class UnlinkPlayerWallet : GraphqlRequest<UnlinkPlayerWallet>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public UnlinkWallet() : base("enjin.sdk.project.UnlinkWallet")
+        public UnlinkPlayerWallet() : base("enjin.sdk.project.UnlinkPlayerWallet")
         {
         }
         
@@ -22,7 +22,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="ethAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public UnlinkWallet EthAddress(string ethAddress)
+        public UnlinkPlayerWallet EthAddress(string ethAddress)
         {
             return SetVariable("address", ethAddress);
         }
