@@ -3,7 +3,7 @@
 
 #arg withTokensCreated Boolean false
 
-fragment Wallet on EnjinWallet {
+fragment Wallet on Wallet {
     ethAddress
     enjAllowance
     enjBalance

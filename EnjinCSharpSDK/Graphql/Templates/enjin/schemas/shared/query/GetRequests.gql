@@ -1,13 +1,13 @@
 #namespace enjin.sdk.shared.GetRequests
-#include enjin.sdk.shared.Transaction
-#include enjin.sdk.shared.PaginationCursor
+#import enjin.sdk.shared.Transaction
+#import enjin.sdk.shared.PaginationCursor
 
 #arg filter TransactionFilter
 #arg sort TransactionSortInput
 #arg pagination PaginationInput {page:1,limit:100}
 
 query {
-    result: Transactions(
+    result: GetTransactions(
         filter: $filter
         sort: $sort
         pagination: $pagination

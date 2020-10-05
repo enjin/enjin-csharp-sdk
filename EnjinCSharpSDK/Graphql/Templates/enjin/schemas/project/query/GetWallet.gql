@@ -1,0 +1,14 @@
+#namespace enjin.sdk.project.GetWallet
+#import enjin.sdk.shared.Wallet
+
+#arg userId String
+#arg ethAddress String
+
+query {
+    result: GetWallet(
+        userId: $userId
+        ethAddress: $ethAddress
+    ) {
+        ...Wallet
+    }
+}

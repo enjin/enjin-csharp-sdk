@@ -4,7 +4,7 @@
 #arg id String!
 
 query {
-    result: Player(
+    result: GetPlayer(
         id: $id
     ) {
         ...Player

@@ -2,7 +2,7 @@
 #import enjin.sdk.shared.Player
 
 query {
-    result: Player {
+    result: GetPlayer {
         ...Player
     }
 }
