@@ -20,6 +20,22 @@ namespace Enjin.SDK.Shared
     public static class TransactionFragmentArguments
     {
         /// <summary>
+        /// Sets the request to include the blockchain data with the transaction.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="WithEncodedData{T}"/>
+        /// <seealso cref="WithSignedTxs{T}"/>
+        /// <seealso cref="WithReceipt{T}"/>
+        /// <seealso cref="WithError{T}"/>
+        /// <seealso cref="WithNonce{T}"/>
+        public static T WithBlockchainData<T>(this T instance) where T : ITransactionFragmentArguments<T>
+        {
+            return instance.SetVariable("withBlockchainData", true);
+        }
+        
+        /// <summary>
         /// Sets the request to include the metadata with transaction.
         /// </summary>
         /// <param name="instance">The caller.</param>
@@ -31,7 +47,8 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the encoded data with the transaction.
+        /// Sets the request to include the encoded data with the transaction when used with
+        /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
@@ -53,7 +70,8 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the signed transactions with the transaction.
+        /// Sets the request to include the signed transactions with the transaction when used with
+        /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
@@ -64,7 +82,8 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the error with the transaction.
+        /// Sets the request to include the error with the transaction when used with
+        /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
@@ -75,7 +94,8 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the nonce with the transaction.
+        /// Sets the request to include the nonce with the transaction when used with
+        /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
@@ -97,7 +117,8 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the receipt with the transaction.
+        /// Sets the request to include the receipt with the transaction when used with
+        /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>

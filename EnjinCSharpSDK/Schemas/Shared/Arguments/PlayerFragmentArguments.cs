@@ -20,25 +20,15 @@ namespace Enjin.SDK.Shared
     public static class PlayerFragmentArguments
     {
         /// <summary>
-        /// Sets the request to include the linking code with the player.
+        /// Sets the request to include linking information with the player.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T WithLinkingCode<T>(this T instance) where T : IPlayerFragmentArguments<T>
+        /// <seealso cref="QrSize{T}"/>
+        public static T WithLinkingInfo<T>(this T instance) where T : IPlayerFragmentArguments<T>
         {
-            return instance.SetVariable("withLinkingCode", true);
-        }
-        
-        /// <summary>
-        /// Sets the request to include the URL to the QR linking code with the player.
-        /// </summary>
-        /// <param name="instance">The caller.</param>
-        /// <typeparam name="T">The caller type.</typeparam>
-        /// <returns>The caller for chaining.</returns>
-        public static T WithLinkingCodeQr<T>(this T instance) where T : IPlayerFragmentArguments<T>
-        {
-            return instance.SetVariable("withLinkingCodeQr", true);
+            return instance.SetVariable("withLinkingInfo", true);
         }
         
         /// <summary>
@@ -53,7 +43,7 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the desired size of the QR image in pixels.
+        /// Sets the desired size of the QR image in pixels. Must be used with <see cref="WithLinkingInfo{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <param name="size">The size in pixels.</param>
