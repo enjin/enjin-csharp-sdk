@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
         /// <returns>This request for chaining.</returns>
         public UnlinkWallet EthAddress(string ethAddress)
         {
-            return SetVariable("address", ethAddress);
+            return SetVariable("ethAddress", ethAddress);
         }
     }
 }
