@@ -1,6 +1,6 @@
-﻿using Enjin.SDK.Models;
+﻿using System;
+using Enjin.SDK.Models;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 
 namespace TestSuite
 {
@@ -10,49 +10,46 @@ namespace TestSuite
         private const EventType DefaultEventType = EventType.UNKNOWN;
         private const string DefaultChannel = "xyz";
         private const string DefaultMessage = @"{'name': 'value'}";
-        
+
         [Test]
-        public void Type_GetsValue()
+        public void Constructor_NonNullArguments_DoesNotThrowException()
         {
             // Arrange
-            const EventType expected = DefaultEventType;
-            var notificationEvent = CreateDefaultFakeNotificationEvent();
-
-            // Act
-            var actual = notificationEvent.Type;
+            void TestDelegate()
+            {
+                new NotificationEvent(DefaultEventType, DefaultChannel, DefaultMessage);
+            }
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.DoesNotThrow(TestDelegate);
         }
         
         [Test]
-        public void Channel_GetsValue()
+        public void Constructor_NullChannel_ThrowsArgumentNullException()
         {
             // Arrange
-            const string expected = DefaultChannel;
-            var notificationEvent = CreateDefaultFakeNotificationEvent();
-
-            // Act
-            var actual = notificationEvent.Channel;
+            void TestDelegate()
+            {
+                new NotificationEvent(DefaultEventType, null, DefaultMessage);
+            }
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.Throws<ArgumentNullException>(TestDelegate);
         }
         
         [Test]
-        public void Message_GetsValue()
+        public void Constructor_NullMessage_ThrowsArgumentNullException()
         {
             // Arrange
-            const string expected = DefaultMessage;
-            var notificationEvent = CreateDefaultFakeNotificationEvent();
-
-            // Act
-            var actual = notificationEvent.Message;
+            void TestDelegate()
+            {
+                new NotificationEvent(DefaultEventType, DefaultChannel, null);
+            }
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.Throws<ArgumentNullException>(TestDelegate);
         }
-
+        
         [Theory]
         public void Data_GetsDeserializedData()
         {
