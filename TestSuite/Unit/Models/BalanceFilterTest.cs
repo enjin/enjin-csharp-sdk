@@ -39,6 +39,35 @@ namespace TestSuite
                 Assert.Contains(expected, actual);
             }
         }
+
+        [Test]
+        public void TokenIdIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableBalanceFilter();
+
+            // Act
+            filter.TokenIdIn();
+            var actual = filter.GetTokenIdIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void TokenIdIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableBalanceFilter();
+
+            // Act
+            filter.TokenIdIn(null);
+            var actual = filter.GetTokenIdIn();
+
+            // Assert
+            Assert.Null(actual);
+        }
         
         [Theory]
         public void WalletIn_PassedArguments_FieldContainsArgument()
@@ -59,6 +88,34 @@ namespace TestSuite
             {
                 Assert.Contains(expected, actual);
             }
+        }
+
+        [Test]
+        public void WalletIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableBalanceFilter();
+            
+            // Act
+            filter.WalletIn();
+            var actual = filter.GetWalletIn();
+
+            // Assert
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void WalletIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableBalanceFilter();
+            
+            // Act
+            filter.WalletIn(null);
+            var actual = filter.GetWalletIn();
+
+            // Assert
+            Assert.NotNull(actual);
         }
         
         private class TestableBalanceFilter : BalanceFilter

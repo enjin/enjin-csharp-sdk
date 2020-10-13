@@ -40,6 +40,35 @@ namespace TestSuite
             }
         }
 
+        [Test]
+        public void And_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableFilter();
+            
+            // Act
+            filter.And();
+            var actual = filter.GetAnd();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void And_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableFilter();
+            
+            // Act
+            filter.And(null);
+            var actual = filter.GetAnd();
+
+            // Assert
+            Assert.Null(actual);
+        }
+
         [Theory]
         public void Or_PassedArguments_FieldContainsArgument()
         {
@@ -59,6 +88,35 @@ namespace TestSuite
             {
                 Assert.Contains(expected, actual);
             }
+        }
+
+        [Test]
+        public void Or_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableFilter();
+            
+            // Act
+            filter.Or();
+            var actual = filter.GetOr();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void Or_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableFilter();
+            
+            // Act
+            filter.Or(null);
+            var actual = filter.GetOr();
+
+            // Assert
+            Assert.Null(actual);
         }
         
         private class TestableFilter : Filter<TestableFilter>

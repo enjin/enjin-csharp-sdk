@@ -40,7 +40,36 @@ namespace TestSuite
                 Assert.Contains(expected, actual);
             }
         }
-        
+
+        [Test]
+        public void IdIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.IdIn();
+            var actual = filter.GetIdIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void IdIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.IdIn(null);
+            var actual = filter.GetIdIn();
+
+            // Assert
+            Assert.Null(actual);
+        }
+
         [Theory]
         public void TransactionIdIn_PassedArguments_FieldContainsArgument()
         {
@@ -60,6 +89,35 @@ namespace TestSuite
             {
                 Assert.Contains(expected, actual);
             }
+        }
+
+        [Test]
+        public void TransactionIdIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.TransactionIdIn();
+            var actual = filter.GetTransactionIdIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void TransactionIdIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.TransactionIdIn(null);
+            var actual = filter.GetTransactionIdIn();
+
+            // Assert
+            Assert.Null(actual);
         }
         
         [Theory]
@@ -82,6 +140,35 @@ namespace TestSuite
                 Assert.Contains(expected, actual);
             }
         }
+
+        [Test]
+        public void TokenIdIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.TokenIdIn();
+            var actual = filter.GetTokenIdIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void TokenIdIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.TransactionIdIn(null);
+            var actual = filter.GetTransactionIdIn();
+
+            // Assert
+            Assert.Null(actual);
+        }
         
         [Theory]
         public void Types_PassedArguments_FieldContainsArgument()
@@ -102,6 +189,35 @@ namespace TestSuite
             {
                 Assert.Contains(expected, actual);
             }
+        }
+
+        [Test]
+        public void Types_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.Types();
+            var actual = filter.GetTypes();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void Types_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.Types(null);
+            var actual = filter.GetTypes();
+
+            // Assert
+            Assert.Null(actual);
         }
         
         [Theory]
@@ -124,6 +240,35 @@ namespace TestSuite
                 Assert.Contains(expected, actual);
             }
         }
+
+        [Test]
+        public void StateIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.StateIn();
+            var actual = filter.GetStateIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void StateIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.StateIn(null);
+            var actual = filter.GetStateIn();
+
+            // Assert
+            Assert.Null(actual);
+        }
         
         [Theory]
         public void WalletIn_PassedArguments_FieldContainsArgument()
@@ -144,6 +289,35 @@ namespace TestSuite
             {
                 Assert.Contains(expected, actual);
             }
+        }
+
+        [Test]
+        public void WalletIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.WalletIn();
+            var actual = filter.GetWalletIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void WalletIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTransactionFilter();
+            
+            // Act
+            filter.WalletIn(null);
+            var actual = filter.GetWalletIn();
+
+            // Assert
+            Assert.Null(actual);
         }
         
         private class TestableTransactionFilter : TransactionFilter

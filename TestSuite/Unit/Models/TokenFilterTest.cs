@@ -39,7 +39,36 @@ namespace TestSuite
                 Assert.Contains(expected, actual);
             }
         }
-        
+
+        [Test]
+        public void IdIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTokenFilter();
+            
+            // Act
+            filter.IdIn();
+            var actual = filter.GetIdIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void IdIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTokenFilter();
+            
+            // Act
+            filter.IdIn(null);
+            var actual = filter.GetIdIn();
+
+            // Assert
+            Assert.Null(actual);
+        }
+
         [Theory]
         public void NameIn_PassedArguments_FieldContainsArgument()
         {
@@ -59,6 +88,35 @@ namespace TestSuite
             {
                 Assert.Contains(expected, actual);
             }
+        }
+
+        [Test]
+        public void NameIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTokenFilter();
+
+            // Act
+            filter.NameIn();
+            var actual = filter.GetNameIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void NameIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTokenFilter();
+            
+            // Act
+            filter.NameIn(null);
+            var actual = filter.GetNameIn();
+
+            // Assert
+            Assert.Null(actual);
         }
         
         [Theory]
@@ -80,6 +138,35 @@ namespace TestSuite
             {
                 Assert.Contains(expected, actual);
             }
+        }
+
+        [Test]
+        public void WalletIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestableTokenFilter();
+            
+            // Act
+            filter.WalletIn();
+            var actual = filter.GetWalletIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void WalletIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestableTokenFilter();
+
+            // Act
+            filter.WalletIn(null);
+            var actual = filter.GetWalletIn();
+
+            // Assert
+            Assert.Null(actual);
         }
         
         private class TestableTokenFilter : TokenFilter

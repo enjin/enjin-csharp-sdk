@@ -39,6 +39,35 @@ namespace TestSuite
                 Assert.Contains(expected, actual);
             }
         }
+
+        [Test]
+        public void IdIn_NoArguments_FieldIsEmpty()
+        {
+            // Arrange
+            var filter = new TestablePlayerFilter();
+            
+            // Act
+            filter.IdIn();
+            var actual = filter.GetIdIn();
+
+            // Assert
+            Assert.NotNull(actual);
+            Assert.That(actual, Is.Empty);
+        }
+
+        [Test]
+        public void IdIn_NullArgument_FieldIsNull()
+        {
+            // Arrange
+            var filter = new TestablePlayerFilter();
+            
+            // Act
+            filter.IdIn(null);
+            var actual = filter.GetIdIn();
+
+            // Assert
+            Assert.Null(actual);
+        }
         
         private class TestablePlayerFilter : PlayerFilter
         {
