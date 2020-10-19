@@ -31,12 +31,17 @@ namespace Enjin.SDK
     }
     
     [Headers("Content-Type: application/json")]
-    internal interface IRequestService : IGetOne<Request>, IGetMany<Request>
+    internal interface IRequestService : IGetOne<Request>, IGetMany<Request>, IDelete
     {
     }
     
     [Headers("Content-Type: application/json")]
     internal interface ITokenService : IGetOne<Token>, IGetMany<Token>, IDelete
+    {
+    }
+
+    [Headers("Content-Type: application/json")]
+    internal interface IWalletService : IGetOne<Wallet>, IGetMany<Wallet>
     {
     }
 

@@ -2,7 +2,7 @@
 #import enjin.sdk.shared.Project
 
 query {
-    result: App {
+    result: GetApp {
         ...Project
     }
 }

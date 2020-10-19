@@ -16,6 +16,7 @@ namespace Enjin.SDK.ProjectSchema
         private const string SCHEMA = "app";
         
         internal readonly IPlayerService PlayerService;
+        internal readonly IWalletService WalletService;
         
         /// <summary>
         /// Sole constructor.
@@ -24,6 +25,7 @@ namespace Enjin.SDK.ProjectSchema
         public ProjectSchema(TrustedPlatformMiddleware middleware) : base(middleware, SCHEMA)
         {
             PlayerService = CreateService<IPlayerService>();
+            WalletService = CreateService<IWalletService>();
         }
         
         /// <inheritdoc/>
@@ -49,7 +51,19 @@ namespace Enjin.SDK.ProjectSchema
         {
             return SendRequest(PlayerService.GetMany(Schema, CreateRequestBody(request)));
         }
-        
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Wallet>> GetWallet(GetWallet request)
+        {
+            return SendRequest(WalletService.GetOne(Schema, CreateRequestBody(request)));
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<List<Wallet>>> GetWallets(GetWallets request)
+        {
+            return SendRequest(WalletService.GetMany(Schema, CreateRequestBody(request)));
+        }
+
         /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request)
         {
@@ -126,6 +140,12 @@ namespace Enjin.SDK.ProjectSchema
         public Task<GraphqlResponse<Request>> SetWhitelisted(SetWhitelisted request)
         {
             return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<bool>> UnlinkPlayerWallet(UnlinkPlayerWallet request)
+        {
+            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
         }
 
         /// <inheritdoc/>

@@ -1,6 +1,6 @@
 #namespace enjin.sdk.shared.Project
 
-fragment Project on EnjinApp {
+fragment Project on App {
     id
     name
     description

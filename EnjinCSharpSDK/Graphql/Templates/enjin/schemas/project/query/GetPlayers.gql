@@ -6,7 +6,7 @@
 #arg pagination PaginationInput {page:1,limit:100}
 
 query {
-    result: Players(
+    result: GetPlayers(
         filter: $filter
         pagination: $pagination
     ) {

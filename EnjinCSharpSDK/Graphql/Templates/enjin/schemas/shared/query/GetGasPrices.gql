@@ -1,7 +1,7 @@
 #namespace enjin.sdk.shared.GetGasPrices
 
 query {
-    result: GasPrice {
+    result: GetGasPrice {
         safeLow
         average
         fast

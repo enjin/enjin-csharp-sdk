@@ -1,6 +1,8 @@
 #namespace enjin.sdk.shared.Token
 
 #arg tokenIdFormat TokenIdFormat
+#arg withStateData Boolean false
+#arg withConfigData Boolean false
 #arg withTokenBlocks Boolean false
 #arg withCreator Boolean false
 #arg withMeltDetails Boolean false
@@ -12,28 +14,31 @@
 #arg withTokenVariants Boolean false
 #arg withVariantMetadata Boolean false
 
-fragment Token on EnjinToken {
+fragment Token on Token {
     id(format: $tokenIdFormat)
     name
-    blockHeight @include(if: $withTokenBlocks)
-    creator @include(if: $withCreator)
-    firstBlock @include(if: $withTokenBlocks)
-    meltFeeRatio @include(if: $withMeltDetails)
-    meltFeeMaxRatio @include(if: $withMeltDetails)
-    meltValue @include(if: $withMeltDetails)
-    metadata @include(if: $withMetadata)
-    metadataURI @include(if: $withMetadataURI)
-    nonFungible
-    reserve @include(if: $withSupplyDetails)
-    supplyModel @include(if: $withSupplyDetails)
-    circulatingSupply @include(if: $withSupplyDetails)
-    mintableSupply @include(if: $withSupplyDetails)
-    totalSupply @include(if: $withSupplyDetails)
-    transferable @include(if: $withTransferSettings)
-    transferFeeSettings @include(if: $withTransferSettings) {
-        type
-        tokenId
-        value
+    stateData @include(if: $withStateData) {
+        nonFungible
+        creator @include(if: $withCreator)
+        blockHeight @include(if: $withTokenBlocks)
+        firstBlock @include(if: $withTokenBlocks)
+        reserve @include(if: $withSupplyDetails)
+        supplyModel @include(if: $withSupplyDetails)
+        circulatingSupply @include(if: $withSupplyDetails)
+        mintableSupply @include(if: $withSupplyDetails)
+        totalSupply @include(if: $withSupplyDetails)
+    }
+    configData @include(if: $withConfigData) {
+        meltFeeRatio @include(if: $withMeltDetails)
+        meltFeeMaxRatio @include(if: $withMeltDetails)
+        meltValue @include(if: $withMeltDetails)
+        metadataURI @include(if: $withMetadataURI)
+        transferable @include(if: $withTransferSettings)
+        transferFeeSettings @include(if: $withTransferSettings) {
+            type
+            tokenId
+            value
+        }
     }
     variantMode @include(if: $withTokenVariantMode)
     variants @include(if: $withTokenVariants) {

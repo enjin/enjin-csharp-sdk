@@ -15,6 +15,7 @@ namespace Enjin.SDK.PlayerSchema
         private const string SCHEMA = "player";
         
         internal readonly IPlayerService PlayerService;
+        internal readonly IWalletService WalletService;
         
         /// <summary>
         /// Sole constructor.
@@ -23,12 +24,19 @@ namespace Enjin.SDK.PlayerSchema
         public PlayerSchema(TrustedPlatformMiddleware middleware) : base(middleware, SCHEMA)
         {
             PlayerService = CreateService<IPlayerService>();
+            WalletService = CreateService<IWalletService>();
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request)
         {
             return SendRequest(PlayerService.GetOne(Schema, CreateRequestBody(request)));
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Wallet>> GetWallet(GetWallet request)
+        {
+            return SendRequest(WalletService.GetOne(Schema, CreateRequestBody(request)));
         }
 
         /// <inheritdoc/>

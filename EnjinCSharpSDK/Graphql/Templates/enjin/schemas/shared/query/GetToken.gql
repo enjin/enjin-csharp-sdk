@@ -4,7 +4,7 @@
 #arg id String
 
 query {
-    result: Token(
+    result: GetToken(
         id: $id
     ) {
         ...Token
