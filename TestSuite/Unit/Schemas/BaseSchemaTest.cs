@@ -18,6 +18,8 @@ namespace TestSuite
     {
         private static WireMockServer _server;
 
+        private TestableBaseSchema ClassUnderTest { get; set; }
+
         [OneTimeSetUp]
         public static void BeforeAll()
         {
@@ -28,9 +30,11 @@ namespace TestSuite
         }
 
         [SetUp]
-        public static void BeforeEach()
+        public void BeforeEach()
         {
             _server.Reset();
+            ClassUnderTest = new TestableBaseSchema(new TrustedPlatformMiddleware(new Uri(_server.Urls[0]), false),
+                                                    "test");
         }
 
         [OneTimeTearDown]
@@ -45,11 +49,10 @@ namespace TestSuite
             // Arrange
             const string queryKey = "query";
             const string variablesKey = "variables";
-            var schema = CreateDefaultTestableBaseSchemaSchema();
             var request = CreateValidRequest();
 
             // Act
-            var body = schema.CreateRequestBody(request);
+            var body = ClassUnderTest.CreateRequestBody(request);
 
             // Assert
             Assert.NotNull(body[queryKey]);
@@ -59,11 +62,8 @@ namespace TestSuite
         [Test]
         public void CreateService_IBalanceService_CreatesTheService()
         {
-            // Arrange
-            var schema = CreateDefaultTestableBaseSchemaSchema();
-
             // Act
-            var actual = schema.CreateService<IBalanceService>();
+            var actual = ClassUnderTest.CreateService<IBalanceService>();
 
             // Assert
             Assert.NotNull(actual);
@@ -72,11 +72,8 @@ namespace TestSuite
         [Test]
         public void CreateService_IPlatformService_CreatesTheService()
         {
-            // Arrange
-            var schema = CreateDefaultTestableBaseSchemaSchema();
-
             // Act
-            var actual = schema.CreateService<IPlatformService>();
+            var actual = ClassUnderTest.CreateService<IPlatformService>();
 
             // Assert
             Assert.NotNull(actual);
@@ -85,11 +82,8 @@ namespace TestSuite
         [Test]
         public void CreateService_IPlayerService_CreatesTheService()
         {
-            // Arrange
-            var schema = CreateDefaultTestableBaseSchemaSchema();
-
             // Act
-            var actual = schema.CreateService<IPlayerService>();
+            var actual = ClassUnderTest.CreateService<IPlayerService>();
 
             // Assert
             Assert.NotNull(actual);
@@ -98,11 +92,8 @@ namespace TestSuite
         [Test]
         public void CreateService_IProjectService_CreatesTheService()
         {
-            // Arrange
-            var schema = CreateDefaultTestableBaseSchemaSchema();
-
             // Act
-            var actual = schema.CreateService<IProjectService>();
+            var actual = ClassUnderTest.CreateService<IProjectService>();
 
             // Assert
             Assert.NotNull(actual);
@@ -111,11 +102,8 @@ namespace TestSuite
         [Test]
         public void CreateService_IRequestService_CreatesTheService()
         {
-            // Arrange
-            var schema = CreateDefaultTestableBaseSchemaSchema();
-
             // Act
-            var actual = schema.CreateService<IRequestService>();
+            var actual = ClassUnderTest.CreateService<IRequestService>();
 
             // Assert
             Assert.NotNull(actual);
@@ -124,11 +112,18 @@ namespace TestSuite
         [Test]
         public void CreateService_ITokenService_CreatesTheService()
         {
-            // Arrange
-            var schema = CreateDefaultTestableBaseSchemaSchema();
-
             // Act
-            var actual = schema.CreateService<ITokenService>();
+            var actual = ClassUnderTest.CreateService<ITokenService>();
+
+            // Assert
+            Assert.NotNull(actual);
+        }
+
+        [Test]
+        public void CreateService_IWalletService_CreatesTheService()
+        {
+            // Act
+            var actual = ClassUnderTest.CreateService<IWalletService>();
 
             // Assert
             Assert.NotNull(actual);
@@ -137,14 +132,13 @@ namespace TestSuite
         [Test]
         public async Task SendRequest_SuccessfulResponse_ReturnsResponseWithContent()
         {
-            // Arrange - Data
+            // Arrange
             var expected = new DummyObject(1);
-            var responseBody = $"{{\"data\": {JObject.FromObject(expected)}}}";
-            var schema = CreateDefaultTestableBaseSchemaSchema();
-            var service = schema.CreateService<IFakeService>();
-            var taskIn = service.Post(schema.Schema, JObject.Parse(@"{}"));
+            var responseBody = $"{{\"data\": {{\"result\": {JObject.FromObject(expected)}}}}}";
+            var service = ClassUnderTest.CreateService<IFakeService>();
+            var taskIn = service.Post(ClassUnderTest.Schema, JObject.Parse(@"{}"));
             _server.Given(WireMock.RequestBuilders.Request.Create()
-                                  .WithPath($"/graphql/{schema.Schema}")
+                                  .WithPath($"/graphql/{ClassUnderTest.Schema}")
                                   .UsingPost())
                    .RespondWith(WireMock.ResponseBuilders.Response.Create()
                                         .WithStatusCode(HttpStatusCode.OK)
@@ -165,11 +159,10 @@ namespace TestSuite
         {
             // Arrange
             const string responseBody = @"{""errors"":[{""message"":""generic error""}]}";
-            var schema = CreateDefaultTestableBaseSchemaSchema();
-            var service = schema.CreateService<IFakeService>();
-            var taskIn = service.Post(schema.Schema, JObject.Parse(@"{}"));
+            var service = ClassUnderTest.CreateService<IFakeService>();
+            var taskIn = service.Post(ClassUnderTest.Schema, JObject.Parse(@"{}"));
             _server.Given(WireMock.RequestBuilders.Request.Create()
-                                  .WithPath($"/graphql/{schema.Schema}")
+                                  .WithPath($"/graphql/{ClassUnderTest.Schema}")
                                   .UsingPost())
                    .RespondWith(WireMock.ResponseBuilders.Response.Create()
                                         .WithStatusCode(HttpStatusCode.BadRequest)
@@ -187,9 +180,6 @@ namespace TestSuite
 
         private static IGraphqlRequest CreateValidRequest() => new GetPlatform();
 
-        private static TestableBaseSchema CreateDefaultTestableBaseSchemaSchema() =>
-            new TestableBaseSchema(_server.Urls[0]);
-
         [Headers("Content-Type: application/json")]
         internal interface IFakeService
         {
@@ -203,7 +193,7 @@ namespace TestSuite
         {
             public new string Schema => base.Schema;
 
-            public TestableBaseSchema(string uri) : base(new TrustedPlatformMiddleware(new Uri(uri), false), "")
+            public TestableBaseSchema(TrustedPlatformMiddleware middleware, string schema) : base(middleware, schema)
             {
             }
 
