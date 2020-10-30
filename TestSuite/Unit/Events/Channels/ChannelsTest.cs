@@ -7,70 +7,71 @@ namespace TestSuite
     [TestFixture]
     public class ChannelsTest
     {
+        private const string DefaultPlatformName = "test";
+        
         [Test]
-        [TestCase(Kovan, 1234, ExpectedResult = "enjincloud.kovan.app.1234")]
-        [TestCase(Mainnet, 1234, ExpectedResult = "enjincloud.mainnet.app.1234")]
-        public string Channel_MultipleAppChannels_ReturnsCorrectString(string network, int app)
+        public void Channel_AppChannel_ReturnsExpectedString()
         {
             // Arrange
-            var platform = CreateFakePlatform(network);
-            var appChannel = new PusherAppChannel(platform, app);
+            const string expected = "enjincloud.test.app.1234";
+            const int app = 1234;
+            var fakePlatform = CreateFakePlatform(DefaultPlatformName);
+            var channel = new PusherAppChannel(fakePlatform, app);
 
             // Act
-            var channel = appChannel.Channel();
+            var actual = channel.Channel();
 
             // Assert
-            return channel;
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        [TestCase(Kovan, 1234, "player1", ExpectedResult = "enjincloud.kovan.app.1234.player.player1")]
-        [TestCase(Mainnet, 1234, "player1", ExpectedResult = "enjincloud.mainnet.app.1234.player.player1")]
-        [TestCase(Kovan, 1234, "player@email.com", ExpectedResult = "enjincloud.kovan.app.1234.player.player@email.com")]
-        [TestCase(Mainnet, 1234, "player@email.com", ExpectedResult = "enjincloud.mainnet.app.1234.player.player@email.com")]
-        public string Channel_MultiplePlayerChannels_ReturnsCorrectString(string network, int app, string player)
+        public void Channel_PlayerChannel_ReturnsExpectedString()
         {
             // Arrange
-            var platform = CreateFakePlatform(network);
-            var playerChannel = new PusherPlayerChannel(platform, app, player);
+            const string expected = "enjincloud.test.app.1234.player.player1";
+            const int app = 1234;
+            const string player = "player1";
+            var fakePlatform = CreateFakePlatform(DefaultPlatformName);
+            var channel = new PusherPlayerChannel(fakePlatform, app, player);
 
             // Act
-            var channel = playerChannel.Channel();
+            var actual = channel.Channel();
 
             // Assert
-            return channel;
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        [TestCase(Kovan, "0000000000000000", ExpectedResult = "enjincloud.kovan.token.0000000000000000")]
-        [TestCase(Mainnet, "0000000000000000", ExpectedResult = "enjincloud.mainnet.token.0000000000000000")]
-        public string Channel_MultipleTokenChannels_ReturnsCorrectString(string network, string token)
+        public void Channel_TokenChannel_ReturnsExpectedString()
         {
             // Arrange
-            var platform = CreateFakePlatform(network);
-            var tokenChannel = new PusherTokenChannel(platform, token);
+            const string expected = "enjincloud.test.token.0";
+            const string token = "0";
+            var fakePlatform = CreateFakePlatform(DefaultPlatformName);
+            var channel = new PusherTokenChannel(fakePlatform, token);
 
             // Act
-            var channel = tokenChannel.Channel();
+            var actual = channel.Channel();
 
             // Assert
-            return channel;
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        [TestCase(Kovan, "0x0", ExpectedResult = "enjincloud.kovan.wallet.0x0")]
-        [TestCase(Mainnet, "0x0", ExpectedResult = "enjincloud.mainnet.wallet.0x0")]
-        public string Channel_MultipleWalletChannels_ReturnsCorrectString(string network, string wallet)
+        public void Channel_WalletChannel_ReturnsExpectedString()
         {
             // Arrange
-            var platform = CreateFakePlatform(network);
-            var walletChannel = new PusherWalletChannel(platform, wallet);
+            const string expected = "enjincloud.test.wallet.0";
+            const string wallet = "0";
+            var fakePlatform = CreateFakePlatform(DefaultPlatformName);
+            var channel = new PusherWalletChannel(fakePlatform, wallet);
 
             // Act
-            var channel = walletChannel.Channel();
+            var actual = channel.Channel();
 
             // Assert
-            return channel;
+            Assert.AreEqual(expected, actual);
         }
     }
 }
