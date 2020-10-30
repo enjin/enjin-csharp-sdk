@@ -1,8 +1,10 @@
 ﻿using System.Linq;
+using System.Runtime.CompilerServices;
 using Enjin.SDK.Models;
 using Enjin.SDK.Utils;
 using PusherClient;
 
+[assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Events
 {
     internal class PusherEventListener

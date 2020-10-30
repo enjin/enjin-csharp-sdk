@@ -1,5 +1,7 @@
-﻿using Enjin.SDK.Models;
+using System.Runtime.CompilerServices;
+using Enjin.SDK.Models;
 
+[assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Events
 {
     internal sealed class PusherAppChannel : IChannel

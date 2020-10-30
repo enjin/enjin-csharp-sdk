@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using static Enjin.SDK.Utils.TextFormatting;
 
+[assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Graphql
 {
     /// <summary>

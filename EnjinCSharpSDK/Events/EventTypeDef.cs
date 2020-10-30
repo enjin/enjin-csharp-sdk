@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Enjin.SDK.Models;
 using Enjin.SDK.Utils;
 using JetBrains.Annotations;
 
+[assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Events
 {
     [PublicAPI]

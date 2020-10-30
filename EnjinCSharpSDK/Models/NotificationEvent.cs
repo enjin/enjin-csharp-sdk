@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
+[assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Models
 {
     /// <summary>
