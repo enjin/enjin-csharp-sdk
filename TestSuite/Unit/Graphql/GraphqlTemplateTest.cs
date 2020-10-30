@@ -7,16 +7,19 @@ namespace TestSuite
     [TestFixture]
     public class GraphqlTemplateTest
     {
+        private const string DefaultEmptyLine = "";
+        private const string DefaultNamespace = "enjin.graphql.Template";
+
         [Test]
-        [TestCase("enjin.graphql.Template")]
-        public void ReadNamespace_ContentsDoesHaveNamespace_ReturnsTheNamespace(string expected)
+        public void ReadNamespace_ContentsDoesHaveNamespace_ReturnsExpectedString()
         {
             // Arrange
+            const string expected = DefaultNamespace;
             var contents = new List<string>
             {
-                "dummy line",
+                DefaultEmptyLine,
                 $"{GraphqlTemplate.NAMESPACE_KEY} {expected}",
-                "dummy line",
+                DefaultEmptyLine,
             };
 
             // Act
@@ -32,9 +35,9 @@ namespace TestSuite
             // Arrange
             var contents = new List<string>
             {
-                "dummy line",
-                "dummy line",
-                "dummy line",
+                DefaultEmptyLine,
+                DefaultEmptyLine,
+                DefaultEmptyLine,
             };
 
             // Act
