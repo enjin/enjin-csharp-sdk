@@ -26,14 +26,13 @@ namespace TestSuite
             var args = IDS.ToArray();
             var filter = new TestableBalanceFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.TokenIdIn(args);
             var actual = filter.GetTokenIdIn();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -51,8 +50,7 @@ namespace TestSuite
             var actual = filter.GetTokenIdIn();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
@@ -76,14 +74,13 @@ namespace TestSuite
             var args = IDS.ToArray();
             var filter = new TestableBalanceFilter();
             
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.WalletIn(args);
             var actual = filter.GetWalletIn();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -101,7 +98,7 @@ namespace TestSuite
             var actual = filter.GetWalletIn();
 
             // Assert
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]

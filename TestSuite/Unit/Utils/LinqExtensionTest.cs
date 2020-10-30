@@ -21,25 +21,22 @@ namespace TestSuite
 
             // Arrange - Expectations
             Mock.Get(mock1)
-                .Setup(mock => mock.MethodToCall())
-                .Verifiable();
+                .Setup(mock => mock.MethodToCall());
             Mock.Get(mock2)
-                .Setup(mock => mock.MethodToCall())
-                .Verifiable();
+                .Setup(mock => mock.MethodToCall());
             Mock.Get(mock3)
-                .Setup(mock => mock.MethodToCall())
-                .Verifiable();
+                .Setup(mock => mock.MethodToCall());
             
             // Act
             list.Do(o => o.MethodToCall());
             
             // Verify
             Mock.Get(mock1)
-                .Verify();
+                .Verify(mock => mock.MethodToCall(), Times.Once);
             Mock.Get(mock2)
-                .Verify();
+                .Verify(mock => mock.MethodToCall(), Times.Once);
             Mock.Get(mock3)
-                .Verify();
+                .Verify(mock => mock.MethodToCall(), Times.Once);
         }
 
         internal interface ITestClass

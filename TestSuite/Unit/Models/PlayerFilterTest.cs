@@ -26,14 +26,13 @@ namespace TestSuite
             var args = IDS.ToArray();
             var filter = new TestablePlayerFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.IdIn(args);
             var actual = filter.GetIdIn();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -51,8 +50,7 @@ namespace TestSuite
             var actual = filter.GetIdIn();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]

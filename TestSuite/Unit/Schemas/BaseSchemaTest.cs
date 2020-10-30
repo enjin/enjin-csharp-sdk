@@ -171,11 +171,9 @@ namespace TestSuite
 
             // Act
             var response = await TestableBaseSchema.SendRequest(taskIn);
-            var actual = response.Result;
 
             // Assert
             Assert.IsTrue(response.HasErrors());
-            Assert.IsNull(actual);
         }
 
         private static IGraphqlRequest CreateValidRequest() => new GetPlatform();

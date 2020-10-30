@@ -26,14 +26,13 @@ namespace TestSuite
             var args = FILTERS.ToArray();
             var filter = new TestableFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.And(args);
             var actual = filter.GetAnd();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -51,8 +50,7 @@ namespace TestSuite
             var actual = filter.GetAnd();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
@@ -76,14 +74,13 @@ namespace TestSuite
             var args = FILTERS.ToArray();
             var filter = new TestableFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.Or(args);
             var actual = filter.GetOr();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -101,8 +98,7 @@ namespace TestSuite
             var actual = filter.GetOr();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]

@@ -27,14 +27,13 @@ namespace TestSuite
             var args = IDS.ToArray();
             var filter = new TestableTransactionFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.IdIn(args);
             var actual = filter.GetIdIn();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -52,8 +51,7 @@ namespace TestSuite
             var actual = filter.GetIdIn();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
@@ -77,14 +75,13 @@ namespace TestSuite
             var args = IDS.ToArray();
             var filter = new TestableTransactionFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.TransactionIdIn(args);
             var actual = filter.GetTransactionIdIn();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -102,8 +99,7 @@ namespace TestSuite
             var actual = filter.GetTransactionIdIn();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
@@ -127,14 +123,13 @@ namespace TestSuite
             var args = IDS.ToArray();
             var filter = new TestableTransactionFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.TokenIdIn(args);
             var actual = filter.GetTokenIdIn();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -152,8 +147,7 @@ namespace TestSuite
             var actual = filter.GetTokenIdIn();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
@@ -177,14 +171,13 @@ namespace TestSuite
             var args = (RequestType[]) Enum.GetValues(typeof(RequestType));
             var filter = new TestableTransactionFilter();
 
-            Assume.That(args.Length, Is.Not.Empty);
+            Assume.That(args.Length, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.Types(args);
             var actual = filter.GetTypes();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -202,8 +195,7 @@ namespace TestSuite
             var actual = filter.GetTypes();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
@@ -227,14 +219,13 @@ namespace TestSuite
             var args = (RequestState[]) Enum.GetValues(typeof(RequestState));
             var filter = new TestableTransactionFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.StateIn(args);
             var actual = filter.GetStateIn();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -252,8 +243,7 @@ namespace TestSuite
             var actual = filter.GetStateIn();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
@@ -277,14 +267,13 @@ namespace TestSuite
             var args = IDS.ToArray();
             var filter = new TestableTransactionFilter();
 
-            Assume.That(args, Is.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.WalletIn(args);
             var actual = filter.GetWalletIn();
 
             // Assert
-            Assert.NotNull(actual);
             foreach (var expected in args)
             {
                 Assert.Contains(expected, actual);
@@ -302,8 +291,7 @@ namespace TestSuite
             var actual = filter.GetWalletIn();
 
             // Assert
-            Assert.NotNull(actual);
-            Assert.That(actual, Is.Empty);
+            Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
