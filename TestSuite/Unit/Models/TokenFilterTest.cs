@@ -19,7 +19,7 @@ namespace TestSuite
             IDS.Add("3");
         }
         
-        [Theory]
+        [Test]
         public void IdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -67,7 +67,7 @@ namespace TestSuite
             Assert.Null(actual);
         }
 
-        [Theory]
+        [Test]
         public void NameIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -115,7 +115,7 @@ namespace TestSuite
             Assert.Null(actual);
         }
         
-        [Theory]
+        [Test]
         public void WalletIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange

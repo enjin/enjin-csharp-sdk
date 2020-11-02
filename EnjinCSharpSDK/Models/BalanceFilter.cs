@@ -15,11 +15,11 @@ namespace Enjin.SDK.Models
         [JsonProperty("tokenId")]
         private string _tokenId;
         [JsonProperty("tokenId_in")]
-        private List<string> _tokenIdIn;
+        private List<string>? _tokenIdIn;
         [JsonProperty("wallet")]
         private string _wallet;
         [JsonProperty("wallet_in")]
-        private List<string> _walletIn;
+        private List<string>? _walletIn;
         [JsonProperty("value")]
         private int? _value;
         [JsonProperty("value_gt")]
@@ -47,9 +47,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="tokenIds">The token IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter TokenIdIn(params string[] tokenIds)
+        public BalanceFilter TokenIdIn(params string[]? tokenIds)
         {
-            _tokenIdIn = tokenIds.ToList();
+            _tokenIdIn = tokenIds?.ToList();
             return this;
         }
         
@@ -124,9 +124,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="wallets">The wallet addresses.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter WalletIn(params string[] wallets)
+        public BalanceFilter WalletIn(params string[]? wallets)
         {
-            _walletIn = wallets.ToList();
+            _walletIn = wallets?.ToList();
             return this;
         }
     }

@@ -19,7 +19,7 @@ namespace TestSuite
             FILTERS.Add(new TestableFilter());
         }
         
-        [Theory]
+        [Test]
         public void And_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -67,7 +67,7 @@ namespace TestSuite
             Assert.Null(actual);
         }
 
-        [Theory]
+        [Test]
         public void Or_PassedArguments_FieldContainsArgument()
         {
             // Arrange

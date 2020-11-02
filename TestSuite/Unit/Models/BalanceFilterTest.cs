@@ -19,7 +19,7 @@ namespace TestSuite
             IDS.Add("3");
         }
         
-        [Theory]
+        [Test]
         public void TokenIdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -67,7 +67,7 @@ namespace TestSuite
             Assert.Null(actual);
         }
         
-        [Theory]
+        [Test]
         public void WalletIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -112,7 +112,7 @@ namespace TestSuite
             var actual = filter.GetWalletIn();
 
             // Assert
-            Assert.NotNull(actual);
+            Assert.Null(actual);
         }
         
         private class TestableBalanceFilter : BalanceFilter
