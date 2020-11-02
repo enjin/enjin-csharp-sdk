@@ -6,7 +6,7 @@ using NUnit.Framework;
 using PusherClient;
 using TestSuite.Utils;
 
-namespace TestSuite.Listeners
+namespace TestSuite
 {
     [TestFixture]
     public class PusherEventListenerTest

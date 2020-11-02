@@ -72,7 +72,7 @@ namespace Enjin.SDK.Events
 
             internal RegistrationListenerConfiguration WithIgnoredEvents(params EventType[] types)
             {
-                _matcher = type => types.Any(t => t != type);
+                _matcher = type => types.All(t => t != type);
                 return this;
             }
 
