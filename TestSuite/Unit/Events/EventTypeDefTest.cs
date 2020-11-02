@@ -11,7 +11,6 @@ namespace TestSuite
     [TestFixture]
     public class EventTypeDefTest
     {
-        [Test]
         [TestCase("app")]
         public void FilterByChannelTypes_ReturnsDefsWithChannelType(params string[] channels)
         {
@@ -30,7 +29,6 @@ namespace TestSuite
             }
         }
 
-        [Test]
         [TestCase("", ExpectedResult = EventType.UNKNOWN)]
         [TestCase("APP_CREATED", ExpectedResult = EventType.APP_CREATED)]
         public EventType GetFromName_ReturnDefWithCorrectType(string name)
@@ -42,7 +40,6 @@ namespace TestSuite
             return def.Type;
         }
 
-        [Test]
         [TestCase("APP_CREATED", ExpectedResult = "EnjinCloud\\Events\\AppCreated")]
         public string GetFromName_ReturnDefWithCorrectKey(string name)
         {
@@ -53,7 +50,6 @@ namespace TestSuite
             return def.Key;
         }
 
-        [Test]
         [TestCase("", ExpectedResult = EventType.UNKNOWN)]
         [TestCase("EnjinCloud\\Events\\AppCreated", ExpectedResult = EventType.APP_CREATED)]
         public EventType GetFromKey_ReturnDefWithCorrectType(string key)
@@ -65,7 +61,6 @@ namespace TestSuite
             return def.Type;
         }
         
-        [Test]
         [TestCase("APP_LINKED", EventType.APP_LINKED)]
         public void In_DefIsInTypes(string name, params EventType[] types)
         {
@@ -79,7 +74,6 @@ namespace TestSuite
             Assert.IsTrue(result);
         }
 
-        [Test]
         [TestCase("APP_LINKED", EventType.APP_UNLINKED)]
         public void In_DefIsNotInTypes(string name, params EventType[] types)
         {
