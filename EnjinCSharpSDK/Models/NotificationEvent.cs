@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 [assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Models
@@ -36,23 +37,23 @@ namespace Enjin.SDK.Models
         /// Represents the deserialized data of the notification.
         /// </summary>
         /// <value>The data (lazy loaded).</value>
-        public JsonToken Data => _data.Value;
+        public JObject Data => _data.Value;
 
-        private readonly Lazy<JsonToken> _data;
+        private readonly Lazy<JObject> _data;
 
         internal NotificationEvent(EventType type, string channel, string message)
         {
             Type = type;
             Channel = channel ?? throw new ArgumentNullException(nameof(channel));
             Message = message ?? throw new ArgumentNullException(nameof(message));
-            _data = new Lazy<JsonToken>(CreateEventData);
+            _data = new Lazy<JObject>(CreateEventData);
         }
 
-        private JsonToken CreateEventData()
+        private JObject CreateEventData()
         {
             if (Message == null)
                 throw new InvalidOperationException("Cannot deserialize null message");
-            return JsonConvert.DeserializeObject<JsonToken>(Message);
+            return JsonConvert.DeserializeObject<JObject>(Message);
         }
     }
 }
