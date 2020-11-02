@@ -15,7 +15,7 @@ namespace Enjin.SDK.Events
             _appId = appId;
         }
 
-        public string Channel() => $"enjincloud.${_platform.Network.ToLower()}.app.${_appId}";
+        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.app.{_appId}";
     }
     
     internal sealed class PusherPlayerChannel : IChannel
@@ -31,7 +31,7 @@ namespace Enjin.SDK.Events
             _playerId = playerId;
         }
         
-        public string Channel() => $"$enjincloud.${_platform.Network.ToLower()}.app.${_appId}.player.${_playerId}";
+        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.app.{_appId}.player.{_playerId}";
     }
 
     internal sealed class PusherTokenChannel : IChannel
@@ -45,7 +45,7 @@ namespace Enjin.SDK.Events
             _tokenId = tokenId;
         }
 
-        public string Channel() => $"$enjincloud.${_platform.Network.ToLower()}.token.${_tokenId}";
+        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.token.{_tokenId}";
     }
     
     internal sealed class PusherWalletChannel : IChannel
@@ -59,6 +59,6 @@ namespace Enjin.SDK.Events
             _ethAddress = ethAddress;
         }
 
-        public string Channel() => $"$enjincloud.${_platform.Network.ToLower()}.wallet.${_ethAddress}";
+        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.wallet.{_ethAddress}";
     }
 }
