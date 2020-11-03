@@ -16,25 +16,25 @@ namespace Enjin.SDK.Models
         private string _id;
         
         [JsonProperty("id_in")]
-        private List<string> _idIn;
+        private List<string>? _idIn;
 
         [JsonProperty("transactionId")]
         private string _transactionId;
 
         [JsonProperty("transactionId_in")]
-        private List<string> _transactionIdIn;
+        private List<string>? _transactionIdIn;
 
         [JsonProperty("tokenId")]
         private string _tokenId;
 
         [JsonProperty("tokenId_in")]
-        private List<string> _tokenIdIn;
+        private List<string>? _tokenIdIn;
 
         [JsonProperty("type")]
         private RequestType _type;
 
         [JsonProperty("type_in")]
-        private List<RequestType> _typeIn;
+        private List<RequestType>? _typeIn;
 
         [JsonProperty("value")]
         private int _value;
@@ -55,13 +55,13 @@ namespace Enjin.SDK.Models
         private RequestState _state;
 
         [JsonProperty("state_in")]
-        private List<RequestState> _stateIn;
+        private List<RequestState>? _stateIn;
         
         [JsonProperty("wallet")]
         private string _wallet;
 
         [JsonProperty("wallet_in")]
-        private List<string> _walletIn;
+        private List<string>? _walletIn;
         
         /// <summary>
         /// Sets the ID to filter for.
@@ -79,9 +79,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="ids">The IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter IdIn(params string[] ids)
+        public TransactionFilter IdIn(params string[]? ids)
         {
-            _idIn = ids.ToList();
+            _idIn = ids?.ToList();
             return this;
         }
         
@@ -101,9 +101,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="transactionIds">The hash IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter TransactionIdIn(params string[] transactionIds)
+        public TransactionFilter TransactionIdIn(params string[]? transactionIds)
         {
-            _transactionIdIn = transactionIds.ToList();
+            _transactionIdIn = transactionIds?.ToList();
             return this;
         }
         
@@ -123,9 +123,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="tokenIds">The IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter TokenIdIn(params string[] tokenIds)
+        public TransactionFilter TokenIdIn(params string[]? tokenIds)
         {
-            _tokenIdIn = tokenIds.ToList();
+            _tokenIdIn = tokenIds?.ToList();
             return this;
         }
         
@@ -145,9 +145,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="types">The types.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter Types(params RequestType[] types)
+        public TransactionFilter Types(params RequestType[]? types)
         {
-            _typeIn = types.ToList();
+            _typeIn = types?.ToList();
             return this;
         }
         
@@ -222,9 +222,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="states">The states.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter StateIn(params RequestState[] states)
+        public TransactionFilter StateIn(params RequestState[]? states)
         {
-            _stateIn = states.ToList();
+            _stateIn = states?.ToList();
             return this;
         }
         
@@ -244,9 +244,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="wallets">The wallet addresses.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter WalletIn(params string[] wallets)
+        public TransactionFilter WalletIn(params string[]? wallets)
         {
-            _walletIn = wallets.ToList();
+            _walletIn = wallets?.ToList();
             return this;
         }
     }

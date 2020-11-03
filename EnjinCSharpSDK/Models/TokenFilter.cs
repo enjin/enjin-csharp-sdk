@@ -16,7 +16,7 @@ namespace Enjin.SDK.Models
         private string _id;
 
         [JsonProperty("id_in")]
-        private List<string> _idIn;
+        private List<string>? _idIn;
 
         [JsonProperty("name")]
         private string _name;
@@ -25,7 +25,7 @@ namespace Enjin.SDK.Models
         private string _nameContains;
 
         [JsonProperty("name_in")]
-        private List<string> _nameIn;
+        private List<string>? _nameIn;
 
         [JsonProperty("name_starts_with")]
         private string _nameStartsWith;
@@ -37,7 +37,7 @@ namespace Enjin.SDK.Models
         private string _wallet;
 
         [JsonProperty("wallet_in")]
-        private List<string> _walletIn;
+        private List<string>? _walletIn;
 
         /// <summary>
         /// Sets the token (item) ID to filter for.
@@ -55,9 +55,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="ids">The IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter IdIn(params string[] ids)
+        public TokenFilter IdIn(params string[]? ids)
         {
-            _idIn = ids.ToList();
+            _idIn = ids?.ToList();
             return this;
         }
 
@@ -88,9 +88,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="names">The names.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter NameIn(params string[] names)
+        public TokenFilter NameIn(params string[]? names)
         {
-            _nameIn = names.ToList();
+            _nameIn = names?.ToList();
             return this;
         }
 
@@ -132,9 +132,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="addresses">The wallet addresses.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter WalletIn(params string[] addresses)
+        public TokenFilter WalletIn(params string[]? addresses)
         {
-            _walletIn = addresses.ToList();
+            _walletIn = addresses?.ToList();
             return this;
         }
     }

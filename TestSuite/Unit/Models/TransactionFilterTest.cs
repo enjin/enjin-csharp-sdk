@@ -20,7 +20,7 @@ namespace TestSuite
             IDS.Add("3");
         }
 
-        [Theory]
+        [Test]
         public void IdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -68,7 +68,7 @@ namespace TestSuite
             Assert.Null(actual);
         }
 
-        [Theory]
+        [Test]
         public void TransactionIdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -116,7 +116,7 @@ namespace TestSuite
             Assert.Null(actual);
         }
         
-        [Theory]
+        [Test]
         public void TokenIdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -164,14 +164,14 @@ namespace TestSuite
             Assert.Null(actual);
         }
         
-        [Theory]
+        [Test]
         public void Types_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = (RequestType[]) Enum.GetValues(typeof(RequestType));
             var filter = new TestableTransactionFilter();
 
-            Assume.That(args.Length, Is.Not.Null.And.Not.Empty);
+            Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
             filter.Types(args);
@@ -212,7 +212,7 @@ namespace TestSuite
             Assert.Null(actual);
         }
         
-        [Theory]
+        [Test]
         public void StateIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
@@ -260,7 +260,7 @@ namespace TestSuite
             Assert.Null(actual);
         }
         
-        [Theory]
+        [Test]
         public void WalletIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange

@@ -15,7 +15,7 @@ namespace Enjin.SDK.Models
         [JsonProperty("id")]
         private string _id;
         [JsonProperty("id_in")]
-        private List<string> _idIn;
+        private List<string>? _idIn;
 
         /// <summary>
         /// Sets the player ID to filter for.
@@ -33,9 +33,9 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="ids">The player IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public PlayerFilter IdIn(params string[] ids)
+        public PlayerFilter IdIn(params string[]? ids)
         {
-            _idIn = ids.ToList();
+            _idIn = ids?.ToList();
             return this;
         }
     }

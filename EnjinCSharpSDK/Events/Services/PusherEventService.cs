@@ -112,7 +112,9 @@ namespace Enjin.SDK.Events
 
         private EventListenerRegistration Register(RegistrationListenerConfiguration configuration)
         {
-            return configuration.Create();
+            var config = configuration.Create();
+            RegisteredListeners.Add(config);
+            return config;
         }
 
         /// <inheritdoc/>

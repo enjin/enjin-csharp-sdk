@@ -19,7 +19,7 @@ namespace TestSuite
             IDS.Add("2");
         }
         
-        [Theory]
+        [Test]
         public void IdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange

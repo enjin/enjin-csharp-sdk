@@ -111,7 +111,7 @@ namespace Enjin.SDK.Events
 
         static EventTypeDef()
         {
-            foreach (var field in typeof(EventTypeDef).GetFields(BindingFlags.Public | BindingFlags.Static))
+            foreach (var field in typeof(EventTypeDef).GetFields(BindingFlags.NonPublic | BindingFlags.Static))
             {
                 var v = field.GetValue(null) as EventTypeDef;
                 if (v == null)
@@ -140,21 +140,10 @@ namespace Enjin.SDK.Events
 
         public static List<EventTypeDef> FilterByChannelTypes(params string[] channels)
         {
-            List<EventTypeDef> defs = new List<EventTypeDef>();
-
-            foreach (string channel in channels)
-            {
-                foreach (EventTypeDef def in Values())
-                {
-                    if (!def.Channels.Any(c => c.Equals(channel)))
-                        continue;
-
-                    defs.Add(def);
-                    break;
-                }
-            }
-
-            return defs;
+            return (from channel in channels
+                    from def in Values()
+                    where def.Channels.Any(c => c.EqualsIgnoreCase(channel))
+                    select def).ToList();
         }
 
         public static EventTypeDef GetFromName(string name)
