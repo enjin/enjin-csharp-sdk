@@ -169,6 +169,8 @@
 
     <ItemGroup>
         <Compile Remove="Events\IEventService.cs" />
+        <Compile Remove="Schemas\ProjectSchema\Mutations\UpdateName.cs" />
+        <Compile Remove="Schemas\ProjectSchema\Mutations\UnlinkPlayerWallet.cs" />
     </ItemGroup>
 
 </Project>

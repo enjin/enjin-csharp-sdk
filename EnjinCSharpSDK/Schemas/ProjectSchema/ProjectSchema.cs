@@ -143,21 +143,9 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<bool>> UnlinkPlayerWallet(UnlinkPlayerWallet request)
-        {
-            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
-        }
-
-        /// <inheritdoc/>
         public Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request)
         {
             return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
-        }
-
-        /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> UpdateName(UpdateName request)
-        {
-            return TransactionRequest(request);
         }
     }
 }

@@ -147,24 +147,10 @@ namespace Enjin.SDK.ProjectSchema
         Task<GraphqlResponse<Request>> SetWhitelisted(SetWhitelisted request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.UnlinkPlayerWallet"/> request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>The task.</returns>
-        Task<GraphqlResponse<bool>> UnlinkPlayerWallet(UnlinkPlayerWallet request);
-
-        /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.UnlinkWallet"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
         Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request);
-        
-        /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.UpdateName"/> request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> UpdateName(UpdateName request);
     }
 }
