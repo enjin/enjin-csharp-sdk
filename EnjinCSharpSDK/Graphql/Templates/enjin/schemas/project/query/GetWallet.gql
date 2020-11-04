@@ -2,7 +2,7 @@
 #import enjin.sdk.shared.Wallet
 
 #arg userId String
-#arg ethAddress String
+#arg ethAddress EthAddress
 
 query {
     result: GetWallet(

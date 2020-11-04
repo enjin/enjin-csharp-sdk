@@ -8,7 +8,7 @@
 #arg meltValue BigInt!
 #arg meltFeeRatio Int!
 #arg transferable TokenTransferable!
-#arg transferFeeSettings TokenTransferFeeSettingsInput!
+#arg transferFeeSettings TokenTransferFeeSettingsInput
 #arg nonFungible Boolean!
 #arg ethAddress EthAddress
 #arg test Boolean true

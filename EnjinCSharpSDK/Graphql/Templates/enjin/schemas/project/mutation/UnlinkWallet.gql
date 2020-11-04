@@ -1,6 +1,6 @@
 #namespace enjin.sdk.project.UnlinkWallet
 
-#arg ethAddress String!
+#arg ethAddress EthAddress!
 
 mutation {
     result: UnlinkWallet(

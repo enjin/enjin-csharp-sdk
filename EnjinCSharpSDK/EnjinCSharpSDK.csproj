@@ -135,7 +135,6 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetUri.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetWhitelisted.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UnlinkWallet.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\AuthPlayer.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\AuthProject.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetPlayer.gql" />

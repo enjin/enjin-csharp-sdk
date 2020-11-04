@@ -7,9 +7,9 @@
 
 fragment Player on Player {
     id
-    linkingInfo @include(if: $withLinkingInfo) {
-        linkingCode
-        linkingCodeQr(size: $linkingCodeQrSize)
+    linkingInfo(qrSize: $linkingCodeQrSize) @include(if: $withLinkingInfo) {
+        code
+        qr
     }
     wallet @include(if: $withPlayerWallet) {
         ...Wallet
