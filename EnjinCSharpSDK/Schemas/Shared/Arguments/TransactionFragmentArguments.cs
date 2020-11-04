@@ -123,9 +123,35 @@ namespace Enjin.SDK.Shared
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="WithReceiptLogs{T}"/>
         public static T WithReceipt<T>(this T instance) where T : IVariableHolder<T>
         {
             return instance.SetVariable("withReceipt", true);
+        }
+
+        /// <summary>
+        /// Sets the request to include the logs in the receipt with the transaction when used with
+        /// <see cref="WithReceipt{T}"/>.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="WithLogEvent{T}"/>
+        public static T WithReceiptLogs<T>(this T instance) where T : IVariableHolder<T>
+        {
+            return instance.SetVariable("withReceiptLogs", true);
+        }
+
+        /// <summary>
+        /// Sets the request to include the event data in the receipt logs when used with
+        /// <see cref="WithReceiptLogs{T}"/>.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        public static T WithLogEvent<T>(this T instance) where T : IVariableHolder<T>
+        {
+            return instance.SetVariable("withLogEvent", true);
         }
     }
 }

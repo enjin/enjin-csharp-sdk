@@ -46,13 +46,6 @@ namespace Enjin.SDK.Models
         public RequestType Type { get; private set; }
         
         /// <summary>
-        /// Represents the URL to the icon for this transaction.
-        /// </summary>
-        /// <value>The URL.</value>
-        [JsonProperty("icon")]
-        public string? Icon { get; private set; }
-        
-        /// <summary>
         /// Represents the value of this transaction.
         /// </summary>
         /// <value>The value.</value>
