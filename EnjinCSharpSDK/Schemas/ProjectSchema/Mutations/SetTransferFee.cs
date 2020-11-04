@@ -1,5 +1,4 @@
 using Enjin.SDK.Graphql;
-using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
@@ -40,13 +39,13 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the transfer fee settings.
+        /// Sets the new transfer fee value in Wei.
         /// </summary>
-        /// <param name="transferFeeSettings">The settings.</param>
+        /// <param name="transferFee">The new transfer fee.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferFee TransferFeeSettings(TokenTransferFeeSettingsInput transferFeeSettings)
+        public SetTransferFee TransferFee(string transferFee)
         {
-            return SetVariable("transferFeeSettings", transferFeeSettings);
+            return SetVariable("transferFee", transferFee);
         }
     }
 }
