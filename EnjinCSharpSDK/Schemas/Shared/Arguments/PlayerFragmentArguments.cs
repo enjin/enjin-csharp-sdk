@@ -9,7 +9,7 @@ namespace Enjin.SDK.Shared
     /// <typeparam name="T">The type of the implementing class.</typeparam>
     /// <seealso cref="Enjin.SDK.Models.Player"/>
     [PublicAPI]
-    public interface IPlayerFragmentArguments<out T> : IVariableHolder<T>
+    public interface IPlayerFragmentArguments<out T> : IWalletFragmentArguments<T>
     {
     }
 
