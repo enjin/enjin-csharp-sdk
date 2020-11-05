@@ -129,73 +129,73 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public void SubscribeToApp(int app)
         {
-            Subscribe(new PusherAppChannel(Platform, app).Channel());
+            Subscribe(new AppChannel(Platform, app).Channel());
         }
 
         /// <inheritdoc/>
         public void UnsubscribeToApp(int app)
         {
-            Unsubscribe(new PusherAppChannel(Platform, app).Channel());
+            Unsubscribe(new AppChannel(Platform, app).Channel());
         }
 
         /// <inheritdoc/>
         public bool IsSubscribedToApp(int app)
         {
-            return _subscribed.ContainsKey(new PusherAppChannel(Platform, app).Channel());
+            return _subscribed.ContainsKey(new AppChannel(Platform, app).Channel());
         }
 
         /// <inheritdoc/>
         public void SubscribeToPlayer(int app, string player)
         {
-            Subscribe(new PusherPlayerChannel(Platform, app, player).Channel());
+            Subscribe(new PlayerChannel(Platform, app, player).Channel());
         }
 
         /// <inheritdoc/>
         public void UnsubscribeToPlayer(int app, string player)
         {
-            Unsubscribe(new PusherPlayerChannel(Platform, app, player).Channel());
+            Unsubscribe(new PlayerChannel(Platform, app, player).Channel());
         }
 
         /// <inheritdoc/>
         public bool IsSubscribedToPlayer(int app, string player)
         {
-            return _subscribed.ContainsKey(new PusherPlayerChannel(Platform, app, player).Channel());
+            return _subscribed.ContainsKey(new PlayerChannel(Platform, app, player).Channel());
         }
 
         /// <inheritdoc/>
         public void SubscribeToToken(string token)
         {
-            Subscribe(new PusherTokenChannel(Platform, token).Channel());
+            Subscribe(new TokenChannel(Platform, token).Channel());
         }
 
         /// <inheritdoc/>
         public void UnsubscribeToToken(string token)
         {
-            Unsubscribe(new PusherTokenChannel(Platform, token).Channel());
+            Unsubscribe(new TokenChannel(Platform, token).Channel());
         }
 
         /// <inheritdoc/>
         public bool IsSubscribedToToken(string token)
         {
-            return _subscribed.ContainsKey(new PusherTokenChannel(Platform, token).Channel());
+            return _subscribed.ContainsKey(new TokenChannel(Platform, token).Channel());
         }
 
         /// <inheritdoc/>
         public void SubscribeToWallet(string wallet)
         {
-            Subscribe(new PusherWalletChannel(Platform, wallet).Channel());
+            Subscribe(new WalletChannel(Platform, wallet).Channel());
         }
 
         /// <inheritdoc/>
         public void UnsubscribeToWallet(string wallet)
         {
-            Unsubscribe(new PusherWalletChannel(Platform, wallet).Channel());
+            Unsubscribe(new WalletChannel(Platform, wallet).Channel());
         }
 
         /// <inheritdoc/>
         public bool IsSubscribedToWallet(string wallet)
         {
-            return _subscribed.ContainsKey(new PusherWalletChannel(Platform, wallet).Channel());
+            return _subscribed.ContainsKey(new WalletChannel(Platform, wallet).Channel());
         }
 
         private void Subscribe(string channel)
