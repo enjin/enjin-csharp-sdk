@@ -1,4 +1,5 @@
-using System;
+using System.Collections.Generic;
+using Enjin.SDK.Models;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -9,7 +10,8 @@ namespace Enjin.SDK.Graphql
     /// Models the body of a GraphQL response.
     /// </summary>
     /// <typeparam name="T">The model of the data field.</typeparam>
-    public class GraphqlResponse<T> : Exception
+    [PublicAPI]
+    public class GraphqlResponse<T>
     {
         /// <summary>
         /// Represents the result of this response.
@@ -21,28 +23,56 @@ namespace Enjin.SDK.Graphql
         /// Represents the errors of this response if any exist.
         /// </summary>
         /// <value>The errors.</value>
-        public JToken Errors { get; private set; }
+        public List<GraphqlError>? Errors { get; private set; }
+        
+        /// <summary>
+        /// Represents the pagination cursor.
+        /// </summary>
+        /// <value>The cursor.</value>
+        public PaginationCursor? Cursor { get; private set; }
+
+        /// <summary>
+        /// Represents whether the response has errors.
+        /// </summary>
+        /// <value>Whether the response has errors.</value>
+        public bool HasErrors => Errors != null && Errors.Count != 0;
+
+        /// <summary>
+        /// Represents whether the response has a result or not.
+        /// </summary>
+        /// <value>Whether the result is <c>null</c>.</value>
+        public bool IsEmpty => Result == null;
+        
+        /// <summary>
+        /// Represents whether the response is paginated or not.
+        /// </summary>
+        /// <value>Whether the response is paginated.</value>
+        public bool IsPaginated => Cursor != null;
+
+        /// <summary>
+        /// Represents whether the response is successful.
+        /// </summary>
+        /// <value>Whether the response is successful.</value>
+        /// <remarks>
+        /// A response is considered successful if it has no errors and is not empty.
+        /// </remarks>
+        public bool IsSuccess => !(IsEmpty || HasErrors);
         
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        /// <param name="data">The data container.</param>
+        /// <param name="data">The deserialized response data.</param>
         /// <param name="errors">The serialized errors.</param>
         [JsonConstructor]
-        public GraphqlResponse(GraphqlData<T> data, JToken errors)
+        public GraphqlResponse(GraphqlData<T> data, List<GraphqlError>? errors)
         {
             if (data != null)
+            {
                 Result = data.Result;
-            Errors = errors;
-        }
+                Cursor = data.Cursor;
+            }
 
-        /// <summary>
-        /// Determines if the response has errors on not.
-        /// </summary>
-        /// <returns>Whether the response has errors.</returns>
-        public bool HasErrors()
-        {
-            return Errors != null && Errors.Type == JTokenType.Array;
+            Errors = errors;
         }
 
         /// <summary>
@@ -52,7 +82,7 @@ namespace Enjin.SDK.Graphql
         /// <returns>The string representing the response.</returns>
         public override string ToString()
         {
-            return HasErrors() ? $"{nameof(Errors)}: {Errors}" : $"{nameof(Result)}: {Result}";
+            return HasErrors ? $"{nameof(Errors)}: {Errors}" : $"{nameof(Result)}: {Result}";
         }
     }
 
@@ -71,6 +101,12 @@ namespace Enjin.SDK.Graphql
         /// </summary>
         /// <value>The result.</value>
         public T Result { get; private set; }
+        
+        /// <summary>
+        /// Represents the deserialized cursor.
+        /// </summary>
+        /// <value>The cursor.</value>
+        public PaginationCursor? Cursor { get; private set; }
 
         /// <summary>
         /// Sole constructor.
@@ -113,7 +149,7 @@ namespace Enjin.SDK.Graphql
                 }
                 
                 if (result.ContainsKey(CursorKey))
-                    return; // TODO: Create Cursor type and deserialize.
+                    Cursor = result[CursorKey].ToObject<PaginationCursor>();
             }
             else
             {
