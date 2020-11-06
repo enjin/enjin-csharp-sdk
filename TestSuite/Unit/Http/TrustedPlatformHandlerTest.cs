@@ -55,6 +55,32 @@ namespace TestSuite
             Assert.IsNull(request.Headers.Authorization);
         }
 
+        [Test]
+        public void IsAuthenticated_ValidAuthToken_ReturnsTrue()
+        {
+            // Arrange
+            ClassUnderTest.AuthToken = "xyz";
+
+            // Act
+            var actual = ClassUnderTest.IsAuthenticated;
+
+            // Assert
+            Assert.IsTrue(actual);
+        }
+        
+        [Test]
+        public void IsAuthenticated_AuthTokenIsNullOrWhiteSpace_ReturnsFalse([Values("", "   ", null)] string token)
+        {
+            // Arrange
+            ClassUnderTest.AuthToken = token;
+
+            // Act
+            var actual = ClassUnderTest.IsAuthenticated;
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+
         private class TestableTrustedPlatformHandler : TrustedPlatformHandler
         {
             public TestableTrustedPlatformHandler(HttpMessageHandler innerHandler) : base(innerHandler)
