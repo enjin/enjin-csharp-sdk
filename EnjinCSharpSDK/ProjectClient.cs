@@ -24,9 +24,19 @@ namespace Enjin.SDK
         public bool IsAuthenticated => Middleware.HttpHandler.IsAuthenticated;
 
         /// <inheritdoc/>
+        public bool IsClosed { get; private set; }
+        
+        /// <inheritdoc/>
         public void Auth(string? token)
         {
             Middleware.HttpHandler.AuthToken = token;
+        }
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            Middleware.HttpClient.Dispose();
+            IsClosed = true;
         }
     }
 }
