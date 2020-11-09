@@ -4,7 +4,7 @@
 #arg recipientAddress EthAddress!
 #arg tokenId String!
 #arg tokenIndex String
-#arg value BigInt!
+#arg value BigInt
 #arg data String
 #arg ethAddress EthAddress
 #arg test Boolean true

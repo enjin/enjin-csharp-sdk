@@ -1,7 +1,7 @@
 #namespace enjin.sdk.shared.MeltToken
 #import enjin.sdk.shared.Transaction
 
-#arg melts [MeltInput]!
+#arg melts [MeltInput!]!
 #arg ethAddress EthAddress
 #arg test Boolean true
 #arg send Boolean true

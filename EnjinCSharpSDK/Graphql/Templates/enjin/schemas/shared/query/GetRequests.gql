@@ -3,7 +3,7 @@
 #import enjin.sdk.shared.PaginationCursor
 
 #arg filter TransactionFilter
-#arg sort TransactionSortInput
+#arg sort TransactionSortInput {field:created_at,direction:asc}
 #arg pagination PaginationInput {page:1,limit:100}
 
 query {

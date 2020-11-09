@@ -1,107 +1,40 @@
-﻿using Enjin.SDK.Graphql;
+﻿using System.Collections.Generic;
+using Enjin.SDK.Graphql;
+using Enjin.SDK.Models;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
+using TestSuite.Utils;
 
 namespace TestSuite
 {
     [TestFixture]
     public class GraphqlResponseTest
     {
-        private static readonly GraphqlData<object> DEFAULT_DATA =
-            new GraphqlData<object>(JObject.FromObject(new object()));
+        private static readonly DummyObject DEFAULT_RESULT = DummyObject.CreateDefault();
+        private static readonly List<DummyObject> DEFAULT_ITEMS = new List<DummyObject>();
+        private static readonly List<GraphqlError> DEFAULT_ERRORS = new List<GraphqlError>();
+        private static readonly PaginationCursor DEFAULT_CURSOR = new PaginationCursor();
 
-        private static readonly JToken DEFAULT_ERRORS = new JArray();
-
-        [Test]
-        public void Constructor_NonNullDataNonNullErrors_DoesNotThrowException()
+        [OneTimeSetUp]
+        public static void BeforeAll()
         {
-            // Assert
-            Assert.DoesNotThrow(() => new GraphqlResponse<object>(DEFAULT_DATA, DEFAULT_ERRORS));
-        }
-
-        [Test]
-        public void Constructor_NonNullDataNullErrors_DoesNotThrowException()
-        {
-            // Assert
-            Assert.DoesNotThrow(() => new GraphqlResponse<object>(DEFAULT_DATA, null));
-        }
-
-        [Test]
-        public void Constructor_NullDataNonNullErrors_DoesNotThrowException()
-        {
-            // Assert
-            Assert.DoesNotThrow(() => new GraphqlResponse<object>(null, DEFAULT_ERRORS));
-        }
-
-        [Test]
-        public void Constructor_NullDataNullErrors_DoesNotThrowException()
-        {
-            // Assert
-            Assert.DoesNotThrow(() => new GraphqlResponse<object>(null, null));
-        }
-
-        [Test]
-        public void Result_NonNullResultInData_GetsValue()
-        {
-            // Arrange
-            var expected = DEFAULT_DATA.Result;
-            var response = new GraphqlResponse<object>(DEFAULT_DATA, DEFAULT_ERRORS);
-
-            // Act
-            var actual = response.Result;
-
-            // Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        public void Result_NullData_GetsValue()
-        {
-            // Arrange
-            var response = new GraphqlResponse<object>(null, DEFAULT_ERRORS);
-
-            // Act
-            var actual = response.Result;
-
-            // Assert
-            Assert.IsNull(actual);
-        }
-
-        [Test]
-        public void Errors_NonNullErrors_GetsValue()
-        {
-            // Arrange
-            var expected = DEFAULT_ERRORS;
-            var response = new GraphqlResponse<object>(DEFAULT_DATA, expected);
-
-            // Act
-            var actual = response.Errors;
-
-            // Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        public void Errors_NullErrors_GetsValue()
-        {
-            // Arrange
-            var response = new GraphqlResponse<object>(DEFAULT_DATA, null);
-
-            // Act
-            var actual = response.Errors;
-
-            // Assert
-            Assert.IsNull(actual);
+            DEFAULT_ITEMS.Add(new DummyObject(1));
+            DEFAULT_ITEMS.Add(new DummyObject(2));
+            DEFAULT_ITEMS.Add(new DummyObject(3));
+            DEFAULT_ERRORS.Add(new GraphqlError());
+            DEFAULT_ERRORS.Add(new GraphqlError());
+            DEFAULT_ERRORS.Add(new GraphqlError());
         }
 
         [Test]
         public void HasErrors_ErrorsArePresent_ReturnsTrue()
         {
             // Arrange
-            var response = new GraphqlResponse<object>(DEFAULT_DATA, DEFAULT_ERRORS);
+            var data = new GraphqlData<DummyObject>(JToken.Parse(@"null"));
+            var response = new GraphqlResponse<DummyObject>(data, DEFAULT_ERRORS);
 
             // Act
-            var actual = response.HasErrors();
+            var actual = response.HasErrors;
 
             // Assert
             Assert.IsTrue(actual);
@@ -111,10 +44,124 @@ namespace TestSuite
         public void HasErrors_ErrorsAreNotPresent_ReturnsFalse()
         {
             // Arrange
-            var response = new GraphqlResponse<object>(DEFAULT_DATA, null);
+            var data = new GraphqlData<DummyObject>(JToken.FromObject(DEFAULT_RESULT));
+            var response = new GraphqlResponse<DummyObject>(data, null);
 
             // Act
-            var actual = response.HasErrors();
+            var actual = response.HasErrors;
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+        
+        [Test]
+        public void HasErrors_ErrorsAreEmpty_ReturnsFalse()
+        {
+            // Arrange
+            var data = new GraphqlData<DummyObject>(JToken.Parse(@"null"));
+            var response = new GraphqlResponse<DummyObject>(data, new List<GraphqlError>());
+
+            // Act
+            var actual = response.HasErrors;
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+
+        [Test]
+        public void IsEmpty_ReturnsTrue()
+        {
+            // Arrange
+            var data = new GraphqlData<DummyObject>(JToken.Parse(@"null"));
+            var response = new GraphqlResponse<DummyObject>(data, null);
+
+            // Act
+            var actual = response.IsEmpty;
+
+            // Assert
+            Assert.IsTrue(actual);
+        }
+        
+        [Test]
+        public void IsEmpty_ReturnsFalse()
+        {
+            // Arrange
+            var data = new GraphqlData<DummyObject>(JToken.FromObject(DEFAULT_RESULT));
+            var response = new GraphqlResponse<DummyObject>(data, null);
+
+            // Act
+            var actual = response.IsEmpty;
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+
+        [Test]
+        public void IsPaginated_ReturnsTrue()
+        {
+            // Arrange
+            var resultString = $"{{\"items\": {JToken.FromObject(DEFAULT_ITEMS)}, \"cursor\": {JToken.FromObject(DEFAULT_CURSOR)}}}";
+            var data = new GraphqlData<List<DummyObject>>(JToken.Parse(resultString));
+            var response = new GraphqlResponse<List<DummyObject>>(data, null);
+
+            // Act
+            var actual = response.IsPaginated;
+
+            // Assert
+            Assert.IsTrue(actual);
+        }
+        
+        [Test]
+        public void IsPaginated_CursorNotIn_ReturnsFalse()
+        {
+            // Arrange
+            var data = new GraphqlData<DummyObject>(JToken.FromObject(DEFAULT_RESULT));
+            var response = new GraphqlResponse<DummyObject>(data, null);
+
+            // Act
+            var actual = response.IsPaginated;
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+        
+        [Test]
+        public void IsSuccess_NoErrorsAndIsNotEmpty_ReturnsTrue()
+        {
+            // Arrange
+            var data = new GraphqlData<DummyObject>(JToken.FromObject(DEFAULT_RESULT));
+            var response = new GraphqlResponse<DummyObject>(data, null);
+
+            // Act
+            var actual = response.IsSuccess;
+
+            // Assert
+            Assert.IsTrue(actual);
+        }
+
+        [Test]
+        public void IsSuccess_HasErrorsAndIsEmpty_ReturnsFalse()
+        {
+            // Arrange
+            var data = new GraphqlData<DummyObject>(JToken.Parse(@"null"));
+            var response = new GraphqlResponse<DummyObject>(data, DEFAULT_ERRORS);
+
+            // Act
+            var actual = response.IsSuccess;
+
+            // Assert
+            Assert.IsFalse(actual);
+        }
+        
+        [Test]
+        public void IsSuccess_HasErrorsAndIsNotEmpty_ReturnsFalse()
+        {
+            // Arrange
+            var data = new GraphqlData<DummyObject>(JToken.FromObject(DEFAULT_RESULT));
+            var response = new GraphqlResponse<DummyObject>(data, DEFAULT_ERRORS);
+
+            // Act
+            var actual = response.IsSuccess;
 
             // Assert
             Assert.IsFalse(actual);
@@ -124,8 +171,9 @@ namespace TestSuite
         public void ToString_DoesNotHaveErrors_ReturnsStringContainingResult()
         {
             // Arrange
-            var expected = $"Result: {DEFAULT_DATA.Result}";
-            var response = new GraphqlResponse<object>(DEFAULT_DATA, null);
+            var expected = $"Result: {DEFAULT_RESULT}";
+            var data = new GraphqlData<DummyObject>(JToken.FromObject(DEFAULT_RESULT));
+            var response = new GraphqlResponse<DummyObject>(data, null);
 
             // Act
             var actual = response.ToString();
@@ -139,7 +187,8 @@ namespace TestSuite
         {
             // Arrange
             var expected = $"Errors: {DEFAULT_ERRORS}";
-            var response = new GraphqlResponse<object>(DEFAULT_DATA, DEFAULT_ERRORS);
+            var data = new GraphqlData<DummyObject>(JToken.Parse(@"null"));
+            var response = new GraphqlResponse<DummyObject>(data, DEFAULT_ERRORS);
 
             // Act
             var actual = response.ToString();

@@ -43,7 +43,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The receipt.</value>
         [JsonProperty("receipt")]
-        public JObject? Receipt { get; private set; }
+        public TransactionReceipt? Receipt { get; private set; }
         
         /// <summary>
         /// Represents the error message for the transaction this data applies to, if one exists.

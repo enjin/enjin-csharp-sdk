@@ -21,5 +21,10 @@ namespace TestSuite.Utils
         {
             return Integer;
         }
+
+        public static DummyObject CreateDefault()
+        {
+            return new DummyObject(0);
+        }
     }
 }

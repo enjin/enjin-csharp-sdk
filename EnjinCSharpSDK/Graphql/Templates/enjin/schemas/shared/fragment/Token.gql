@@ -6,7 +6,6 @@
 #arg withTokenBlocks Boolean false
 #arg withCreator Boolean false
 #arg withMeltDetails Boolean false
-#arg withMetadata Boolean false
 #arg withMetadataURI Boolean false
 #arg withSupplyDetails Boolean false
 #arg withTransferSettings Boolean false

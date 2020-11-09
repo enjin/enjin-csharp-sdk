@@ -9,6 +9,8 @@
 #arg withNonce Boolean false
 #arg withState Boolean false
 #arg withReceipt Boolean false
+#arg withReceiptLogs Boolean false
+#arg withLogEvent Boolean false
 
 fragment Transaction on Transaction {
     id
@@ -16,7 +18,6 @@ fragment Transaction on Transaction {
     title @include(if: $withMeta)
     contract @include(if: $withMeta)
     type
-    icon @include(if: $withMeta)
     value @include(if: $withTokenData)
     retryState @include(if: $withState)
     state @include(if: $withState)
@@ -26,7 +27,32 @@ fragment Transaction on Transaction {
         signedTransaction @include(if: $withSignedTxs)
         signedBackupTransaction @include(if: $withSignedTxs)
         signedCancelTransaction @include(if: $withSignedTxs)
-        receipt @include(if: $withReceipt)
+        receipt @include(if: $withReceipt) {
+            blockHash
+            blockNumber
+            cumulativeGasUsed
+            gasUsed
+            from
+            to
+            transactionHash
+            transactionIndex
+            status
+            logs @include(if: $withReceiptLogs) {
+                blockNumber
+                address
+                transactionHash
+                data
+                topics
+                event @include(if: $withLogEvent) {
+                    name
+                    inputs
+                    nonIndexedInputs
+                    indexedInputs
+                    signature
+                    encodedSignature
+                }
+            }
+        }
         error @include(if: $withError)
         nonce @include(if: $withNonce)
     }

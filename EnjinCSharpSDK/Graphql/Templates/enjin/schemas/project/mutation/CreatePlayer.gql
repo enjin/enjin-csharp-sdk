@@ -1,6 +1,6 @@
 #namespace enjin.sdk.project.CreatePlayer
 
-#arg id String
+#arg id String!
 
 mutation {
     result: CreatePlayer(

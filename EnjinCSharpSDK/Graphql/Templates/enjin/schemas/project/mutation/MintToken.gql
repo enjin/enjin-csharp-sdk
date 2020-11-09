@@ -2,7 +2,7 @@
 #import enjin.sdk.shared.Transaction
 
 #arg tokenId String!
-#arg mints [MintInput]!
+#arg mints [MintInput!]!
 #arg ethAddress EthAddress
 #arg test Boolean true
 #arg send Boolean true

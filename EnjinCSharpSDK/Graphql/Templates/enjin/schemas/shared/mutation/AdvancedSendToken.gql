@@ -1,7 +1,7 @@
 #namespace enjin.sdk.shared.AdvancedSendToken
 #import enjin.sdk.shared.Transaction
 
-#arg transfers [TransferInput]!
+#arg transfers [TransferInput!]!
 #arg data String
 #arg ethAddress EthAddress
 #arg test Boolean true

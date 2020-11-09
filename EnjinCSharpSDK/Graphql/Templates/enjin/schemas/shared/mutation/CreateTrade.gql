@@ -1,8 +1,8 @@
 #namespace enjin.sdk.shared.CreateTrade
 #import enjin.sdk.shared.Transaction
 
-#arg askingTokens [TradeInput]!
-#arg offeringTokens [TradeInput]!
+#arg askingTokens [TradeInput!]!
+#arg offeringTokens [TradeInput!]!
 #arg recipientAddress EthAddress!
 #arg ethAddress EthAddress
 #arg test Boolean true

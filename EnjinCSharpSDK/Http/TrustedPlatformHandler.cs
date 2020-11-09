@@ -10,7 +10,7 @@ namespace Enjin.SDK.Http
     /// </summary>
     public class TrustedPlatformHandler : DelegatingHandler
     {
-        private string _authToken;
+        private string? _authToken;
 
         /// <summary>
         /// Constructs the handler with an optional inner handler.
@@ -25,10 +25,16 @@ namespace Enjin.SDK.Http
         /// Represents the authentication token for the SDK.
         /// </summary>
         /// <value>The auth token.</value>
-        public string AuthToken
+        public string? AuthToken
         {
             set => _authToken = value;
         }
+
+        /// <summary>
+        /// Represents if the SDK is authenticated.
+        /// </summary>
+        /// <value>Whether the SDK is authenticated.</value>
+        public bool IsAuthenticated => !string.IsNullOrWhiteSpace(_authToken);
 
         /// <inheritdoc/>
         protected override async Task<HttpResponseMessage> SendAsync(
@@ -36,7 +42,7 @@ namespace Enjin.SDK.Http
             CancellationToken cancellationToken
         )
         {
-            if (!string.IsNullOrWhiteSpace(_authToken))
+            if (IsAuthenticated)
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _authToken);
             }

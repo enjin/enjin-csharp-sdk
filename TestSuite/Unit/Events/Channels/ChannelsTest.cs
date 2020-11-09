@@ -16,7 +16,7 @@ namespace TestSuite
             const string expected = "enjincloud.test.app.1234";
             const int app = 1234;
             var fakePlatform = CreateFakePlatform(DefaultPlatformName);
-            var channel = new PusherAppChannel(fakePlatform, app);
+            var channel = new AppChannel(fakePlatform, app);
 
             // Act
             var actual = channel.Channel();
@@ -33,7 +33,7 @@ namespace TestSuite
             const int app = 1234;
             const string player = "player1";
             var fakePlatform = CreateFakePlatform(DefaultPlatformName);
-            var channel = new PusherPlayerChannel(fakePlatform, app, player);
+            var channel = new PlayerChannel(fakePlatform, app, player);
 
             // Act
             var actual = channel.Channel();
@@ -49,7 +49,7 @@ namespace TestSuite
             const string expected = "enjincloud.test.token.0";
             const string token = "0";
             var fakePlatform = CreateFakePlatform(DefaultPlatformName);
-            var channel = new PusherTokenChannel(fakePlatform, token);
+            var channel = new TokenChannel(fakePlatform, token);
 
             // Act
             var actual = channel.Channel();
@@ -65,7 +65,7 @@ namespace TestSuite
             const string expected = "enjincloud.test.wallet.0";
             const string wallet = "0";
             var fakePlatform = CreateFakePlatform(DefaultPlatformName);
-            var channel = new PusherWalletChannel(fakePlatform, wallet);
+            var channel = new WalletChannel(fakePlatform, wallet);
 
             // Act
             var actual = channel.Channel();

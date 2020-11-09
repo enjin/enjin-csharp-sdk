@@ -30,7 +30,6 @@ namespace Enjin.SDK.Shared
             return instance.SetVariable("ethAddress", ethAddress);
         }
         
-        //TODO: Switch parameter from string to bool.
         /// <summary>
         /// Sets whether the request will test the transaction before creating it.
         /// </summary>
@@ -42,12 +41,11 @@ namespace Enjin.SDK.Shared
         /// Setting this to false will skip checks on the platform, but may run the risk of losing gas fees if the
         /// transaction fails on the blockchain.
         /// </remarks>
-        public static T Test<T>(this T instance, string test) where T : ITransactionRequestArguments<T>
+        public static T Test<T>(this T instance, bool test) where T : ITransactionRequestArguments<T>
         {
             return instance.SetVariable("test", test);
         }
         
-        //TODO: Switch parameter from string to bool.
         /// <summary>
         /// Sets whether the request will send the transaction to the blockchain.
         /// </summary>
@@ -58,7 +56,7 @@ namespace Enjin.SDK.Shared
         /// <remarks>
         /// Setting this to false allows for arguments to be tried out without hitting the blockchain.
         /// </remarks>
-        public static T Send<T>(this T instance, string send) where T : ITransactionRequestArguments<T>
+        public static T Send<T>(this T instance, bool send) where T : ITransactionRequestArguments<T>
         {
             return instance.SetVariable("send", send);
         }

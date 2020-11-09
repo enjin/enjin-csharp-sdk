@@ -150,7 +150,7 @@ namespace TestSuite
             var actual = response.Result;
 
             // Assert
-            Assert.IsFalse(response.HasErrors());
+            Assert.IsFalse(response.HasErrors);
             Assert.AreEqual(expected, actual);
         }
 
@@ -173,7 +173,7 @@ namespace TestSuite
             var response = await TestableBaseSchema.SendRequest(taskIn);
 
             // Assert
-            Assert.IsTrue(response.HasErrors());
+            Assert.IsTrue(response.HasErrors);
         }
 
         private static IGraphqlRequest CreateValidRequest() => new GetPlatform();

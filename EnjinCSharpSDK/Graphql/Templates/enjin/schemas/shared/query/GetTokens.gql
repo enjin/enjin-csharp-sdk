@@ -3,7 +3,7 @@
 #import enjin.sdk.shared.PaginationCursor
 
 #arg filter TokenFilter
-#arg sort TokenSortInput
+#arg sort TokenSortInput {field:id,direction:asc}
 #arg pagination PaginationInput {page:1,limit:100}
 
 query {
