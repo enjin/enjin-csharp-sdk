@@ -1,19 +1,19 @@
-#namespace enjin.sdk.shared.GetTokens
-#import enjin.sdk.shared.Token
+#namespace enjin.sdk.shared.GetAssets
+#import enjin.sdk.shared.Asset
 #import enjin.sdk.shared.PaginationCursor
 
-#arg filter TokenFilter
-#arg sort TokenSortInput {field:id,direction:asc}
+#arg filter AssetFilter
+#arg sort AssetSortInput {field:id,direction:asc}
 #arg pagination PaginationInput {page:1,limit:100}
 
 query {
-    result: GetTokens(
+    result: GetAssets(
         filter: $filter,
         sort: $sort,
         pagination: $pagination
     ) {
         items {
-            ...Token
+            ...Asset
         }
         cursor {
             ...PaginationCursor

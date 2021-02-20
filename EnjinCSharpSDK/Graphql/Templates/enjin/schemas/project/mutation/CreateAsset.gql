@@ -1,21 +1,20 @@
-#namespace enjin.sdk.project.CreateToken
+#namespace enjin.sdk.project.CreateAsset
 #import enjin.sdk.shared.Transaction
 
 #arg name String!
 #arg totalSupply BigInt!
 #arg initialReserve BigInt!
-#arg supplyModel TokenSupplyModel!
+#arg supplyModel AssetSupplyModel!
 #arg meltValue BigInt!
 #arg meltFeeRatio Int!
-#arg transferable TokenTransferable!
-#arg transferFeeSettings TokenTransferFeeSettingsInput
+#arg transferable AssetTransferable!
+#arg transferFeeSettings AssetTransferFeeSettingsInput
 #arg nonFungible Boolean!
 #arg ethAddress EthAddress
-#arg test Boolean true
 #arg send Boolean true
 
 mutation {
-    result: CreateToken(
+    result: CreateAsset(
         name: $name,
         totalSupply: $totalSupply,
         initialReserve: $initialReserve,
@@ -26,7 +25,6 @@ mutation {
         transferFeeSettings: $transferFeeSettings,
         nonFungible: $nonFungible,
         wallet: $ethAddress,
-        test: $test,
         send: $send
     ) {
         ...Transaction

@@ -1,20 +1,18 @@
 #namespace enjin.sdk.project.SetUri
 #import enjin.sdk.shared.Transaction
 
-#arg tokenId String!
-#arg tokenIndex String
+#arg assetId String!
+#arg assetIndex String
 #arg uri String
 #arg ethAddress EthAddress
-#arg test Boolean true
 #arg send Boolean true
 
 mutation {
     result: SetUri(
-        tokenId: $tokenId,
-        tokenIndex: $tokenIndex,
+        assetId: $assetId,
+        assetIndex: $assetIndex,
         uri: $uri,
         wallet: $ethAddress,
-        test: $test,
         send: $send
     ) {
         ...Transaction

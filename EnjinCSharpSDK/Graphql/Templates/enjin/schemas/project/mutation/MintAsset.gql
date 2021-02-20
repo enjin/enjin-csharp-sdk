@@ -1,16 +1,16 @@
-#namespace enjin.sdk.shared.MeltToken
+#namespace enjin.sdk.project.MintAsset
 #import enjin.sdk.shared.Transaction
 
-#arg melts [MeltInput!]!
+#arg assetId String!
+#arg mints [MintInput!]!
 #arg ethAddress EthAddress
-#arg test Boolean true
 #arg send Boolean true
 
 mutation {
-    result: MeltToken(
-        melts: $melts,
+    result: MintAsset(
+        assetId: $assetId,
+        mints: $mints,
         wallet: $ethAddress,
-        test: $test,
         send: $send
     ) {
         ...Transaction

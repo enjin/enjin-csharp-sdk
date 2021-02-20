@@ -1,13 +1,13 @@
-#namespace enjin.sdk.shared.ApproveEnj
+#namespace enjin.sdk.shared.MeltAsset
 #import enjin.sdk.shared.Transaction
 
-#arg value BigInt!
+#arg melts [MeltInput!]!
 #arg ethAddress EthAddress
 #arg send Boolean true
 
 mutation {
-    result: ApproveEnj(
-        value: $value,
+    result: MeltAsset(
+        melts: $melts,
         wallet: $ethAddress,
         send: $send
     ) {

@@ -4,7 +4,7 @@
 #arg secret String!
 
 query {
-    result: AuthApp(
+    result: AuthProject(
         id: $id,
         secret: $secret
     ) {

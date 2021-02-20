@@ -1,24 +1,22 @@
 #namespace enjin.sdk.project.SetWhitelisted
 #import enjin.sdk.shared.Transaction
 
-#arg tokenId String!
+#arg assetId String!
 #arg accountAddress EthAddress!
 #arg whitelisted Whitelisted!
 #arg whitelistedAddress EthAddress
 #arg on Boolean!
 #arg ethAddress EthAddress
-#arg test Boolean true
 #arg send Boolean true
 
 mutation {
     result: SetWhitelisted(
-        tokenId: $tokenId,
+        assetId: $assetId,
         account: $accountAddress,
         whitelisted: $whitelisted,
         whitelistedAddress: $whitelistedAddress,
         on: $on
         wallet: $ethAddress,
-        test: $test,
         send: $send
     ) {
         ...Transaction

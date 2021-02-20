@@ -118,59 +118,83 @@
 
     <ItemGroup>
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\CreatePlayer.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\CreateToken.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\DecreaseMaxMeltFee.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\DecreaseMaxTransferFee.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\DeletePlayer.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\InvalidateTokenMetadata.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\MintToken.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\ReleaseReserve.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetMeltFee.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetTransferable.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetTransferFee.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetUri.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetWhitelisted.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UnlinkWallet.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\AuthPlayer.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\AuthProject.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetPlayer.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetPlayers.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Balance.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\PaginationCursor.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Player.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Project.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Token.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Transaction.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Wallet.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\AdvancedSendToken.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\ApproveEnj.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\ApproveMaxEnj.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\CompleteTrade.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\CreateTrade.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\MeltToken.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\Message.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\ResetEnjApproval.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\SendEnj.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\SendToken.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\SetApprovalForAll.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetBalances.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetGasPrices.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetPlatform.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetProject.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetRequest.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetRequests.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetToken.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetTokens.gql" />
     </ItemGroup>
 
     <ItemGroup>
         <Compile Remove="Events\IEventService.cs" />
         <Compile Remove="Schemas\ProjectSchema\Mutations\UpdateName.cs" />
         <Compile Remove="Schemas\ProjectSchema\Mutations\UnlinkPlayerWallet.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Graphql\Templates\enjin" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\CreatePlayer.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\DecreaseMaxMeltFee.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\DecreaseMaxTransferFee.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\DeletePlayer.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\ReleaseReserve.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetMeltFee.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetTransferable.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetTransferFee.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetUri.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetWhitelisted.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UnlinkWallet.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\AuthPlayer.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\AuthProject.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetPlayer.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetPlayers.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Balance.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\PaginationCursor.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Player.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Project.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Transaction.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Wallet.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\ApproveEnj.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\ApproveMaxEnj.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\CompleteTrade.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\CreateTrade.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\Message.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\ResetEnjApproval.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\SendEnj.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\SetApprovalForAll.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetBalances.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetGasPrices.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetPlatform.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetProject.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetRequest.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetRequests.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\player\query\GetWallet.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetWallet.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\project\mutation\CreateAsset.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\CreateAsset.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\project\mutation\InvalidateAssetMetadata.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\InvalidateAssetMetadata.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\project\mutation\MintAsset.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\MintAsset.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\project\query\GetWallet.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetWallet.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\project\query\GetWallets.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetWallets.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\shared\fragment\Asset.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Asset.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\shared\mutation\AdvancedSendAsset.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\AdvancedSendAsset.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\shared\mutation\CancelTransaction.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\CancelTransaction.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\shared\mutation\MeltAsset.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\MeltAsset.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\shared\mutation\SendAsset.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\mutation\SendAsset.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetAsset.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetAsset.gql" />
+      <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetAssets.gql" />
+      <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetAssets.gql" />
     </ItemGroup>
 
 </Project>

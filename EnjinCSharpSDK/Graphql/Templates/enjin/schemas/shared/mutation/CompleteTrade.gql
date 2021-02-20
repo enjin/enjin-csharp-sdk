@@ -3,14 +3,12 @@
 
 #arg tradeId String!
 #arg ethAddress EthAddress
-#arg test Boolean true
 #arg send Boolean true
 
 mutation {
     result: CompleteTrade(
         tradeId: $tradeId,
         wallet: $ethAddress,
-        test: $test,
         send: $send
     ) {
         ...Transaction
