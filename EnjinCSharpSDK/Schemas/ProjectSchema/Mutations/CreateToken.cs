@@ -105,11 +105,11 @@ namespace Enjin.SDK.ProjectSchema
         /// <summary>
         /// Sets the fungible state of the token (item).
         /// </summary>
-        /// <param name="nonfungible">The state.</param>
+        /// <param name="nonFungible">The state.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken Nonfungible(bool? nonfungible)
+        public CreateToken NonFungible(bool? nonFungible)
         {
-            return SetVariable("nonfungible", nonfungible);
+            return SetVariable("nonFungible", nonFungible);
         }
     }
 }

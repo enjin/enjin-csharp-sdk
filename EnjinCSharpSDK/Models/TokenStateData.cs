@@ -13,8 +13,8 @@ namespace Enjin.SDK.Models
         /// Represents the fungible state of this item.
         /// </summary>
         /// <value>Whether this item is non-fungible.</value>
-        [JsonProperty("nonfungible")]
-        public bool Nonfungible { get; private set; }
+        [JsonProperty("nonFungible")]
+        public bool NonFungible { get; private set; }
         
         /// <summary>
         /// Represents the block number of the last update.

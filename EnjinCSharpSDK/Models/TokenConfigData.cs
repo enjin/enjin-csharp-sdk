@@ -40,7 +40,7 @@ namespace Enjin.SDK.Models
         /// Represents the URI for the metadata of this item.
         /// </summary>
         /// <value>The URI.</value>
-        [JsonProperty("metadataUri")]
+        [JsonProperty("metadataURI")]
         public string? MetadataUri { get; private set; }
 
         /// <summary>

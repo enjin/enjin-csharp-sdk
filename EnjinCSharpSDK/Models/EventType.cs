@@ -5,10 +5,12 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Enums defining the different types of notifications that may be received from the platform.
     /// </summary>
-    /// <seealso cref="Enjin.SDK.Events.EventTypeDef"/>
     [PublicAPI]
     public enum EventType
     {
+        /// <summary>
+        /// Value used by the SDK to indicate an unknown event type.
+        /// </summary>
         UNKNOWN,
         APP_CREATED,
         APP_DELETED,
