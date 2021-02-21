@@ -6,65 +6,65 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for creating a token (item) on the platform.
+    /// Request for creating a asset on the platform.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class CreateToken : GraphqlRequest<CreateToken>, ITransactionRequestArguments<CreateToken>
+    public class CreateAsset : GraphqlRequest<CreateAsset>, ITransactionRequestArguments<CreateAsset>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public CreateToken() : base("enjin.sdk.project.CreateToken")
+        public CreateAsset() : base("enjin.sdk.project.CreateAsset")
         {
         }
         
         /// <summary>
-        /// Sets the name of the token (item).
+        /// Sets the name of the asset.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken Name(string name)
+        public CreateAsset Name(string name)
         {
             return SetVariable("name", name);
         }
         
         /// <summary>
-        /// Sets the total supply of the token (item).
+        /// Sets the total supply of the asset.
         /// </summary>
         /// <param name="totalSupply">The total supply.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken TotalSupply(string totalSupply)
+        public CreateAsset TotalSupply(string totalSupply)
         {
             return SetVariable("totalSupply", totalSupply);
         }
         
         /// <summary>
-        /// Sets the initial reserve of the token (item).
+        /// Sets the initial reserve of the asset.
         /// </summary>
         /// <param name="initialReserve">The reserve.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken InitialReserve(string initialReserve)
+        public CreateAsset InitialReserve(string initialReserve)
         {
             return SetVariable("initialReserve", initialReserve);
         }
         
         /// <summary>
-        /// Sets the supply model of the token (item).
+        /// Sets the supply model of the asset.
         /// </summary>
         /// <param name="supplyModel">The model.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken SupplyModel(TokenSupplyModel? supplyModel)
+        public CreateAsset SupplyModel(AssetSupplyModel? supplyModel)
         {
             return SetVariable("supplyModel", supplyModel);
         }
         
         /// <summary>
-        /// Sets the melt value of the token (item). This value corresponds to its exchange rate.
+        /// Sets the melt value of the asset. This value corresponds to its exchange rate.
         /// </summary>
         /// <param name="meltValue">The value.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken MeltValue(string meltValue)
+        public CreateAsset MeltValue(string meltValue)
         {
             return SetVariable("meltValue", meltValue);
         }
@@ -77,37 +77,37 @@ namespace Enjin.SDK.ProjectSchema
         /// <remarks>
         /// The ratio is in the range 0-5000 to allow for fractional ratios, e.g. 1 = 0.01%, 5000 = 50%, ect...
         /// </remarks>
-        public CreateToken MeltFeeRatio(int? meltFeeRatio)
+        public CreateAsset MeltFeeRatio(int? meltFeeRatio)
         {
             return SetVariable("meltFeeRatio", meltFeeRatio);
         }
         
         /// <summary>
-        /// Sets the transferable type of the token (item).
+        /// Sets the transferable type of the asset.
         /// </summary>
         /// <param name="transferable">The transferable type.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken Transferable(TokenTransferable? transferable)
+        public CreateAsset Transferable(AssetTransferable? transferable)
         {
             return SetVariable("transferable", transferable);
         }
         
         /// <summary>
-        /// Sets the transfer fee settings of the token (item).
+        /// Sets the transfer fee settings of the asset.
         /// </summary>
         /// <param name="transferFeeSettings">The settings.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken TransferFeeSettings(TokenTransferFeeSettingsInput transferFeeSettings)
+        public CreateAsset TransferFeeSettings(AssetTransferFeeSettingsInput transferFeeSettings)
         {
             return SetVariable("transferFeeSettings", transferFeeSettings);
         }
         
         /// <summary>
-        /// Sets the fungible state of the token (item).
+        /// Sets the fungible state of the asset.
         /// </summary>
         /// <param name="nonFungible">The state.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateToken NonFungible(bool? nonFungible)
+        public CreateAsset NonFungible(bool? nonFungible)
         {
             return SetVariable("nonFungible", nonFungible);
         }

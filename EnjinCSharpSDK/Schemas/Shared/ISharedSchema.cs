@@ -55,25 +55,25 @@ namespace Enjin.SDK.Shared
         Task<GraphqlResponse<List<Request>>> GetRequests(GetRequests request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.Shared.GetToken"/> request.
+        /// Creates a task and sends the <see cref="Shared.GetAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Token>> GetToken(GetToken request);
+        Task<GraphqlResponse<Asset>> GetAsset(GetAsset request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.Shared.GetTokens"/> request.
+        /// Creates a task and sends the <see cref="Shared.GetAssets"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<List<Token>>> GetTokens(GetTokens request);
+        Task<GraphqlResponse<List<Asset>>> GetAssets(GetAssets request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.Shared.AdvancedSendToken"/> request.
+        /// Creates a task and sends the <see cref="Shared.AdvancedSendAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> AdvancedSendToken(AdvancedSendToken request);
+        Task<GraphqlResponse<Request>> AdvancedSendAsset(AdvancedSendAsset request);
         
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.Shared.ApproveEnj"/> request.
@@ -111,11 +111,11 @@ namespace Enjin.SDK.Shared
         Task<GraphqlResponse<Request>> CreateTrade(CreateTrade request);
         
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.Shared.MeltToken"/> request.
+        /// Creates a task and sends the <see cref="Shared.MeltAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> MeltToken(MeltToken request);
+        Task<GraphqlResponse<Request>> MeltAsset(MeltAsset request);
         
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.Shared.Message"/> request.
@@ -139,11 +139,11 @@ namespace Enjin.SDK.Shared
         Task<GraphqlResponse<Request>> SendEnj(SendEnj request);
         
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.Shared.SendToken"/> request.
+        /// Creates a task and sends the <see cref="Shared.SendAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SendToken(SendToken request);
+        Task<GraphqlResponse<Request>> SendAsset(SendAsset request);
         
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.Shared.SetApprovalForAll"/> request.

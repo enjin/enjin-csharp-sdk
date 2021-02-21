@@ -63,11 +63,11 @@ namespace Enjin.SDK.ProjectSchema
         Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.CreateToken"/> request.
+        /// Creates a task and sends the <see cref="SDK.ProjectSchema.CreateAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> CreateToken(CreateToken request);
+        Task<GraphqlResponse<Request>> CreateAsset(CreateAsset request);
         
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.DecreaseMaxMeltFee"/> request.
@@ -91,18 +91,18 @@ namespace Enjin.SDK.ProjectSchema
         Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.InvalidateTokenMetadata"/> request.
+        /// Creates a task and sends the <see cref="SDK.ProjectSchema.InvalidateAssetMetadata"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<bool>> InvalidateTokenMetadata(InvalidateTokenMetadata request);
+        Task<GraphqlResponse<bool>> InvalidateAssetMetadata(InvalidateAssetMetadata request);
         
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.MintToken"/> request.
+        /// Creates a task and sends the <see cref="SDK.ProjectSchema.MintAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> MintToken(MintToken request);
+        Task<GraphqlResponse<Request>> MintAsset(MintAsset request);
         
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.ReleaseReserve"/> request.

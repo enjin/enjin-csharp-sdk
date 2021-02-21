@@ -3,10 +3,10 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// The fields of the <see cref="Token"/> type.
+    /// The fields of the <see cref="Asset"/> type.
     /// </summary>
-    /// <seealso cref="TokenSort"/>
-    public enum TokenField
+    /// <seealso cref="AssetSort"/>
+    public enum AssetField
     {
         [JsonProperty("id")]
         ID,

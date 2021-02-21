@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models a filter input for token queries.
+    /// Models a filter input for asset queries.
     /// </summary>
-    /// <seealso cref="Enjin.SDK.Shared.GetTokens"/>
+    /// <seealso cref="GetAssets"/>
     [PublicAPI]
-    public class TokenFilter: Filter<TokenFilter>
+    public class AssetFilter: Filter<AssetFilter>
     {
         [JsonProperty("id")]
         private string _id;
@@ -40,22 +41,22 @@ namespace Enjin.SDK.Models
         private List<string>? _walletIn;
 
         /// <summary>
-        /// Sets the token (item) ID to filter for.
+        /// Sets the asset ID to filter for.
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter Id(string id)
+        public AssetFilter Id(string id)
         {
             _id = id;
             return this;
         }
 
         /// <summary>
-        /// Sets the token (item) IDs to filter for.
+        /// Sets the asset IDs to filter for.
         /// </summary>
         /// <param name="ids">The IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter IdIn(params string[]? ids)
+        public AssetFilter IdIn(params string[]? ids)
         {
             _idIn = ids?.ToList();
             return this;
@@ -66,18 +67,18 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter Name(string name)
+        public AssetFilter Name(string name)
         {
             _name = name;
             return this;
         }
 
         /// <summary>
-        /// Sets the filter to include items with names that include the passed string.
+        /// Sets the filter to include assets with names that include the passed string.
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter NameContains(string text)
+        public AssetFilter NameContains(string text)
         {
             _nameContains = text;
             return this;
@@ -88,29 +89,29 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="names">The names.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter NameIn(params string[]? names)
+        public AssetFilter NameIn(params string[]? names)
         {
             _nameIn = names?.ToList();
             return this;
         }
 
         /// <summary>
-        /// Sets the filter to include items with names which start with the passed string.
+        /// Sets the filter to include assets with names which start with the passed string.
         /// </summary>
         /// <param name="prefix">The prefix.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter NameStartsWith(string prefix)
+        public AssetFilter NameStartsWith(string prefix)
         {
             _nameStartsWith = prefix;
             return this;
         }
 
         /// <summary>
-        /// Sets the filter to include items with names which end with the passed string.
+        /// Sets the filter to include assets with names which end with the passed string.
         /// </summary>
         /// <param name="suffix">The suffix.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter NameEndsWith(string suffix)
+        public AssetFilter NameEndsWith(string suffix)
         {
             _nameEndsWith = suffix;
             return this;
@@ -121,7 +122,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="wallet">The wallet address.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter Wallet(string wallet)
+        public AssetFilter Wallet(string wallet)
         {
             _wallet = wallet;
             return this;
@@ -132,7 +133,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="addresses">The wallet addresses.</param>
         /// <returns>This filter for chaining.</returns>
-        public TokenFilter WalletIn(params string[]? addresses)
+        public AssetFilter WalletIn(params string[]? addresses)
         {
             _walletIn = addresses?.ToList();
             return this;

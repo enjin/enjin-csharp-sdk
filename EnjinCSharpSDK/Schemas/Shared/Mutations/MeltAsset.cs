@@ -5,16 +5,16 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     /// <summary>
-    /// Request for melting a item.
+    /// Request for melting a asset.
     /// </summary>
     /// <seealso cref="ISharedSchema"/>
     [PublicAPI]
-    public class MeltToken : GraphqlRequest<MeltToken>, ITransactionRequestArguments<MeltToken>
+    public class MeltAsset : GraphqlRequest<MeltAsset>, ITransactionRequestArguments<MeltAsset>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public MeltToken() : base("enjin.sdk.shared.MeltToken")
+        public MeltAsset() : base("enjin.sdk.shared.MeltAsset")
         {
         }
 
@@ -23,7 +23,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="melts">The melts.</param>
         /// <returns>This request for chaining.</returns>
-        public MeltToken Melts(params Melt[] melts)
+        public MeltAsset Melts(params Melt[] melts)
         {
             return SetVariable("melts", melts);
         }

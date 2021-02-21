@@ -114,23 +114,23 @@ namespace Enjin.SDK.Events
         bool IsSubscribedToPlayer(int app, string player);
         
         /// <summary>
-        /// Opens a channel for the specified token (item), allowing listeners to receive events for that token.
+        /// Opens a channel for the specified asset, allowing listeners to receive events for that asset.
         /// </summary>
-        /// <param name="token">The token ID.</param>
-        void SubscribeToToken(string token);
+        /// <param name="asset">The asset ID.</param>
+        void SubscribeToAsset(string asset);
         
         /// <summary>
-        /// Closes a channel for the specified token (item), preventing listeners from receiving events for that token.
+        /// Closes a channel for the specified asset, preventing listeners from receiving events for that asset.
         /// </summary>
-        /// <param name="token">The token ID.</param>
-        void UnsubscribeToToken(string token);
+        /// <param name="asset">The asset ID.</param>
+        void UnsubscribeToAsset(string asset);
         
         /// <summary>
-        /// Determines if the channel is open for the specified token (item).
+        /// Determines if the channel is open for the specified asset.
         /// </summary>
-        /// <param name="token">The token ID.</param>
+        /// <param name="asset">The asset ID.</param>
         /// <returns>True if open, else false.</returns>
-        bool IsSubscribedToToken(string token);
+        bool IsSubscribedToAsset(string asset);
         
         /// <summary>
         /// Opens a channel for the specified wallet address, allowing listeners to receive events for that wallet

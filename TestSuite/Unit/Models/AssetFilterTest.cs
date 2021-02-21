@@ -7,7 +7,7 @@ using static TestSuite.Utils.ReflectionUtils;
 namespace TestSuite
 {
     [TestFixture]
-    public class TokenFilterTest
+    public class AssetFilterTest
     {
         private static readonly List<string> IDS = new List<string>();
 
@@ -24,7 +24,7 @@ namespace TestSuite
         {
             // Arrange
             var args = IDS.ToArray();
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
 
             Assume.That(args, Is.Not.Null.And.Not.Empty);
             
@@ -43,7 +43,7 @@ namespace TestSuite
         public void IdIn_NoArguments_FieldIsEmpty()
         {
             // Arrange
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
             
             // Act
             filter.IdIn();
@@ -57,7 +57,7 @@ namespace TestSuite
         public void IdIn_NullArgument_FieldIsNull()
         {
             // Arrange
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
             
             // Act
             filter.IdIn(null);
@@ -72,7 +72,7 @@ namespace TestSuite
         {
             // Arrange
             var args = IDS.ToArray();
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
 
             Assume.That(args, Is.Not.Null.And.Not.Empty);
             
@@ -91,7 +91,7 @@ namespace TestSuite
         public void NameIn_NoArguments_FieldIsEmpty()
         {
             // Arrange
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
 
             // Act
             filter.NameIn();
@@ -105,7 +105,7 @@ namespace TestSuite
         public void NameIn_NullArgument_FieldIsNull()
         {
             // Arrange
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
             
             // Act
             filter.NameIn(null);
@@ -120,7 +120,7 @@ namespace TestSuite
         {
             // Arrange
             var args = IDS.ToArray();
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
 
             Assume.That(args, Is.Not.Null.And.Not.Empty);
             
@@ -139,7 +139,7 @@ namespace TestSuite
         public void WalletIn_NoArguments_FieldIsEmpty()
         {
             // Arrange
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
             
             // Act
             filter.WalletIn();
@@ -153,7 +153,7 @@ namespace TestSuite
         public void WalletIn_NullArgument_FieldIsNull()
         {
             // Arrange
-            var filter = new TestableTokenFilter();
+            var filter = new TestableAssetFilter();
 
             // Act
             filter.WalletIn(null);
@@ -163,15 +163,15 @@ namespace TestSuite
             Assert.Null(actual);
         }
         
-        private class TestableTokenFilter : TokenFilter
+        private class TestableAssetFilter : AssetFilter
         {
             private static readonly FieldInfo ID_IN_FIELD;
             private static readonly FieldInfo NAME_IN_FIELD;
             private static readonly FieldInfo WALLET_IN_FIELD;
 
-            static TestableTokenFilter()
+            static TestableAssetFilter()
             {
-                var type = typeof(TokenFilter);
+                var type = typeof(AssetFilter);
                 ID_IN_FIELD = GetPrivateAttribute(type, "_idIn");
                 NAME_IN_FIELD = GetPrivateAttribute(type, "_nameIn");
                 WALLET_IN_FIELD = GetPrivateAttribute(type, "_walletIn");

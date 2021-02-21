@@ -20,7 +20,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void TokenIdIn_PassedArguments_FieldContainsArgument()
+        public void AssetIdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
@@ -29,8 +29,8 @@ namespace TestSuite
             Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
-            filter.TokenIdIn(args);
-            var actual = filter.GetTokenIdIn();
+            filter.AssetIdIn(args);
+            var actual = filter.GetAssetIdIn();
 
             // Assert
             foreach (var expected in args)
@@ -40,28 +40,28 @@ namespace TestSuite
         }
 
         [Test]
-        public void TokenIdIn_NoArguments_FieldIsEmpty()
+        public void AssetIdIn_NoArguments_FieldIsEmpty()
         {
             // Arrange
             var filter = new TestableBalanceFilter();
 
             // Act
-            filter.TokenIdIn();
-            var actual = filter.GetTokenIdIn();
+            filter.AssetIdIn();
+            var actual = filter.GetAssetIdIn();
 
             // Assert
             Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
-        public void TokenIdIn_NullArgument_FieldIsNull()
+        public void AssetIdIn_NullArgument_FieldIsNull()
         {
             // Arrange
             var filter = new TestableBalanceFilter();
 
             // Act
-            filter.TokenIdIn(null);
-            var actual = filter.GetTokenIdIn();
+            filter.AssetIdIn(null);
+            var actual = filter.GetAssetIdIn();
 
             // Assert
             Assert.Null(actual);
@@ -117,17 +117,17 @@ namespace TestSuite
         
         private class TestableBalanceFilter : BalanceFilter
         {
-            private static readonly FieldInfo TOKEN_ID_IN_FIELD;
+            private static readonly FieldInfo ASSET_ID_IN_FIELD;
             private static readonly FieldInfo WALLET_IN_FIELD;
 
             static TestableBalanceFilter()
             {
                 var type = typeof(BalanceFilter);
-                TOKEN_ID_IN_FIELD = GetPrivateAttribute(type, "_tokenIdIn");
+                ASSET_ID_IN_FIELD = GetPrivateAttribute(type, "_assetIdIn");
                 WALLET_IN_FIELD = GetPrivateAttribute(type, "_walletIn");
             }
 
-            public List<string> GetTokenIdIn() => TOKEN_ID_IN_FIELD.GetValue(this) as List<string>;
+            public List<string> GetAssetIdIn() => ASSET_ID_IN_FIELD.GetValue(this) as List<string>;
             
             public List<string> GetWalletIn() => WALLET_IN_FIELD.GetValue(this) as List<string>;
         }

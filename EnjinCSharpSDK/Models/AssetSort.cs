@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models sorting input for tokens (items).
+    /// Models sorting input for assets.
     /// </summary>
     [PublicAPI]
-    public class TokenSort
+    public class AssetSort
     {
         [JsonProperty("field")]
-        private TokenField? _field;
+        private AssetField? _field;
         [JsonProperty("direction")]
         private SortDirection? _direction;
 
@@ -19,7 +19,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="field">The field.</param>
         /// <returns>This input for chaining.</returns>
-        public TokenSort Field(TokenField? field)
+        public AssetSort Field(AssetField? field)
         {
             _field = field;
             return this;
@@ -30,7 +30,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="direction"></param>
         /// <returns>This input for chaining.</returns>
-        public TokenSort Direction(SortDirection? direction)
+        public AssetSort Direction(SortDirection? direction)
         {
             _direction = direction;
             return this;

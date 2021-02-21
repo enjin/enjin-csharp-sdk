@@ -4,10 +4,10 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Values used to specify the format to render an item's ID in.
+    /// Values used to specify the format to render an asset's ID in.
     /// </summary>
     [PublicAPI]
-    public enum TokenIdFormat
+    public enum AssetIdFormat
     {
         [EnumMember(Value = "hex64")]
         HEX64,

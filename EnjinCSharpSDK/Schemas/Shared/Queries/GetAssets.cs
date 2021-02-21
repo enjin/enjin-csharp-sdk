@@ -5,17 +5,17 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     /// <summary>
-    /// Request for getting tokens (items) on the platform.
+    /// Request for getting assets on the platform.
     /// </summary>
-    /// <seealso cref="Token"/>
+    /// <seealso cref="Asset"/>
     /// <seealso cref="ISharedSchema"/>
     [PublicAPI]
-    public class GetTokens : GraphqlRequest<GetTokens>, ITokenFragmentArguments<GetTokens>, IPaginationArguments<GetTokens>
+    public class GetAssets : GraphqlRequest<GetAssets>, IAssetFragmentArguments<GetAssets>, IPaginationArguments<GetAssets>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public GetTokens() : base("enjin.sdk.shared.GetTokens")
+        public GetAssets() : base("enjin.sdk.shared.GetAssets")
         {
         }
 
@@ -24,7 +24,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="filter">The filter.</param>
         /// <returns>This request for chaining.</returns>
-        public GetTokens Filter(TokenFilter filter)
+        public GetAssets Filter(AssetFilter filter)
         {
             return SetVariable("filter", filter);
         }
@@ -34,7 +34,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="sort">The sort options.</param>
         /// <returns>This request for chaining.</returns>
-        public GetTokens Sort(TokenSort sort)
+        public GetAssets Sort(AssetSort sort)
         {
             return SetVariable("sort", sort);
         }

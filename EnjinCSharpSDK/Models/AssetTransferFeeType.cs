@@ -5,9 +5,9 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Represents the transfer fee type.
     /// </summary>
-    /// <seealso cref="TokenTransferFeeSettings"/>
+    /// <seealso cref="AssetTransferFeeSettings"/>
     [PublicAPI]
-    public enum TokenTransferFeeType
+    public enum AssetTransferFeeType
     {
         NONE,
         PER_TRANSFER,

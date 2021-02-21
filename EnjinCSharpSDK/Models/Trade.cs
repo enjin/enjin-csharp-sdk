@@ -10,37 +10,37 @@ namespace Enjin.SDK.Models
     [PublicAPI]
     public class Trade
     {
-        [JsonProperty("tokenId")]
-        private string _tokenid;
-        [JsonProperty("tokenIndex")]
-        private string _tokenIndex;
+        [JsonProperty("assetId")]
+        private string _assetId;
+        [JsonProperty("assetIndex")]
+        private string _assetIndex;
         [JsonProperty("value")]
         private string _value;
 
         /// <summary>
-        /// Sets the token (item) ID to trade or ENJ if not used or set to <c>null</c>.
+        /// Sets the asset ID to trade or ENJ if not used or set to <c>null</c>.
         /// </summary>
-        /// <param name="tokenId">The token ID.</param>
+        /// <param name="assetId">The asset ID.</param>
         /// <returns>This input for chaining.</returns>
-        public Trade TokenId(string tokenId)
+        public Trade AssetId(string assetId)
         {
-            _tokenid = tokenId;
+            _assetId = assetId;
             return this;
         }
 
         /// <summary>
-        /// Sets the index for non-fungible items.
+        /// Sets the index for non-fungible assets.
         /// </summary>
-        /// <param name="tokenIndex">The index.</param>
+        /// <param name="assetIndex">The asset index.</param>
         /// <returns>This input for chaining.</returns>
-        public Trade TokenIndex(string tokenIndex)
+        public Trade AssetIndex(string assetIndex)
         {
-            _tokenIndex = tokenIndex;
+            _assetIndex = assetIndex;
             return this;
         }
 
         /// <summary>
-        /// Sets the number of items to trade.
+        /// Sets the number of assets to trade.
         /// </summary>
         /// <param name="value">The amount.</param>
         /// <returns>This input for chaining.</returns>

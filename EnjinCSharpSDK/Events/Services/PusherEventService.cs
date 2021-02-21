@@ -163,21 +163,21 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void SubscribeToToken(string token)
+        public void SubscribeToAsset(string asset)
         {
-            Subscribe(new TokenChannel(Platform, token).Channel());
+            Subscribe(new AssetChannel(Platform, asset).Channel());
         }
 
         /// <inheritdoc/>
-        public void UnsubscribeToToken(string token)
+        public void UnsubscribeToAsset(string asset)
         {
-            Unsubscribe(new TokenChannel(Platform, token).Channel());
+            Unsubscribe(new AssetChannel(Platform, asset).Channel());
         }
 
         /// <inheritdoc/>
-        public bool IsSubscribedToToken(string token)
+        public bool IsSubscribedToAsset(string asset)
         {
-            return _subscribed.ContainsKey(new TokenChannel(Platform, token).Channel());
+            return _subscribed.ContainsKey(new AssetChannel(Platform, asset).Channel());
         }
 
         /// <inheritdoc/>

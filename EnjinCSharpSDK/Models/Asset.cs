@@ -5,55 +5,55 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models a item on the platform.
+    /// Models a asset on the platform.
     /// </summary>
     [PublicAPI]
-    public class Token
+    public class Asset
     {
         /// <summary>
-        /// Represents the base ID of this item.
+        /// Represents the base ID of this asset.
         /// </summary>
         /// <value>The ID.</value>
         [JsonProperty("id")]
         public string Id { get; private set; } = null!;
 
         /// <summary>
-        /// Represents the name of this item.
+        /// Represents the name of this asset.
         /// </summary>
         /// <value>The name.</value>
         [JsonProperty("name")]
         public string Name { get; private set; } = null!;
         
         /// <summary>
-        /// Represents the state data of this item.
+        /// Represents the state data of this asset.
         /// </summary>
         /// <value>The data.</value>
         [JsonProperty("stateData")]
-        public TokenStateData? StateData { get; private set; }
+        public AssetStateData? StateData { get; private set; }
         
         /// <summary>
-        /// Represents the configuration data of this item.
+        /// Represents the configuration data of this asset.
         /// </summary>
         /// <value>The data.</value>
         [JsonProperty("configData")]
-        public TokenConfigData? ConfigData { get; private set; }
+        public AssetConfigData? ConfigData { get; private set; }
         
         /// <summary>
-        /// Represents the token variant mode of this item.
+        /// Represents the variant mode of this asset.
         /// </summary>
         /// <value>The variant mode.</value>
         [JsonProperty("variantMode")]
-        public TokenVariantMode? VariantMode { get; private set; }
+        public AssetVariantMode? VariantMode { get; private set; }
         
         /// <summary>
-        /// Represents token variants of this item.
+        /// Represents variants of this asset.
         /// </summary>
         /// <value>The variants.</value>
         [JsonProperty("variants")]
-        public List<TokenVariant>? Variants { get; private set; }
+        public List<AssetVariant>? Variants { get; private set; }
         
         /// <summary>
-        /// Represents the datetime when this item was created.
+        /// Represents the datetime when this asset was created.
         /// </summary>
         /// <value>The datetime.</value>
         /// <remarks>
@@ -63,7 +63,7 @@ namespace Enjin.SDK.Models
         public string CreatedAt { get; private set; } = null!;
         
         /// <summary>
-        /// Represents the datetime when this item was last updated.
+        /// Represents the datetime when this asset was last updated.
         /// </summary>
         /// <value>The datetime.</value>
         /// <remarks>

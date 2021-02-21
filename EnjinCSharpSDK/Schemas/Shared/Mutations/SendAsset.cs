@@ -4,17 +4,17 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     /// <summary>
-    /// Request for sending a token (item).
+    /// Request for sending a asset.
     /// </summary>
-    /// <seealso cref="AdvancedSendToken"/>
+    /// <seealso cref="AdvancedSendAsset"/>
     /// <seealso cref="ISharedSchema"/>
     [PublicAPI]
-    public class SendToken : GraphqlRequest<SendToken>, ITransactionRequestArguments<SendToken>
+    public class SendAsset : GraphqlRequest<SendAsset>, ITransactionRequestArguments<SendAsset>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public SendToken() : base("enjin.sdk.shared.SendToken")
+        public SendAsset() : base("enjin.sdk.shared.SendAsset")
         {
         }
 
@@ -23,29 +23,29 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="recipientAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public SendToken RecipientAddress(string recipientAddress)
+        public SendAsset RecipientAddress(string recipientAddress)
         {
             return SetVariable("recipientAddress", recipientAddress);
         }
 
         /// <summary>
-        /// Sets the token (item) ID.
+        /// Sets the asset ID.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SendToken TokenId(string tokenId)
+        public SendAsset AssetId(string assetId)
         {
-            return SetVariable("tokenId", tokenId);
+            return SetVariable("assetId", assetId);
         }
 
         /// <summary>
-        /// Sets the index for non-fungible items.
+        /// Sets the index for non-fungible assets.
         /// </summary>
-        /// <param name="tokenIndex">The index.</param>
+        /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public SendToken TokenIndex(string tokenIndex)
+        public SendAsset AssetIndex(string assetIndex)
         {
-            return SetVariable("tokenIndex", tokenIndex);
+            return SetVariable("assetIndex", assetIndex);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="value">The amount.</param>
         /// <returns>This request for chaining.</returns>
-        public SendToken Value(string value)
+        public SendAsset Value(string value)
         {
             return SetVariable("value", value);
         }
@@ -63,7 +63,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns>This request for chaining.</returns>
-        public SendToken Data(string data)
+        public SendAsset Data(string data)
         {
             return SetVariable("data", data);
         }

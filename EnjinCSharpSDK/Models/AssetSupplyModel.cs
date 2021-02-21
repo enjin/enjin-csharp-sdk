@@ -3,11 +3,11 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Values used to specify the token supply model.
+    /// Values used to specify the asset supply model.
     /// </summary>
-    /// <seealso cref="Token"/>
+    /// <seealso cref="Asset"/>
     [PublicAPI]
-    public enum TokenSupplyModel
+    public enum AssetSupplyModel
     {
         FIXED,
         SETTABLE,

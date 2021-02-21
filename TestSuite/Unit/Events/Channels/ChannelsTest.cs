@@ -43,13 +43,13 @@ namespace TestSuite
         }
 
         [Test]
-        public void Channel_TokenChannel_ReturnsExpectedString()
+        public void Channel_AssetChannel_ReturnsExpectedString()
         {
             // Arrange
-            const string expected = "enjincloud.test.token.0";
-            const string token = "0";
+            const string expected = "enjincloud.test.asset.0";
+            const string asset = "0";
             var fakePlatform = CreateFakePlatform(DefaultPlatformName);
-            var channel = new TokenChannel(fakePlatform, token);
+            var channel = new AssetChannel(fakePlatform, asset);
 
             // Act
             var actual = channel.Channel();

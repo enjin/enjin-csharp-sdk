@@ -5,9 +5,9 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Represents the mode that determines variant behaviour.
     /// </summary>
-    /// <seealso cref="Token"/>
+    /// <seealso cref="Asset"/>
     [PublicAPI]
-    public enum TokenVariantMode
+    public enum AssetVariantMode
     {
         NONE,
         BEAM,

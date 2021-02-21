@@ -1,3 +1,4 @@
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -6,7 +7,7 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Models transfer input when making requests.
     /// </summary>
-    /// <seealso cref="Enjin.SDK.Shared.AdvancedSendToken"/>
+    /// <seealso cref="AdvancedSendAsset"/>
     [PublicAPI]
     public class Transfer
     {
@@ -14,10 +15,10 @@ namespace Enjin.SDK.Models
         private string _from;
         [JsonProperty("to")]
         private string _to;
-        [JsonProperty("tokenId")]
-        private string _tokenId;
-        [JsonProperty("tokenIndex")]
-        private string _tokenIndex;
+        [JsonProperty("assetId")]
+        private string _assetId;
+        [JsonProperty("assetIndex")]
+        private string _assetIndex;
         [JsonProperty("value")]
         private string _value;
 
@@ -44,29 +45,29 @@ namespace Enjin.SDK.Models
         }
         
         /// <summary>
-        /// Sets the token (item) ID to transfer or ENJ if not used or set to <c>null</c>.
+        /// Sets the asset ID to transfer or ENJ if not used or set to <c>null</c>.
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This input chaining.</returns>
-        public Transfer TokenId(string id)
+        public Transfer AssetId(string id)
         {
-            _tokenId = id;
+            _assetId = id;
             return this;
         }
         
         /// <summary>
-        /// Sets the index for non-fungible items.
+        /// Sets the index for non-fungible assets.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns>This input chaining.</returns>
-        public Transfer TokenIndex(string index)
+        public Transfer AssetIndex(string index)
         {
-            _tokenIndex = index;
+            _assetIndex = index;
             return this;
         }
         
         /// <summary>
-        /// Sets the number of items to transfer.
+        /// Sets the number of assets to transfer.
         /// </summary>
         /// <param name="value">The amount.</param>
         /// <returns>This input chaining.</returns>

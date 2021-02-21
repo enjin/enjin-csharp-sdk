@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for setting an item's max transfer fee to a lower value.
+    /// Request for setting an asset's max transfer fee to a lower value.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
@@ -19,23 +19,23 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the token (item) ID.
+        /// Sets the asset ID.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public DecreaseMaxTransferFee TokenId(string tokenId)
+        public DecreaseMaxTransferFee AssetId(string assetId)
         {
-            return SetVariable("tokenId", tokenId);
+            return SetVariable("assetId", assetId);
         }
         
         /// <summary>
-        /// Sets the index for non-fungible items.
+        /// Sets the index for non-fungible assets.
         /// </summary>
-        /// <param name="tokenIndex">The index.</param>
+        /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public DecreaseMaxTransferFee TokenIndex(string tokenIndex)
+        public DecreaseMaxTransferFee AssetIndex(string assetIndex)
         {
-            return SetVariable("tokenIndex", tokenIndex);
+            return SetVariable("assetIndex", assetIndex);
         }
         
         /// <summary>

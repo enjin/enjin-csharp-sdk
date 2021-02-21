@@ -88,7 +88,7 @@ namespace TestSuite
 
         [Test]
         [TestCase(EventType.PLAYER_LINKED)]
-        [TestCase(EventType.TOKEN_MINTED, EventType.TOKEN_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
+        [TestCase(EventType.ASSET_MINTED, EventType.ASSET_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
         [TestCase(EventType.APP_CREATED, EventType.APP_DELETED, EventType.APP_UPDATED)]
         public void RegisterListenerIncludingTypes_MatcherIncludesEventTypes(params EventType[] includedTypes)
         {
@@ -112,7 +112,7 @@ namespace TestSuite
 
         [Test]
         [TestCase(EventType.PLAYER_LINKED)]
-        [TestCase(EventType.TOKEN_MINTED, EventType.TOKEN_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
+        [TestCase(EventType.ASSET_MINTED, EventType.ASSET_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
         [TestCase(EventType.APP_CREATED, EventType.APP_DELETED, EventType.APP_UPDATED)]
         public void RegisterListenerExcludingTypes_MatcherExcludesEventTypes(params EventType[] excludedTypes)
         {
@@ -166,18 +166,18 @@ namespace TestSuite
         }
 
         [Test]
-        public void SubscribeToToken_SubscribedToChannel()
+        public void SubscribeToAsset_SubscribedToChannel()
         {
             // Arrange
-            const string token = "0000000000000000";
+            const string asset = "0000000000000000";
             var eventService = CreateEventService();
             eventService.Start();
 
             // Act
-            eventService.SubscribeToToken(token);
+            eventService.SubscribeToAsset(asset);
 
             // Assert
-            Assert.IsTrue(eventService.IsSubscribedToToken(token));
+            Assert.IsTrue(eventService.IsSubscribedToAsset(asset));
         }
 
         [Test]
@@ -229,19 +229,19 @@ namespace TestSuite
         }
 
         [Test]
-        public void UnsubscribeToToken_UnsubscribedToChannel()
+        public void UnsubscribeToAsset_UnsubscribedToChannel()
         {
             // Arrange
-            const string token = "0000000000000000";
+            const string asset = "0000000000000000";
             var eventService = CreateEventService();
             eventService.Start();
-            eventService.SubscribeToToken(token);
+            eventService.SubscribeToAsset(asset);
 
             // Act
-            eventService.UnsubscribeToToken(token);
+            eventService.UnsubscribeToAsset(asset);
 
             // Assert
-            Assert.IsFalse(eventService.IsSubscribedToToken(token));
+            Assert.IsFalse(eventService.IsSubscribedToAsset(asset));
         }
 
         [Test]

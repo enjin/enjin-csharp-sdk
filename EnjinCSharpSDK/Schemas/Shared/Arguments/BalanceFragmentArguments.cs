@@ -21,25 +21,25 @@ namespace Enjin.SDK.Shared
     public static class BalanceFragmentArguments
     {
         /// <summary>
-        /// Sets the desired token (item) ID format.
+        /// Sets the desired asset ID format.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <param name="balIdFormat">The format.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T BalIdFormat<T>(this T instance, TokenIdFormat? balIdFormat) where T : IBalanceFragmentArguments<T>
+        public static T BalIdFormat<T>(this T instance, AssetIdFormat? balIdFormat) where T : IBalanceFragmentArguments<T>
         {
             return instance.SetVariable("balIdFormat", balIdFormat);
         }
         
         /// <summary>
-        /// Sets the desired index format for non-fungible items.
+        /// Sets the desired index format for non-fungible assets.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <param name="balIndexFormat">The format.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T BalIndexFormat<T>(this T instance, TokenIndexFormat? balIndexFormat) where T : IBalanceFragmentArguments<T>
+        public static T BalIndexFormat<T>(this T instance, AssetIndexFormat? balIndexFormat) where T : IBalanceFragmentArguments<T>
         {
             return instance.SetVariable("balIndexFormat", balIndexFormat);
         }

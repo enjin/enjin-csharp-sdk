@@ -5,9 +5,9 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// The transferable type.
     /// </summary>
-    /// <seealso cref="Token"/>
+    /// <seealso cref="Asset"/>
     [PublicAPI]
-    public enum TokenTransferable
+    public enum AssetTransferable
     {
         PERMANENT,
         TEMPORARY,

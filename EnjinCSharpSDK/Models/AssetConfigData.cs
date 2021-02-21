@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models the configuration data of a <see cref="Token"/>.
+    /// Models the configuration data of a <see cref="Asset"/>.
     /// </summary>
     [PublicAPI]
-    public class TokenConfigData
+    public class AssetConfigData
     {
         /// <summary>
-        /// Represents the melt fee ratio of this item.
+        /// Represents the melt fee ratio of the asset.
         /// </summary>
         /// <value>The ratio.</value>
         /// <remarks>
@@ -20,7 +20,7 @@ namespace Enjin.SDK.Models
         public int? MeltFeeRatio { get; private set; }
         
         /// <summary>
-        /// Represents the max melt fee ratio for this item.
+        /// Represents the max melt fee ratio for the asset.
         /// </summary>
         /// <value>The ratio.</value>
         /// <remarks>
@@ -30,31 +30,31 @@ namespace Enjin.SDK.Models
         public int? MeltFeeMaxRatio { get; private set; }
         
         /// <summary>
-        /// The melt value for this item. This value corresponds to its exchange rate.
+        /// The melt value for the asset. This value corresponds to its exchange rate.
         /// </summary>
         /// <value>The melt value.</value>
         [JsonProperty("meltValue")]
         public string? MeltValue { get; private set; }
         
         /// <summary>
-        /// Represents the URI for the metadata of this item.
+        /// Represents the URI for the metadata of the asset.
         /// </summary>
         /// <value>The URI.</value>
         [JsonProperty("metadataURI")]
         public string? MetadataUri { get; private set; }
 
         /// <summary>
-        /// Represents the transferable type of this item.
+        /// Represents the transferable type of the asset.
         /// </summary>
         /// <value>The type.</value>
         [JsonProperty("transferable")]
-        public TokenTransferable? Transferable { get; private set; }
+        public AssetTransferable? Transferable { get; private set; }
         
         /// <summary>
-        /// Represents the transfer fee settings for this item.
+        /// Represents the transfer fee settings for the asset.
         /// </summary>
         /// <value>The settings.</value>
         [JsonProperty("transferFeeSettings")]
-        public TokenTransferFeeSettings? TransferFeeSettings { get; private set; }
+        public AssetTransferFeeSettings? TransferFeeSettings { get; private set; }
     }
 }

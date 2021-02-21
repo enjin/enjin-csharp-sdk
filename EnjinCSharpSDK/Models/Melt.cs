@@ -1,3 +1,4 @@
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -6,43 +7,43 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Models a melt input for melt requests.
     /// </summary>
-    /// <seealso cref="Enjin.SDK.Shared.MeltToken"/>
+    /// <seealso cref="MeltAsset"/>
     [PublicAPI]
     public class Melt
     {
-        [JsonProperty("tokenId")]
-        private string _tokenid;
-        [JsonProperty("tokenIndex")]
-        private string _tokenIndex;
+        [JsonProperty("assetId")]
+        private string _assetId;
+        [JsonProperty("assetIndex")]
+        private string _assetIndex;
         [JsonProperty("value")]
         private string _value;
 
         /// <summary>
-        /// Sets the token (item) ID to melt.
+        /// Sets the asset ID to melt.
         /// </summary>
-        /// <param name="tokenId">The token ID.</param>
+        /// <param name="assetId">The asset ID.</param>
         /// <returns>This input for chaining.</returns>
-        public Melt TokenId(string tokenId)
+        public Melt AssetId(string assetId)
         {
-            _tokenid = tokenId;
+            _assetId = assetId;
             return this;
         }
 
         /// <summary>
-        /// Sets the token (item) index of a non-fungible item to melt.
+        /// Sets the index of a non-fungible asset to melt.
         /// </summary>
-        /// <param name="tokenIndex">The token index.</param>
+        /// <param name="assetIndex">The asset index.</param>
         /// <returns>This input for chaining.</returns>
-        public Melt TokenIndex(string tokenIndex)
+        public Melt AssetIndex(string assetIndex)
         {
-            _tokenIndex = tokenIndex;
+            _assetIndex = assetIndex;
             return this;
         }
 
         /// <summary>
-        /// Sets the number of items to melt.
+        /// Sets the number of assets to melt.
         /// </summary>
-        /// <param name="value">The amount of items.</param>
+        /// <param name="value">The amount of assets.</param>
         /// <returns>This input for chaining.</returns>
         public Melt Value(string value)
         {

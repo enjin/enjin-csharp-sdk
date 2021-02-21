@@ -59,14 +59,14 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the token (item) data with the transaction.
+        /// Sets the request to include the asset data with the transaction.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T WithTokenData<T>(this T instance) where T : ITransactionFragmentArguments<T>
+        public static T WithAssetData<T>(this T instance) where T : ITransactionFragmentArguments<T>
         {
-            return instance.SetVariable("withTokenData", true);
+            return instance.SetVariable("withAssetData", true);
         }
         
         /// <summary>

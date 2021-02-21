@@ -47,7 +47,7 @@ namespace TestSuite
 
         [TestCase("EnjinCloud\\Events\\AppCreated")]
         [TestCase("EnjinCloud\\Events\\PlayerLinked")]
-        [TestCase("EnjinCloud\\Events\\TokenTransferred")]
+        [TestCase("EnjinCloud\\Events\\AssetTransferred")]
         [TestCase("EnjinCloud\\Events\\TransactionExecuted")]
         public void OnEvent_ValidEventForRegisteredListener_DoesCallRegisteredListener(string eventName)
         {

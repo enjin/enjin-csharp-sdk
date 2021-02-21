@@ -6,25 +6,25 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models transfer fee settings for an item.
+    /// Models transfer fee settings for an asset.
     /// </summary>
-    /// <seealso cref="Token"/>
+    /// <seealso cref="Asset"/>
     [PublicAPI]
-    public class TokenTransferFeeSettings
+    public class AssetTransferFeeSettings
     {
         /// <summary>
         /// Represents the transfer fee type.
         /// </summary>
         /// <value>The type.</value>
         [JsonProperty("type")]
-        public TokenTransferFeeType? Type { get; internal set; }
+        public AssetTransferFeeType? Type { get; internal set; }
         
         /// <summary>
-        /// Represents the token (item) ID or "0" if ENJ.
+        /// Represents the asset ID or "0" if ENJ.
         /// </summary>
         /// <value>The ID.</value>
-        [JsonProperty("tokenId")]
-        public string TokenId { get; internal set; }
+        [JsonProperty("assetId")]
+        public string AssetId { get; internal set; }
         
         /// <summary>
         /// Represents the fee value in Wei.
@@ -35,33 +35,33 @@ namespace Enjin.SDK.Models
     }
 
     /// <summary>
-    /// Models input for the transfer fee settings used in token requests.
+    /// Models input for the transfer fee settings used in asset requests.
     /// </summary>
     [PublicAPI]
-    public class TokenTransferFeeSettingsInput: TokenTransferFeeSettings
+    public class AssetTransferFeeSettingsInput: AssetTransferFeeSettings
     {
         /// <summary>
         /// Sets the transfer type for this input.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>This input for chaining.</returns>
-        public TokenTransferFeeSettingsInput Type(TokenTransferFeeType? type)
+        public AssetTransferFeeSettingsInput Type(AssetTransferFeeType? type)
         {
             base.Type = type;
             return this;
         }
 
         /// <summary>
-        /// Sets the token (item) ID for this input.
+        /// Sets the asset ID for this input.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This input for chaining.</returns>
         /// <remarks>
-        /// If the ID is set to "0", then this will be set to transfer ENJ instead of a token.
+        /// If the ID is set to "0", then this will be set to transfer ENJ instead of a asset.
         /// </remarks>
-        public TokenTransferFeeSettingsInput TokenId(string tokenId)
+        public AssetTransferFeeSettingsInput AssetId(string assetId)
         {
-            base.TokenId = tokenId;
+            base.AssetId = assetId;
             return this;
         }
 
@@ -70,7 +70,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>This input for chaining.</returns>
-        public TokenTransferFeeSettingsInput Value(string value)
+        public AssetTransferFeeSettingsInput Value(string value)
         {
             base.Value = value;
             return this;

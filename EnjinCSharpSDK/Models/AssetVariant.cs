@@ -5,10 +5,10 @@ using Newtonsoft.Json.Linq;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models a token variant.
+    /// Models a asset variant.
     /// </summary>
     [PublicAPI]
-    public class TokenVariant
+    public class AssetVariant
     {
         /// <summary>
         /// Represents the ID of this variant.
@@ -18,11 +18,11 @@ namespace Enjin.SDK.Models
         public int Id { get; private set; }
         
         /// <summary>
-        /// Represents the ID of the token this variant belongs to.
+        /// Represents the ID of the asset this variant belongs to.
         /// </summary>
         /// <value>The ID.</value>
-        [JsonProperty("tokenId")]
-        public string TokenId { get; private set; }
+        [JsonProperty("assetId")]
+        public string AssetId { get; private set; }
         
         /// <summary>
         /// Represents the metadata for this variant.

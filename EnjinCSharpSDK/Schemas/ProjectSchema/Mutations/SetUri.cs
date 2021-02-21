@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request to set the URI for the metadata of an item.
+    /// Request to set the URI for the metadata of an asset.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
@@ -19,27 +19,27 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the token (item) ID.
+        /// Sets the asset ID.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SetUri TokenId(string tokenId)
+        public SetUri AssetId(string assetId)
         {
-            return SetVariable("tokenId", tokenId);
+            return SetVariable("assetId", assetId);
         }
         
         /// <summary>
-        /// Sets the index for non-fungible items.
+        /// Sets the index for non-fungible assets.
         /// </summary>
-        /// <param name="tokenIndex">The index.</param>
+        /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public SetUri TokenIndex(string tokenIndex)
+        public SetUri AssetIndex(string assetIndex)
         {
-            return SetVariable("tokenIndex", tokenIndex);
+            return SetVariable("assetIndex", assetIndex);
         }
         
         /// <summary>
-        /// Sets the new URI for the item's metadata.
+        /// Sets the new URI for the asset's metadata.
         /// </summary>
         /// <param name="uri">The new URI.</param>
         /// <returns>This request for chaining.</returns>

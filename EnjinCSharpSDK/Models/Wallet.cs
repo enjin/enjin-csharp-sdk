@@ -39,10 +39,10 @@ namespace Enjin.SDK.Models
         public float EthBalance { get; private set; }
         
         /// <summary>
-        /// Represents the tokens (items) this wallet has created.
+        /// Represents the assets this wallet has created.
         /// </summary>
-        /// <value>The list of tokens.</value>
-        [JsonProperty("tokensCreated")]
-        public List<Token> TokensCreated { get; private set; }
+        /// <value>The list of assets.</value>
+        [JsonProperty("assetsCreated")]
+        public List<Asset> AssetsCreated { get; private set; }
     }
 }

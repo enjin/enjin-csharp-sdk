@@ -110,10 +110,10 @@ namespace TestSuite
         }
 
         [Test]
-        public void CreateService_ITokenService_CreatesTheService()
+        public void CreateService_IAssetService_CreatesTheService()
         {
             // Act
-            var actual = ClassUnderTest.CreateService<ITokenService>();
+            var actual = ClassUnderTest.CreateService<IAssetService>();
 
             // Assert
             Assert.NotNull(actual);

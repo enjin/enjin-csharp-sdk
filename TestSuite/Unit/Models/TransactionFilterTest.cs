@@ -117,7 +117,7 @@ namespace TestSuite
         }
         
         [Test]
-        public void TokenIdIn_PassedArguments_FieldContainsArgument()
+        public void AssetIdIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
             var args = IDS.ToArray();
@@ -126,8 +126,8 @@ namespace TestSuite
             Assume.That(args, Is.Not.Null.And.Not.Empty);
             
             // Act
-            filter.TokenIdIn(args);
-            var actual = filter.GetTokenIdIn();
+            filter.AssetIdIn(args);
+            var actual = filter.GetAssetIdIn();
 
             // Assert
             foreach (var expected in args)
@@ -137,28 +137,28 @@ namespace TestSuite
         }
 
         [Test]
-        public void TokenIdIn_NoArguments_FieldIsEmpty()
+        public void AssetIdIn_NoArguments_FieldIsEmpty()
         {
             // Arrange
             var filter = new TestableTransactionFilter();
             
             // Act
-            filter.TokenIdIn();
-            var actual = filter.GetTokenIdIn();
+            filter.AssetIdIn();
+            var actual = filter.GetAssetIdIn();
 
             // Assert
             Assert.That(actual, Is.Not.Null.And.Empty);
         }
 
         [Test]
-        public void TokenIdIn_NullArgument_FieldIsNull()
+        public void AssetIdIn_NullArgument_FieldIsNull()
         {
             // Arrange
             var filter = new TestableTransactionFilter();
             
             // Act
-            filter.TransactionIdIn(null);
-            var actual = filter.GetTransactionIdIn();
+            filter.AssetIdIn(null);
+            var actual = filter.GetAssetIdIn();
 
             // Assert
             Assert.Null(actual);
@@ -312,7 +312,7 @@ namespace TestSuite
         {
             private static readonly FieldInfo ID_IN_FIELD;
             private static readonly FieldInfo TRANSACTION_ID_IN_FIELD;
-            private static readonly FieldInfo TOKEN_ID_IN_FIELD;
+            private static readonly FieldInfo ASSET_ID_IN_FIELD;
             private static readonly FieldInfo TYPE_IN_FIELD;
             private static readonly FieldInfo STATE_IN_FIELD;
             private static readonly FieldInfo WALLET_IN_FIELD;
@@ -322,7 +322,7 @@ namespace TestSuite
                 var type = typeof(TransactionFilter);
                 ID_IN_FIELD = GetPrivateAttribute(type, "_idIn");
                 TRANSACTION_ID_IN_FIELD = GetPrivateAttribute(type, "_transactionIdIn");
-                TOKEN_ID_IN_FIELD = GetPrivateAttribute(type, "_tokenIdIn");
+                ASSET_ID_IN_FIELD = GetPrivateAttribute(type, "_assetIdIn");
                 TYPE_IN_FIELD = GetPrivateAttribute(type, "_typeIn");
                 STATE_IN_FIELD = GetPrivateAttribute(type, "_stateIn");
                 WALLET_IN_FIELD = GetPrivateAttribute(type, "_walletIn");
@@ -332,7 +332,7 @@ namespace TestSuite
             
             public List<string> GetTransactionIdIn() => TRANSACTION_ID_IN_FIELD.GetValue(this) as List<string>;
             
-            public List<string> GetTokenIdIn() => TOKEN_ID_IN_FIELD.GetValue(this) as List<string>;
+            public List<string> GetAssetIdIn() => ASSET_ID_IN_FIELD.GetValue(this) as List<string>;
             
             public List<RequestType> GetTypes() => TYPE_IN_FIELD.GetValue(this) as List<RequestType>;
             

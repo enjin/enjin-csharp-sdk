@@ -34,18 +34,18 @@ namespace Enjin.SDK.Events
         public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.app.{_appId}.player.{_playerId}";
     }
 
-    internal sealed class TokenChannel : IChannel
+    internal sealed class AssetChannel : IChannel
     {
         private readonly Platform _platform;
-        private readonly string _tokenId;
+        private readonly string _assetId;
 
-        public TokenChannel(Platform platform, string tokenId)
+        public AssetChannel(Platform platform, string assetId)
         {
             _platform = platform;
-            _tokenId = tokenId;
+            _assetId = assetId;
         }
 
-        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.token.{_tokenId}";
+        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.asset.{_assetId}";
     }
     
     internal sealed class WalletChannel : IChannel

@@ -5,17 +5,17 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     /// <summary>
-    /// Request for sending one or more items in a single transaction.
+    /// Request for sending one or more assets in a single transaction.
     /// </summary>
-    /// <seealso cref="SendToken"/>
+    /// <seealso cref="SendAsset"/>
     /// <seealso cref="ISharedSchema"/>
     [PublicAPI]
-    public class AdvancedSendToken : GraphqlRequest<AdvancedSendToken>, ITransactionRequestArguments<AdvancedSendToken>
+    public class AdvancedSendAsset : GraphqlRequest<AdvancedSendAsset>, ITransactionRequestArguments<AdvancedSendAsset>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public AdvancedSendToken() : base("enjin.sdk.shared.AdvancedSendToken")
+        public AdvancedSendAsset() : base("enjin.sdk.shared.AdvancedSendAsset")
         {
         }
 
@@ -24,7 +24,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="transfers">The transfers.</param>
         /// <returns>This request for chaining.</returns>
-        public AdvancedSendToken Transfers(params Transfer[] transfers)
+        public AdvancedSendAsset Transfers(params Transfer[] transfers)
         {
             return SetVariable("transfers", transfers);
         }
@@ -34,7 +34,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns>This request for chaining.</returns>
-        public AdvancedSendToken Data(string data)
+        public AdvancedSendAsset Data(string data)
         {
             return SetVariable("data", data);
         }

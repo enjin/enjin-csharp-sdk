@@ -7,27 +7,27 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for minting a token (item).
+    /// Request for minting a asset.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class MintToken : GraphqlRequest<MintToken>, ITransactionRequestArguments<MintToken>
+    public class MintAsset : GraphqlRequest<MintAsset>, ITransactionRequestArguments<MintAsset>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public MintToken() : base("enjin.sdk.project.MintToken")
+        public MintAsset() : base("enjin.sdk.project.MintAsset")
         {
         }
         
         /// <summary>
-        /// Sets the token (item) ID.
+        /// Sets the asset ID.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public MintToken TokenId(string tokenId)
+        public MintAsset AssetId(string assetId)
         {
-            return SetVariable("tokenId", tokenId);
+            return SetVariable("assetId", assetId);
         }
         
         /// <summary>
@@ -35,7 +35,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="mints">The mints.</param>
         /// <returns>This request for chaining.</returns>
-        public MintToken Mints(List<MintInput> mints)
+        public MintAsset Mints(List<MintInput> mints)
         {
             return SetVariable("mints", mints);
         }
