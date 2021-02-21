@@ -34,7 +34,7 @@ namespace Enjin.SDK.Models
         /// Represents the project for this balance's asset.
         /// </summary>
         /// <value>The project model.</value>
-        [JsonProperty("app")]
+        [JsonProperty("project")]
         public Project Project { get; private set; }
         
         /// <summary>

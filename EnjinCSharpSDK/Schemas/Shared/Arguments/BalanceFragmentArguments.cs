@@ -45,14 +45,14 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the application ID with the balance.
+        /// Sets the request to include the project ID with the balance.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
         public static T WithBalProjectId<T>(this T instance) where T : IBalanceFragmentArguments<T>
         {
-            return instance.SetVariable("withBalAppId", true);
+            return instance.SetVariable("withBalProjectId", true);
         }
         
         /// <summary>

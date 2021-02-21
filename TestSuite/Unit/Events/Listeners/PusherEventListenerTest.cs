@@ -45,7 +45,7 @@ namespace TestSuite
                 .Verify(mock => mock.NotificationReceived(It.IsAny<NotificationEvent>()), Times.Never);
         }
 
-        [TestCase("EnjinCloud\\Events\\AppCreated")]
+        [TestCase("EnjinCloud\\Events\\ProjectCreated")]
         [TestCase("EnjinCloud\\Events\\PlayerLinked")]
         [TestCase("EnjinCloud\\Events\\AssetTransferred")]
         [TestCase("EnjinCloud\\Events\\TransactionExecuted")]
@@ -70,7 +70,7 @@ namespace TestSuite
                 .Verify(mock => mock.NotificationReceived(It.IsAny<NotificationEvent>()), Times.Once);
         }
         
-        [TestCase("EnjinCloud\\Events\\AppCreated")]
+        [TestCase("EnjinCloud\\Events\\ProjectCreated")]
         public void OnEvent_InvalidEventForRegisteredListener_DoesNotCallRegisteredListener(string eventName)
         {
             // Arrange - Data
@@ -78,7 +78,7 @@ namespace TestSuite
             const string data = "";
             var fakePusherEvent = CreateFakePusherEvent(eventName, channelName, data, "");
             var mockEventListener = Mock.Of<IEventListener>();
-            FakeEventService.RegisterListenerExcludingTypes(mockEventListener, EventType.APP_CREATED);
+            FakeEventService.RegisterListenerExcludingTypes(mockEventListener, EventType.PROJECT_CREATED);
             
             // Arrange - Expectations
             Mock.Get(mockEventListener)

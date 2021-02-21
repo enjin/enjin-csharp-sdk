@@ -10,10 +10,10 @@ namespace Enjin.SDK.Models
     public class PusherChannels
     {
         /// <summary>
-        /// Represents the app channel.
+        /// Represents the project channel.
         /// </summary>
         /// <value>The channel string.</value>
-        [JsonProperty("app")]
+        [JsonProperty("project")]
         public string Project { get; private set; }
         
         /// <summary>

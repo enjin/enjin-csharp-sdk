@@ -127,39 +127,39 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void SubscribeToApp(int app)
+        public void SubscribeToProject(int project)
         {
-            Subscribe(new AppChannel(Platform, app).Channel());
+            Subscribe(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
-        public void UnsubscribeToApp(int app)
+        public void UnsubscribeToProject(int project)
         {
-            Unsubscribe(new AppChannel(Platform, app).Channel());
+            Unsubscribe(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
-        public bool IsSubscribedToApp(int app)
+        public bool IsSubscribedToProject(int project)
         {
-            return _subscribed.ContainsKey(new AppChannel(Platform, app).Channel());
+            return _subscribed.ContainsKey(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
-        public void SubscribeToPlayer(int app, string player)
+        public void SubscribeToPlayer(int project, string player)
         {
-            Subscribe(new PlayerChannel(Platform, app, player).Channel());
+            Subscribe(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
-        public void UnsubscribeToPlayer(int app, string player)
+        public void UnsubscribeToPlayer(int project, string player)
         {
-            Unsubscribe(new PlayerChannel(Platform, app, player).Channel());
+            Unsubscribe(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
-        public bool IsSubscribedToPlayer(int app, string player)
+        public bool IsSubscribedToPlayer(int project, string player)
         {
-            return _subscribed.ContainsKey(new PlayerChannel(Platform, app, player).Channel());
+            return _subscribed.ContainsKey(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>

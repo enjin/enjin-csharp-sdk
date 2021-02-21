@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models a player on a application.
+    /// Models a player on a project.
     /// </summary>
     [PublicAPI]
     public class Player

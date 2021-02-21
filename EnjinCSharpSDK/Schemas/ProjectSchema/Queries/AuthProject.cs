@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request to obtain the access token for the application.
+    /// Request to obtain the access token for the project.
     /// </summary>
     /// <seealso cref="Enjin.SDK.Models.AccessToken"/>
     /// <seealso cref="IProjectSchema"/>
@@ -19,13 +19,13 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <summary>
-        /// Sets the application ID.
+        /// Sets the project ID.
         /// </summary>
-        /// <param name="appId">The ID.</param>
+        /// <param name="id">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public AuthProject Id(int? appId)
+        public AuthProject Id(int? id)
         {
-            return SetVariable("id", appId);
+            return SetVariable("id", id);
         }
 
         /// <summary>

@@ -13,7 +13,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class ProjectSchema : SharedSchema, IProjectSchema
     {
-        private const string SCHEMA = "app";
+        private const string SCHEMA = "project";
         
         internal readonly IPlayerService PlayerService;
         internal readonly IWalletService WalletService;

@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for creating a player for the application.
+    /// Request for creating a player for the project.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
