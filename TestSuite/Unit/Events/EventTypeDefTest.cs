@@ -11,7 +11,7 @@ namespace TestSuite
     [TestFixture]
     public class EventTypeDefTest
     {
-        [TestCase("app")]
+        [TestCase("project")]
         public void FilterByChannelTypes_ReturnsDefsWithChannelType(params string[] channels)
         {
             // Arrange
@@ -30,7 +30,7 @@ namespace TestSuite
         }
 
         [TestCase("", ExpectedResult = EventType.UNKNOWN)]
-        [TestCase("APP_CREATED", ExpectedResult = EventType.APP_CREATED)]
+        [TestCase("PROJECT_CREATED", ExpectedResult = EventType.PROJECT_CREATED)]
         public EventType GetFromName_ReturnDefWithCorrectType(string name)
         {
             // Act
@@ -40,7 +40,7 @@ namespace TestSuite
             return def.Type;
         }
 
-        [TestCase("APP_CREATED", ExpectedResult = "EnjinCloud\\Events\\AppCreated")]
+        [TestCase("PROJECT_CREATED", ExpectedResult = "EnjinCloud\\Events\\ProjectCreated")]
         public string GetFromName_ReturnDefWithCorrectKey(string name)
         {
             // Act
@@ -51,7 +51,7 @@ namespace TestSuite
         }
 
         [TestCase("", ExpectedResult = EventType.UNKNOWN)]
-        [TestCase("EnjinCloud\\Events\\AppCreated", ExpectedResult = EventType.APP_CREATED)]
+        [TestCase("EnjinCloud\\Events\\ProjectCreated", ExpectedResult = EventType.PROJECT_CREATED)]
         public EventType GetFromKey_ReturnDefWithCorrectType(string key)
         {
             // Act
@@ -61,7 +61,7 @@ namespace TestSuite
             return def.Type;
         }
         
-        [TestCase("APP_LINKED", EventType.APP_LINKED)]
+        [TestCase("PROJECT_LINKED", EventType.PROJECT_LINKED)]
         public void In_DefIsInTypes(string name, params EventType[] types)
         {
             // Arrange
@@ -74,7 +74,7 @@ namespace TestSuite
             Assert.IsTrue(result);
         }
 
-        [TestCase("APP_LINKED", EventType.APP_UNLINKED)]
+        [TestCase("PROJECT_LINKED", EventType.PROJECT_UNLINKED)]
         public void In_DefIsNotInTypes(string name, params EventType[] types)
         {
             // Arrange

@@ -1,20 +1,18 @@
 #namespace enjin.sdk.project.SetMeltFee
 #import enjin.sdk.shared.Transaction
 
-#arg tokenId String!
-#arg tokenIndex String
+#arg assetId String!
+#arg assetIndex String
 #arg meltFee Int!
 #arg ethAddress EthAddress
-#arg test Boolean true
 #arg send Boolean true
 
 mutation {
     result: SetMeltFee(
-        tokenId: $tokenId,
-        tokenIndex: $tokenIndex,
+        assetId: $assetId,
+        assetIndex: $assetIndex,
         meltFee: $meltFee,
         wallet: $ethAddress,
-        test: $test,
         send: $send
     ) {
         ...Transaction

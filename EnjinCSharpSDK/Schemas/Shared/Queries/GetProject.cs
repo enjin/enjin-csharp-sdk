@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     /// <summary>
-    /// Request for getting a application on the platform.
+    /// Request for getting a project on the platform.
     /// </summary>
     /// <seealso cref="Enjin.SDK.Models.Project"/>
     /// <seealso cref="ISharedSchema"/>
@@ -19,7 +19,7 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the application ID.
+        /// Sets the project ID.
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This request for chaining.</returns>
@@ -29,7 +29,7 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the application name.
+        /// Sets the project name.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>This request for chaining.</returns>

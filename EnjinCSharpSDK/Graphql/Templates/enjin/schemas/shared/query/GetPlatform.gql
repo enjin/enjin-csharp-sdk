@@ -27,8 +27,10 @@ query {
                 namespace
                 channels {
                     app
+                    project
                     player
                     token
+                    asset
                     wallet
                 }
                 options {

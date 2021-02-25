@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for deleting a player from the application.
+    /// Request for deleting a player from the project.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]

@@ -72,65 +72,64 @@ namespace Enjin.SDK.Events
         void UnregisterListener(IEventListener listener);
 
         /// <summary>
-        /// Opens a channel for the specified application, allowing listeners to receive events for that application.
+        /// Opens a channel for the specified project, allowing listeners to receive events for that project.
         /// </summary>
-        /// <param name="app">The app ID.</param>
-        void SubscribeToApp(int app);
+        /// <param name="project">The project ID.</param>
+        void SubscribeToProject(int project);
         
         /// <summary>
-        /// Closes a channel for the specified application, preventing listeners from receiving events for that
-        /// application.
+        /// Closes a channel for the specified project, preventing listeners from receiving events for that project.
         /// </summary>
-        /// <param name="app">The app ID.</param>
-        void UnsubscribeToApp(int app);
+        /// <param name="project">The project ID.</param>
+        void UnsubscribeToProject(int project);
 
         /// <summary>
-        /// Determines if the channel is open for the specified application.
+        /// Determines if the channel is open for the specified project.
         /// </summary>
-        /// <param name="app">The app ID.</param>
+        /// <param name="project">The project ID.</param>
         /// <returns>True if open, else false.</returns>
-        bool IsSubscribedToApp(int app);
+        bool IsSubscribedToProject(int project);
         
         /// <summary>
         /// Opens a channel for the specified player, allowing listeners to receive events for that player.
         /// </summary>
-        /// <param name="app">The ID of the app the player is on.</param>
+        /// <param name="project">The ID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
-        void SubscribeToPlayer(int app, string player);
+        void SubscribeToPlayer(int project, string player);
         
         /// <summary>
         /// Closes a channel for the specified player, preventing listeners from receiving events for that player.
         /// </summary>
-        /// <param name="app">The ID of the app the player is on.</param>
+        /// <param name="project">The ID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
-        void UnsubscribeToPlayer(int app, string player);
+        void UnsubscribeToPlayer(int project, string player);
         
         /// <summary>
         /// Determines if the channel is open for the specified player.
         /// </summary>
-        /// <param name="app">The ID of the app the player is on.</param>
+        /// <param name="project">The ID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
         /// <returns>True if open, else false.</returns>
-        bool IsSubscribedToPlayer(int app, string player);
+        bool IsSubscribedToPlayer(int project, string player);
         
         /// <summary>
-        /// Opens a channel for the specified token (item), allowing listeners to receive events for that token.
+        /// Opens a channel for the specified asset, allowing listeners to receive events for that asset.
         /// </summary>
-        /// <param name="token">The token ID.</param>
-        void SubscribeToToken(string token);
+        /// <param name="asset">The asset ID.</param>
+        void SubscribeToAsset(string asset);
         
         /// <summary>
-        /// Closes a channel for the specified token (item), preventing listeners from receiving events for that token.
+        /// Closes a channel for the specified asset, preventing listeners from receiving events for that asset.
         /// </summary>
-        /// <param name="token">The token ID.</param>
-        void UnsubscribeToToken(string token);
+        /// <param name="asset">The asset ID.</param>
+        void UnsubscribeToAsset(string asset);
         
         /// <summary>
-        /// Determines if the channel is open for the specified token (item).
+        /// Determines if the channel is open for the specified asset.
         /// </summary>
-        /// <param name="token">The token ID.</param>
+        /// <param name="asset">The asset ID.</param>
         /// <returns>True if open, else false.</returns>
-        bool IsSubscribedToToken(string token);
+        bool IsSubscribedToAsset(string asset);
         
         /// <summary>
         /// Opens a channel for the specified wallet address, allowing listeners to receive events for that wallet

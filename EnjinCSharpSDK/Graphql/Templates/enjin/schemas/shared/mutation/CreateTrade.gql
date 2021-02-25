@@ -1,20 +1,18 @@
 #namespace enjin.sdk.shared.CreateTrade
 #import enjin.sdk.shared.Transaction
 
-#arg askingTokens [TradeInput!]!
-#arg offeringTokens [TradeInput!]!
+#arg askingAssets [TradeInput!]!
+#arg offeringAssets [TradeInput!]!
 #arg recipientAddress EthAddress!
 #arg ethAddress EthAddress
-#arg test Boolean true
 #arg send Boolean true
 
 mutation {
     result: CreateTrade(
-        askingTokens: $askingTokens,
-        offeringTokens: $offeringTokens,
+        askingAssets: $askingAssets,
+        offeringAssets: $offeringAssets,
         secondParty: $recipientAddress,
         wallet: $ethAddress,
-        test: $test,
         send: $send
     ) {
         ...Transaction

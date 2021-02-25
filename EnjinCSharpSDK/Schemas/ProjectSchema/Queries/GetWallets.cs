@@ -1,5 +1,6 @@
 ﻿using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -10,7 +11,9 @@ namespace Enjin.SDK.ProjectSchema
     /// <seealso cref="Wallet"/>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class GetWallets : GraphqlRequest<GetWallets>
+    public class GetWallets : GraphqlRequest<GetWallets>,
+                              IWalletFragmentArguments<GetWallets>,
+                              IPaginationArguments<GetWallets>
     {
         /// <summary>
         /// Sole constructor.
@@ -28,7 +31,7 @@ namespace Enjin.SDK.ProjectSchema
         {
             return SetVariable("userIds", userIds);
         }
-        
+
         /// <summary>
         /// Sets the Ethereum addresses of the wallets to get.
         /// </summary>

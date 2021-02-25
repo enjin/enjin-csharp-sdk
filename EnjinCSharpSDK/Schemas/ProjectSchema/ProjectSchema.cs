@@ -13,7 +13,7 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class ProjectSchema : SharedSchema, IProjectSchema
     {
-        private const string SCHEMA = "app";
+        private const string SCHEMA = "project";
         
         internal readonly IPlayerService PlayerService;
         internal readonly IWalletService WalletService;
@@ -71,7 +71,7 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CreateToken(CreateToken request)
+        public Task<GraphqlResponse<Request>> CreateAsset(CreateAsset request)
         {
             return TransactionRequest(request);
         }
@@ -95,13 +95,13 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<bool>> InvalidateTokenMetadata(InvalidateTokenMetadata request)
+        public Task<GraphqlResponse<bool>> InvalidateAssetMetadata(InvalidateAssetMetadata request)
         {
-            return SendRequest(TokenService.Delete(Schema, CreateRequestBody(request)));
+            return SendRequest(AssetService.Delete(Schema, CreateRequestBody(request)));
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> MintToken(MintToken request)
+        public Task<GraphqlResponse<Request>> MintAsset(MintAsset request)
         {
             return TransactionRequest(request);
         }

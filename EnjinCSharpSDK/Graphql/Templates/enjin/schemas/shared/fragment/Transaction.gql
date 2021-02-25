@@ -3,7 +3,7 @@
 #arg withMeta Boolean false
 #arg withBlockchainData Boolean false
 #arg withEncodedData Boolean false
-#arg withTokenData Boolean false
+#arg withAssetData Boolean false
 #arg withSignedTxs Boolean false
 #arg withError Boolean false
 #arg withNonce Boolean false
@@ -18,7 +18,7 @@ fragment Transaction on Transaction {
     title @include(if: $withMeta)
     contract @include(if: $withMeta)
     type
-    value @include(if: $withTokenData)
+    value @include(if: $withAssetData)
     retryState @include(if: $withState)
     state @include(if: $withState)
     accepted @include(if: $withState)
@@ -56,7 +56,6 @@ fragment Transaction on Transaction {
         error @include(if: $withError)
         nonce @include(if: $withNonce)
     }
-    tokenId @include(if: $withTokenData)
     createdAt
     updatedAt
 }

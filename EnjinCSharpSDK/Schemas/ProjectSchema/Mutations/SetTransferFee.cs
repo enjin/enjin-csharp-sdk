@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for setting the transfer fee of a item.
+    /// Request for setting the transfer fee of a asset.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
@@ -19,23 +19,23 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the token (item) ID.
+        /// Sets the asset ID.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferFee TokenId(string tokenId)
+        public SetTransferFee AssetId(string assetId)
         {
-            return SetVariable("tokenId", tokenId);
+            return SetVariable("assetId", assetId);
         }
         
         /// <summary>
-        /// Sets the index for non-fungible items.
+        /// Sets the index for non-fungible assets.
         /// </summary>
-        /// <param name="tokenIndex">The index.</param>
+        /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferFee TokenIndex(string tokenIndex)
+        public SetTransferFee AssetIndex(string assetIndex)
         {
-            return SetVariable("tokenIndex", tokenIndex);
+            return SetVariable("assetIndex", assetIndex);
         }
         
         /// <summary>

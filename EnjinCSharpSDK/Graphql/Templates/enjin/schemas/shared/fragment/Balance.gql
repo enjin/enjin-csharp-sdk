@@ -1,15 +1,15 @@
 #namespace enjin.sdk.shared.Balance
 
-#arg balIdFormat TokenIdFormat
-#arg balIndexFormat TokenIndexFormat
-#arg withBalAppId Boolean false
+#arg balIdFormat AssetIdFormat
+#arg balIndexFormat AssetIndexFormat
+#arg withBalProjectId Boolean false
 #arg withBalWalletAddress Boolean false
 
 fragment Balance on Balance {
     id(format: $balIdFormat)
     index(format: $balIndexFormat)
     value
-    app @include(if: $withBalAppId) {
+    project @include(if: $withBalProjectId) {
         id
     }
     wallet @include(if: $withBalWalletAddress) {

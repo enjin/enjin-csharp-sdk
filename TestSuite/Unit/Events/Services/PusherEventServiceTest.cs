@@ -88,8 +88,8 @@ namespace TestSuite
 
         [Test]
         [TestCase(EventType.PLAYER_LINKED)]
-        [TestCase(EventType.TOKEN_MINTED, EventType.TOKEN_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
-        [TestCase(EventType.APP_CREATED, EventType.APP_DELETED, EventType.APP_UPDATED)]
+        [TestCase(EventType.ASSET_MINTED, EventType.ASSET_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
+        [TestCase(EventType.PROJECT_CREATED, EventType.PROJECT_DELETED, EventType.PROJECT_UPDATED)]
         public void RegisterListenerIncludingTypes_MatcherIncludesEventTypes(params EventType[] includedTypes)
         {
             // Arrange
@@ -112,8 +112,8 @@ namespace TestSuite
 
         [Test]
         [TestCase(EventType.PLAYER_LINKED)]
-        [TestCase(EventType.TOKEN_MINTED, EventType.TOKEN_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
-        [TestCase(EventType.APP_CREATED, EventType.APP_DELETED, EventType.APP_UPDATED)]
+        [TestCase(EventType.ASSET_MINTED, EventType.ASSET_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
+        [TestCase(EventType.PROJECT_CREATED, EventType.PROJECT_DELETED, EventType.PROJECT_UPDATED)]
         public void RegisterListenerExcludingTypes_MatcherExcludesEventTypes(params EventType[] excludedTypes)
         {
             // Arrange
@@ -135,49 +135,49 @@ namespace TestSuite
         }
 
         [Test]
-        public void SubscribeToApp_SubscribedToChannel()
+        public void SubscribeToProject_SubscribedToChannel()
         {
             // Arrange
-            const int app = 1234;
+            const int project = 1234;
             var eventService = CreateEventService();
             eventService.Start();
 
             // Act
-            eventService.SubscribeToApp(app);
+            eventService.SubscribeToProject(project);
 
             // Assert
-            Assert.IsTrue(eventService.IsSubscribedToApp(app));
+            Assert.IsTrue(eventService.IsSubscribedToProject(project));
         }
 
         [Test]
         public void SubscribeToPlayer_SubscribedToChannel()
         {
             // Arrange
-            const int app = 1234;
+            const int project = 1234;
             const string player = "player1";
             var eventService = CreateEventService();
             eventService.Start();
 
             // Act
-            eventService.SubscribeToPlayer(app, player);
+            eventService.SubscribeToPlayer(project, player);
 
             // Assert
-            Assert.IsTrue(eventService.IsSubscribedToPlayer(app, player));
+            Assert.IsTrue(eventService.IsSubscribedToPlayer(project, player));
         }
 
         [Test]
-        public void SubscribeToToken_SubscribedToChannel()
+        public void SubscribeToAsset_SubscribedToChannel()
         {
             // Arrange
-            const string token = "0000000000000000";
+            const string asset = "0000000000000000";
             var eventService = CreateEventService();
             eventService.Start();
 
             // Act
-            eventService.SubscribeToToken(token);
+            eventService.SubscribeToAsset(asset);
 
             // Assert
-            Assert.IsTrue(eventService.IsSubscribedToToken(token));
+            Assert.IsTrue(eventService.IsSubscribedToAsset(asset));
         }
 
         [Test]
@@ -196,52 +196,52 @@ namespace TestSuite
         }
 
         [Test]
-        public void UnsubscribeToApp_UnsubscribedToChannel()
+        public void UnsubscribeToProject_UnsubscribedToChannel()
         {
             // Arrange
-            const int app = 1234;
+            const int project = 1234;
             var eventService = CreateEventService();
             eventService.Start();
-            eventService.SubscribeToApp(app);
+            eventService.SubscribeToProject(project);
 
             // Act
-            eventService.UnsubscribeToApp(app);
+            eventService.UnsubscribeToProject(project);
 
             // Assert
-            Assert.IsFalse(eventService.IsSubscribedToApp(app));
+            Assert.IsFalse(eventService.IsSubscribedToProject(project));
         }
 
         [Test]
         public void UnsubscribeToPlayer_UnsubscribedToChannel()
         {
             // Arrange
-            const int app = 1234;
+            const int project = 1234;
             const string player = "player1";
             var eventService = CreateEventService();
             eventService.Start();
-            eventService.SubscribeToPlayer(app, player);
+            eventService.SubscribeToPlayer(project, player);
 
             // Act
-            eventService.UnsubscribeToPlayer(app, player);
+            eventService.UnsubscribeToPlayer(project, player);
 
             // Assert
-            Assert.IsFalse(eventService.IsSubscribedToPlayer(app, player));
+            Assert.IsFalse(eventService.IsSubscribedToPlayer(project, player));
         }
 
         [Test]
-        public void UnsubscribeToToken_UnsubscribedToChannel()
+        public void UnsubscribeToAsset_UnsubscribedToChannel()
         {
             // Arrange
-            const string token = "0000000000000000";
+            const string asset = "0000000000000000";
             var eventService = CreateEventService();
             eventService.Start();
-            eventService.SubscribeToToken(token);
+            eventService.SubscribeToAsset(asset);
 
             // Act
-            eventService.UnsubscribeToToken(token);
+            eventService.UnsubscribeToAsset(asset);
 
             // Assert
-            Assert.IsFalse(eventService.IsSubscribedToToken(token));
+            Assert.IsFalse(eventService.IsSubscribedToAsset(asset));
         }
 
         [Test]

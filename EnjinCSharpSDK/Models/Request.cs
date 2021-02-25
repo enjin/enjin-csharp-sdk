@@ -79,13 +79,6 @@ namespace Enjin.SDK.Models
         /// <value>The data.</value>
         [JsonProperty("blockchainData")]
         public BlockchainData? BlockchainData { get; private set; }
-        
-        /// <summary>
-        /// Represents the token ID for this transaction.
-        /// </summary>
-        /// <value>The ID.</value>
-        [JsonProperty("tokenId")]
-        public string? TokenId { get; private set; }
 
         /// <summary>
         /// Represents the datetime when this transaction was created.

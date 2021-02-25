@@ -14,7 +14,7 @@ namespace Enjin.SDK.Shared
         internal readonly IBalanceService BalanceService;
         internal readonly IPlatformService PlatformService;
         internal readonly IRequestService RequestService;
-        internal readonly ITokenService TokenService;
+        internal readonly IAssetService AssetService;
         
         /// <summary>
         /// Sole constructor.
@@ -27,7 +27,7 @@ namespace Enjin.SDK.Shared
             BalanceService = CreateService<IBalanceService>();
             PlatformService = CreateService<IPlatformService>();
             RequestService = CreateService<IRequestService>();
-            TokenService = CreateService<ITokenService>();
+            AssetService = CreateService<IAssetService>();
         }
 
         /// <inheritdoc/>
@@ -67,19 +67,19 @@ namespace Enjin.SDK.Shared
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Token>> GetToken(GetToken request)
+        public Task<GraphqlResponse<Asset>> GetAsset(GetAsset request)
         {
-            return SendRequest(TokenService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest(AssetService.GetOne(Schema, CreateRequestBody(request)));
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<List<Token>>> GetTokens(GetTokens request)
+        public Task<GraphqlResponse<List<Asset>>> GetAssets(GetAssets request)
         {
-            return SendRequest(TokenService.GetMany(Schema, CreateRequestBody(request)));
+            return SendRequest(AssetService.GetMany(Schema, CreateRequestBody(request)));
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> AdvancedSendToken(AdvancedSendToken request)
+        public Task<GraphqlResponse<Request>> AdvancedSendAsset(AdvancedSendAsset request)
         {
             return TransactionRequest(request);
         }
@@ -115,7 +115,7 @@ namespace Enjin.SDK.Shared
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> MeltToken(MeltToken request)
+        public Task<GraphqlResponse<Request>> MeltAsset(MeltAsset request)
         {
             return TransactionRequest(request);
         }
@@ -139,7 +139,7 @@ namespace Enjin.SDK.Shared
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SendToken(SendToken request)
+        public Task<GraphqlResponse<Request>> SendAsset(SendAsset request)
         {
             return TransactionRequest(request);
         }

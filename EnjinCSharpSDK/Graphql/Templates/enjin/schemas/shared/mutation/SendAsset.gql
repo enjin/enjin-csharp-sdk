@@ -1,0 +1,24 @@
+#namespace enjin.sdk.shared.SendAsset
+#import enjin.sdk.shared.Transaction
+
+#arg recipientAddress EthAddress!
+#arg assetId String!
+#arg assetIndex String
+#arg value BigInt
+#arg data String
+#arg ethAddress EthAddress
+#arg send Boolean true
+
+mutation {
+    result: SendAsset(
+        to: $recipientAddress,
+        assetId: $assetId,
+        assetIndex: $assetIndex,
+        value: $value,
+        data: $data,
+        wallet: $ethAddress,
+        send: $send
+    ) {
+        ...Transaction
+    }
+}

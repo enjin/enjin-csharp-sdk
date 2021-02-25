@@ -4,48 +4,48 @@ using Enjin.SDK.Models;
 [assembly: InternalsVisibleTo("TestSuite")]
 namespace Enjin.SDK.Events
 {
-    internal sealed class AppChannel : IChannel
+    internal sealed class ProjectChannel : IChannel
     {
         private readonly Platform _platform;
-        private readonly int _appId;
+        private readonly int _projectId;
         
-        public AppChannel(Platform platform, int appId)
+        public ProjectChannel(Platform platform, int projectId)
         {
             _platform = platform;
-            _appId = appId;
+            _projectId = projectId;
         }
 
-        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.app.{_appId}";
+        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.project.{_projectId}";
     }
     
     internal sealed class PlayerChannel : IChannel
     {
         private readonly Platform _platform;
-        private readonly int _appId;
+        private readonly int _projectId;
         private readonly string _playerId;
         
-        public PlayerChannel(Platform platform, int appId, string playerId)
+        public PlayerChannel(Platform platform, int projectId, string playerId)
         {
             _platform = platform;
-            _appId = appId;
+            _projectId = projectId;
             _playerId = playerId;
         }
         
-        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.app.{_appId}.player.{_playerId}";
+        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.project.{_projectId}.player.{_playerId}";
     }
 
-    internal sealed class TokenChannel : IChannel
+    internal sealed class AssetChannel : IChannel
     {
         private readonly Platform _platform;
-        private readonly string _tokenId;
+        private readonly string _assetId;
 
-        public TokenChannel(Platform platform, string tokenId)
+        public AssetChannel(Platform platform, string assetId)
         {
             _platform = platform;
-            _tokenId = tokenId;
+            _assetId = assetId;
         }
 
-        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.token.{_tokenId}";
+        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.asset.{_assetId}";
     }
     
     internal sealed class WalletChannel : IChannel

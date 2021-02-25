@@ -15,92 +15,113 @@ namespace Enjin.SDK.Events
     {
         private static readonly EventTypeDef UNKNOWN = Create(EventType.UNKNOWN);
 
-        private static readonly EventTypeDef APP_CREATED =
-            Create(EventType.APP_CREATED, "EnjinCloud\\Events\\AppCreated", "app");
+        private static readonly EventTypeDef PROJECT_CREATED =
+            Create(EventType.PROJECT_CREATED, "EnjinCloud\\Events\\ProjectCreated", "project");
 
-        private static readonly EventTypeDef APP_DELETED =
-            Create(EventType.APP_DELETED, "EnjinCloud\\Events\\AppDeleted", "app");
+        private static readonly EventTypeDef PROJECT_DELETED =
+            Create(EventType.PROJECT_DELETED, "EnjinCloud\\Events\\ProjectDeleted", "project");
 
-        private static readonly EventTypeDef APP_LINKED = Create(EventType.APP_LINKED, "EnjinCloud\\Events\\AppLinked",
-            "app", "wallet");
+        private static readonly EventTypeDef PROJECT_LINKED = Create(EventType.PROJECT_LINKED,
+                                                                     "EnjinCloud\\Events\\ProjectLinked",
+                                                                     "project", "wallet");
 
-        private static readonly EventTypeDef APP_LOCKED = Create(EventType.APP_LOCKED, "EnjinCloud\\Events\\AppLocked",
-            "app");
+        private static readonly EventTypeDef PROJECT_LOCKED = Create(EventType.PROJECT_LOCKED,
+                                                                     "EnjinCloud\\Events\\ProjectLocked",
+                                                                     "project");
 
-        private static readonly EventTypeDef APP_UNLINKED =
-            Create(EventType.APP_UNLINKED, "EnjinCloud\\Events\\AppUnlinked", "app", "wallet");
+        private static readonly EventTypeDef PROJECT_UNLINKED =
+            Create(EventType.PROJECT_UNLINKED, "EnjinCloud\\Events\\ProjectUnlinked", "project", "wallet");
 
-        private static readonly EventTypeDef APP_UNLOCKED =
-            Create(EventType.APP_UNLOCKED, "EnjinCloud\\Events\\AppUnlocked", "app");
+        private static readonly EventTypeDef PROJECT_UNLOCKED =
+            Create(EventType.PROJECT_UNLOCKED, "EnjinCloud\\Events\\ProjectUnlocked", "project");
 
-        private static readonly EventTypeDef APP_UPDATED =
-            Create(EventType.APP_UPDATED, "EnjinCloud\\Events\\AppUpdated", "app");
+        private static readonly EventTypeDef PROJECT_UPDATED =
+            Create(EventType.PROJECT_UPDATED, "EnjinCloud\\Events\\ProjectUpdated", "project");
 
         private static readonly EventTypeDef BLOCKCHAIN_LOG_PROCESSED = Create(EventType.BLOCKCHAIN_LOG_PROCESSED,
-            "EnjinCloud\\Events\\BlockchainLogProcessed", "app", "token", "wallet");
+                                                                               "EnjinCloud\\Events\\BlockchainLogProcessed",
+                                                                               "project", "asset", "wallet");
 
         private static readonly EventTypeDef MESSAGE_PROCESSED = Create(EventType.MESSAGE_PROCESSED,
-            "EnjinCloud\\Events\\MessageProcessed", "app", "token", "wallet");
+                                                                        "EnjinCloud\\Events\\MessageProcessed",
+                                                                        "project", "asset", "wallet");
 
         private static readonly EventTypeDef PLAYER_CREATED =
-            Create(EventType.PLAYER_CREATED, "EnjinCloud\\Events\\PlayerCreated", "app", "player");
+            Create(EventType.PLAYER_CREATED, "EnjinCloud\\Events\\PlayerCreated", "project", "player");
 
         private static readonly EventTypeDef PLAYER_DELETED =
-            Create(EventType.PLAYER_DELETED, "EnjinCloud\\Events\\PlayerDeleted", "app", "player");
+            Create(EventType.PLAYER_DELETED, "EnjinCloud\\Events\\PlayerDeleted", "project", "player");
 
         private static readonly EventTypeDef PLAYER_LINKED = Create(EventType.PLAYER_LINKED,
-            "EnjinCloud\\Events\\PlayerLinked", "app", "player", "wallet");
+                                                                    "EnjinCloud\\Events\\PlayerLinked", "project",
+                                                                    "player", "wallet");
 
         private static readonly EventTypeDef PLAYER_UNLINKED = Create(EventType.PLAYER_UNLINKED,
-            "EnjinCloud\\Events\\PlayerUnlinked", "app", "player", "wallet");
+                                                                      "EnjinCloud\\Events\\PlayerUnlinked", "project",
+                                                                      "player", "wallet");
 
         private static readonly EventTypeDef PLAYER_UPDATED =
-            Create(EventType.PLAYER_UPDATED, "EnjinCloud\\Events\\PlayerUpdated", "app", "player");
+            Create(EventType.PLAYER_UPDATED, "EnjinCloud\\Events\\PlayerUpdated", "project", "player");
 
-        private static readonly EventTypeDef TOKEN_CREATED = Create(EventType.TOKEN_CREATED,
-            "EnjinCloud\\Events\\TokenCreated", "app", "token", "wallet");
+        private static readonly EventTypeDef ASSET_CREATED = Create(EventType.ASSET_CREATED,
+                                                                    "EnjinCloud\\Events\\AssetCreated", "project",
+                                                                    "asset", "wallet");
 
-        private static readonly EventTypeDef TOKEN_MELTED = Create(EventType.TOKEN_MELTED,
-            "EnjinCloud\\Events\\TokenMelted", "app", "token", "wallet");
+        private static readonly EventTypeDef ASSET_MELTED = Create(EventType.ASSET_MELTED,
+                                                                   "EnjinCloud\\Events\\AssetMelted", "project",
+                                                                   "asset", "wallet");
 
-        private static readonly EventTypeDef TOKEN_MINTED = Create(EventType.TOKEN_MINTED,
-            "EnjinCloud\\Events\\TokenMinted", "app", "token", "wallet");
+        private static readonly EventTypeDef ASSET_MINTED = Create(EventType.ASSET_MINTED,
+                                                                   "EnjinCloud\\Events\\AssetMinted", "project",
+                                                                   "asset", "wallet");
 
-        private static readonly EventTypeDef TOKEN_TRANSFERRED = Create(EventType.TOKEN_TRANSFERRED,
-            "EnjinCloud\\Events\\TokenTransferred", "app", "token", "wallet");
+        private static readonly EventTypeDef ASSET_TRANSFERRED = Create(EventType.ASSET_TRANSFERRED,
+                                                                        "EnjinCloud\\Events\\AssetTransferred",
+                                                                        "project", "asset", "wallet");
 
-        private static readonly EventTypeDef TOKEN_UPDATED = Create(EventType.TOKEN_UPDATED,
-            "EnjinCloud\\Events\\TokenUpdated", "app", "token", "wallet");
+        private static readonly EventTypeDef ASSET_UPDATED = Create(EventType.ASSET_UPDATED,
+                                                                    "EnjinCloud\\Events\\AssetUpdated", "project",
+                                                                    "asset", "wallet");
 
         private static readonly EventTypeDef TRADE_COMPLETED = Create(EventType.TRADE_COMPLETED,
-            "EnjinCloud\\Events\\TradeCompleted", "app", "token", "wallet");
+                                                                      "EnjinCloud\\Events\\TradeCompleted", "project",
+                                                                      "asset", "wallet");
 
         private static readonly EventTypeDef TRADE_CREATED = Create(EventType.TRADE_CREATED,
-            "EnjinCloud\\Events\\TradeCreated", "app", "token", "wallet");
+                                                                    "EnjinCloud\\Events\\TradeCreated", "project",
+                                                                    "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_BROADCAST = Create(EventType.TRANSACTION_BROADCAST,
-            "EnjinCloud\\Events\\TransactionBroadcast", "app", "token", "wallet");
+                                                                            "EnjinCloud\\Events\\TransactionBroadcast",
+                                                                            "project", "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_CANCELED = Create(EventType.TRANSACTION_CANCELED,
-            "EnjinCloud\\Events\\TransactionCanceled", "app", "token", "wallet");
+                                                                           "EnjinCloud\\Events\\TransactionCanceled",
+                                                                           "project", "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_DROPPED = Create(EventType.TRANSACTION_DROPPED,
-            "EnjinCloud\\Events\\TransactionDropped", "app", "token", "wallet");
+                                                                          "EnjinCloud\\Events\\TransactionDropped",
+                                                                          "project", "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_EXECUTED = Create(EventType.TRANSACTION_EXECUTED,
-            "EnjinCloud\\Events\\TransactionExecuted", "app", "token", "wallet");
+                                                                           "EnjinCloud\\Events\\TransactionExecuted",
+                                                                           "project", "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_FAILED = Create(EventType.TRANSACTION_FAILED,
-            "EnjinCloud\\Events\\TransactionFailed", "app", "token", "wallet");
+                                                                         "EnjinCloud\\Events\\TransactionFailed",
+                                                                         "project", "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_PENDING = Create(EventType.TRANSACTION_PENDING,
-            "EnjinCloud\\Events\\TransactionPending", "app", "token", "wallet");
+                                                                          "EnjinCloud\\Events\\TransactionPending",
+                                                                          "project", "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_PROCESSING = Create(EventType.TRANSACTION_PROCESSING,
-            "EnjinCloud\\Events\\TransactionProcessing", "app", "token", "wallet");
+                                                                             "EnjinCloud\\Events\\TransactionProcessing",
+                                                                             "project", "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_UPDATED = Create(EventType.TRANSACTION_UPDATED,
-            "EnjinCloud\\Events\\TransactionUpdated", "app", "token", "wallet");
+                                                                          "EnjinCloud\\Events\\TransactionUpdated",
+                                                                          "project", "asset", "wallet");
 
         private static Dictionary<EventType, EventTypeDef> _map = new Dictionary<EventType, EventTypeDef>();
 

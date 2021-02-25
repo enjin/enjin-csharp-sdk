@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for getting players on the application.
+    /// Request for getting players on the project.
     /// </summary>
     /// <seealso cref="Enjin.SDK.Models.Player"/>
     /// <seealso cref="IProjectSchema"/>

@@ -10,10 +10,10 @@ namespace Enjin.SDK.Models
     public class PusherChannels
     {
         /// <summary>
-        /// Represents the app channel.
+        /// Represents the project channel.
         /// </summary>
         /// <value>The channel string.</value>
-        [JsonProperty("app")]
+        [JsonProperty("project")]
         public string Project { get; private set; }
         
         /// <summary>
@@ -24,11 +24,11 @@ namespace Enjin.SDK.Models
         public string Player { get; private set; }
         
         /// <summary>
-        /// Represents the token channel.
+        /// Represents the asset channel.
         /// </summary>
         /// <value>The channel string.</value>
-        [JsonProperty("token")]
-        public string Token { get; private set; }
+        [JsonProperty("asset")]
+        public string Asset { get; private set; }
         
         /// <summary>
         /// Represents the wallet channel.

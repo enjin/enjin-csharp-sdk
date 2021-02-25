@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for setting an item's whitelist.
+    /// Request for setting an asset's whitelist.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
@@ -20,13 +20,13 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the token (item) ID.
+        /// Sets the asset ID.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SetWhitelisted TokenId(string tokenId)
+        public SetWhitelisted AssetId(string assetId)
         {
-            return SetVariable("tokenId", tokenId);
+            return SetVariable("assetId", assetId);
         }
         
         /// <summary>

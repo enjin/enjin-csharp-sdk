@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for unlinking a wallet from the application.
+    /// Request for unlinking a wallet from the project.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]

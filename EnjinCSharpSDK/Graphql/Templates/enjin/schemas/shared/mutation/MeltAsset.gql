@@ -1,0 +1,16 @@
+#namespace enjin.sdk.shared.MeltAsset
+#import enjin.sdk.shared.Transaction
+
+#arg melts [MeltInput!]!
+#arg ethAddress EthAddress
+#arg send Boolean true
+
+mutation {
+    result: MeltAsset(
+        melts: $melts,
+        wallet: $ethAddress,
+        send: $send
+    ) {
+        ...Transaction
+    }
+}

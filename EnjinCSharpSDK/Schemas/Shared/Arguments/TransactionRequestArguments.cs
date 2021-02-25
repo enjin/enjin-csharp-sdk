@@ -29,23 +29,7 @@ namespace Enjin.SDK.Shared
         {
             return instance.SetVariable("ethAddress", ethAddress);
         }
-        
-        /// <summary>
-        /// Sets whether the request will test the transaction before creating it.
-        /// </summary>
-        /// <param name="instance">The caller.</param>
-        /// <param name="test">The test state.</param>
-        /// <typeparam name="T">The caller type.</typeparam>
-        /// <returns>The caller for chaining.</returns>
-        /// <remarks>
-        /// Setting this to false will skip checks on the platform, but may run the risk of losing gas fees if the
-        /// transaction fails on the blockchain.
-        /// </remarks>
-        public static T Test<T>(this T instance, bool test) where T : ITransactionRequestArguments<T>
-        {
-            return instance.SetVariable("test", test);
-        }
-        
+
         /// <summary>
         /// Sets whether the request will send the transaction to the blockchain.
         /// </summary>

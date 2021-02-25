@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     /// <summary>
-    /// Request for allowing an operator complete control of all tokens owned by the caller.
+    /// Request for allowing an operator complete control of all assets owned by the caller.
     /// </summary>
     /// <seealso cref="ISharedSchema"/>
     [PublicAPI]

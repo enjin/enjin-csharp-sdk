@@ -9,7 +9,7 @@ namespace Enjin.SDK.Shared
     /// <typeparam name="T">The type of the implementing class.</typeparam>
     /// <seealso cref="Enjin.SDK.Models.Wallet"/>
     [PublicAPI]
-    public interface IWalletFragmentArguments<out T> : ITokenFragmentArguments<T>
+    public interface IWalletFragmentArguments<out T> : IAssetFragmentArguments<T>
     {
     }
     
@@ -20,14 +20,14 @@ namespace Enjin.SDK.Shared
     public static class WalletFragmentArguments
     {
         /// <summary>
-        /// Sets the request to include the tokens (items) the wallet created with the wallet.
+        /// Sets the request to include the assets the wallet created with the wallet.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T WithTokensCreated<T>(this T instance) where T : IWalletFragmentArguments<T>
+        public static T WithAssetsCreated<T>(this T instance) where T : IWalletFragmentArguments<T>
         {
-            return instance.SetVariable("withTokensCreated", true);
+            return instance.SetVariable("withAssetsCreated", true);
         }
     }
 }

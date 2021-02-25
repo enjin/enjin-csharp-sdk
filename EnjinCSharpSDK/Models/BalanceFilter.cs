@@ -12,10 +12,10 @@ namespace Enjin.SDK.Models
     [PublicAPI]
     public class BalanceFilter: Filter<BalanceFilter>
     {
-        [JsonProperty("tokenId")]
-        private string _tokenId;
-        [JsonProperty("tokenId_in")]
-        private List<string>? _tokenIdIn;
+        [JsonProperty("assetId")]
+        private string _assetId;
+        [JsonProperty("assetId_in")]
+        private List<string>? _assetIdIn;
         [JsonProperty("wallet")]
         private string _wallet;
         [JsonProperty("wallet_in")]
@@ -32,24 +32,24 @@ namespace Enjin.SDK.Models
         private int? _valueLte;
         
         /// <summary>
-        /// Sets the token (item) ID to filter for.
+        /// Sets the asset ID to filter for.
         /// </summary>
-        /// <param name="tokenId">The token ID.</param>
+        /// <param name="assetId">The asset ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter TokenId(string tokenId)
+        public BalanceFilter AssetId(string assetId)
         {
-            _tokenId = tokenId;
+            _assetId = assetId;
             return this;
         }
 
         /// <summary>
-        /// Sets the token (item) IDs to filter for.
+        /// Sets the asset IDs to filter for.
         /// </summary>
-        /// <param name="tokenIds">The token IDs.</param>
+        /// <param name="assetIds">The asset IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter TokenIdIn(params string[]? tokenIds)
+        public BalanceFilter AssetIdIn(params string[]? assetIds)
         {
-            _tokenIdIn = tokenIds?.ToList();
+            _assetIdIn = assetIds?.ToList();
             return this;
         }
         

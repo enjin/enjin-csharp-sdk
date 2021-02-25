@@ -38,7 +38,7 @@ namespace Enjin.SDK
     }
     
     [Headers("Content-Type: application/json")]
-    internal interface ITokenService : IGetOne<Token>, IGetMany<Token>, IDelete
+    internal interface IAssetService : IGetOne<Asset>, IGetMany<Asset>, IDelete
     {
     }
 

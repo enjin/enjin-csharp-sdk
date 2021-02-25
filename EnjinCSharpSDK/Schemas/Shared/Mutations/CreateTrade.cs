@@ -20,23 +20,23 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the tokens (items) the sender is asking for.
+        /// Sets the assets the sender is asking for.
         /// </summary>
-        /// <param name="tokens">The items.</param>
+        /// <param name="assets">The assets.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateTrade AskingTokens(params Trade[] tokens)
+        public CreateTrade AskingAssets(params Trade[] assets)
         {
-            return SetVariable("askingTokens", tokens);
+            return SetVariable("askingAssets", assets);
         }
 
         /// <summary>
-        /// Sets the tokens (items) to be offered by the sender.
+        /// Sets the assets to be offered by the sender.
         /// </summary>
-        /// <param name="tokens">The tokens.</param>
+        /// <param name="assets">The assets.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateTrade OfferingTokens(params Trade[] tokens)
+        public CreateTrade OfferingAssets(params Trade[] assets)
         {
-            return SetVariable("offeringTokens", tokens);
+            return SetVariable("offeringAssets", assets);
         }
 
         /// <summary>

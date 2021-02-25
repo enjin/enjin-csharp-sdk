@@ -1,20 +1,18 @@
 #namespace enjin.sdk.project.DecreaseMaxMeltFee
 #import enjin.sdk.shared.Transaction
 
-#arg tokenId String!
-#arg tokenIndex String
+#arg assetId String!
+#arg assetIndex String
 #arg maxMeltFee Int!
 #arg ethAddress EthAddress
-#arg test Boolean true
 #arg send Boolean true
 
 mutation {
     result: DecreaseMaxMeltFee(
-        tokenId: $tokenId,
-        tokenIndex: $tokenIndex,
+        assetId: $assetId,
+        assetIndex: $assetIndex,
         maxMeltFee: $maxMeltFee,
         wallet: $ethAddress,
-        test: $test,
         send: $send
     ) {
         ...Transaction

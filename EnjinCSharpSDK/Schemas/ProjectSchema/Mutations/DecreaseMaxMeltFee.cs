@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for setting an item's max melt fee to a lower value.
+    /// Request for setting an asset's max melt fee to a lower value.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
@@ -19,27 +19,27 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the token (item) ID.
+        /// Sets the asset ID.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public DecreaseMaxMeltFee TokenId(string tokenId)
+        public DecreaseMaxMeltFee AssetId(string assetId)
         {
-            return SetVariable("tokenId", tokenId);
+            return SetVariable("assetId", assetId);
         }
         
         /// <summary>
-        /// Sets the index for non-fungible items.
+        /// Sets the index for non-fungible assets.
         /// </summary>
-        /// <param name="tokenIndex">The index.</param>
+        /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public DecreaseMaxMeltFee TokenIndex(string tokenIndex)
+        public DecreaseMaxMeltFee AssetIndex(string assetIndex)
         {
-            return SetVariable("tokenIndex", tokenIndex);
+            return SetVariable("assetIndex", assetIndex);
         }
         
         /// <summary>
-        /// Sets the new max melt fee for the item.
+        /// Sets the new max melt fee for the asset.
         /// </summary>
         /// <param name="maxMeltFee">The new ratio.</param>
         /// <returns>This request for chaining.</returns>

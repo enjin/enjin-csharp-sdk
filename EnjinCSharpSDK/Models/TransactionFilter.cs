@@ -24,11 +24,11 @@ namespace Enjin.SDK.Models
         [JsonProperty("transactionId_in")]
         private List<string>? _transactionIdIn;
 
-        [JsonProperty("tokenId")]
-        private string _tokenId;
+        [JsonProperty("assetId")]
+        private string _assetId;
 
-        [JsonProperty("tokenId_in")]
-        private List<string>? _tokenIdIn;
+        [JsonProperty("assetId_in")]
+        private List<string>? _assetIdIn;
 
         [JsonProperty("type")]
         private RequestType _type;
@@ -108,24 +108,24 @@ namespace Enjin.SDK.Models
         }
         
         /// <summary>
-        /// Sets the token (item) ID to filter for.
+        /// Sets the asset ID to filter for.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter TokenId(string tokenId)
+        public TransactionFilter AssetId(string assetId)
         {
-            _tokenId = tokenId;
+            _assetId = assetId;
             return this;
         }
 
         /// <summary>
-        /// Sets the token (item) IDs to filter for.
+        /// Sets the asset IDs to filter for.
         /// </summary>
-        /// <param name="tokenIds">The IDs.</param>
+        /// <param name="assetIds">The IDs.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter TokenIdIn(params string[]? tokenIds)
+        public TransactionFilter AssetIdIn(params string[]? assetIds)
         {
-            _tokenIdIn = tokenIds?.ToList();
+            _assetIdIn = assetIds?.ToList();
             return this;
         }
         

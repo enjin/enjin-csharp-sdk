@@ -1,5 +1,6 @@
 ﻿using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -10,7 +11,7 @@ namespace Enjin.SDK.ProjectSchema
     /// <seealso cref="Wallet"/>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class GetWallet : GraphqlRequest<GetWallet>
+    public class GetWallet : GraphqlRequest<GetWallet>, IWalletFragmentArguments<GetWallet>
     {
         /// <summary>
         /// Sole constructor.

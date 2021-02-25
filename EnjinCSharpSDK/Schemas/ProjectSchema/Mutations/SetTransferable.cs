@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
-    /// Request for setting if a item may be transferred.
+    /// Request for setting if a asset may be transferred.
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
@@ -20,23 +20,23 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the token (item) ID.
+        /// Sets the asset ID.
         /// </summary>
-        /// <param name="tokenId">The ID.</param>
+        /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferable TokenId(string tokenId)
+        public SetTransferable AssetId(string assetId)
         {
-            return SetVariable("tokenId", tokenId);
+            return SetVariable("assetId", assetId);
         }
         
         /// <summary>
-        /// Sets the index for non-fungible items.
+        /// Sets the index for non-fungible assets.
         /// </summary>
-        /// <param name="tokenIndex">The index.</param>
+        /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferable TokenIndex(string tokenIndex)
+        public SetTransferable AssetIndex(string assetIndex)
         {
-            return SetVariable("tokenIndex", tokenIndex);
+            return SetVariable("assetIndex", assetIndex);
         }
         
         /// <summary>
@@ -44,7 +44,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="transferable">The new mode.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferable Transferable(TokenTransferable? transferable)
+        public SetTransferable Transferable(AssetTransferable? transferable)
         {
             return SetVariable("transferable", transferable);
         }

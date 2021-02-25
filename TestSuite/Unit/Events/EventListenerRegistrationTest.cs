@@ -97,8 +97,8 @@ namespace TestSuite
 
         [Test]
         [TestCase(EventType.PLAYER_LINKED)]
-        [TestCase(EventType.TOKEN_MINTED, EventType.TOKEN_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
-        [TestCase(EventType.APP_CREATED, EventType.APP_DELETED, EventType.APP_UPDATED)]
+        [TestCase(EventType.ASSET_MINTED, EventType.ASSET_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
+        [TestCase(EventType.PROJECT_CREATED, EventType.PROJECT_DELETED, EventType.PROJECT_UPDATED)]
         public void WithAllowedEvents_RegistrationMatcherIncludesEvents(params EventType[] includedTypes)
         {
             // Arrange
@@ -121,8 +121,8 @@ namespace TestSuite
         
         [Test]
         [TestCase(EventType.PLAYER_LINKED)]
-        [TestCase(EventType.TOKEN_MINTED, EventType.TOKEN_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
-        [TestCase(EventType.APP_CREATED, EventType.APP_DELETED, EventType.APP_UPDATED)]
+        [TestCase(EventType.ASSET_MINTED, EventType.ASSET_TRANSFERRED, EventType.TRANSACTION_EXECUTED)]
+        [TestCase(EventType.PROJECT_CREATED, EventType.PROJECT_DELETED, EventType.PROJECT_UPDATED)]
         public void WithIgnoredEvents_RegistrationMatcherIgnoresEvents(params EventType[] ignoredTypes)
         {
             // Arrange
