@@ -163,7 +163,7 @@ namespace Enjin.SDK.Events
         {
             return (from channel in channels
                     from def in Values()
-                    where def.Channels.Any(c => c.EqualsIgnoreCase(channel))
+                    where def.Channels.Any(channel.Contains)
                     select def).ToList();
         }
 
