@@ -112,6 +112,12 @@ namespace Enjin.SDK.Events
 
         private EventListenerRegistration Register(RegistrationListenerConfiguration configuration)
         {
+            // Checks if listener is already registered
+            foreach (var r in RegisteredListeners.Where(r => r.Listener.Equals(configuration.Listener)))
+            {
+                return r;
+            }
+            
             var config = configuration.Create();
             RegisteredListeners.Add(config);
             return config;

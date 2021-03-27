@@ -55,6 +55,21 @@ namespace TestSuite
         }
 
         [Test]
+        public void RegisterListener_RegisteringSameListenerReturnsSameRegistration()
+        {
+            // Arrange
+            var listener = new EventListener();
+            var eventService = CreateEventService();
+            var expected = eventService.RegisterListener(listener);
+
+            // Act
+            var actual = eventService.RegisterListener(listener);
+            
+            // Assert
+            Assert.AreSame(expected, actual);
+        }
+
+        [Test]
         public void RegisterListener_RegistrationUsesAllowAllMatcher()
         {
             // Arrange
