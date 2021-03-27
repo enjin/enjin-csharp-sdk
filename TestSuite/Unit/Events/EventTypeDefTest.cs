@@ -12,6 +12,8 @@ namespace TestSuite
     public class EventTypeDefTest
     {
         [TestCase("project")]
+        [TestCase("enjincloud.kovan.wallet.0x0")]
+        [TestCase("enjincloud.kovan.wallet.0x0", "enjincloud.kovan.asset.0x0")]
         public void FilterByChannelTypes_ReturnsDefsWithChannelType(params string[] channels)
         {
             // Arrange
@@ -23,7 +25,7 @@ namespace TestSuite
             // Assert
             foreach (var def in defs)
             {
-                var expected = def.Channels.Any(channels.Contains);
+                var expected = def.Channels.Any(defChannel => channels.Any(c => c.Contains(defChannel)));
                 var actual = filteredDefs.Contains(def);
                 Assert.AreEqual(expected, actual);
             }
