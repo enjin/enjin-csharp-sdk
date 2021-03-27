@@ -49,12 +49,12 @@ namespace Enjin.SDK.Events
 
         internal sealed class RegistrationListenerConfiguration
         {
-            private readonly IEventListener _listener;
+            internal readonly IEventListener Listener;
             private Func<EventType, bool> _matcher = ALLOW_ALL_MATCHER;
 
             internal RegistrationListenerConfiguration(IEventListener listener)
             {
-                _listener = listener;
+                Listener = listener;
                 DetectAndApplyListenerAttributes();
             }
 
@@ -76,15 +76,15 @@ namespace Enjin.SDK.Events
                 return this;
             }
 
-            internal EventListenerRegistration Create() => new EventListenerRegistration(_listener, _matcher);
+            internal EventListenerRegistration Create() => new EventListenerRegistration(Listener, _matcher);
 
             private void DetectAndApplyListenerAttributes()
             {
-                if (_listener == null)
+                if (Listener == null)
                     return;
 
                 EventFilter filter =
-                    (EventFilter) Attribute.GetCustomAttribute(_listener.GetType(), typeof(EventFilter));
+                    (EventFilter) Attribute.GetCustomAttribute(Listener.GetType(), typeof(EventFilter));
                 if (filter == null)
                     return;
 
