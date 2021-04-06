@@ -18,5 +18,10 @@ namespace Enjin.SDK
         /// The URI for the main Enjin Cloud.
         /// </summary>
         public static readonly Uri MAIN_NET = new Uri("https://cloud.enjin.io/");
+
+        /// <summary>
+        /// The URI for the JumpNet network.
+        /// </summary>
+        public static readonly Uri JUMP_NET = new Uri("https://jumpnet.cloud.enjin.io/");
     }
 }
