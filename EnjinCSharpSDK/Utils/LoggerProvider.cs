@@ -14,13 +14,13 @@ namespace Enjin.SDK.Utils
         /// </summary>
         /// <value>The logger.</value>
         public ILogger Logger { get; private set; }
-        
+
         /// <summary>
         /// Represents the logging level this provider uses by default.
         /// </summary>
         /// <value>The default logging level.</value>
         public LogLevel DefaultLevel { get; private set; }
-        
+
         /// <summary>
         /// Represents the logging level this provider uses for debug messages.
         /// </summary>
@@ -82,7 +82,7 @@ namespace Enjin.SDK.Utils
         {
             Log(DefaultLevel, message, e);
         }
-        
+
         /// <summary>
         /// Logs the message and exception at the debug logging level.
         /// </summary>
@@ -105,6 +105,16 @@ namespace Enjin.SDK.Utils
             {
                 Logger.Log(level, message, e);
             }
+        }
+
+        /// <summary>
+        /// Creates a new instance of a provider with default settings and containing a
+        /// <see cref="Enjin.SDK.Utils.Logger"/> instance.
+        /// </summary>
+        /// <returns>The logger provider.</returns>
+        public static LoggerProvider CreateDefaultLoggerProvider()
+        {
+            return new LoggerProvider(new Logger());
         }
     }
 }
