@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
+using Enjin.SDK.Utils;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.PlayerSchema
@@ -13,15 +14,17 @@ namespace Enjin.SDK.PlayerSchema
     public class PlayerSchema : SharedSchema, IPlayerSchema
     {
         private const string SCHEMA = "player";
-        
+
         internal readonly IPlayerService PlayerService;
         internal readonly IWalletService WalletService;
-        
+
         /// <summary>
         /// Sole constructor.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
-        public PlayerSchema(TrustedPlatformMiddleware middleware) : base(middleware, SCHEMA)
+        /// <param name="loggerProvider">The logger provider.</param>
+        public PlayerSchema(TrustedPlatformMiddleware middleware, LoggerProvider loggerProvider) :
+            base(middleware, SCHEMA, loggerProvider)
         {
             PlayerService = CreateService<IPlayerService>();
             WalletService = CreateService<IWalletService>();
