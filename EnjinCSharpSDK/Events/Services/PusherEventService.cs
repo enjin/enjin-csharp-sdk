@@ -11,6 +11,7 @@ using Pusher = PusherClient.Pusher;
 using PusherOptions = PusherClient.PusherOptions;
 
 [assembly: InternalsVisibleTo("TestSuite")]
+
 namespace Enjin.SDK.Events
 {
     /// <summary>
@@ -25,18 +26,36 @@ namespace Enjin.SDK.Events
         /// </summary>
         /// <value>The platform details.</value>
         public Platform Platform { get; private set; }
-        
+
+        /// <summary>
+        /// Represents the logger provider used by this service.
+        /// </summary>
+        /// <value>The logger provider.</value>
+        public LoggerProvider LoggerProvider { get; private set; }
+
         internal List<EventListenerRegistration> RegisteredListeners { get; } = new List<EventListenerRegistration>();
         private readonly Dictionary<string, Channel> _subscribed = new Dictionary<string, Channel>();
         private Pusher? _pusher;
         private PusherEventListener? _listener;
 
         /// <summary>
-        /// Sole constructor. See <see cref="Start()"/> to start the service.
+        /// Constructs the service and assigns the given platform details and a default logger provider. See
+        /// <see cref="Start()"/> to start the service.
         /// </summary>
         /// <param name="platform">The platform details.</param>
-        public PusherEventService(Platform platform)
+        public PusherEventService(Platform platform) : this(LoggerProvider.CreateDefaultLoggerProvider(), platform)
         {
+        }
+
+        /// <summary>
+        /// Constructs the event service and assigns the given logger provider and platform details. See
+        /// <see cref="Start()"/> to start the service.
+        /// </summary>
+        /// <param name="loggerProvider"></param>
+        /// <param name="platform"></param>
+        public PusherEventService(LoggerProvider loggerProvider, Platform platform)
+        {
+            LoggerProvider = loggerProvider;
             Platform = platform;
         }
 
@@ -61,7 +80,10 @@ namespace Enjin.SDK.Events
             _pusher = new Pusher(key, options);
             _listener = new PusherEventListener(this);
 
-            _pusher.Error += (sender, error) => { }; // TODO: Log error.
+            _pusher.Error += (sender, error) =>
+            {
+                LoggerProvider.Log(LogLevel.SEVERE, "Unable to connect to Pusher service.", error);
+            };
             _pusher.ConnectAsync();
         }
 
@@ -86,21 +108,21 @@ namespace Enjin.SDK.Events
 
         /// <inheritdoc/>
         public EventListenerRegistration RegisterListenerWithMatcher(IEventListener listener,
-            Func<EventType, bool> matcher)
+                                                                     Func<EventType, bool> matcher)
         {
             return Register(ConfigureListener(listener).WithMatcher(matcher));
         }
 
         /// <inheritdoc/>
         public EventListenerRegistration RegisterListenerIncludingTypes(IEventListener listener,
-            params EventType[] events)
+                                                                        params EventType[] events)
         {
             return Register(ConfigureListener(listener).WithAllowedEvents(events));
         }
 
         /// <inheritdoc/>
         public EventListenerRegistration RegisterListenerExcludingTypes(IEventListener listener,
-            params EventType[] events)
+                                                                        params EventType[] events)
         {
             return Register(ConfigureListener(listener).WithIgnoredEvents(events));
         }
@@ -117,7 +139,7 @@ namespace Enjin.SDK.Events
             {
                 return r;
             }
-            
+
             var config = configuration.Create();
             RegisteredListeners.Add(config);
             return config;

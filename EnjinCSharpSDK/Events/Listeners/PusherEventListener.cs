@@ -5,6 +5,7 @@ using Enjin.SDK.Utils;
 using PusherClient;
 
 [assembly: InternalsVisibleTo("TestSuite")]
+
 namespace Enjin.SDK.Events
 {
     internal class PusherEventListener
@@ -29,15 +30,14 @@ namespace Enjin.SDK.Events
         {
             if (_service.RegisteredListeners.Count == 0)
             {
-                // TODO: Log that there are no registered listeners.
+                _service.LoggerProvider.Log(LogLevel.INFO, "No registered listeners when event was received.");
                 return;
             }
 
             var def = EventTypeDef.GetFromKey(@event);
-
             if (def.Type == EventType.UNKNOWN)
             {
-                // TODO: Log that an unknown event type was encountered.
+                _service.LoggerProvider.Log(LogLevel.WARN, $"Unknown event type for key \"{@event}\".");
                 return;
             }
 
