@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Utils
 {
     /// <summary>
-    /// Represent the different logging severity levels.
+    /// Enum values to represent the different logging severity levels.
     /// </summary>
     [PublicAPI]
     public enum LogLevel
@@ -18,7 +18,7 @@ namespace Enjin.SDK.Utils
     }
 
     /// <summary>
-    /// Logger interface to be used in the SDK.
+    /// Logger interface to be implemented for use by the SDK.
     /// </summary>
     [PublicAPI]
     public interface ILogger
