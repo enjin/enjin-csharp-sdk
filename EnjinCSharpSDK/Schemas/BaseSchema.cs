@@ -1,6 +1,9 @@
+using System;
 using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Serialization;
+using Enjin.SDK.Utils;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
@@ -11,8 +14,11 @@ namespace Enjin.SDK
     /// <summary>
     /// Base class for schema with functionality to send GraphQL requests to the platform and process the responses.
     /// </summary>
+    [PublicAPI]
     public class BaseSchema
     {
+        public LoggerProvider LoggerProvider { get; private set; }
+
         protected readonly TrustedPlatformMiddleware Middleware;
         protected readonly string Schema;
 
@@ -21,10 +27,12 @@ namespace Enjin.SDK
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <param name="schema">The schema.</param>
-        protected BaseSchema(TrustedPlatformMiddleware middleware, string schema)
+        /// <param name="loggerProvider">The logger provider.</param>
+        protected BaseSchema(TrustedPlatformMiddleware middleware, string schema, LoggerProvider loggerProvider)
         {
             Middleware = middleware;
             Schema = schema;
+            LoggerProvider = loggerProvider;
         }
 
         /// <summary>
@@ -75,14 +83,24 @@ namespace Enjin.SDK
         /// <param name="taskIn">The task that will start the request.</param>
         /// <typeparam name="T">The type of the response.</typeparam>
         /// <returns>The task that will contain the response.</returns>
-        protected static Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn)
+        protected Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn)
         {
             return taskIn.ContinueWith(task =>
             {
-                var result = task.Result;
-                return result.IsSuccessStatusCode
-                    ? result.Content
-                    : JsonConvert.DeserializeObject<GraphqlResponse<T>>(result.Error.Content);
+                try
+                {
+                    var result = task.Result;
+                    return result.IsSuccessStatusCode
+                        ? result.Content
+                        : JsonConvert.DeserializeObject<GraphqlResponse<T>>(result.Error.Content);
+                }
+                catch (Exception e)
+                {
+                    LoggerProvider.Log(LogLevel.SEVERE,
+                                       "An error occured while processing a request or a response.",
+                                       e);
+                    throw;
+                }
             });
         }
     }

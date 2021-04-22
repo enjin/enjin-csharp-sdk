@@ -2,12 +2,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
+using Enjin.SDK.Utils;
+using JetBrains.Annotations;
 
 namespace Enjin.SDK.Shared
 {
     /// <summary>
     /// Class for sending requests shared across schemas.
     /// </summary>
+    [PublicAPI]
     public class SharedSchema : BaseSchema, ISharedSchema
     {
         internal readonly IProjectService ProjectService;
@@ -15,13 +18,15 @@ namespace Enjin.SDK.Shared
         internal readonly IPlatformService PlatformService;
         internal readonly IRequestService RequestService;
         internal readonly IAssetService AssetService;
-        
+
         /// <summary>
         /// Sole constructor.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <param name="schema">The schema.</param>
-        protected SharedSchema(TrustedPlatformMiddleware middleware, string schema) : base(middleware, schema)
+        /// <param name="loggerProvider">The logger provider.</param>
+        protected SharedSchema(TrustedPlatformMiddleware middleware, string schema, LoggerProvider loggerProvider) :
+            base(middleware, schema, loggerProvider)
         {
             ProjectService = CreateService<IProjectService>();
             BalanceService = CreateService<IBalanceService>();

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Enjin.SDK;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Shared;
+using Enjin.SDK.Utils;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using Refit;
@@ -130,7 +131,7 @@ namespace TestSuite
         }
 
         [Test]
-        public async Task SendRequest_SuccessfulResponse_ReturnsResponseWithContent()
+        public void SendRequest_SuccessfulResponse_ReturnsResponseWithContent()
         {
             // Arrange
             var expected = new DummyObject(1);
@@ -146,7 +147,7 @@ namespace TestSuite
                                         .WithBody(responseBody));
 
             // Act
-            var response = await TestableBaseSchema.SendRequest(taskIn);
+            var response = ClassUnderTest.SendRequest(taskIn).Result;
             var actual = response.Result;
 
             // Assert
@@ -155,7 +156,7 @@ namespace TestSuite
         }
 
         [Test]
-        public async Task SendRequest_FailedResponse_ReturnsResponseWithErrors()
+        public void SendRequest_FailedResponse_ReturnsResponseWithErrors()
         {
             // Arrange
             const string responseBody = @"{""errors"":[{""message"":""generic error""}]}";
@@ -170,7 +171,7 @@ namespace TestSuite
                                         .WithBody(responseBody));
 
             // Act
-            var response = await TestableBaseSchema.SendRequest(taskIn);
+            var response = ClassUnderTest.SendRequest(taskIn).Result;
 
             // Assert
             Assert.IsTrue(response.HasErrors);
@@ -191,7 +192,8 @@ namespace TestSuite
         {
             public new string Schema => base.Schema;
 
-            public TestableBaseSchema(TrustedPlatformMiddleware middleware, string schema) : base(middleware, schema)
+            public TestableBaseSchema(TrustedPlatformMiddleware middleware, string schema) : base(middleware, schema,
+                LoggerProvider.CreateDefaultLoggerProvider())
             {
             }
 
@@ -199,8 +201,8 @@ namespace TestSuite
 
             public new T CreateService<T>() => base.CreateService<T>();
 
-            public new static Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn) =>
-                BaseSchema.SendRequest(taskIn);
+            public new Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn) =>
+                base.SendRequest(taskIn);
         }
     }
 }

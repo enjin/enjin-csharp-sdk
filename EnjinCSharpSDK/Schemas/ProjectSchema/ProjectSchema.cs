@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
+using Enjin.SDK.Utils;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -14,20 +15,22 @@ namespace Enjin.SDK.ProjectSchema
     public class ProjectSchema : SharedSchema, IProjectSchema
     {
         private const string SCHEMA = "project";
-        
+
         internal readonly IPlayerService PlayerService;
         internal readonly IWalletService WalletService;
-        
+
         /// <summary>
         /// Sole constructor.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
-        public ProjectSchema(TrustedPlatformMiddleware middleware) : base(middleware, SCHEMA)
+        /// <param name="loggerProvider">The logger provider.</param>
+        public ProjectSchema(TrustedPlatformMiddleware middleware, LoggerProvider loggerProvider) :
+            base(middleware, SCHEMA, loggerProvider)
         {
             PlayerService = CreateService<IPlayerService>();
             WalletService = CreateService<IWalletService>();
         }
-        
+
         /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer request)
         {
