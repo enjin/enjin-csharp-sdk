@@ -111,7 +111,7 @@ namespace Enjin.SDK.Utils
         /// Creates a new instance of a provider with default settings and containing a
         /// <see cref="Enjin.SDK.Utils.Logger"/> instance.
         /// </summary>
-        /// <returns>The logger provider.</returns>
+        /// <returns>The new logger provider.</returns>
         public static LoggerProvider CreateDefaultLoggerProvider()
         {
             return new LoggerProvider(new Logger());

@@ -31,7 +31,7 @@ namespace Enjin.SDK.Utils
                 builder.AddConsole(options =>
                 {
                     options.Format = ConsoleLoggerFormat.Default;
-                    options.TimestampFormat = "HH:mm:ss ";
+                    options.TimestampFormat = "HH:mm:ss "; // 24 hour format
                     options.DisableColors = true;
                 });
             });
