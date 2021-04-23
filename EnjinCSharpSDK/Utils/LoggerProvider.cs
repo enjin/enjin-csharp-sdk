@@ -42,7 +42,7 @@ namespace Enjin.SDK.Utils
                               LogLevel defaultLevel = LogLevel.INFO,
                               LogLevel debugLevel = LogLevel.DEBUG)
         {
-            Logger = logger;
+            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             DefaultLevel = defaultLevel;
             DebugLevel = debugLevel;
         }
