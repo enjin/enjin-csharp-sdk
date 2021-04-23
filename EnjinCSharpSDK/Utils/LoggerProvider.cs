@@ -27,6 +27,11 @@ namespace Enjin.SDK.Utils
         /// <value>The debug logging level.</value>
         public LogLevel DebugLevel { get; private set; }
 
+        private LoggerProvider()
+        {
+            throw new Exception("Private constructor used.");
+        }
+        
         /// <summary>
         /// Constructs a provider with the given logger and logging levels.
         /// </summary>
