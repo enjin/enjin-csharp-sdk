@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using Enjin.SDK.Events;
 using Enjin.SDK.Models;
 using NUnit.Framework;
@@ -10,6 +11,47 @@ namespace TestSuite
     [TestFixture]
     public class PusherEventServiceTest
     {
+        [Test]
+        public void Connected_ServiceNotStarted_EventTriggersAfterStart()
+        {
+            // Arrange
+            bool flag = false;
+            var eventService = CreateEventService();
+            eventService.Connected += (sender, args) =>
+            {
+                flag = true;
+            };
+
+            // Act
+            eventService.Start().Wait();
+            
+            Thread.Sleep(500);
+
+            // Assert
+            Assert.IsTrue(flag);
+        }
+        
+        [Test]
+        public void Disconnected_ServiceStarted_EventTriggersAfterShutdown()
+        {
+            // Arrange
+            bool flag = false;
+            var eventService = CreateEventService();
+            eventService.Start().Wait();
+            eventService.Disconnected += (sender, args) =>
+            {
+                flag = true;
+            };
+
+            // Act
+            eventService.Shutdown().Wait();
+            
+            Thread.Sleep(500);
+
+            // Assert
+            Assert.IsTrue(flag);
+        }
+        
         [Test]
         public void RegisterListener_DoesContainListenerRegistration()
         {
