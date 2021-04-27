@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Enjin.SDK.Models;
 using Enjin.SDK.Utils;
 using JetBrains.Annotations;
@@ -60,7 +61,7 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void Start()
+        public Task Start()
         {
             Shutdown();
 
@@ -70,7 +71,7 @@ namespace Enjin.SDK.Events
             var cluster = pusher?.Options?.Cluster;
             var encrypted = pusher?.Options?.Encrypted;
             if (key == null || cluster == null || encrypted == null)
-                return;
+                return Task.FromException(new InvalidOperationException("Platform has null data for 'key', 'cluster', or 'encrypted'."));
 
             PusherOptions options = new PusherOptions
             {
@@ -84,21 +85,28 @@ namespace Enjin.SDK.Events
             {
                 LoggerProvider.Log(LogLevel.SEVERE, "Unable to connect to Pusher service.", error);
             };
-            _pusher.ConnectAsync();
+
+            return _pusher.ConnectAsync();
         }
 
         /// <inheritdoc/>
-        public void Start(Platform platform)
+        public Task Start(Platform platform)
         {
             Platform = platform;
-            Start();
+            return Start();
         }
 
         /// <inheritdoc/>
-        public void Shutdown() => _pusher?.DisconnectAsync();
+        public Task Shutdown()
+        {
+            return _pusher?.DisconnectAsync() ?? Task.FromException(new InvalidOperationException("Event service has not been started."));
+        }
 
         /// <inheritdoc/>
-        public bool IsConnected() => _pusher?.State == ConnectionState.Connected;
+        public bool IsConnected()
+        {
+            return _pusher?.State == ConnectionState.Connected;
+        }
 
         /// <inheritdoc/>
         public EventListenerRegistration RegisterListener(IEventListener listener)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Enjin.SDK.Models;
 using JetBrains.Annotations;
 
@@ -13,19 +14,22 @@ namespace Enjin.SDK.Events
         /// <summary>
         /// Starts this service. See <see cref="Start(Platform)"/> to start this service with new platform details.
         /// </summary>
-        void Start();
+        /// <returns>The task for this operation.</returns>
+        Task Start();
 
         /// <summary>
         /// Starts this service with the provided platform details. See <see cref="Start()"/> to start this service as
         /// is.
         /// </summary>
         /// <param name="platform">The platform.</param>
-        void Start(Platform platform);
+        /// <returns>The task for this operation.</returns>
+        Task Start(Platform platform);
 
         /// <summary>
         /// Shuts down this service.
         /// </summary>
-        void Shutdown();
+        /// <returns>The task for this operation.</returns>
+        Task Shutdown();
         
         /// <summary>
         /// Checks if this service is connected to platform.

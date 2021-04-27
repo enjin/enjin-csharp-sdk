@@ -155,7 +155,7 @@ namespace TestSuite
             // Arrange
             const int project = 1234;
             var eventService = CreateEventService();
-            eventService.Start();
+            eventService.Start().Wait();
 
             // Act
             eventService.SubscribeToProject(project);
@@ -171,7 +171,7 @@ namespace TestSuite
             const int project = 1234;
             const string player = "player1";
             var eventService = CreateEventService();
-            eventService.Start();
+            eventService.Start().Wait();
 
             // Act
             eventService.SubscribeToPlayer(project, player);
@@ -186,7 +186,7 @@ namespace TestSuite
             // Arrange
             const string asset = "0000000000000000";
             var eventService = CreateEventService();
-            eventService.Start();
+            eventService.Start().Wait();
 
             // Act
             eventService.SubscribeToAsset(asset);
@@ -201,7 +201,7 @@ namespace TestSuite
             // Arrange
             const string wallet = "0x0";
             var eventService = CreateEventService();
-            eventService.Start();
+            eventService.Start().Wait();
 
             // Act
             eventService.SubscribeToWallet(wallet);
@@ -216,7 +216,7 @@ namespace TestSuite
             // Arrange
             const int project = 1234;
             var eventService = CreateEventService();
-            eventService.Start();
+            eventService.Start().Wait();
             eventService.SubscribeToProject(project);
 
             // Act
@@ -233,7 +233,7 @@ namespace TestSuite
             const int project = 1234;
             const string player = "player1";
             var eventService = CreateEventService();
-            eventService.Start();
+            eventService.Start().Wait();
             eventService.SubscribeToPlayer(project, player);
 
             // Act
@@ -249,7 +249,7 @@ namespace TestSuite
             // Arrange
             const string asset = "0000000000000000";
             var eventService = CreateEventService();
-            eventService.Start();
+            eventService.Start().Wait();
             eventService.SubscribeToAsset(asset);
 
             // Act
@@ -265,7 +265,7 @@ namespace TestSuite
             // Arrange
             const string wallet = "0x0";
             var eventService = CreateEventService();
-            eventService.Start();
+            eventService.Start().Wait();
             eventService.SubscribeToWallet(wallet);
 
             // Act

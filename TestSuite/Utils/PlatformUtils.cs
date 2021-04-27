@@ -10,12 +10,11 @@ namespace TestSuite.Utils
         
         public static Platform CreateFakePlatform(string network)
         {
-            return CreateFakePlatform(network, "xyz", "xyz", "xyz", true);
+            return CreateFakePlatform(network, "a826ad9293ce1ae1a036", "mt1", true);
         }
         
         public static Platform CreateFakePlatform(string network,
                                                   string key,
-                                                  string @namespace,
                                                   string cluster,
                                                   bool encrypted)
         {
@@ -26,8 +25,6 @@ namespace TestSuite.Utils
                           .Append(@"""pusher"": {")
                           .Append(@"""key"": ")
                           .Append($"'{key}'")
-                          .Append(@", ""namespace"": ")
-                          .Append($"'{@namespace}'")
                           .Append(@", ""options"": {")
                           .Append(@"""cluster"": ")
                           .Append($"'{cluster}'")
