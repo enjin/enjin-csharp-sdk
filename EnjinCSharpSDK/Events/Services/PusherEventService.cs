@@ -34,6 +34,15 @@ namespace Enjin.SDK.Events
         /// <value>The logger provider.</value>
         public LoggerProvider LoggerProvider { get; private set; }
 
+        /// <inheritdoc/>
+        public event EventHandler Connected;
+
+        /// <inheritdoc/>
+        public event EventHandler Disconnected;
+
+        /// <inheritdoc/>
+        public event EventHandler<Exception> Error;
+
         internal List<EventListenerRegistration> RegisteredListeners { get; } = new List<EventListenerRegistration>();
         private readonly Dictionary<string, Channel> _subscribed = new Dictionary<string, Channel>();
         private Pusher? _pusher;
@@ -81,9 +90,13 @@ namespace Enjin.SDK.Events
             _pusher = new Pusher(key, options);
             _listener = new PusherEventListener(this);
 
+            // Subscribe to events
+            _pusher.Connected += sender => { Connected?.Invoke(this, EventArgs.Empty); };
+            _pusher.Disconnected += sender => { Disconnected?.Invoke(this, EventArgs.Empty); };
             _pusher.Error += (sender, error) =>
             {
-                LoggerProvider.Log(LogLevel.SEVERE, "Unable to connect to Pusher service.", error);
+                LoggerProvider.Log(LogLevel.SEVERE, "Error on Pusher client: ", error);
+                Error?.Invoke(this, error);
             };
 
             return _pusher.ConnectAsync();

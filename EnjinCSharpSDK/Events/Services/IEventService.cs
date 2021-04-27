@@ -12,6 +12,21 @@ namespace Enjin.SDK.Events
     public interface IEventService
     {
         /// <summary>
+        /// Event handler invoked when this service is connected to its server.
+        /// </summary>
+        public event EventHandler Connected;
+
+        /// <summary>
+        /// Event handler invoked when this service is disconnected from its server.
+        /// </summary>
+        public event EventHandler Disconnected;
+
+        /// <summary>
+        /// Event handler invoked when this service encounters an error.
+        /// </summary>
+        public event EventHandler<Exception> Error;
+        
+        /// <summary>
         /// Starts this service. See <see cref="Start(Platform)"/> to start this service with new platform details.
         /// </summary>
         /// <returns>The task for this operation.</returns>
