@@ -103,10 +103,7 @@ namespace Enjin.SDK.Events
                 Error?.Invoke(this, error);
             };
             
-            return _pusher.ConnectAsync().ContinueWith(task =>
-            {
-                ResubscribeToChannels();
-            });
+            return _pusher.ConnectAsync().ContinueWith(task => ResubscribeToChannels());
         }
 
         /// <inheritdoc/>
@@ -188,9 +185,9 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void UnsubscribeToProject(int project)
+        public Task UnsubscribeToProject(int project)
         {
-            Unsubscribe(new ProjectChannel(Platform, project).Channel());
+            return Unsubscribe(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
@@ -206,9 +203,9 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void UnsubscribeToPlayer(int project, string player)
+        public Task UnsubscribeToPlayer(int project, string player)
         {
-            Unsubscribe(new PlayerChannel(Platform, project, player).Channel());
+            return Unsubscribe(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
@@ -224,9 +221,9 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void UnsubscribeToAsset(string asset)
+        public Task UnsubscribeToAsset(string asset)
         {
-            Unsubscribe(new AssetChannel(Platform, asset).Channel());
+            return Unsubscribe(new AssetChannel(Platform, asset).Channel());
         }
 
         /// <inheritdoc/>
@@ -242,9 +239,9 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void UnsubscribeToWallet(string wallet)
+        public Task UnsubscribeToWallet(string wallet)
         {
-            Unsubscribe(new WalletChannel(Platform, wallet).Channel());
+            return Unsubscribe(new WalletChannel(Platform, wallet).Channel());
         }
 
         /// <inheritdoc/>
@@ -261,12 +258,12 @@ namespace Enjin.SDK.Events
                 return Task.CompletedTask;
 
             return _pusher.SubscribeAsync(channel)
-                   .ContinueWith(task =>
-                   {
-                       var pusherChannel = task.Result;
-                       Bind(pusherChannel);
-                       _subscribed.TryAdd(channel, pusherChannel);
-                   });
+                          .ContinueWith(task =>
+                          {
+                              var pusherChannel = task.Result;
+                              Bind(pusherChannel);
+                              _subscribed.TryAdd(channel, pusherChannel);
+                          });
         }
         
         private void ResubscribeToChannels()
@@ -280,13 +277,15 @@ namespace Enjin.SDK.Events
             }
         }
 
-        private void Unsubscribe(string channel)
+        private Task Unsubscribe(string channel)
         {
-            if (_pusher == null || !_subscribed.ContainsKey(channel))
-                return;
+            if (_pusher == null)
+                return Task.FromException(new InvalidOperationException("Event service has not been started."));
+            if (!_subscribed.ContainsKey(channel))
+                return Task.CompletedTask;
 
-            _subscribed[channel].Unsubscribe();
-            _subscribed.TryRemove(channel, out _);
+            return _pusher.UnsubscribeAsync(channel)
+                          .ContinueWith(task => _subscribed.TryRemove(channel, out _));
         }
 
         private void Bind(Channel channel)
