@@ -101,7 +101,8 @@ namespace Enjin.SDK.Events
         /// Closes a channel for the specified project, preventing listeners from receiving events for that project.
         /// </summary>
         /// <param name="project">The project ID.</param>
-        void UnsubscribeToProject(int project);
+        /// <returns>The task for this operation.</returns>
+        Task UnsubscribeToProject(int project);
 
         /// <summary>
         /// Determines if the channel is open for the specified project.
@@ -123,7 +124,8 @@ namespace Enjin.SDK.Events
         /// </summary>
         /// <param name="project">The ID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
-        void UnsubscribeToPlayer(int project, string player);
+        /// <returns>The task for this operation.</returns>
+        Task UnsubscribeToPlayer(int project, string player);
         
         /// <summary>
         /// Determines if the channel is open for the specified player.
@@ -144,7 +146,8 @@ namespace Enjin.SDK.Events
         /// Closes a channel for the specified asset, preventing listeners from receiving events for that asset.
         /// </summary>
         /// <param name="asset">The asset ID.</param>
-        void UnsubscribeToAsset(string asset);
+        /// <returns>The task for this operation.</returns>
+        Task UnsubscribeToAsset(string asset);
         
         /// <summary>
         /// Determines if the channel is open for the specified asset.
@@ -166,7 +169,8 @@ namespace Enjin.SDK.Events
         /// wallet address.
         /// </summary>
         /// <param name="wallet">The address.</param>
-        void UnsubscribeToWallet(string wallet);
+        /// <returns>The task for this operation.</returns>
+        Task UnsubscribeToWallet(string wallet);
         
         /// <summary>
         /// Determines if the channel is open for the specified wallet address.
