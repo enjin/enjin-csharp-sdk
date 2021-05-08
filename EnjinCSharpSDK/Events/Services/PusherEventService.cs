@@ -102,8 +102,11 @@ namespace Enjin.SDK.Events
                 LoggerProvider.Log(LogLevel.SEVERE, "Error on Pusher client: ", error);
                 Error?.Invoke(this, error);
             };
-
-            return _pusher.ConnectAsync();
+            
+            return _pusher.ConnectAsync().ContinueWith(task =>
+            {
+                ResubscribeToChannels();
+            });
         }
 
         /// <inheritdoc/>
@@ -264,6 +267,17 @@ namespace Enjin.SDK.Events
                        Bind(pusherChannel);
                        _subscribed.TryAdd(channel, pusherChannel);
                    });
+        }
+        
+        private void ResubscribeToChannels()
+        {
+            var channels = new List<string>(_subscribed.Keys);
+            _subscribed.Clear();
+
+            foreach (var channel in channels)
+            {
+                Subscribe(channel).Wait();
+            }
         }
 
         private void Unsubscribe(string channel)
