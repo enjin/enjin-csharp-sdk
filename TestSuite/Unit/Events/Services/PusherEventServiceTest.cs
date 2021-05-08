@@ -3,7 +3,9 @@ using System.Linq;
 using System.Threading;
 using Enjin.SDK.Events;
 using Enjin.SDK.Models;
+using NExpect;
 using NUnit.Framework;
+using static NExpect.Expectations;
 using static TestSuite.Utils.PlatformUtils;
 
 namespace TestSuite
@@ -315,6 +317,25 @@ namespace TestSuite
 
             // Assert
             Assert.IsFalse(eventService.IsSubscribedToWallet(wallet));
+        }
+
+        [Test]
+        public void Start_PreviouslyActiveServiceResubscribesToChannels()
+        {
+            // Arrange
+            const int project = 1234;
+            var eventService = CreateEventService();
+            eventService.Start().Wait();                     // Service is started for the first time and subscribes to
+            eventService.SubscribeToProject(project).Wait(); // the channel
+            eventService.Shutdown().Wait(); // Shutdown the service to be restarted on 'Act'
+
+            Expect(eventService.IsSubscribedToProject(project)).To.Be.True();
+            
+            // Act
+            eventService.Start().Wait();
+
+            // Assert
+            Assert.IsTrue(eventService.IsSubscribedToProject(project));
         }
 
         private static PusherEventService CreateEventService() => new PusherEventService(FakePlatform);
