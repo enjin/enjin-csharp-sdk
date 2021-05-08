@@ -94,7 +94,8 @@ namespace Enjin.SDK.Events
         /// Opens a channel for the specified project, allowing listeners to receive events for that project.
         /// </summary>
         /// <param name="project">The project ID.</param>
-        void SubscribeToProject(int project);
+        /// <returns>The task for this operation.</returns>
+        Task SubscribeToProject(int project);
         
         /// <summary>
         /// Closes a channel for the specified project, preventing listeners from receiving events for that project.
@@ -114,7 +115,8 @@ namespace Enjin.SDK.Events
         /// </summary>
         /// <param name="project">The ID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
-        void SubscribeToPlayer(int project, string player);
+        /// <returns>The task for this operation.</returns>
+        Task SubscribeToPlayer(int project, string player);
         
         /// <summary>
         /// Closes a channel for the specified player, preventing listeners from receiving events for that player.
@@ -135,7 +137,8 @@ namespace Enjin.SDK.Events
         /// Opens a channel for the specified asset, allowing listeners to receive events for that asset.
         /// </summary>
         /// <param name="asset">The asset ID.</param>
-        void SubscribeToAsset(string asset);
+        /// <returns>The task for this operation.</returns>
+        Task SubscribeToAsset(string asset);
         
         /// <summary>
         /// Closes a channel for the specified asset, preventing listeners from receiving events for that asset.
@@ -155,7 +158,8 @@ namespace Enjin.SDK.Events
         /// address.
         /// </summary>
         /// <param name="wallet">The address.</param>
-        void SubscribeToWallet(string wallet);
+        /// <returns>The task for this operation.</returns>
+        Task SubscribeToWallet(string wallet);
         
         /// <summary>
         /// Closes a channel for the specified wallet address, preventing listeners from receiving events for that

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -44,7 +45,10 @@ namespace Enjin.SDK.Events
         public event EventHandler<Exception>? Error;
 
         internal List<EventListenerRegistration> RegisteredListeners { get; } = new List<EventListenerRegistration>();
-        private readonly Dictionary<string, Channel> _subscribed = new Dictionary<string, Channel>();
+
+        private readonly ConcurrentDictionary<string, Channel>
+            _subscribed = new ConcurrentDictionary<string, Channel>();
+
         private Pusher? _pusher;
         private PusherEventListener? _listener;
 
@@ -175,9 +179,9 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void SubscribeToProject(int project)
+        public Task SubscribeToProject(int project)
         {
-            Subscribe(new ProjectChannel(Platform, project).Channel());
+            return Subscribe(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
@@ -193,9 +197,9 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void SubscribeToPlayer(int project, string player)
+        public Task SubscribeToPlayer(int project, string player)
         {
-            Subscribe(new PlayerChannel(Platform, project, player).Channel());
+            return Subscribe(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
@@ -211,9 +215,9 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void SubscribeToAsset(string asset)
+        public Task SubscribeToAsset(string asset)
         {
-            Subscribe(new AssetChannel(Platform, asset).Channel());
+            return Subscribe(new AssetChannel(Platform, asset).Channel());
         }
 
         /// <inheritdoc/>
@@ -229,9 +233,9 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public void SubscribeToWallet(string wallet)
+        public Task SubscribeToWallet(string wallet)
         {
-            Subscribe(new WalletChannel(Platform, wallet).Channel());
+            return Subscribe(new WalletChannel(Platform, wallet).Channel());
         }
 
         /// <inheritdoc/>
@@ -246,14 +250,20 @@ namespace Enjin.SDK.Events
             return _subscribed.ContainsKey(new WalletChannel(Platform, wallet).Channel());
         }
 
-        private void Subscribe(string channel)
+        private Task Subscribe(string channel)
         {
-            if (_pusher == null || _subscribed.ContainsKey(channel))
-                return;
+            if (_pusher == null)
+                return Task.FromException(new InvalidOperationException("Event service has not been started."));
+            if (_subscribed.ContainsKey(channel))
+                return Task.CompletedTask;
 
-            Channel pusherChannel = _pusher.SubscribeAsync(channel).Result;
-            Bind(pusherChannel);
-            _subscribed.Add(channel, pusherChannel);
+            return _pusher.SubscribeAsync(channel)
+                   .ContinueWith(task =>
+                   {
+                       var pusherChannel = task.Result;
+                       Bind(pusherChannel);
+                       _subscribed.TryAdd(channel, pusherChannel);
+                   });
         }
 
         private void Unsubscribe(string channel)
@@ -262,7 +272,7 @@ namespace Enjin.SDK.Events
                 return;
 
             _subscribed[channel].Unsubscribe();
-            _subscribed.Remove(channel);
+            _subscribed.TryRemove(channel, out _);
         }
 
         private void Bind(Channel channel)
