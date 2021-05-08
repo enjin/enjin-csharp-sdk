@@ -50,7 +50,7 @@ namespace Enjin.SDK.Events
             _subscribed = new ConcurrentDictionary<string, Channel>();
 
         private Pusher? _pusher;
-        private PusherEventListener? _listener;
+        private readonly PusherEventListener _listener;
 
         /// <summary>
         /// Constructs the service and assigns the given platform details and a default logger provider. See
@@ -71,6 +71,7 @@ namespace Enjin.SDK.Events
         {
             LoggerProvider = loggerProvider;
             Platform = platform;
+            _listener = new PusherEventListener(this);
         }
 
         /// <inheritdoc/>
@@ -92,7 +93,6 @@ namespace Enjin.SDK.Events
                 Encrypted = encrypted.Value
             };
             _pusher = new Pusher(key, options);
-            _listener = new PusherEventListener(this);
 
             // Subscribe to events
             _pusher.Connected += sender => { Connected?.Invoke(this, EventArgs.Empty); };
