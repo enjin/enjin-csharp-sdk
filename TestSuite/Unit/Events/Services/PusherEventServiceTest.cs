@@ -200,7 +200,7 @@ namespace TestSuite
             eventService.Start().Wait();
 
             // Act
-            eventService.SubscribeToProject(project);
+            eventService.SubscribeToProject(project).Wait();
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToProject(project));
@@ -216,7 +216,7 @@ namespace TestSuite
             eventService.Start().Wait();
 
             // Act
-            eventService.SubscribeToPlayer(project, player);
+            eventService.SubscribeToPlayer(project, player).Wait();
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToPlayer(project, player));
@@ -231,7 +231,7 @@ namespace TestSuite
             eventService.Start().Wait();
 
             // Act
-            eventService.SubscribeToAsset(asset);
+            eventService.SubscribeToAsset(asset).Wait();
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToAsset(asset));
@@ -246,7 +246,7 @@ namespace TestSuite
             eventService.Start().Wait();
 
             // Act
-            eventService.SubscribeToWallet(wallet);
+            eventService.SubscribeToWallet(wallet).Wait();
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToWallet(wallet));
