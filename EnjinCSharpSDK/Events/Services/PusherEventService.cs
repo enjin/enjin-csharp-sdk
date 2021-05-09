@@ -101,6 +101,8 @@ namespace Enjin.SDK.Events
                 Error?.Invoke(this, error);
             };
             
+            Bind();
+            
             return _pusher.ConnectAsync().ContinueWith(task => ResubscribeToChannels());
         }
 
@@ -268,8 +270,6 @@ namespace Enjin.SDK.Events
                                   if (task.IsFaulted)
                                       return;
                                   
-                                  Bind(task.Result);
-                                  
                                   lock (_subscribed)
                                       _subscribed.Add(channel);
                               });
@@ -314,10 +314,12 @@ namespace Enjin.SDK.Events
             }
         }
 
-        private void Bind(Channel channel)
+        private void Bind()
         {
-            EventTypeDef.FilterByChannelTypes(channel.Name)
-                        .Do(d => _pusher!.Bind(d.Key, _listener!.OnEvent));
+            // Binds all events for the client except for the UNKNOWN type
+            EventTypeDef.Values()
+                        .Where(d => d.Type != EventType.UNKNOWN)
+                        .Do(d => _pusher!.Bind(d.Key, _listener.OnEvent));
         }
     }
 }
