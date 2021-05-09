@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -46,8 +45,7 @@ namespace Enjin.SDK.Events
 
         internal List<EventListenerRegistration> RegisteredListeners { get; } = new List<EventListenerRegistration>();
 
-        private readonly ConcurrentDictionary<string, Channel>
-            _subscribed = new ConcurrentDictionary<string, Channel>();
+        private readonly HashSet<string> _subscribed = new HashSet<string>();
 
         private Pusher? _pusher;
         private readonly PusherEventListener _listener;
@@ -193,7 +191,8 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public bool IsSubscribedToProject(int project)
         {
-            return _subscribed.ContainsKey(new ProjectChannel(Platform, project).Channel());
+            lock (_subscribed)
+                return _subscribed.Contains(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
@@ -211,7 +210,8 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public bool IsSubscribedToPlayer(int project, string player)
         {
-            return _subscribed.ContainsKey(new PlayerChannel(Platform, project, player).Channel());
+            lock (_subscribed)
+                return _subscribed.Contains(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
@@ -229,7 +229,8 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public bool IsSubscribedToAsset(string asset)
         {
-            return _subscribed.ContainsKey(new AssetChannel(Platform, asset).Channel());
+            lock (_subscribed)
+                return _subscribed.Contains(new AssetChannel(Platform, asset).Channel());
         }
 
         /// <inheritdoc/>
@@ -247,29 +248,43 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public bool IsSubscribedToWallet(string wallet)
         {
-            return _subscribed.ContainsKey(new WalletChannel(Platform, wallet).Channel());
+            lock (_subscribed)
+                return _subscribed.Contains(new WalletChannel(Platform, wallet).Channel());
         }
 
         private Task Subscribe(string channel)
         {
             if (_pusher == null)
                 return Task.FromException(new InvalidOperationException("Event service has not been started."));
-            if (_subscribed.ContainsKey(channel))
-                return Task.CompletedTask;
 
-            return _pusher.SubscribeAsync(channel)
-                          .ContinueWith(task =>
-                          {
-                              var pusherChannel = task.Result;
-                              Bind(pusherChannel);
-                              _subscribed.TryAdd(channel, pusherChannel);
-                          });
+            lock (_subscribed)
+            {
+                if (_subscribed.Contains(channel))
+                    return Task.CompletedTask;
+                
+                return _pusher.SubscribeAsync(channel)
+                              .ContinueWith(task =>
+                              {
+                                  if (task.IsFaulted)
+                                      return;
+                                  
+                                  Bind(task.Result);
+                                  
+                                  lock (_subscribed)
+                                      _subscribed.Add(channel);
+                              });
+            }
         }
         
         private void ResubscribeToChannels()
         {
-            var channels = new List<string>(_subscribed.Keys);
-            _subscribed.Clear();
+            List<string> channels;
+            
+            lock (_subscribed)
+            {
+                channels = new List<string>(_subscribed);
+                _subscribed.Clear();
+            }
 
             foreach (var channel in channels)
             {
@@ -281,11 +296,22 @@ namespace Enjin.SDK.Events
         {
             if (_pusher == null)
                 return Task.FromException(new InvalidOperationException("Event service has not been started."));
-            if (!_subscribed.ContainsKey(channel))
-                return Task.CompletedTask;
+            
+            lock (_subscribed)
+            {
+                if (!_subscribed.Contains(channel))
+                    return Task.CompletedTask;
+                
+                return _pusher.UnsubscribeAsync(channel)
+                              .ContinueWith(task =>
+                              {
+                                  if (task.IsFaulted)
+                                      return;
 
-            return _pusher.UnsubscribeAsync(channel)
-                          .ContinueWith(task => _subscribed.TryRemove(channel, out _));
+                                  lock (_subscribed)
+                                      _subscribed.Remove(channel);
+                              });
+            }
         }
 
         private void Bind(Channel channel)
