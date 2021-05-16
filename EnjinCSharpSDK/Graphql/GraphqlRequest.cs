@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
@@ -34,10 +35,14 @@ namespace Enjin.SDK.Graphql
         protected GraphqlRequest(string templateKey) : this(new Dictionary<string, object>(), templateKey) {}
 
         /// <inheritdoc/>
-        public T SetVariable(string key, object value)
+        public T SetVariable(string key, object? value)
         {
-            Variables.Add(key, value);
-            return this as T;
+            if (value == null)
+                Variables.Remove(key);
+            else
+                Variables.Add(key, value);
+            
+            return (T) this;
         }
 
         /// <inheritdoc/>

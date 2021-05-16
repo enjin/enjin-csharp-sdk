@@ -16,7 +16,7 @@ namespace Enjin.SDK.Graphql
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns>This object for chaining.</returns>
-        T SetVariable(string key, object value);
+        T SetVariable(string key, object? value);
         
         /// <summary>
         /// Determines if a variable exists for the specified key.
