@@ -13,52 +13,52 @@ namespace Enjin.SDK.Models
     public class TransactionFilter: Filter<TransactionFilter>
     {
         [JsonProperty("id")]
-        private string _id;
+        private string? _id;
         
         [JsonProperty("id_in")]
         private List<string>? _idIn;
 
         [JsonProperty("transactionId")]
-        private string _transactionId;
+        private string? _transactionId;
 
         [JsonProperty("transactionId_in")]
         private List<string>? _transactionIdIn;
 
         [JsonProperty("assetId")]
-        private string _assetId;
+        private string? _assetId;
 
         [JsonProperty("assetId_in")]
         private List<string>? _assetIdIn;
 
         [JsonProperty("type")]
-        private RequestType _type;
+        private RequestType? _type;
 
         [JsonProperty("type_in")]
         private List<RequestType>? _typeIn;
 
         [JsonProperty("value")]
-        private int _value;
+        private int? _value;
 
         [JsonProperty("value_gt")]
-        private int _valueGt;
+        private int? _valueGt;
 
         [JsonProperty("value_gte")]
-        private int _valueGte;
+        private int? _valueGte;
 
         [JsonProperty("value_lt")]
-        private int _valueLt;
+        private int? _valueLt;
 
         [JsonProperty("value_lte")]
-        private int _valueLte;
+        private int? _valueLte;
 
         [JsonProperty("state")]
-        private RequestState _state;
+        private RequestState? _state;
 
         [JsonProperty("state_in")]
         private List<RequestState>? _stateIn;
         
         [JsonProperty("wallet")]
-        private string _wallet;
+        private string? _wallet;
 
         [JsonProperty("wallet_in")]
         private List<string>? _walletIn;
@@ -68,7 +68,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter Id(string id)
+        public TransactionFilter Id(string? id)
         {
             _id = id;
             return this;
@@ -90,7 +90,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="transactionId">The hash ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter TransactionId(string transactionId)
+        public TransactionFilter TransactionId(string? transactionId)
         {
             _transactionId = transactionId;
             return this;
@@ -112,7 +112,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="assetId">The ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter AssetId(string assetId)
+        public TransactionFilter AssetId(string? assetId)
         {
             _assetId = assetId;
             return this;
@@ -134,7 +134,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter Type(RequestType type)
+        public TransactionFilter Type(RequestType? type)
         {
             _type = type;
             return this;
@@ -156,7 +156,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter Value(int value)
+        public TransactionFilter Value(int? value)
         {
             _value = value;
             return this;
@@ -167,7 +167,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter ValueGreaterThan(int value)
+        public TransactionFilter ValueGreaterThan(int? value)
         {
             _valueGt = value;
             return this;
@@ -178,7 +178,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter ValueGreaterThanOrEqual(int value)
+        public TransactionFilter ValueGreaterThanOrEqual(int? value)
         {
             _valueGte = value;
             return this;
@@ -189,7 +189,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter ValueLessThan(int value)
+        public TransactionFilter ValueLessThan(int? value)
         {
             _valueLt = value;
             return this;
@@ -200,7 +200,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter ValueLessThanOrEqual(int value)
+        public TransactionFilter ValueLessThanOrEqual(int? value)
         {
             _valueLte = value;
             return this;
@@ -211,7 +211,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="state">The state.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter State(RequestState state)
+        public TransactionFilter State(RequestState? state)
         {
             _state = state;
             return this;
@@ -233,7 +233,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="wallet">The wallet address.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter Wallet(string wallet)
+        public TransactionFilter Wallet(string? wallet)
         {
             _wallet = wallet;
             return this;

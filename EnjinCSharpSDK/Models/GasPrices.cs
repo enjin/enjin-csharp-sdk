@@ -17,7 +17,7 @@ namespace Enjin.SDK.Models
         /// Expected to be mined in less than 30 minutes.
         /// </remarks>
         [JsonProperty("safeLow")]
-        public float SafeLow { get; private set; }
+        public float? SafeLow { get; private set; }
         
         /// <summary>
         /// The recommended average gas price in Gwei.
@@ -27,7 +27,7 @@ namespace Enjin.SDK.Models
         /// Expected to be mined in less than 5 minutes.
         /// </remarks>
         [JsonProperty("average")]
-        public float Average { get; private set; }
+        public float? Average { get; private set; }
         
         /// <summary>
         /// The recommended fast gas price in Gwei.
@@ -37,7 +37,7 @@ namespace Enjin.SDK.Models
         /// Expected to be mined in less than 2 minutes.
         /// </remarks>
         [JsonProperty("fast")]
-        public float Fast { get; private set; }
+        public float? Fast { get; private set; }
         
         /// <summary>
         /// The recommended fastest gas price in Gwei.
@@ -47,6 +47,6 @@ namespace Enjin.SDK.Models
         /// Expected to be mined in less than 30 seconds.
         /// </remarks>
         [JsonProperty("fastest")]
-        public float Fastest { get; private set; }
+        public float? Fastest { get; private set; }
     }
 }

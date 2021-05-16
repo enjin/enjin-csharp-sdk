@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferable AssetId(string assetId)
+        public SetTransferable AssetId(string? assetId)
         {
             return SetVariable("assetId", assetId);
         }
@@ -34,7 +34,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferable AssetIndex(string assetIndex)
+        public SetTransferable AssetIndex(string? assetIndex)
         {
             return SetVariable("assetIndex", assetIndex);
         }

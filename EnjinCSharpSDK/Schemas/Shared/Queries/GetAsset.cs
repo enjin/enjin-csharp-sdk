@@ -24,7 +24,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public GetAsset Id(string id)
+        public GetAsset Id(string? id)
         {
             return SetVariable("id", id);
         }

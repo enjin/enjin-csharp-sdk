@@ -26,7 +26,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="filter">The filter.</param>
         /// <returns>This request for chaining.</returns>
-        public GetPlayers Filter(PlayerFilter filter)
+        public GetPlayers Filter(PlayerFilter? filter)
         {
             return SetVariable("filter", filter);
         }

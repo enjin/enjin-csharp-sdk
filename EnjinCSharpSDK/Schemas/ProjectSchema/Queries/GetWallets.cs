@@ -27,7 +27,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="userIds">The user IDs.</param>
         /// <returns>This request for chaining.</returns>
-        public GetWallets UserIds(params string[] userIds)
+        public GetWallets UserIds(params string[]? userIds)
         {
             return SetVariable("userIds", userIds);
         }
@@ -37,7 +37,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="ethAddresses">The addresses.</param>
         /// <returns>This request for chaining.</returns>
-        public GetWallets EthAddresses(params string[] ethAddresses)
+        public GetWallets EthAddresses(params string[]? ethAddresses)
         {
             return SetVariable("ethAddresses", ethAddresses);
         }

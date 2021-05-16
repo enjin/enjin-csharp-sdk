@@ -24,14 +24,14 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The ID.</value>
         [JsonProperty("assetId")]
-        public string AssetId { get; internal set; }
+        public string? AssetId { get; internal set; }
         
         /// <summary>
         /// Represents the fee value in Wei.
         /// </summary>
         /// <value>The value.</value>
         [JsonProperty("value")]
-        public string Value { get; internal set; }
+        public string? Value { get; internal set; }
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ namespace Enjin.SDK.Models
         /// <remarks>
         /// If the ID is set to "0", then this will be set to transfer ENJ instead of a asset.
         /// </remarks>
-        public AssetTransferFeeSettingsInput AssetId(string assetId)
+        public AssetTransferFeeSettingsInput AssetId(string? assetId)
         {
             base.AssetId = assetId;
             return this;
@@ -70,7 +70,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>This input for chaining.</returns>
-        public AssetTransferFeeSettingsInput Value(string value)
+        public AssetTransferFeeSettingsInput Value(string? value)
         {
             base.Value = value;
             return this;

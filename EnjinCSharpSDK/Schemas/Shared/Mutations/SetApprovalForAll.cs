@@ -22,7 +22,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="operatorAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public SetApprovalForAll OperatorAddress(string operatorAddress)
+        public SetApprovalForAll OperatorAddress(string? operatorAddress)
         {
             return SetVariable("operatorAddress", operatorAddress);
         }

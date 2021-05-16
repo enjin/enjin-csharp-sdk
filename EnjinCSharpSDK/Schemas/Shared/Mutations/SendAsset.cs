@@ -23,7 +23,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="recipientAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public SendAsset RecipientAddress(string recipientAddress)
+        public SendAsset RecipientAddress(string? recipientAddress)
         {
             return SetVariable("recipientAddress", recipientAddress);
         }
@@ -33,7 +33,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SendAsset AssetId(string assetId)
+        public SendAsset AssetId(string? assetId)
         {
             return SetVariable("assetId", assetId);
         }
@@ -43,7 +43,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public SendAsset AssetIndex(string assetIndex)
+        public SendAsset AssetIndex(string? assetIndex)
         {
             return SetVariable("assetIndex", assetIndex);
         }
@@ -53,7 +53,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="value">The amount.</param>
         /// <returns>This request for chaining.</returns>
-        public SendAsset Value(string value)
+        public SendAsset Value(string? value)
         {
             return SetVariable("value", value);
         }
@@ -63,7 +63,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns>This request for chaining.</returns>
-        public SendAsset Data(string data)
+        public SendAsset Data(string? data)
         {
             return SetVariable("data", data);
         }

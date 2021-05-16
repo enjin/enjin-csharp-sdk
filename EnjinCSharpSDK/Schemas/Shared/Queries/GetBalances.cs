@@ -24,7 +24,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="filter">The filter.</param>
         /// <returns>This request for chaining.</returns>
-        public GetBalances Filter(BalanceFilter filter)
+        public GetBalances Filter(BalanceFilter? filter)
         {
             return SetVariable("filter", filter);
         }

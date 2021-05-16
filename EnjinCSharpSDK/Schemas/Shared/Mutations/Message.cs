@@ -14,7 +14,7 @@ namespace Enjin.SDK.Shared
         /// Sole constructor. Sets the message to sign.
         /// </summary>
         /// <param name="message">The message.</param>
-        public Message(string message) : base("enjin.sdk.shared.Message")
+        public Message(string? message) : base("enjin.sdk.shared.Message")
         {
             SetVariable("message", message);
         }

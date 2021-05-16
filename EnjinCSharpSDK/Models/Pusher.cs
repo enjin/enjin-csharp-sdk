@@ -14,27 +14,27 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The key.</value>
         [JsonProperty("key")]
-        public string Key { get; private set; }
+        public string? Key { get; private set; }
         
         /// <summary>
         /// Represents the namespace the platform broadcasts on.
         /// </summary>
         /// <value>The namespace.</value>
         [JsonProperty("namespace")]
-        public string Namespace { get; private set; }
+        public string? Namespace { get; private set; }
         
         /// <summary>
         /// Represents the Pusher channels the platform broadcasts on.
         /// </summary>
         /// <value>The Pusher channels.</value>
         [JsonProperty("channels")]
-        public PusherChannels Channels { get; private set; }
+        public PusherChannels? Channels { get; private set; }
         
         /// <summary>
         /// Represents the options for Pusher that the platform uses.
         /// </summary>
         /// <value>The Pusher options.</value>
         [JsonProperty("options")]
-        public PusherOptions Options { get; private set; }
+        public PusherOptions? Options { get; private set; }
     }
 }

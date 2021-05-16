@@ -33,7 +33,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="secret">The secret.</param>
         /// <returns>This request for chaining.</returns>
-        public AuthProject Secret(string secret)
+        public AuthProject Secret(string? secret)
         {
             return SetVariable("secret", secret);
         }

@@ -13,7 +13,7 @@ namespace Enjin.SDK.Models
     public class PlayerFilter: Filter<PlayerFilter>
     {
         [JsonProperty("id")]
-        private string _id;
+        private string? _id;
         [JsonProperty("id_in")]
         private List<string>? _idIn;
 
@@ -22,7 +22,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="id">The player ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public PlayerFilter Id(string id)
+        public PlayerFilter Id(string? id)
         {
             _id = id;
             return this;

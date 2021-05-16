@@ -33,7 +33,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>This request for chaining.</returns>
-        public GetProject Name(string name)
+        public GetProject Name(string? name)
         {
             return SetVariable("name", name);
         }

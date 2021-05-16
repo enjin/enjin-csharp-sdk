@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public ReleaseReserve AssetId(string assetId)
+        public ReleaseReserve AssetId(string? assetId)
         {
             return SetVariable("assetId", assetId);
         }
@@ -33,7 +33,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="value">The amount.</param>
         /// <returns>This request for chaining.</returns>
-        public ReleaseReserve Value(string value)
+        public ReleaseReserve Value(string? value)
         {
             return SetVariable("value", value);
         }

@@ -15,14 +15,14 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The ID.</value>
         [JsonProperty("id")]
-        public int Id { get; private set; }
+        public int? Id { get; private set; }
 
         /// <summary>
         /// Represents the hash ID of this transaction.
         /// </summary>
         /// <value>The hash ID.</value>
         [JsonProperty("transactionId")]
-        public string TransactionId { get; private set; } = null!;
+        public string? TransactionId { get; private set; }
 
         /// <summary>
         /// Represents the title of this transaction.
@@ -43,7 +43,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The type.</value>
         [JsonProperty("type")]
-        public RequestType Type { get; private set; }
+        public RequestType? Type { get; private set; }
         
         /// <summary>
         /// Represents the value of this transaction.
@@ -88,7 +88,7 @@ namespace Enjin.SDK.Models
         /// The datetime is formatted using the ISO 8601 date format.
         /// </remarks>
         [JsonProperty("createdAt")]
-        public string CreatedAt { get; private set; } = null!;
+        public string? CreatedAt { get; private set; }
         
         /// <summary>
         /// Represents the datetime when this transaction was last updated.
@@ -98,6 +98,6 @@ namespace Enjin.SDK.Models
         /// The datetime is formatted using the ISO 8601 date format.
         /// </remarks>
         [JsonProperty("updatedAt")]
-        public string UpdatedAt { get; private set; } = null!;
+        public string? UpdatedAt { get; private set; }
     }
 }

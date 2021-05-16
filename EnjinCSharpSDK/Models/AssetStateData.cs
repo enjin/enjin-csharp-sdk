@@ -14,7 +14,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>Whether this asset is non-fungible.</value>
         [JsonProperty("nonFungible")]
-        public bool NonFungible { get; private set; }
+        public bool? NonFungible { get; private set; }
         
         /// <summary>
         /// Represents the block number of the last update.

@@ -33,7 +33,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="id">The hash ID.</param>
         /// <returns>This request for chaining.</returns>
-        public GetRequest TransactionId(string id)
+        public GetRequest TransactionId(string? id)
         {
             return SetVariable("transactionId", id);
         }

@@ -11,18 +11,18 @@ namespace Enjin.SDK.Models
     public class Trade
     {
         [JsonProperty("assetId")]
-        private string _assetId;
+        private string? _assetId;
         [JsonProperty("assetIndex")]
-        private string _assetIndex;
+        private string? _assetIndex;
         [JsonProperty("value")]
-        private string _value;
+        private string? _value;
 
         /// <summary>
         /// Sets the asset ID to trade or ENJ if not used or set to <c>null</c>.
         /// </summary>
         /// <param name="assetId">The asset ID.</param>
         /// <returns>This input for chaining.</returns>
-        public Trade AssetId(string assetId)
+        public Trade AssetId(string? assetId)
         {
             _assetId = assetId;
             return this;
@@ -33,7 +33,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="assetIndex">The asset index.</param>
         /// <returns>This input for chaining.</returns>
-        public Trade AssetIndex(string assetIndex)
+        public Trade AssetIndex(string? assetIndex)
         {
             _assetIndex = assetIndex;
             return this;
@@ -47,7 +47,7 @@ namespace Enjin.SDK.Models
         /// <remarks>
         /// If trading ENJ, the value is the amount to send in Wei (10^18 e.g. 1 ENJ = 1000000000000000000).
         /// </remarks>
-        public Trade Value(string value)
+        public Trade Value(string? value)
         {
             _value = value;
             return this;

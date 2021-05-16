@@ -14,6 +14,6 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The Pusher settings.</value>
         [JsonProperty("pusher")]
-        public Pusher Pusher { get; private set; }
+        public Pusher? Pusher { get; private set; }
     }
 }

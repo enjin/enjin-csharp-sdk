@@ -25,7 +25,7 @@ namespace Enjin.SDK.Shared
         /// <param name="ethAddress">The address.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T EthAddress<T>(this T instance, string ethAddress) where T : ITransactionRequestArguments<T>
+        public static T EthAddress<T>(this T instance, string? ethAddress) where T : ITransactionRequestArguments<T>
         {
             return instance.SetVariable("ethAddress", ethAddress);
         }
@@ -40,7 +40,7 @@ namespace Enjin.SDK.Shared
         /// <remarks>
         /// Setting this to false allows for arguments to be tried out without hitting the blockchain.
         /// </remarks>
-        public static T Send<T>(this T instance, bool send) where T : ITransactionRequestArguments<T>
+        public static T Send<T>(this T instance, bool? send) where T : ITransactionRequestArguments<T>
         {
             return instance.SetVariable("send", send);
         }
