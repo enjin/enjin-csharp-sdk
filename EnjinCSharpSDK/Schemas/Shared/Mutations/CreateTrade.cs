@@ -24,7 +24,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="assets">The assets.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateTrade AskingAssets(params Trade[] assets)
+        public CreateTrade AskingAssets(params Trade[]? assets)
         {
             return SetVariable("askingAssets", assets);
         }
@@ -34,7 +34,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="assets">The assets.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateTrade OfferingAssets(params Trade[] assets)
+        public CreateTrade OfferingAssets(params Trade[]? assets)
         {
             return SetVariable("offeringAssets", assets);
         }
@@ -44,7 +44,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="recipientAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateTrade RecipientAddress(string recipientAddress)
+        public CreateTrade RecipientAddress(string? recipientAddress)
         {
             return SetVariable("recipientAddress", recipientAddress);
         }

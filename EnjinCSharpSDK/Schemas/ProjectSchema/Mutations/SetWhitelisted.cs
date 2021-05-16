@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SetWhitelisted AssetId(string assetId)
+        public SetWhitelisted AssetId(string? assetId)
         {
             return SetVariable("assetId", assetId);
         }
@@ -34,7 +34,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="accountAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public SetWhitelisted AccountAddress(string accountAddress)
+        public SetWhitelisted AccountAddress(string? accountAddress)
         {
             return SetVariable("accountAddress", accountAddress);
         }
@@ -54,7 +54,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="whitelistedAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public SetWhitelisted WhitelistedAddress(string whitelistedAddress)
+        public SetWhitelisted WhitelistedAddress(string? whitelistedAddress)
         {
             return SetVariable("whitelistedAddress", whitelistedAddress);
         }

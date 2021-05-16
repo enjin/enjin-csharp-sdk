@@ -22,7 +22,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public CancelTransaction Id(int id)
+        public CancelTransaction Id(int? id)
         {
             return SetVariable("id", id);
         }

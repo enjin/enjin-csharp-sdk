@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SetUri AssetId(string assetId)
+        public SetUri AssetId(string? assetId)
         {
             return SetVariable("assetId", assetId);
         }
@@ -33,7 +33,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public SetUri AssetIndex(string assetIndex)
+        public SetUri AssetIndex(string? assetIndex)
         {
             return SetVariable("assetIndex", assetIndex);
         }
@@ -43,7 +43,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="uri">The new URI.</param>
         /// <returns>This request for chaining.</returns>
-        public SetUri Uri(string uri)
+        public SetUri Uri(string? uri)
         {
             return SetVariable("uri", uri);
         }

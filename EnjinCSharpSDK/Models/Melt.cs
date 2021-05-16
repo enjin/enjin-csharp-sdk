@@ -12,18 +12,18 @@ namespace Enjin.SDK.Models
     public class Melt
     {
         [JsonProperty("assetId")]
-        private string _assetId;
+        private string? _assetId;
         [JsonProperty("assetIndex")]
-        private string _assetIndex;
+        private string? _assetIndex;
         [JsonProperty("value")]
-        private string _value;
+        private string? _value;
 
         /// <summary>
         /// Sets the asset ID to melt.
         /// </summary>
         /// <param name="assetId">The asset ID.</param>
         /// <returns>This input for chaining.</returns>
-        public Melt AssetId(string assetId)
+        public Melt AssetId(string? assetId)
         {
             _assetId = assetId;
             return this;
@@ -34,7 +34,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="assetIndex">The asset index.</param>
         /// <returns>This input for chaining.</returns>
-        public Melt AssetIndex(string assetIndex)
+        public Melt AssetIndex(string? assetIndex)
         {
             _assetIndex = assetIndex;
             return this;
@@ -45,7 +45,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The amount of assets.</param>
         /// <returns>This input for chaining.</returns>
-        public Melt Value(string value)
+        public Melt Value(string? value)
         {
             _value = value;
             return this;

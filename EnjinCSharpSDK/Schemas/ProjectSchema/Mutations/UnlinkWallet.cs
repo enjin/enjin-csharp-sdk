@@ -22,7 +22,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="ethAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public UnlinkWallet EthAddress(string ethAddress)
+        public UnlinkWallet EthAddress(string? ethAddress)
         {
             return SetVariable("ethAddress", ethAddress);
         }

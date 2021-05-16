@@ -25,7 +25,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public MintAsset AssetId(string assetId)
+        public MintAsset AssetId(string? assetId)
         {
             return SetVariable("assetId", assetId);
         }
@@ -35,7 +35,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="mints">The mints.</param>
         /// <returns>This request for chaining.</returns>
-        public MintAsset Mints(params MintInput[] mints)
+        public MintAsset Mints(params MintInput[]? mints)
         {
             return SetVariable("mints", mints);
         }

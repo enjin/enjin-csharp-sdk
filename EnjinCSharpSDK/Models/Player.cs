@@ -15,7 +15,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The player ID.</value>
         [JsonProperty("id")]
-        public string Id { get; private set; } = null!;
+        public string? Id { get; private set; }
 
         /// <summary>
         /// Represents the linking information for this player.
@@ -39,7 +39,7 @@ namespace Enjin.SDK.Models
         /// The datetime is formatted using the ISO 8601 date format.
         /// </remarks>
         [JsonProperty("createdAt")]
-        public string CreatedAt { get; private set; } = null!;
+        public string? CreatedAt { get; private set; }
         
         /// <summary>
         /// Represents the datetime when this player was last updated.
@@ -49,6 +49,6 @@ namespace Enjin.SDK.Models
         /// The datetime is formatted using the ISO 8601 date format.
         /// </remarks>
         [JsonProperty("updatedAt")]
-        public string UpdatedAt { get; private set; } = null!;
+        public string? UpdatedAt { get; private set; }
     }
 }

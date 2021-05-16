@@ -25,7 +25,7 @@ namespace Enjin.SDK.Shared
         /// <remarks>
         /// The value is in Wei as 10^18 (e.g. 1 ENJ = 1000000000000000000).
         /// </remarks>
-        public ApproveEnj Value(string value)
+        public ApproveEnj Value(string? value)
         {
             return SetVariable("value", value);
         }

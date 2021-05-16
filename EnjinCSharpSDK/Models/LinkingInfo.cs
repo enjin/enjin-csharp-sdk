@@ -14,13 +14,13 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The linking code.</value>
         [JsonProperty("code")]
-        public string Code { get; private set; } = null!;
+        public string? Code { get; private set; }
         
         /// <summary>
         /// Represents the URL for the QR image to be used to link a wallet to the player this information applies to.
         /// </summary>
         /// <value>The URL for the image.</value>
         [JsonProperty("qr")]
-        public string Qr { get; private set; } = null!;
+        public string? Qr { get; private set; }
     }
 }

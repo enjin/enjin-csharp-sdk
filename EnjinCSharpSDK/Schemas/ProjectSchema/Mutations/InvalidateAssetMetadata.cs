@@ -22,7 +22,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public InvalidateAssetMetadata Id(string id)
+        public InvalidateAssetMetadata Id(string? id)
         {
             return SetVariable("id", id);
         }

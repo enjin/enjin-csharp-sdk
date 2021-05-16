@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public AuthPlayer Id(string id)
+        public AuthPlayer Id(string? id)
         {
             return SetVariable("id", id);
         }

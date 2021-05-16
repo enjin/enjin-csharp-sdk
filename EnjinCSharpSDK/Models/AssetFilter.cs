@@ -14,28 +14,28 @@ namespace Enjin.SDK.Models
     public class AssetFilter: Filter<AssetFilter>
     {
         [JsonProperty("id")]
-        private string _id;
+        private string? _id;
 
         [JsonProperty("id_in")]
         private List<string>? _idIn;
 
         [JsonProperty("name")]
-        private string _name;
+        private string? _name;
 
         [JsonProperty("name_contains")]
-        private string _nameContains;
+        private string? _nameContains;
 
         [JsonProperty("name_in")]
         private List<string>? _nameIn;
 
         [JsonProperty("name_starts_with")]
-        private string _nameStartsWith;
+        private string? _nameStartsWith;
 
         [JsonProperty("name_ends_with")]
-        private string _nameEndsWith;
+        private string? _nameEndsWith;
 
         [JsonProperty("wallet")]
-        private string _wallet;
+        private string? _wallet;
 
         [JsonProperty("wallet_in")]
         private List<string>? _walletIn;
@@ -45,7 +45,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public AssetFilter Id(string id)
+        public AssetFilter Id(string? id)
         {
             _id = id;
             return this;
@@ -67,7 +67,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>This filter for chaining.</returns>
-        public AssetFilter Name(string name)
+        public AssetFilter Name(string? name)
         {
             _name = name;
             return this;
@@ -78,7 +78,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns>This filter for chaining.</returns>
-        public AssetFilter NameContains(string text)
+        public AssetFilter NameContains(string? text)
         {
             _nameContains = text;
             return this;
@@ -100,7 +100,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="prefix">The prefix.</param>
         /// <returns>This filter for chaining.</returns>
-        public AssetFilter NameStartsWith(string prefix)
+        public AssetFilter NameStartsWith(string? prefix)
         {
             _nameStartsWith = prefix;
             return this;
@@ -111,7 +111,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="suffix">The suffix.</param>
         /// <returns>This filter for chaining.</returns>
-        public AssetFilter NameEndsWith(string suffix)
+        public AssetFilter NameEndsWith(string? suffix)
         {
             _nameEndsWith = suffix;
             return this;
@@ -122,7 +122,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="wallet">The wallet address.</param>
         /// <returns>This filter for chaining.</returns>
-        public AssetFilter Wallet(string wallet)
+        public AssetFilter Wallet(string? wallet)
         {
             _wallet = wallet;
             return this;

@@ -14,27 +14,27 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The channel string.</value>
         [JsonProperty("project")]
-        public string Project { get; private set; }
+        public string? Project { get; private set; }
         
         /// <summary>
         /// Represents the player channel.
         /// </summary>
         /// <value>The channel string.</value>
         [JsonProperty("player")]
-        public string Player { get; private set; }
+        public string? Player { get; private set; }
         
         /// <summary>
         /// Represents the asset channel.
         /// </summary>
         /// <value>The channel string.</value>
         [JsonProperty("asset")]
-        public string Asset { get; private set; }
+        public string? Asset { get; private set; }
         
         /// <summary>
         /// Represents the wallet channel.
         /// </summary>
         /// <value>The channel string.</value>
         [JsonProperty("wallet")]
-        public string Wallet { get; private set; }
+        public string? Wallet { get; private set; }
     }
 }

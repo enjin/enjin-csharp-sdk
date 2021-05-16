@@ -23,7 +23,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="id">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public CompleteTrade TradeId(string id)
+        public CompleteTrade TradeId(string? id)
         {
             return SetVariable("tradeId", id);
         }

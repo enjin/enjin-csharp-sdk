@@ -15,14 +15,14 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The ID.</value>
         [JsonProperty("id")]
-        public string Id { get; private set; } = null!;
+        public string? Id { get; private set; }
 
         /// <summary>
         /// Represents the name of this asset.
         /// </summary>
         /// <value>The name.</value>
         [JsonProperty("name")]
-        public string Name { get; private set; } = null!;
+        public string? Name { get; private set; }
         
         /// <summary>
         /// Represents the state data of this asset.
@@ -60,7 +60,7 @@ namespace Enjin.SDK.Models
         /// The datetime is formatted using the ISO 8601 date format.
         /// </remarks>
         [JsonProperty("createdAt")]
-        public string CreatedAt { get; private set; } = null!;
+        public string? CreatedAt { get; private set; }
         
         /// <summary>
         /// Represents the datetime when this asset was last updated.
@@ -70,6 +70,6 @@ namespace Enjin.SDK.Models
         /// The datetime is formatted using the ISO 8601 date format.
         /// </remarks>
         [JsonProperty("updatedAt")]
-        public string UpdatedAt { get; private set; } = null!;
+        public string? UpdatedAt { get; private set; }
     }
 }

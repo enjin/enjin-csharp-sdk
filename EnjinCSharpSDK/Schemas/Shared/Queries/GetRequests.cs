@@ -24,7 +24,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="filter">The filter.</param>
         /// <returns>This request for chaining.</returns>
-        public GetRequests Filter(TransactionFilter filter)
+        public GetRequests Filter(TransactionFilter? filter)
         {
             return SetVariable("filter", filter);
         }
@@ -34,7 +34,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="sort">The sort options.</param>
         /// <returns>This request for chaining.</returns>
-        public GetRequests Sort(TransactionSort sort)
+        public GetRequests Sort(TransactionSort? sort)
         {
             return SetVariable("sort", sort);
         }

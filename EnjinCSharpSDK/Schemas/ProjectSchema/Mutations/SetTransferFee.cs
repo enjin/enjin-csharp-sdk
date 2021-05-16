@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetId">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferFee AssetId(string assetId)
+        public SetTransferFee AssetId(string? assetId)
         {
             return SetVariable("assetId", assetId);
         }
@@ -33,7 +33,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assetIndex">The index.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferFee AssetIndex(string assetIndex)
+        public SetTransferFee AssetIndex(string? assetIndex)
         {
             return SetVariable("assetIndex", assetIndex);
         }
@@ -43,7 +43,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="transferFee">The new transfer fee.</param>
         /// <returns>This request for chaining.</returns>
-        public SetTransferFee TransferFee(string transferFee)
+        public SetTransferFee TransferFee(string? transferFee)
         {
             return SetVariable("transferFee", transferFee);
         }

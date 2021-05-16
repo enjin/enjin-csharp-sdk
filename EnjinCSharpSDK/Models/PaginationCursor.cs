@@ -63,6 +63,6 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>Whether the cursor has more pages.</value>
         [JsonProperty("hasMorePages")]
-        public bool HasMorePages { get; private set; }
+        public bool? HasMorePages { get; private set; }
     }
 }

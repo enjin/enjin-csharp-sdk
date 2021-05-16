@@ -15,28 +15,28 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The ID.</value>
         [JsonProperty("id")]
-        public int Id { get; private set; }
+        public int? Id { get; private set; }
         
         /// <summary>
         /// Represents the ID of the asset this variant belongs to.
         /// </summary>
         /// <value>The ID.</value>
         [JsonProperty("assetId")]
-        public string AssetId { get; private set; }
+        public string? AssetId { get; private set; }
         
         /// <summary>
         /// Represents the metadata for this variant.
         /// </summary>
         /// <value>The metadata.</value>
         [JsonProperty("variantMetadata")]
-        public JObject VariantMetadata { get; private set; }
+        public JObject? VariantMetadata { get; private set; }
         
         /// <summary>
         /// Represents the usage count of this variant.
         /// </summary>
         /// <value>The usage count.</value>
         [JsonProperty("usageCount")]
-        public int UsageCount { get; private set; }
+        public int? UsageCount { get; private set; }
         
         /// <summary>
         /// Represents the datetime when this variant was created.
@@ -46,7 +46,7 @@ namespace Enjin.SDK.Models
         /// The datetime is formatted using the ISO 8601 date format.
         /// </remarks>
         [JsonProperty("createdAt")]
-        public string CreatedAt { get; private set; }
+        public string? CreatedAt { get; private set; }
         
         /// <summary>
         /// Represents the datetime when this variant was last updated.
@@ -56,6 +56,6 @@ namespace Enjin.SDK.Models
         /// The datetime is formatted using the ISO 8601 date format.
         /// </remarks>
         [JsonProperty("updatedAt")]
-        public string UpdatedAt { get; private set; }
+        public string? UpdatedAt { get; private set; }
     }
 }

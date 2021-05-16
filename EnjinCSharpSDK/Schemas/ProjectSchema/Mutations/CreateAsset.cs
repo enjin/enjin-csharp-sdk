@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateAsset Name(string name)
+        public CreateAsset Name(string? name)
         {
             return SetVariable("name", name);
         }
@@ -34,7 +34,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="totalSupply">The total supply.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateAsset TotalSupply(string totalSupply)
+        public CreateAsset TotalSupply(string? totalSupply)
         {
             return SetVariable("totalSupply", totalSupply);
         }
@@ -44,7 +44,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="initialReserve">The reserve.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateAsset InitialReserve(string initialReserve)
+        public CreateAsset InitialReserve(string? initialReserve)
         {
             return SetVariable("initialReserve", initialReserve);
         }
@@ -64,7 +64,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="meltValue">The value.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateAsset MeltValue(string meltValue)
+        public CreateAsset MeltValue(string? meltValue)
         {
             return SetVariable("meltValue", meltValue);
         }
@@ -97,7 +97,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="transferFeeSettings">The settings.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateAsset TransferFeeSettings(AssetTransferFeeSettingsInput transferFeeSettings)
+        public CreateAsset TransferFeeSettings(AssetTransferFeeSettingsInput? transferFeeSettings)
         {
             return SetVariable("transferFeeSettings", transferFeeSettings);
         }

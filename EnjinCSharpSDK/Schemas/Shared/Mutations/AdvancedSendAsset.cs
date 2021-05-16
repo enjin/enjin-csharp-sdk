@@ -24,7 +24,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="transfers">The transfers.</param>
         /// <returns>This request for chaining.</returns>
-        public AdvancedSendAsset Transfers(params Transfer[] transfers)
+        public AdvancedSendAsset Transfers(params Transfer[]? transfers)
         {
             return SetVariable("transfers", transfers);
         }
@@ -34,7 +34,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns>This request for chaining.</returns>
-        public AdvancedSendAsset Data(string data)
+        public AdvancedSendAsset Data(string? data)
         {
             return SetVariable("data", data);
         }

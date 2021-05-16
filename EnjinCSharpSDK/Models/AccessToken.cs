@@ -14,14 +14,14 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The token for the auth.</value>
         [JsonProperty("accessToken")]
-        public string Token { get; private set; }
+        public string? Token { get; private set; }
         
         /// <summary>
         /// Represents the number of seconds until the auth expires.
         /// </summary>
         /// <value>The number of seconds until the auth expires.</value>
         [JsonProperty("expiresIn")]
-        public long ExpiresIn { get; private set; }
+        public long? ExpiresIn { get; private set; }
 
         /// <summary>
         /// Converts the auth object into a string.

@@ -12,16 +12,16 @@ namespace Enjin.SDK.Models
     public class MintInput
     {
         [JsonProperty("to")]
-        private string _to;
+        private string? _to;
         [JsonProperty("value")]
-        private string _value;
+        private string? _value;
 
         /// <summary>
         /// Sets the Ethereum address to mint to.
         /// </summary>
         /// <param name="ethAddress">The address.</param>
         /// <returns>This input for chaining.</returns>
-        public MintInput To(string ethAddress)
+        public MintInput To(string? ethAddress)
         {
             _to = ethAddress;
             return this;
@@ -32,7 +32,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The amount.</param>
         /// <returns>This input for chaining.</returns>
-        public MintInput Value(string value)
+        public MintInput Value(string? value)
         {
             _value = value;
             return this;

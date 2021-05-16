@@ -22,7 +22,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="recipientAddress">The address.</param>
         /// <returns>This request for chaining.</returns>
-        public SendEnj RecipientAddress(string recipientAddress)
+        public SendEnj RecipientAddress(string? recipientAddress)
         {
             return SetVariable("recipientAddress", recipientAddress);
         }
@@ -35,7 +35,7 @@ namespace Enjin.SDK.Shared
         /// <remarks>
         /// The value is in Wei as 10^18 (e.g. 1 ENJ = 1000000000000000000).
         /// </remarks>
-        public SendEnj Value(string value)
+        public SendEnj Value(string? value)
         {
             return SetVariable("value", value);
         }

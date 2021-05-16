@@ -13,11 +13,11 @@ namespace Enjin.SDK.Models
     public class BalanceFilter: Filter<BalanceFilter>
     {
         [JsonProperty("assetId")]
-        private string _assetId;
+        private string? _assetId;
         [JsonProperty("assetId_in")]
         private List<string>? _assetIdIn;
         [JsonProperty("wallet")]
-        private string _wallet;
+        private string? _wallet;
         [JsonProperty("wallet_in")]
         private List<string>? _walletIn;
         [JsonProperty("value")]
@@ -36,7 +36,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="assetId">The asset ID.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter AssetId(string assetId)
+        public BalanceFilter AssetId(string? assetId)
         {
             _assetId = assetId;
             return this;
@@ -58,7 +58,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter Value(int value)
+        public BalanceFilter Value(int? value)
         {
             _value = value;
             return this;
@@ -69,7 +69,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ValueGreaterThan(int value)
+        public BalanceFilter ValueGreaterThan(int? value)
         {
             _valueGt = value;
             return this;
@@ -80,7 +80,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ValueGreaterThanOrEqual(int value)
+        public BalanceFilter ValueGreaterThanOrEqual(int? value)
         {
             _valueGte = value;
             return this;
@@ -91,7 +91,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ValueLessThan(int value)
+        public BalanceFilter ValueLessThan(int? value)
         {
             _valueLt = value;
             return this;
@@ -102,7 +102,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value to compare by.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ValueLessThanOrEqual(int value)
+        public BalanceFilter ValueLessThanOrEqual(int? value)
         {
             _valueLte = value;
             return this;
@@ -113,7 +113,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="wallet">The wallet address.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter Wallet(string wallet)
+        public BalanceFilter Wallet(string? wallet)
         {
             _wallet = wallet;
             return this;
