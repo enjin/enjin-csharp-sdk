@@ -32,26 +32,24 @@ namespace Enjin.SDK.Graphql
             RegisterSdkTemplates();
         }
 
-        private static string[] LoadTemplateContents(Assembly assembly, string name)
+        private static string[]? LoadTemplateContents(Assembly assembly, string name)
         {
-            using (var stream = assembly.GetManifestResourceStream(name))
+            using var stream = assembly.GetManifestResourceStream(name);
+            if (stream == null)
+                return null;
+            
+            using var reader = new StreamReader(stream);
+            var contents = new List<string>();
+
+            while (!reader.EndOfStream)
             {
-                if (stream == null) return null;
-                using (var reader = new StreamReader(stream))
-                {
-                    var contents = new List<string>();
-
-                    while (!reader.EndOfStream)
-                    {
-                        contents.Add(reader.ReadLine());
-                    }
-
-                    return contents.ToArray();
-                }
+                contents.Add(reader.ReadLine());
             }
+
+            return contents.ToArray();
         }
 
-        private void LoadAndCacheTemplateContents(string[] contents, TemplateType templateType)
+        private void LoadAndCacheTemplateContents(string[]? contents, TemplateType templateType)
         {
             if (contents == null)
                 return;
@@ -104,9 +102,11 @@ namespace Enjin.SDK.Graphql
         /// </summary>
         /// <param name="name">The name of the template.</param>
         /// <returns>The template if one exists, else <c>null</c>.</returns>
-        public GraphqlTemplate GetOperationForName(string name)
+        public GraphqlTemplate? GetOperationForName(string name)
         {
-            return _operations.ContainsKey(name) ? _operations[name] : null;
+            return _operations.ContainsKey(name)
+                ? _operations[name]
+                : null;
         }
     }
 }
