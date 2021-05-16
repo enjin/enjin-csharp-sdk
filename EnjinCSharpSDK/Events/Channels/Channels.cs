@@ -15,7 +15,7 @@ namespace Enjin.SDK.Events
             _projectId = projectId;
         }
 
-        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.project.{_projectId}";
+        public string Channel() => $"enjincloud.{_platform.Network!.ToLower()}.project.{_projectId}";
     }
     
     internal sealed class PlayerChannel : IChannel
@@ -31,7 +31,7 @@ namespace Enjin.SDK.Events
             _playerId = playerId;
         }
         
-        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.project.{_projectId}.player.{_playerId}";
+        public string Channel() => $"enjincloud.{_platform.Network!.ToLower()}.project.{_projectId}.player.{_playerId}";
     }
 
     internal sealed class AssetChannel : IChannel
@@ -45,7 +45,7 @@ namespace Enjin.SDK.Events
             _assetId = assetId;
         }
 
-        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.asset.{_assetId}";
+        public string Channel() => $"enjincloud.{_platform.Network!.ToLower()}.asset.{_assetId}";
     }
     
     internal sealed class WalletChannel : IChannel
@@ -59,6 +59,6 @@ namespace Enjin.SDK.Events
             _ethAddress = ethAddress;
         }
 
-        public string Channel() => $"enjincloud.{_platform.Network.ToLower()}.wallet.{_ethAddress}";
+        public string Channel() => $"enjincloud.{_platform.Network!.ToLower()}.wallet.{_ethAddress}";
     }
 }
