@@ -44,7 +44,7 @@ namespace Enjin.SDK
         {
             var obj = new JObject
             {
-                {"query", Middleware.Registry.GetOperationForName(request.Namespace).CompiledContents},
+                {"query", Middleware.Registry.GetOperationForName(request.Namespace)?.CompiledContents},
                 {"variables", JToken.FromObject(request.Variables)}
             };
             return obj;

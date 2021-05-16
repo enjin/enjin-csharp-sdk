@@ -16,7 +16,7 @@ namespace Enjin.SDK.Http
         /// Constructs the handler with an optional inner handler.
         /// </summary>
         /// <param name="innerHandler">The handler to replace the default client handler.</param>
-        public TrustedPlatformHandler(HttpMessageHandler innerHandler = null)
+        public TrustedPlatformHandler(HttpMessageHandler? innerHandler = null)
             : base(innerHandler ?? new HttpClientHandler())
         {
         }

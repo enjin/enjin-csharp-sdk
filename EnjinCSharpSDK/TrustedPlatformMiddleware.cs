@@ -34,8 +34,8 @@ namespace Enjin.SDK
         /// </summary>
         /// <param name="baseAddress">The base URI.</param>
         /// <param name="debug">Whether debugging is enabled.</param>
-        /// <param name="handler">Prefered HTTP handler.</param>
-        public TrustedPlatformMiddleware(Uri baseAddress, bool debug, HttpClientHandler handler = null)
+        /// <param name="handler">Preferred HTTP handler.</param>
+        public TrustedPlatformMiddleware(Uri baseAddress, bool debug, HttpClientHandler? handler = null)
         {
             HttpHandler = new TrustedPlatformHandler(handler);
             HttpClient = CreateHttpClient(baseAddress, debug);
