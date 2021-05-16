@@ -39,7 +39,7 @@ namespace Enjin.SDK.Shared
         /// <param name="limit">The number of items per page.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T Paginate<T>(this T instance, int? page, int? limit = 10) where T : IPaginationArguments<T>
+        public static T Paginate<T>(this T instance, int? page, int? limit) where T : IPaginationArguments<T>
         {
             return Paginate(instance, new PaginationOptions
             {
