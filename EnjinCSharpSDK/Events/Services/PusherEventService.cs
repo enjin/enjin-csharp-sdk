@@ -35,13 +35,13 @@ namespace Enjin.SDK.Events
         public LoggerProvider LoggerProvider { get; private set; }
 
         /// <inheritdoc/>
-        public event EventHandler Connected;
+        public event EventHandler? Connected;
 
         /// <inheritdoc/>
-        public event EventHandler Disconnected;
+        public event EventHandler? Disconnected;
 
         /// <inheritdoc/>
-        public event EventHandler<Exception> Error;
+        public event EventHandler<Exception>? Error;
 
         internal List<EventListenerRegistration> RegisteredListeners { get; } = new List<EventListenerRegistration>();
         private readonly Dictionary<string, Channel> _subscribed = new Dictionary<string, Channel>();
@@ -169,8 +169,7 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public void UnregisterListener(IEventListener listener)
         {
-            EventListenerRegistration reg =
-                RegisteredListeners.FirstOrDefault(r => r.Listener == listener);
+            var reg = RegisteredListeners.FirstOrDefault(r => r.Listener == listener);
             if (reg != null)
                 RegisteredListeners.Remove(reg);
         }
