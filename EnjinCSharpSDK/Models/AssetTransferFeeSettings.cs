@@ -45,7 +45,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>This input for chaining.</returns>
-        public AssetTransferFeeSettingsInput Type(AssetTransferFeeType? type)
+        public new AssetTransferFeeSettingsInput Type(AssetTransferFeeType? type)
         {
             base.Type = type;
             return this;
@@ -59,7 +59,7 @@ namespace Enjin.SDK.Models
         /// <remarks>
         /// If the ID is set to "0", then this will be set to transfer ENJ instead of a asset.
         /// </remarks>
-        public AssetTransferFeeSettingsInput AssetId(string? assetId)
+        public new AssetTransferFeeSettingsInput AssetId(string? assetId)
         {
             base.AssetId = assetId;
             return this;
@@ -70,7 +70,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>This input for chaining.</returns>
-        public AssetTransferFeeSettingsInput Value(string? value)
+        public new AssetTransferFeeSettingsInput Value(string? value)
         {
             base.Value = value;
             return this;
