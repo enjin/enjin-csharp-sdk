@@ -56,13 +56,13 @@ namespace Enjin.SDK.Graphql
         /// bodies.
         /// </summary>
         /// <value>The compiled body contents.</value>
-        public string CompiledContents { get; private set; }
+        public string? CompiledContents { get; private set; }
         
         /// <summary>
         /// Represents the parameters of this template.
         /// </summary>
         /// <value>The list of parameters.</value>
-        public List<string> Parameters { get; } = new List<string>();
+        public List<string?> Parameters { get; } = new List<string?>();
         
         /// <summary>
         /// Represents the fragments that this template references.
@@ -119,7 +119,7 @@ namespace Enjin.SDK.Graphql
             if (TemplateType == TemplateType.FRAGMENT)
                 return;
 
-            var parameters = new List<string>(Parameters);
+            var parameters = new List<string?>(Parameters);
             var processedFragments = new List<string>();
             var fragmentQueue = new Stack<GraphqlTemplate>();
             var builder = new StringBuilder(Contents).AppendLine();
@@ -155,7 +155,7 @@ namespace Enjin.SDK.Graphql
             CompiledContents = builder.ToString().Replace(replaceTerm, $"{replaceTerm} {Name}({formattedParams})");
         }
 
-        internal static string ReadNamespace(IEnumerable<string> contents)
+        internal static string? ReadNamespace(IEnumerable<string> contents)
         {
             return (from line in contents
                     where line.StartsWith(NAMESPACE_KEY)
@@ -163,19 +163,16 @@ namespace Enjin.SDK.Graphql
                 .FirstOrDefault();
         }
 
-        private static string ProcessArg(string line)
+        private static string? ProcessArg(string line)
         {
             var parts = line.Split(' ');
 
-            switch (parts.Length)
+            return parts.Length switch
             {
-                case 3:
-                    return $"${parts[1]}: {parts[2]}";
-                case 4:
-                    return $"${parts[1]}: {parts[2]} = {parts[3]}";
-                default:
-                    return null;
-            }
+                3 => $"${parts[1]}: {parts[2]}",
+                4 => $"${parts[1]}: {parts[2]} = {parts[3]}",
+                _ => null
+            };
         }
 
         private static string ProcessImport(string line)
