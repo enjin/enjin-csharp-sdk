@@ -17,7 +17,11 @@ namespace Enjin.SDK.Graphql
         /// Represents the result of this response.
         /// </summary>
         /// <value>The result.</value>
-        public T Result { get; private set; }
+        /// <remarks>
+        /// For responses wrapping a value type or non-nullable type, consider checking
+        /// <see cref="GraphqlResponse{T}.IsSuccess"/> if the result equals the types default value.
+        /// </remarks>
+        public T Result { get; private set; } = default!;
         
         /// <summary>
         /// Represents the errors of this response if any exist.
@@ -41,6 +45,10 @@ namespace Enjin.SDK.Graphql
         /// Represents whether the response has a result or not.
         /// </summary>
         /// <value>Whether the result is <c>null</c>.</value>
+        /// <remarks>
+        /// For responses wrapping a value type or non-nullable type, consider checking
+        /// <see cref="GraphqlResponse{T}.IsSuccess"/> instead.
+        /// </remarks>
         public bool IsEmpty => Result == null;
         
         /// <summary>
@@ -64,7 +72,7 @@ namespace Enjin.SDK.Graphql
         /// <param name="data">The deserialized response data.</param>
         /// <param name="errors">The serialized errors.</param>
         [JsonConstructor]
-        public GraphqlResponse(GraphqlData<T> data, List<GraphqlError>? errors)
+        public GraphqlResponse(GraphqlData<T>? data, List<GraphqlError>? errors)
         {
             if (data != null)
             {
@@ -95,12 +103,12 @@ namespace Enjin.SDK.Graphql
     {
         private const string ItemsKey = "items";
         private const string CursorKey = "cursor";
-        
+
         /// <summary>
         /// Represents the deserialized GraphQL result.
         /// </summary>
         /// <value>The result.</value>
-        public T Result { get; private set; }
+        public T Result { get; private set; } = default!;
         
         /// <summary>
         /// Represents the deserialized cursor.
@@ -133,7 +141,7 @@ namespace Enjin.SDK.Graphql
                 ProcessResultObject((JObject) result);
             else
             {
-                Result = result.ToObject<T>();
+                Result = result.ToObject<T>()!;
             }
         }
 
@@ -143,17 +151,17 @@ namespace Enjin.SDK.Graphql
             if (isPaginated)
             {
                 var items = result[ItemsKey];
-                if (items != null && items.Type == JTokenType.Array)
+                if (items is {Type: JTokenType.Array})
                 {
-                    Result = items.ToObject<T>();
+                    Result = items.ToObject<T>()!;
                 }
                 
                 if (result.ContainsKey(CursorKey))
-                    Cursor = result[CursorKey].ToObject<PaginationCursor>();
+                    Cursor = result[CursorKey]?.ToObject<PaginationCursor>();
             }
             else
             {
-                Result = result.ToObject<T>();
+                Result = result.ToObject<T>()!;
             }
         }
     }
