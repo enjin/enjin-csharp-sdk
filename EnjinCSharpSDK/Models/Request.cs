@@ -72,6 +72,13 @@ namespace Enjin.SDK.Models
         /// <value>Whether the transaction was accepted.</value>
         [JsonProperty("accepted")]
         public bool? Accepted { get; private set; }
+        
+        /// <summary>
+        /// Represents if the wallet of the transaction is a project wallet.
+        /// </summary>
+        /// <value>Whether the wallet of the transaction is a project wallet.</value>
+        [JsonProperty("projectWallet")]
+        public bool? ProjectWallet { get; private set; }
 
         /// <summary>
         /// Represents the blockchain data of this transaction.

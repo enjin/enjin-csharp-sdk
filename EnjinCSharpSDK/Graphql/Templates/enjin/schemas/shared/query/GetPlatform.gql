@@ -26,10 +26,8 @@ query {
                 key
                 namespace
                 channels {
-                    app
                     project
                     player
-                    token
                     asset
                     wallet
                 }
