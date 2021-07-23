@@ -13,8 +13,8 @@ namespace TestSuite
         public void Channel_ProjectChannel_ReturnsExpectedString()
         {
             // Arrange
-            const string expected = "enjincloud.test.project.1234";
-            const int project = 1234;
+            const string expected = "enjincloud.test.project.xyz";
+            const string project = "xyz";
             var fakePlatform = CreateFakePlatform(DefaultPlatformName);
             var channel = new ProjectChannel(fakePlatform, project);
 
@@ -29,8 +29,8 @@ namespace TestSuite
         public void Channel_PlayerChannel_ReturnsExpectedString()
         {
             // Arrange
-            const string expected = "enjincloud.test.project.1234.player.player1";
-            const int project = 1234;
+            const string expected = "enjincloud.test.project.xyz.player.player1";
+            const string project = "xyz";
             const string player = "player1";
             var fakePlatform = CreateFakePlatform(DefaultPlatformName);
             var channel = new PlayerChannel(fakePlatform, project, player);

@@ -93,47 +93,47 @@ namespace Enjin.SDK.Events
         /// <summary>
         /// Opens a channel for the specified project, allowing listeners to receive events for that project.
         /// </summary>
-        /// <param name="project">The project ID.</param>
+        /// <param name="project">The project's UUID.</param>
         /// <returns>The task for this operation.</returns>
-        Task SubscribeToProject(int project);
+        Task SubscribeToProject(string project);
         
         /// <summary>
         /// Closes a channel for the specified project, preventing listeners from receiving events for that project.
         /// </summary>
-        /// <param name="project">The project ID.</param>
+        /// <param name="project">The project's UUID.</param>
         /// <returns>The task for this operation.</returns>
-        Task UnsubscribeToProject(int project);
+        Task UnsubscribeToProject(string project);
 
         /// <summary>
         /// Determines if the channel is open for the specified project.
         /// </summary>
-        /// <param name="project">The project ID.</param>
+        /// <param name="project">The project's UUID.</param>
         /// <returns>True if open, else false.</returns>
-        bool IsSubscribedToProject(int project);
+        bool IsSubscribedToProject(string project);
         
         /// <summary>
         /// Opens a channel for the specified player, allowing listeners to receive events for that player.
         /// </summary>
-        /// <param name="project">The ID of the project the player is on.</param>
+        /// <param name="project">The UUID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
         /// <returns>The task for this operation.</returns>
-        Task SubscribeToPlayer(int project, string player);
+        Task SubscribeToPlayer(string project, string player);
         
         /// <summary>
         /// Closes a channel for the specified player, preventing listeners from receiving events for that player.
         /// </summary>
-        /// <param name="project">The ID of the project the player is on.</param>
+        /// <param name="project">The UUID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
         /// <returns>The task for this operation.</returns>
-        Task UnsubscribeToPlayer(int project, string player);
+        Task UnsubscribeToPlayer(string project, string player);
         
         /// <summary>
         /// Determines if the channel is open for the specified player.
         /// </summary>
-        /// <param name="project">The ID of the project the player is on.</param>
+        /// <param name="project">The UUID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
         /// <returns>True if open, else false.</returns>
-        bool IsSubscribedToPlayer(int project, string player);
+        bool IsSubscribedToPlayer(string project, string player);
         
         /// <summary>
         /// Opens a channel for the specified asset, allowing listeners to receive events for that asset.

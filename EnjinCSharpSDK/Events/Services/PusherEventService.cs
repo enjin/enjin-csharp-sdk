@@ -179,38 +179,38 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public Task SubscribeToProject(int project)
+        public Task SubscribeToProject(string project)
         {
             return Subscribe(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
-        public Task UnsubscribeToProject(int project)
+        public Task UnsubscribeToProject(string project)
         {
             return Unsubscribe(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
-        public bool IsSubscribedToProject(int project)
+        public bool IsSubscribedToProject(string project)
         {
             lock (_subscribed)
                 return _subscribed.Contains(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
-        public Task SubscribeToPlayer(int project, string player)
+        public Task SubscribeToPlayer(string project, string player)
         {
             return Subscribe(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
-        public Task UnsubscribeToPlayer(int project, string player)
+        public Task UnsubscribeToPlayer(string project, string player)
         {
             return Unsubscribe(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
-        public bool IsSubscribedToPlayer(int project, string player)
+        public bool IsSubscribedToPlayer(string project, string player)
         {
             lock (_subscribed)
                 return _subscribed.Contains(new PlayerChannel(Platform, project, player).Channel());
