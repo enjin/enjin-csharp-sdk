@@ -10,27 +10,54 @@ namespace Enjin.SDK.Models
     /// </summary>
     /// <seealso cref="Enjin.SDK.Shared.GetBalances"/>
     [PublicAPI]
-    public class BalanceFilter: Filter<BalanceFilter>
+    public class BalanceFilter : Filter<BalanceFilter>
     {
+        [JsonProperty("projectUuid")]
+        private string? _projectUuid;
+
+        [JsonProperty("projectUuid_in")]
+        private List<string>? _projectUuidIn;
+
         [JsonProperty("assetId")]
         private string? _assetId;
+
         [JsonProperty("assetId_in")]
         private List<string>? _assetIdIn;
+
         [JsonProperty("wallet")]
         private string? _wallet;
+
         [JsonProperty("wallet_in")]
         private List<string>? _walletIn;
+
         [JsonProperty("value")]
         private int? _value;
-        [JsonProperty("value_gt")]
-        private int? _valueGt;
-        [JsonProperty("value_gte")]
-        private int? _valueGte;
-        [JsonProperty("value_lt")]
-        private int? _valueLt;
-        [JsonProperty("value_lte")]
-        private int? _valueLte;
-        
+
+        [JsonProperty("value_is")]
+        private Operator? _valueIs;
+
+        /// <summary>
+        /// Sets the project UUID to filter for.
+        /// </summary>
+        /// <param name="projectUuid">The project UUID.</param>
+        /// <returns>This filter for chaining.</returns>
+        public BalanceFilter ProjectUuid(string? projectUuid)
+        {
+            _projectUuid = projectUuid;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the project UUIDs to filter for.
+        /// </summary>
+        /// <param name="projectUuids">The project UUIDs.</param>
+        /// <returns>This filter for chaining.</returns>
+        public BalanceFilter ProjectUuidIn(params string[]? projectUuids)
+        {
+            _projectUuidIn = projectUuids?.ToList();
+            return this;
+        }
+
         /// <summary>
         /// Sets the asset ID to filter for.
         /// </summary>
@@ -52,7 +79,7 @@ namespace Enjin.SDK.Models
             _assetIdIn = assetIds?.ToList();
             return this;
         }
-        
+
         /// <summary>
         /// Sets the filter to include balances equal to the passed value.
         /// </summary>
@@ -65,46 +92,13 @@ namespace Enjin.SDK.Models
         }
 
         /// <summary>
-        /// Sets the filter to include balances greater than the passed value.
+        /// Sets the filter operator type for values.
         /// </summary>
-        /// <param name="value">The value to compare by.</param>
+        /// <param name="valueIs">The operator for comparison.</param>
         /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ValueGreaterThan(int? value)
+        public BalanceFilter ValueIs(Operator? valueIs)
         {
-            _valueGt = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Sets the filter to include balances greater than or equal to the passed value.
-        /// </summary>
-        /// <param name="value">The value to compare by.</param>
-        /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ValueGreaterThanOrEqual(int? value)
-        {
-            _valueGte = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Sets the filter to include balances less than the passed value.
-        /// </summary>
-        /// <param name="value">The value to compare by.</param>
-        /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ValueLessThan(int? value)
-        {
-            _valueLt = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Sets the filter to include balances less than or equal to the passed value.
-        /// </summary>
-        /// <param name="value">The value to compare by.</param>
-        /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ValueLessThanOrEqual(int? value)
-        {
-            _valueLte = value;
+            _valueIs = valueIs;
             return this;
         }
 

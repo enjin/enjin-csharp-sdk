@@ -19,17 +19,17 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <summary>
-        /// Sets the project ID.
+        /// Sets the project UUID.
         /// </summary>
-        /// <param name="id">The ID.</param>
+        /// <param name="uuid">The UUID.</param>
         /// <returns>This request for chaining.</returns>
-        public AuthProject Id(int? id)
+        public AuthProject Uuid(string? uuid)
         {
-            return SetVariable("id", id);
+            return SetVariable("uuid", uuid);
         }
 
         /// <summary>
-        /// Sets the secret.
+        /// Sets the project secret.
         /// </summary>
         /// <param name="secret">The secret.</param>
         /// <returns>This request for chaining.</returns>
