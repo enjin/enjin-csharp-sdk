@@ -7,31 +7,31 @@ namespace Enjin.SDK.Events
     internal sealed class ProjectChannel : IChannel
     {
         private readonly Platform _platform;
-        private readonly int _projectId;
+        private readonly string _projectUuid;
         
-        public ProjectChannel(Platform platform, int projectId)
+        public ProjectChannel(Platform platform, string projectUuid)
         {
             _platform = platform;
-            _projectId = projectId;
+            _projectUuid = projectUuid;
         }
 
-        public string Channel() => $"enjincloud.{_platform.Network!.ToLower()}.project.{_projectId}";
+        public string Channel() => $"enjincloud.{_platform.Network!.ToLower()}.project.{_projectUuid}";
     }
     
     internal sealed class PlayerChannel : IChannel
     {
         private readonly Platform _platform;
-        private readonly int _projectId;
+        private readonly string _projectUuid;
         private readonly string _playerId;
         
-        public PlayerChannel(Platform platform, int projectId, string playerId)
+        public PlayerChannel(Platform platform, string projectUuid, string playerId)
         {
             _platform = platform;
-            _projectId = projectId;
+            _projectUuid = projectUuid;
             _playerId = playerId;
         }
         
-        public string Channel() => $"enjincloud.{_platform.Network!.ToLower()}.project.{_projectId}.player.{_playerId}";
+        public string Channel() => $"enjincloud.{_platform.Network!.ToLower()}.project.{_projectUuid}.player.{_playerId}";
     }
 
     internal sealed class AssetChannel : IChannel

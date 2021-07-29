@@ -197,7 +197,7 @@ namespace TestSuite
         public void SubscribeToProject_SubscribedToChannel()
         {
             // Arrange
-            const int project = 1234;
+            const string project = "xyz";
             var eventService = CreateEventService();
             eventService.Start().Wait();
             
@@ -214,7 +214,7 @@ namespace TestSuite
         public void SubscribeToPlayer_SubscribedToChannel()
         {
             // Arrange
-            const int project = 1234;
+            const string project = "xyz";
             const string player = "player1";
             var eventService = CreateEventService();
             eventService.Start().Wait();
@@ -266,7 +266,7 @@ namespace TestSuite
         public void UnsubscribeToProject_UnsubscribedToChannel()
         {
             // Arrange
-            const int project = 1234;
+            const string project = "xyz";
             var eventService = CreateEventService();
             eventService.Start().Wait();
             eventService.SubscribeToProject(project).Wait();
@@ -284,7 +284,7 @@ namespace TestSuite
         public void UnsubscribeToPlayer_UnsubscribedToChannel()
         {
             // Arrange
-            const int project = 1234;
+            const string project = "xyz";
             const string player = "player1";
             var eventService = CreateEventService();
             eventService.Start().Wait();
@@ -339,7 +339,7 @@ namespace TestSuite
         public void Start_PreviouslyActiveServiceResubscribesToChannels()
         {
             // Arrange
-            const int project = 1234;
+            const string project = "xyz";
             var eventService = CreateEventService();
             eventService.Start().Wait();                     // Service is started for the first time and subscribes to
             eventService.SubscribeToProject(project).Wait(); // the channel

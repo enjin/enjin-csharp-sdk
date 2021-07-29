@@ -17,6 +17,7 @@ fragment Transaction on Transaction {
     transactionId
     title @include(if: $withMeta)
     contract @include(if: $withMeta)
+    projectWallet @include(if: $withMeta)
     type
     value @include(if: $withAssetData)
     retryState @include(if: $withState)
