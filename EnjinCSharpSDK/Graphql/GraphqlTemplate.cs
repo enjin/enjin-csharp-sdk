@@ -5,6 +5,7 @@ using System.Text;
 using static Enjin.SDK.Utils.TextFormatting;
 
 [assembly: InternalsVisibleTo("TestSuite")]
+
 namespace Enjin.SDK.Graphql
 {
     /// <summary>
@@ -32,38 +33,38 @@ namespace Enjin.SDK.Graphql
         /// </summary>
         /// <value>The namespace.</value>
         public string NameSpace { get; }
-        
+
         /// <summary>
         /// Represents the name of the template.
         /// </summary>
         /// <value>The name.</value>
         public string Name { get; }
-        
+
         /// <summary>
         /// Represents the type of the template.
         /// </summary>
         /// <value>The template type.</value>
         public TemplateType TemplateType { get; }
-        
+
         /// <summary>
         /// Represents the body of the raw template. Lacks the namespace, imports, and parameters.
         /// </summary>
         /// <value>The body contents.</value>
         public string Contents { get; }
-        
+
         /// <summary>
         /// Represents the compiled contents of the template. Replaces fragment references in contents with the fragment
         /// bodies.
         /// </summary>
         /// <value>The compiled body contents.</value>
         public string? CompiledContents { get; private set; }
-        
+
         /// <summary>
         /// Represents the parameters of this template.
         /// </summary>
         /// <value>The list of parameters.</value>
         public List<string?> Parameters { get; } = new List<string?>();
-        
+
         /// <summary>
         /// Represents the fragments that this template references.
         /// </summary>
@@ -80,7 +81,7 @@ namespace Enjin.SDK.Graphql
         /// <param name="contents">The raw line data.</param>
         /// <param name="fragments">The template fragments.</param>
         public GraphqlTemplate(string name, TemplateType templateType, string[] contents,
-            Dictionary<string, GraphqlTemplate> fragments)
+                               Dictionary<string, GraphqlTemplate> fragments)
         {
             var parts = name.Split('.');
             NameSpace = name;
@@ -122,7 +123,7 @@ namespace Enjin.SDK.Graphql
             var parameters = new List<string?>(Parameters);
             var processedFragments = new List<string>();
             var fragmentQueue = new Stack<GraphqlTemplate>();
-            var builder = new StringBuilder(Contents).AppendLine();
+            var builder = new StringBuilder(Contents);
 
             foreach (var fragment in ReferencedFragments)
             {
@@ -146,13 +147,21 @@ namespace Enjin.SDK.Graphql
                     parameters.Add(parameter);
                 }
 
-                builder.Append(template.Contents).AppendLine();
+                builder.Append(" ").Append(template.Contents);
                 processedFragments.Add(template.NameSpace);
             }
 
             var replaceTerm = TemplateType.ToString().ToLower();
-            var formattedParams = string.Join(CommaSpaceDelimiter, parameters);
-            CompiledContents = builder.ToString().Replace(replaceTerm, $"{replaceTerm} {Name}({formattedParams})");
+            var newTermBuilder = new StringBuilder($"{replaceTerm} {Name}");
+
+            if (parameters.Count > 0)
+            {
+                newTermBuilder.Append("(")
+                              .Append(string.Join(CommaSpaceDelimiter, parameters))
+                              .Append(")");
+            }
+
+            CompiledContents = builder.ToString().Replace(replaceTerm, newTermBuilder.ToString());
         }
 
         internal static string? ReadNamespace(IEnumerable<string> contents)
