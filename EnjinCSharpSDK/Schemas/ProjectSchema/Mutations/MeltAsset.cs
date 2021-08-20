@@ -1,20 +1,20 @@
-using Enjin.SDK.Graphql;
+﻿using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
 using JetBrains.Annotations;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
     /// Request for melting a asset.
     /// </summary>
-    /// <seealso cref="ISharedSchema"/>
+    /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class MeltAsset : GraphqlRequest<MeltAsset>, ITransactionRequestArguments<MeltAsset>
+    public class MeltAsset : GraphqlRequest<MeltAsset>, IProjectTransactionRequestArguments<MeltAsset>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public MeltAsset() : base("enjin.sdk.shared.MeltAsset")
+        public MeltAsset() : base("enjin.sdk.project.MeltAsset")
         {
         }
 

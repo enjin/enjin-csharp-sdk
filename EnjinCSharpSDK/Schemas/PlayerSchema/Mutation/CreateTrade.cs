@@ -1,21 +1,22 @@
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.PlayerSchema
 {
     /// <summary>
     /// Request for creating a trade between two wallets.
     /// </summary>
     /// <seealso cref="CompleteTrade"/>
-    /// <seealso cref="ISharedSchema"/>
+    /// <seealso cref="IPlayerSchema"/>
     [PublicAPI]
-    public class CreateTrade : GraphqlRequest<CreateTrade>, ITransactionRequestArguments<CreateTrade>
+    public class CreateTrade : GraphqlRequest<CreateTrade>, ITransactionFragmentArguments<CreateTrade>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public CreateTrade() : base("enjin.sdk.shared.CreateTrade")
+        public CreateTrade() : base("enjin.sdk.player.CreateTrade")
         {
         }
 

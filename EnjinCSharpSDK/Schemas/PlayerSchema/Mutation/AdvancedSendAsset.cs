@@ -1,21 +1,22 @@
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.PlayerSchema
 {
     /// <summary>
     /// Request for sending one or more assets in a single transaction.
     /// </summary>
     /// <seealso cref="SendAsset"/>
-    /// <seealso cref="ISharedSchema"/>
+    /// <seealso cref="IPlayerSchema"/>
     [PublicAPI]
-    public class AdvancedSendAsset : GraphqlRequest<AdvancedSendAsset>, ITransactionRequestArguments<AdvancedSendAsset>
+    public class AdvancedSendAsset : GraphqlRequest<AdvancedSendAsset>, ITransactionFragmentArguments<AdvancedSendAsset>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public AdvancedSendAsset() : base("enjin.sdk.shared.AdvancedSendAsset")
+        public AdvancedSendAsset() : base("enjin.sdk.player.AdvancedSendAsset")
         {
         }
 

@@ -1,5 +1,4 @@
 using Enjin.SDK.Graphql;
-using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -9,7 +8,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetUri : GraphqlRequest<SetUri>, ITransactionRequestArguments<SetUri>
+    public class SetUri : GraphqlRequest<SetUri>, IProjectTransactionRequestArguments<SetUri>
     {
         /// <summary>
         /// Sole constructor.

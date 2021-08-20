@@ -1,19 +1,20 @@
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.PlayerSchema
 {
     /// <summary>
     /// Request for approving the crypto items contracts to spend ENJ.
     /// </summary>
-    /// <seealso cref="ISharedSchema"/>
+    /// <seealso cref="IPlayerSchema"/>
     [PublicAPI]
-    public class ApproveEnj : GraphqlRequest<ApproveEnj>, ITransactionRequestArguments<ApproveEnj>
+    public class ApproveEnj : GraphqlRequest<ApproveEnj>, ITransactionFragmentArguments<ApproveEnj>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public ApproveEnj() : base("enjin.sdk.shared.ApproveEnj")
+        public ApproveEnj() : base("enjin.sdk.player.ApproveEnj")
         {
         }
 

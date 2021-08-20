@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
-using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -11,7 +9,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class MintAsset : GraphqlRequest<MintAsset>, ITransactionRequestArguments<MintAsset>
+    public class MintAsset : GraphqlRequest<MintAsset>, IProjectTransactionRequestArguments<MintAsset>
     {
         /// <summary>
         /// Sole constructor.

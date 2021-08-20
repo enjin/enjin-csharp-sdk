@@ -1,5 +1,4 @@
 using Enjin.SDK.Graphql;
-using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -9,7 +8,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class DecreaseMaxMeltFee : GraphqlRequest<DecreaseMaxMeltFee>, ITransactionRequestArguments<DecreaseMaxMeltFee>
+    public class DecreaseMaxMeltFee : GraphqlRequest<DecreaseMaxMeltFee>, IProjectTransactionRequestArguments<DecreaseMaxMeltFee>
     {
         /// <summary>
         /// Sole constructor.

@@ -31,6 +31,36 @@ namespace Enjin.SDK.PlayerSchema
         }
 
         /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> AdvancedSendAsset(AdvancedSendAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> ApproveEnj(ApproveEnj request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> ApproveMaxEnj(ApproveMaxEnj request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> CompleteTrade(CompleteTrade request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> CreateTrade(CreateTrade request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
         public Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request)
         {
             return SendRequest(PlayerService.GetOne(Schema, CreateRequestBody(request)));
@@ -40,6 +70,42 @@ namespace Enjin.SDK.PlayerSchema
         public Task<GraphqlResponse<Wallet>> GetWallet(GetWallet request)
         {
             return SendRequest(WalletService.GetOne(Schema, CreateRequestBody(request)));
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> MeltAsset(MeltAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> Message(Message request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> ResetEnjApproval(ResetEnjApproval request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> SendEnj(SendEnj request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> SendAsset(SendAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> SetApprovalForAll(SetApprovalForAll request)
+        {
+            return TransactionRequest(request);
         }
 
         /// <inheritdoc/>

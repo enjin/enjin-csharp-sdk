@@ -1,20 +1,20 @@
-using Enjin.SDK.Graphql;
+﻿using Enjin.SDK.Graphql;
 using JetBrains.Annotations;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
     /// Request for sending a asset.
     /// </summary>
     /// <seealso cref="AdvancedSendAsset"/>
-    /// <seealso cref="ISharedSchema"/>
+    /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SendAsset : GraphqlRequest<SendAsset>, ITransactionRequestArguments<SendAsset>
+    public class SendAsset : GraphqlRequest<SendAsset>, IProjectTransactionRequestArguments<SendAsset>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public SendAsset() : base("enjin.sdk.shared.SendAsset")
+        public SendAsset() : base("enjin.sdk.project.SendAsset")
         {
         }
 

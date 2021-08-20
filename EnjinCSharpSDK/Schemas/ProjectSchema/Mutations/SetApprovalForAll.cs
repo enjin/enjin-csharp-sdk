@@ -1,19 +1,19 @@
-using Enjin.SDK.Graphql;
+﻿using Enjin.SDK.Graphql;
 using JetBrains.Annotations;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.ProjectSchema
 {
     /// <summary>
     /// Request for allowing an operator complete control of all assets owned by the caller.
     /// </summary>
-    /// <seealso cref="ISharedSchema"/>
+    /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetApprovalForAll : GraphqlRequest<SetApprovalForAll>, ITransactionRequestArguments<SetApprovalForAll>
+    public class SetApprovalForAll : GraphqlRequest<SetApprovalForAll>, IProjectTransactionRequestArguments<SetApprovalForAll>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public SetApprovalForAll() : base("enjin.sdk.shared.SetApprovalForAll")
+        public SetApprovalForAll() : base("enjin.sdk.project.SetApprovalForAll")
         {
         }
 

@@ -1,19 +1,20 @@
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
-namespace Enjin.SDK.Shared
+namespace Enjin.SDK.PlayerSchema
 {
     /// <summary>
     /// Request for sending ENJ.
     /// </summary>
-    /// <seealso cref="ISharedSchema"/>
+    /// <seealso cref="IPlayerSchema"/>
     [PublicAPI]
-    public class SendEnj : GraphqlRequest<SendEnj>, ITransactionRequestArguments<SendEnj>
+    public class SendEnj : GraphqlRequest<SendEnj>, ITransactionFragmentArguments<SendEnj>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public SendEnj() : base("enjin.sdk.shared.SendEnj")
+        public SendEnj() : base("enjin.sdk.player.SendEnj")
         {
         }
 
