@@ -47,7 +47,7 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the encoded data with the transaction when used with
+        /// Sets the request to include the encoded data with the transaction when used with.
         /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
@@ -152,6 +152,17 @@ namespace Enjin.SDK.Shared
         public static T WithLogEvent<T>(this T instance) where T : IVariableHolder<T>
         {
             return instance.SetVariable("withLogEvent", true);
+        }
+
+        /// <summary>
+        /// Sets the request to include the Project with its UUID that the transaction belongs to.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        public static T WithTransactionProjectUuid<T>(this T instance) where T : IVariableHolder<T>
+        {
+            return instance.SetVariable("withTransactionProjectUuid", true);
         }
     }
 }
