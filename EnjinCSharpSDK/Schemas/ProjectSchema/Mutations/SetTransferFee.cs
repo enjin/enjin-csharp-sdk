@@ -28,16 +28,6 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the index for non-fungible assets.
-        /// </summary>
-        /// <param name="assetIndex">The index.</param>
-        /// <returns>This request for chaining.</returns>
-        public SetTransferFee AssetIndex(string? assetIndex)
-        {
-            return SetVariable("assetIndex", assetIndex);
-        }
-        
-        /// <summary>
         /// Sets the new transfer fee value in Wei.
         /// </summary>
         /// <param name="transferFee">The new transfer fee.</param>

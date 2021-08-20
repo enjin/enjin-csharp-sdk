@@ -28,16 +28,6 @@ namespace Enjin.SDK.ProjectSchema
         }
         
         /// <summary>
-        /// Sets the index for non-fungible assets.
-        /// </summary>
-        /// <param name="assetIndex">The index.</param>
-        /// <returns>This request for chaining.</returns>
-        public SetMeltFee AssetIndex(string? assetIndex)
-        {
-            return SetVariable("assetIndex", assetIndex);
-        }
-        
-        /// <summary>
         /// Sets the new melt fee for the asset.
         /// </summary>
         /// <param name="meltFee">The new ratio.</param>
