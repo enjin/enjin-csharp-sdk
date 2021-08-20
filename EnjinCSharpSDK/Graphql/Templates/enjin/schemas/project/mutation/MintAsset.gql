@@ -4,14 +4,12 @@
 #arg assetId String!
 #arg mints [MintInput!]!
 #arg ethAddress EthAddress
-#arg send Boolean true
 
 mutation {
     result: MintAsset(
         assetId: $assetId,
         mints: $mints,
-        wallet: $ethAddress,
-        send: $send
+        wallet: $ethAddress
     ) {
         ...Transaction
     }

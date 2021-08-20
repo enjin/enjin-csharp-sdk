@@ -1,4 +1,4 @@
-#namespace enjin.sdk.shared.SendAsset
+#namespace enjin.sdk.project.SendAsset
 #import enjin.sdk.shared.Transaction
 
 #arg recipientAddress EthAddress!
@@ -7,7 +7,6 @@
 #arg value BigInt
 #arg data String
 #arg ethAddress EthAddress
-#arg send Boolean true
 
 mutation {
     result: SendAsset(
@@ -16,8 +15,7 @@ mutation {
         assetIndex: $assetIndex,
         value: $value,
         data: $data,
-        wallet: $ethAddress,
-        send: $send
+        wallet: $ethAddress
     ) {
         ...Transaction
     }

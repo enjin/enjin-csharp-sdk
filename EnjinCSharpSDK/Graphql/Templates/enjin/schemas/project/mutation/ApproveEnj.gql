@@ -1,13 +1,11 @@
-#namespace enjin.sdk.project.ReleaseReserve
+#namespace enjin.sdk.project.ApproveEnj
 #import enjin.sdk.shared.Transaction
 
-#arg assetId String!
 #arg value BigInt!
 #arg ethAddress EthAddress
 
 mutation {
-    result: ReleaseReserve(
-        assetId: $assetId,
+    result: ApproveEnj(
         value: $value,
         wallet: $ethAddress
     ) {

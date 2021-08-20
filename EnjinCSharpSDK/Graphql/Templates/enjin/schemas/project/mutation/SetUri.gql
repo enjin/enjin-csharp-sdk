@@ -5,15 +5,13 @@
 #arg assetIndex String
 #arg uri String
 #arg ethAddress EthAddress
-#arg send Boolean true
 
 mutation {
     result: SetUri(
         assetId: $assetId,
         assetIndex: $assetIndex,
         uri: $uri,
-        wallet: $ethAddress,
-        send: $send
+        wallet: $ethAddress
     ) {
         ...Transaction
     }

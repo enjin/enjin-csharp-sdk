@@ -11,6 +11,7 @@
 #arg withReceipt Boolean false
 #arg withReceiptLogs Boolean false
 #arg withLogEvent Boolean false
+#arg withTransactionProjectUuid Boolean false
 
 fragment Transaction on Transaction {
     id
@@ -56,6 +57,9 @@ fragment Transaction on Transaction {
         }
         error @include(if: $withError)
         nonce @include(if: $withNonce)
+    }
+    project @include(if: $withTransactionProjectUuid) {
+        uuid
     }
     createdAt
     updatedAt

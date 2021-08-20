@@ -1,17 +1,13 @@
-#namespace enjin.sdk.shared.SendEnj
+#namespace enjin.sdk.player.SendEnj
 #import enjin.sdk.shared.Transaction
 
 #arg recipientAddress EthAddress!
 #arg value BigInt!
-#arg ethAddress EthAddress
-#arg send Boolean true
 
 mutation {
     result: SendEnj(
         to: $recipientAddress,
-        value: $value,
-        wallet: $ethAddress,
-        send: $send
+        value: $value
     ) {
         ...Transaction
     }
