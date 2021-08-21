@@ -47,7 +47,7 @@ namespace Enjin.SDK.Shared
         }
         
         /// <summary>
-        /// Sets the request to include the encoded data with the transaction when used with.
+        /// Sets the request to include the encoded data with the transaction when used with
         /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
