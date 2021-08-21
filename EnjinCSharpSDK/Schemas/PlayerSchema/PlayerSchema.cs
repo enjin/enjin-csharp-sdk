@@ -49,18 +49,6 @@ namespace Enjin.SDK.PlayerSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CompleteTrade(CompleteTrade request)
-        {
-            return TransactionRequest(request);
-        }
-
-        /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CreateTrade(CreateTrade request)
-        {
-            return TransactionRequest(request);
-        }
-
-        /// <inheritdoc/>
         public Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request)
         {
             return SendRequest(PlayerService.GetOne(Schema, CreateRequestBody(request)));
