@@ -1,6 +1,5 @@
 using JetBrains.Annotations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Enjin.SDK.Models
 {
@@ -86,6 +85,13 @@ namespace Enjin.SDK.Models
         /// <value>The data.</value>
         [JsonProperty("blockchainData")]
         public BlockchainData? BlockchainData { get; private set; }
+        
+        /// <summary>
+        /// Represents the project this transaction belongs to.
+        /// </summary>
+        /// <value>The project.</value>
+        [JsonProperty("project")]
+        public Project? Project { get; private set; }
 
         /// <summary>
         /// Represents the datetime when this transaction was created.

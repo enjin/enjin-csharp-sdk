@@ -1,5 +1,4 @@
 using Enjin.SDK.Graphql;
-using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -9,7 +8,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetMeltFee : GraphqlRequest<SetMeltFee>, ITransactionRequestArguments<SetMeltFee>
+    public class SetMeltFee : GraphqlRequest<SetMeltFee>, IProjectTransactionRequestArguments<SetMeltFee>
     {
         /// <summary>
         /// Sole constructor.
@@ -26,16 +25,6 @@ namespace Enjin.SDK.ProjectSchema
         public SetMeltFee AssetId(string? assetId)
         {
             return SetVariable("assetId", assetId);
-        }
-        
-        /// <summary>
-        /// Sets the index for non-fungible assets.
-        /// </summary>
-        /// <param name="assetIndex">The index.</param>
-        /// <returns>This request for chaining.</returns>
-        public SetMeltFee AssetIndex(string? assetIndex)
-        {
-            return SetVariable("assetIndex", assetIndex);
         }
         
         /// <summary>

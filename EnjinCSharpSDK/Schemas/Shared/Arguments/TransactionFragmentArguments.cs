@@ -153,5 +153,16 @@ namespace Enjin.SDK.Shared
         {
             return instance.SetVariable("withLogEvent", true);
         }
+
+        /// <summary>
+        /// Sets the request to include the Project with its UUID that the transaction belongs to.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        public static T WithTransactionProjectUuid<T>(this T instance) where T : IVariableHolder<T>
+        {
+            return instance.SetVariable("withTransactionProjectUuid", true);
+        }
     }
 }

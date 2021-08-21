@@ -1,6 +1,5 @@
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
-using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -10,7 +9,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetTransferable : GraphqlRequest<SetTransferable>, ITransactionRequestArguments<SetTransferable>
+    public class SetTransferable : GraphqlRequest<SetTransferable>, IProjectTransactionRequestArguments<SetTransferable>
     {
         /// <summary>
         /// Sole constructor.

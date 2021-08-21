@@ -32,6 +32,24 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> AdvancedSendAsset(AdvancedSendAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> ApproveEnj(ApproveEnj request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> ApproveMaxEnj(ApproveMaxEnj request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer request)
         {
             return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
@@ -41,6 +59,48 @@ namespace Enjin.SDK.ProjectSchema
         public Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject request)
         {
             return SendRequest(ProjectService.Auth(Schema, CreateRequestBody(request)));
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> CompleteTrade(CompleteTrade request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> CreateAsset(CreateAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request)
+        {
+            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> CreateTrade(CreateTrade request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer request)
+        {
+            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
         }
 
         /// <inheritdoc/>
@@ -68,39 +128,21 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request)
-        {
-            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
-        }
-
-        /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CreateAsset(CreateAsset request)
-        {
-            return TransactionRequest(request);
-        }
-
-        /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request)
-        {
-            return TransactionRequest(request);
-        }
-
-        /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request)
-        {
-            return TransactionRequest(request);
-        }
-
-        /// <inheritdoc/>
-        public Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer request)
-        {
-            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
-        }
-
-        /// <inheritdoc/>
         public Task<GraphqlResponse<bool>> InvalidateAssetMetadata(InvalidateAssetMetadata request)
         {
             return SendRequest(AssetService.Delete(Schema, CreateRequestBody(request)));
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> MeltAsset(MeltAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> Message(Message request)
+        {
+            return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
@@ -111,6 +153,30 @@ namespace Enjin.SDK.ProjectSchema
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<Request>> ReleaseReserve(ReleaseReserve request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> ResetEnjApproval(ResetEnjApproval request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> SendEnj(SendEnj request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> SendAsset(SendAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> SetApprovalForAll(SetApprovalForAll request)
         {
             return TransactionRequest(request);
         }

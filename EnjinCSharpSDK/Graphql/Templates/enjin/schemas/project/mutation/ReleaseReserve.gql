@@ -4,14 +4,12 @@
 #arg assetId String!
 #arg value BigInt!
 #arg ethAddress EthAddress
-#arg send Boolean true
 
 mutation {
     result: ReleaseReserve(
         assetId: $assetId,
         value: $value,
-        wallet: $ethAddress,
-        send: $send
+        wallet: $ethAddress
     ) {
         ...Transaction
     }

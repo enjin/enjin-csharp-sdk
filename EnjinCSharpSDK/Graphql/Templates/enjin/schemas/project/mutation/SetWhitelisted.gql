@@ -7,7 +7,6 @@
 #arg whitelistedAddress EthAddress
 #arg on Boolean!
 #arg ethAddress EthAddress
-#arg send Boolean true
 
 mutation {
     result: SetWhitelisted(
@@ -16,8 +15,7 @@ mutation {
         whitelisted: $whitelisted,
         whitelistedAddress: $whitelistedAddress,
         on: $on
-        wallet: $ethAddress,
-        send: $send
+        wallet: $ethAddress
     ) {
         ...Transaction
     }

@@ -11,7 +11,6 @@
 #arg transferFeeSettings AssetTransferFeeSettingsInput
 #arg nonFungible Boolean!
 #arg ethAddress EthAddress
-#arg send Boolean true
 
 mutation {
     result: CreateAsset(
@@ -24,8 +23,7 @@ mutation {
         transferable: $transferable,
         transferFeeSettings: $transferFeeSettings,
         nonFungible: $nonFungible,
-        wallet: $ethAddress,
-        send: $send
+        wallet: $ethAddress
     ) {
         ...Transaction
     }

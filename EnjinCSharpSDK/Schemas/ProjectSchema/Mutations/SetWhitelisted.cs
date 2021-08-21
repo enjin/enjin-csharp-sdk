@@ -1,6 +1,5 @@
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Models;
-using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.ProjectSchema
@@ -10,7 +9,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetWhitelisted : GraphqlRequest<SetWhitelisted>, ITransactionRequestArguments<SetWhitelisted>
+    public class SetWhitelisted : GraphqlRequest<SetWhitelisted>, IProjectTransactionRequestArguments<SetWhitelisted>
     {
         /// <summary>
         /// Sole constructor.

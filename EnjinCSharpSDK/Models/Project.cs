@@ -10,13 +10,6 @@ namespace Enjin.SDK.Models
     public class Project
     {
         /// <summary>
-        /// Represents the ID of this project.
-        /// </summary>
-        /// <value>The ID.</value>
-        [JsonProperty("id")]
-        public int? Id { get; private set; }
-        
-        /// <summary>
         /// Represents the UUID of this project.
         /// </summary>
         /// <value>The UUID.</value>
