@@ -34,20 +34,6 @@ namespace Enjin.SDK.PlayerSchema
         Task<GraphqlResponse<Request>> ApproveMaxEnj(ApproveMaxEnj request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.CompleteTrade"/> request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> CompleteTrade(CompleteTrade request);
-
-        /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.CreateTrade"/> request.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> CreateTrade(CreateTrade request);
-
-        /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.GetPlayer"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
