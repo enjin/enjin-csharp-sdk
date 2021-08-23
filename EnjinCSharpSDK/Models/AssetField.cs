@@ -1,4 +1,7 @@
+using System.Runtime.Serialization;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Enjin.SDK.Models
 {
@@ -6,21 +9,29 @@ namespace Enjin.SDK.Models
     /// The fields of the <see cref="Asset"/> type.
     /// </summary>
     /// <seealso cref="AssetSort"/>
+    [JsonConverter(typeof(StringEnumConverter))]
+    [PublicAPI]
     public enum AssetField
     {
-        [JsonProperty("id")]
+        [EnumMember(Value = "id")]
         ID,
-        [JsonProperty("name")]
+
+        [EnumMember(Value = "name")]
         NAME,
-        [JsonProperty("circulatingSupply")]
+
+        [EnumMember(Value = "circulatingSupply")]
         CIRCULATING_SUPPLY,
-        [JsonProperty("nonFungible")]
+
+        [EnumMember(Value = "nonFungible")]
         NON_FUNGIBLE,
-        [JsonProperty("reserve")]
+
+        [EnumMember(Value = "reserve")]
         RESERVE,
-        [JsonProperty("totalSupply")]
+
+        [EnumMember(Value = "totalSupply")]
         TOTAL_SUPPLY,
-        [JsonProperty("createdAt")]
-        CREATED_AT
+
+        [EnumMember(Value = "createdAt")]
+        CREATED_AT,
     }
 }

@@ -1,5 +1,7 @@
+using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Enjin.SDK.Models
 {
@@ -7,16 +9,23 @@ namespace Enjin.SDK.Models
     /// The fields of the <see cref="Request"/> type.
     /// </summary>
     /// <seealso cref="TransactionSort"/>
+    [JsonConverter(typeof(StringEnumConverter))]
     [PublicAPI]
     public enum TransactionField
     {
-        [JsonProperty("id")]
+        [EnumMember(Value = "id")]
         ID,
-        [JsonProperty("state")]
+
+        [EnumMember(Value = "state")]
         STATE,
-        [JsonProperty("title")]
+
+        [EnumMember(Value = "title")]
         TITLE,
-        [JsonProperty("createdAt")]
-        CREATED_AT
+
+        [EnumMember(Value = "createdAt")]
+        CREATED_AT,
+
+        [EnumMember(Value = "updatedAt")]
+        UPDATED_AT,
     }
 }

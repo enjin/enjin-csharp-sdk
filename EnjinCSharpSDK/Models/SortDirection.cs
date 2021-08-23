@@ -1,17 +1,21 @@
+using System.Runtime.Serialization;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Enjin.SDK.Models
 {
     /// <summary>
     /// Enum for sort direction in sorting inputs.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     [PublicAPI]
     public enum SortDirection
     {
-        [JsonProperty("asc")]
+        [EnumMember(Value = "asc")]
         ASCENDING,
-        [JsonProperty("desc")]
-        DESCENDING
+
+        [EnumMember(Value = "desc")]
+        DESCENDING,
     }
 }
