@@ -97,7 +97,7 @@ namespace Enjin.SDK.Events
             _pusher.Disconnected += sender => { Disconnected?.Invoke(this, EventArgs.Empty); };
             _pusher.Error += (sender, error) =>
             {
-                LoggerProvider.Log(LogLevel.SEVERE, "Error on Pusher client: ", error);
+                LoggerProvider.Log(LogLevel.ERROR, "Error on Pusher client: ", error);
                 Error?.Invoke(this, error);
             };
 
