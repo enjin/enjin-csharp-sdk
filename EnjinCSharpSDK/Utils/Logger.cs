@@ -48,7 +48,7 @@ namespace Enjin.SDK.Utils
         /// <inheritdoc/>
         public void Log(LogLevel level, string message, Exception e)
         {
-            _logger.Log(ConvertLogLevel(level), message, e);
+            _logger.Log(ConvertLogLevel(level), e, message);
         }
 
         /// <inheritdoc/>
