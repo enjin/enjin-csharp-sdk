@@ -97,13 +97,14 @@ namespace Enjin.SDK.Events
             _pusher.Disconnected += sender => { Disconnected?.Invoke(this, EventArgs.Empty); };
             _pusher.Error += (sender, error) =>
             {
-                LoggerProvider.Log(LogLevel.SEVERE, "Error on Pusher client: ", error);
+                LoggerProvider.Log(LogLevel.ERROR, "Error on Pusher client: ", error);
                 Error?.Invoke(this, error);
             };
-            
+
             Bind();
-            
-            return _pusher.ConnectAsync().ContinueWith(task => ResubscribeToChannels());
+            ResubscribeToChannels();
+
+            return _pusher.ConnectAsync();
         }
 
         /// <inheritdoc/>
@@ -179,15 +180,15 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public Task SubscribeToProject(string project)
+        public void SubscribeToProject(string project)
         {
-            return Subscribe(new ProjectChannel(Platform, project).Channel());
+            Subscribe(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
-        public Task UnsubscribeToProject(string project)
+        public void UnsubscribeToProject(string project)
         {
-            return Unsubscribe(new ProjectChannel(Platform, project).Channel());
+            Unsubscribe(new ProjectChannel(Platform, project).Channel());
         }
 
         /// <inheritdoc/>
@@ -198,15 +199,15 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public Task SubscribeToPlayer(string project, string player)
+        public void SubscribeToPlayer(string project, string player)
         {
-            return Subscribe(new PlayerChannel(Platform, project, player).Channel());
+            Subscribe(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
-        public Task UnsubscribeToPlayer(string project, string player)
+        public void UnsubscribeToPlayer(string project, string player)
         {
-            return Unsubscribe(new PlayerChannel(Platform, project, player).Channel());
+            Unsubscribe(new PlayerChannel(Platform, project, player).Channel());
         }
 
         /// <inheritdoc/>
@@ -217,15 +218,15 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public Task SubscribeToAsset(string asset)
+        public void SubscribeToAsset(string asset)
         {
-            return Subscribe(new AssetChannel(Platform, asset).Channel());
+            Subscribe(new AssetChannel(Platform, asset).Channel());
         }
 
         /// <inheritdoc/>
-        public Task UnsubscribeToAsset(string asset)
+        public void UnsubscribeToAsset(string asset)
         {
-            return Unsubscribe(new AssetChannel(Platform, asset).Channel());
+            Unsubscribe(new AssetChannel(Platform, asset).Channel());
         }
 
         /// <inheritdoc/>
@@ -236,15 +237,15 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
-        public Task SubscribeToWallet(string wallet)
+        public void SubscribeToWallet(string wallet)
         {
-            return Subscribe(new WalletChannel(Platform, wallet).Channel());
+            Subscribe(new WalletChannel(Platform, wallet).Channel());
         }
 
         /// <inheritdoc/>
-        public Task UnsubscribeToWallet(string wallet)
+        public void UnsubscribeToWallet(string wallet)
         {
-            return Unsubscribe(new WalletChannel(Platform, wallet).Channel());
+            Unsubscribe(new WalletChannel(Platform, wallet).Channel());
         }
 
         /// <inheritdoc/>
@@ -254,32 +255,32 @@ namespace Enjin.SDK.Events
                 return _subscribed.Contains(new WalletChannel(Platform, wallet).Channel());
         }
 
-        private Task Subscribe(string channel)
+        private void Subscribe(string channel)
         {
             if (_pusher == null)
-                return Task.FromException(new InvalidOperationException("Event service has not been started."));
+                return;
 
             lock (_subscribed)
             {
                 if (_subscribed.Contains(channel))
-                    return Task.CompletedTask;
-                
-                return _pusher.SubscribeAsync(channel)
-                              .ContinueWith(task =>
-                              {
-                                  if (task.IsFaulted)
-                                      return;
-                                  
-                                  lock (_subscribed)
-                                      _subscribed.Add(channel);
-                              });
+                    return;
+
+                _pusher.SubscribeAsync(channel)
+                       .ContinueWith(task =>
+                       {
+                           if (task.IsFaulted)
+                               return;
+
+                           lock (_subscribed)
+                               _subscribed.Add(channel);
+                       });
             }
         }
-        
+
         private void ResubscribeToChannels()
         {
             List<string> channels;
-            
+
             lock (_subscribed)
             {
                 channels = new List<string>(_subscribed);
@@ -288,29 +289,29 @@ namespace Enjin.SDK.Events
 
             foreach (var channel in channels)
             {
-                Subscribe(channel).Wait();
+                Subscribe(channel);
             }
         }
 
-        private Task Unsubscribe(string channel)
+        private void Unsubscribe(string channel)
         {
             if (_pusher == null)
-                return Task.FromException(new InvalidOperationException("Event service has not been started."));
-            
+                return;
+
             lock (_subscribed)
             {
                 if (!_subscribed.Contains(channel))
-                    return Task.CompletedTask;
-                
-                return _pusher.UnsubscribeAsync(channel)
-                              .ContinueWith(task =>
-                              {
-                                  if (task.IsFaulted)
-                                      return;
+                    return;
 
-                                  lock (_subscribed)
-                                      _subscribed.Remove(channel);
-                              });
+                _pusher.UnsubscribeAsync(channel)
+                       .ContinueWith(task =>
+                       {
+                           if (task.IsFaulted)
+                               return;
+
+                           lock (_subscribed)
+                               _subscribed.Remove(channel);
+                       });
             }
         }
 

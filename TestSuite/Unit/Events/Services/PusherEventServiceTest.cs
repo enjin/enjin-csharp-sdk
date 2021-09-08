@@ -19,20 +19,17 @@ namespace TestSuite
             // Arrange
             bool flag = false;
             var eventService = CreateEventService();
-            eventService.Connected += (sender, args) =>
-            {
-                flag = true;
-            };
+            eventService.Connected += (sender, args) => { flag = true; };
 
             // Act
             eventService.Start().Wait();
-            
+
             Thread.Sleep(500);
 
             // Assert
             Assert.IsTrue(flag);
         }
-        
+
         [Test]
         public void Disconnected_ServiceStarted_EventTriggersAfterShutdown()
         {
@@ -40,20 +37,17 @@ namespace TestSuite
             bool flag = false;
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            eventService.Disconnected += (sender, args) =>
-            {
-                flag = true;
-            };
+            eventService.Disconnected += (sender, args) => { flag = true; };
 
             // Act
             eventService.Shutdown().Wait();
-            
+
             Thread.Sleep(500);
 
             // Assert
             Assert.IsTrue(flag);
         }
-        
+
         [Test]
         public void RegisterListener_DoesContainListenerRegistration()
         {
@@ -108,7 +102,7 @@ namespace TestSuite
 
             // Act
             var actual = eventService.RegisterListener(listener);
-            
+
             // Assert
             Assert.AreSame(expected, actual);
         }
@@ -200,11 +194,13 @@ namespace TestSuite
             const string project = "xyz";
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            
+
             Expect(eventService.IsSubscribedToProject(project)).To.Be.False();
 
             // Act
-            eventService.SubscribeToProject(project).Wait();
+            eventService.SubscribeToProject(project);
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToProject(project));
@@ -218,11 +214,13 @@ namespace TestSuite
             const string player = "player1";
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            
+
             Expect(eventService.IsSubscribedToPlayer(project, player)).To.Be.False();
 
             // Act
-            eventService.SubscribeToPlayer(project, player).Wait();
+            eventService.SubscribeToPlayer(project, player);
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToPlayer(project, player));
@@ -235,11 +233,13 @@ namespace TestSuite
             const string asset = "0000000000000000";
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            
+
             Expect(eventService.IsSubscribedToAsset(asset)).To.Be.False();
 
             // Act
-            eventService.SubscribeToAsset(asset).Wait();
+            eventService.SubscribeToAsset(asset);
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToAsset(asset));
@@ -252,11 +252,13 @@ namespace TestSuite
             const string wallet = "0x0";
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            
+
             Expect(eventService.IsSubscribedToWallet(wallet)).To.Be.False();
 
             // Act
-            eventService.SubscribeToWallet(wallet).Wait();
+            eventService.SubscribeToWallet(wallet);
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToWallet(wallet));
@@ -269,12 +271,15 @@ namespace TestSuite
             const string project = "xyz";
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            eventService.SubscribeToProject(project).Wait();
-            
+            eventService.SubscribeToProject(project);
+            Thread.Sleep(500);
+
             Expect(eventService.IsSubscribedToProject(project)).To.Be.True();
 
             // Act
-            eventService.UnsubscribeToProject(project).Wait();
+            eventService.UnsubscribeToProject(project);
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsFalse(eventService.IsSubscribedToProject(project));
@@ -288,12 +293,15 @@ namespace TestSuite
             const string player = "player1";
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            eventService.SubscribeToPlayer(project, player).Wait();
-            
+            eventService.SubscribeToPlayer(project, player);
+            Thread.Sleep(500);
+
             Expect(eventService.IsSubscribedToPlayer(project, player)).To.Be.True();
 
             // Act
-            eventService.UnsubscribeToPlayer(project, player).Wait();
+            eventService.UnsubscribeToPlayer(project, player);
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsFalse(eventService.IsSubscribedToPlayer(project, player));
@@ -306,12 +314,15 @@ namespace TestSuite
             const string asset = "0000000000000000";
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            eventService.SubscribeToAsset(asset).Wait();
-            
+            eventService.SubscribeToAsset(asset);
+            Thread.Sleep(500);
+
             Expect(eventService.IsSubscribedToAsset(asset)).To.Be.True();
 
             // Act
-            eventService.UnsubscribeToAsset(asset).Wait();
+            eventService.UnsubscribeToAsset(asset);
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsFalse(eventService.IsSubscribedToAsset(asset));
@@ -324,12 +335,15 @@ namespace TestSuite
             const string wallet = "0x0";
             var eventService = CreateEventService();
             eventService.Start().Wait();
-            eventService.SubscribeToWallet(wallet).Wait();
-            
+            eventService.SubscribeToWallet(wallet);
+            Thread.Sleep(500);
+
             Expect(eventService.IsSubscribedToWallet(wallet)).To.Be.True();
 
             // Act
-            eventService.UnsubscribeToWallet(wallet).Wait();
+            eventService.UnsubscribeToWallet(wallet);
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsFalse(eventService.IsSubscribedToWallet(wallet));
@@ -341,14 +355,17 @@ namespace TestSuite
             // Arrange
             const string project = "xyz";
             var eventService = CreateEventService();
-            eventService.Start().Wait();                     // Service is started for the first time and subscribes to
-            eventService.SubscribeToProject(project).Wait(); // the channel
+            eventService.Start().Wait();              // Service is started for the first time and subscribes to the
+            eventService.SubscribeToProject(project); // channel
+            Thread.Sleep(500);         //
             eventService.Shutdown().Wait(); // Shutdown the service to be restarted on 'Act'
 
             Expect(eventService.IsSubscribedToProject(project)).To.Be.True();
-            
+
             // Act
             eventService.Start().Wait();
+
+            Thread.Sleep(500);
 
             // Assert
             Assert.IsTrue(eventService.IsSubscribedToProject(project));

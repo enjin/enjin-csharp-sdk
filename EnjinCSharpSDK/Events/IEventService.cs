@@ -25,7 +25,7 @@ namespace Enjin.SDK.Events
         /// Event handler invoked when this service encounters an error.
         /// </summary>
         public event EventHandler<Exception> Error;
-        
+
         /// <summary>
         /// Starts this service. See <see cref="Start(Platform)"/> to start this service with new platform details.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Enjin.SDK.Events
         /// </summary>
         /// <returns>The task for this operation.</returns>
         Task Shutdown();
-        
+
         /// <summary>
         /// Checks if this service is connected to platform.
         /// </summary>
@@ -58,7 +58,7 @@ namespace Enjin.SDK.Events
         /// <param name="listener">The listener.</param>
         /// <returns>The registration.</returns>
         EventListenerRegistration RegisterListener(IEventListener listener);
-        
+
         /// <summary>
         /// Registers a event listener with a delegate for event matching and provides the registration object used for
         /// it.
@@ -67,7 +67,7 @@ namespace Enjin.SDK.Events
         /// <param name="matcher">The event matcher.</param>
         /// <returns>The registration.</returns>
         EventListenerRegistration RegisterListenerWithMatcher(IEventListener listener, Func<EventType, bool> matcher);
-        
+
         /// <summary>
         /// Adds a event listener with the event types to allow and provides the registration object to use.
         /// </summary>
@@ -75,7 +75,7 @@ namespace Enjin.SDK.Events
         /// <param name="events">The events to listen for.</param>
         /// <returns>The registration.</returns>
         EventListenerRegistration RegisterListenerIncludingTypes(IEventListener listener, params EventType[] events);
-        
+
         /// <summary>
         /// Adds a event listener with the event types to ignore and provides the registration object used for it.
         /// </summary>
@@ -94,15 +94,13 @@ namespace Enjin.SDK.Events
         /// Opens a channel for the specified project, allowing listeners to receive events for that project.
         /// </summary>
         /// <param name="project">The project's UUID.</param>
-        /// <returns>The task for this operation.</returns>
-        Task SubscribeToProject(string project);
-        
+        void SubscribeToProject(string project);
+
         /// <summary>
         /// Closes a channel for the specified project, preventing listeners from receiving events for that project.
         /// </summary>
         /// <param name="project">The project's UUID.</param>
-        /// <returns>The task for this operation.</returns>
-        Task UnsubscribeToProject(string project);
+        void UnsubscribeToProject(string project);
 
         /// <summary>
         /// Determines if the channel is open for the specified project.
@@ -110,23 +108,21 @@ namespace Enjin.SDK.Events
         /// <param name="project">The project's UUID.</param>
         /// <returns>True if open, else false.</returns>
         bool IsSubscribedToProject(string project);
-        
+
         /// <summary>
         /// Opens a channel for the specified player, allowing listeners to receive events for that player.
         /// </summary>
         /// <param name="project">The UUID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
-        /// <returns>The task for this operation.</returns>
-        Task SubscribeToPlayer(string project, string player);
-        
+        void SubscribeToPlayer(string project, string player);
+
         /// <summary>
         /// Closes a channel for the specified player, preventing listeners from receiving events for that player.
         /// </summary>
         /// <param name="project">The UUID of the project the player is on.</param>
         /// <param name="player">The player ID.</param>
-        /// <returns>The task for this operation.</returns>
-        Task UnsubscribeToPlayer(string project, string player);
-        
+        void UnsubscribeToPlayer(string project, string player);
+
         /// <summary>
         /// Determines if the channel is open for the specified player.
         /// </summary>
@@ -134,44 +130,40 @@ namespace Enjin.SDK.Events
         /// <param name="player">The player ID.</param>
         /// <returns>True if open, else false.</returns>
         bool IsSubscribedToPlayer(string project, string player);
-        
+
         /// <summary>
         /// Opens a channel for the specified asset, allowing listeners to receive events for that asset.
         /// </summary>
         /// <param name="asset">The asset ID.</param>
-        /// <returns>The task for this operation.</returns>
-        Task SubscribeToAsset(string asset);
-        
+        void SubscribeToAsset(string asset);
+
         /// <summary>
         /// Closes a channel for the specified asset, preventing listeners from receiving events for that asset.
         /// </summary>
         /// <param name="asset">The asset ID.</param>
-        /// <returns>The task for this operation.</returns>
-        Task UnsubscribeToAsset(string asset);
-        
+        void UnsubscribeToAsset(string asset);
+
         /// <summary>
         /// Determines if the channel is open for the specified asset.
         /// </summary>
         /// <param name="asset">The asset ID.</param>
         /// <returns>True if open, else false.</returns>
         bool IsSubscribedToAsset(string asset);
-        
+
         /// <summary>
         /// Opens a channel for the specified wallet address, allowing listeners to receive events for that wallet
         /// address.
         /// </summary>
         /// <param name="wallet">The address.</param>
-        /// <returns>The task for this operation.</returns>
-        Task SubscribeToWallet(string wallet);
-        
+        void SubscribeToWallet(string wallet);
+
         /// <summary>
         /// Closes a channel for the specified wallet address, preventing listeners from receiving events for that
         /// wallet address.
         /// </summary>
         /// <param name="wallet">The address.</param>
-        /// <returns>The task for this operation.</returns>
-        Task UnsubscribeToWallet(string wallet);
-        
+        void UnsubscribeToWallet(string wallet);
+
         /// <summary>
         /// Determines if the channel is open for the specified wallet address.
         /// </summary>
