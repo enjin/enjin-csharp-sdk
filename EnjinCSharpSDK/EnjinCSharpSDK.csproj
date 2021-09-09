@@ -4,12 +4,12 @@
         <RootNamespace>Enjin.SDK</RootNamespace>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
         <PackageId>EnjinCSharpSDK</PackageId>
-        <PackageVersion>0.1.0</PackageVersion>
+        <PackageVersion>2.0.0</PackageVersion>
         <Title>Enjin C# SDK</Title>
         <Authors>Evan Lindsay</Authors>
         <Copyright>Enjin PTE LTD</Copyright>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0</AssemblyVersion>
         <Nullable>enable</Nullable>
         <LangVersion>8</LangVersion>
     </PropertyGroup>
