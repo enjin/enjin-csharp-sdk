@@ -12,6 +12,9 @@
         <AssemblyVersion>2.0.0</AssemblyVersion>
         <Nullable>enable</Nullable>
         <LangVersion>8</LangVersion>
+        <Company>Enjin Pte Ltd</Company>
+        <FileVersion>2.0.0</FileVersion>
+        <InformationalVersion>2.0.0</InformationalVersion>
     </PropertyGroup>
 
     <ItemGroup>
