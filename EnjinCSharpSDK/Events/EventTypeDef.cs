@@ -83,12 +83,12 @@ namespace Enjin.SDK.Events
                                                                     "EnjinCloud\\Events\\AssetUpdated", "project",
                                                                     "asset", "wallet");
 
-        private static readonly EventTypeDef TRADE_COMPLETED = Create(EventType.TRADE_COMPLETED,
-                                                                      "EnjinCloud\\Events\\TradeCompleted", "project",
+        private static readonly EventTypeDef TRADE_COMPLETED = Create(EventType.TRADE_ASSET_COMPLETED,
+                                                                      "EnjinCloud\\Events\\TradeAssetCompleted", "project",
                                                                       "asset", "wallet");
 
-        private static readonly EventTypeDef TRADE_CREATED = Create(EventType.TRADE_CREATED,
-                                                                    "EnjinCloud\\Events\\TradeCreated", "project",
+        private static readonly EventTypeDef TRADE_CREATED = Create(EventType.TRADE_ASSET_CREATED,
+                                                                    "EnjinCloud\\Events\\TradeAssetCreated", "project",
                                                                     "asset", "wallet");
 
         private static readonly EventTypeDef TRANSACTION_BROADCAST = Create(EventType.TRANSACTION_BROADCAST,
