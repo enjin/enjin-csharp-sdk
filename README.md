@@ -9,7 +9,7 @@ Sign up to Enjin Cloud: [Kovan (Testnet)](https://kovan.cloud.enjin.io/),
 
 ### Resources
 
-* [Enjin Docs](https://enjin.io/docs)
+* [Enjin Docs](https://docs.enjin.io)
 
 ### Table of Contents
 * [Compatibility](#compatibility)
