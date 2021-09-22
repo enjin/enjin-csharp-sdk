@@ -39,14 +39,20 @@ public static class Program
 {
     public static void Main()
     {
+        // Builds the project client to run on the Kovan test network.
+        // See: https://kovan.cloud.enjin.io to sign up for the test network.
         ProjectClient client = new ProjectClient(EnjinHosts.KOVAN);
 
+        // Creates the request to authenticate the client.
+        // Replace the appropriate strings with the project's UUID and secret.
         AuthProject req = new AuthProject()
             .Uuid("<the-project's-uuid>")
             .Secret("<the-project's-secret>");
 
+        // Sends the request to the platform and gets the response.
         GraphqlResponse<AccessToken> res = client.AuthProject(req).Result;
 
+        // Checks if the request was successful.
         if (!res.IsSuccess)
         {
             Console.Out.WriteLine("AuthProject request failed");
@@ -54,8 +60,10 @@ public static class Program
             return;
         }
 
+        // Authenticates the client with the access token in the response.
         client.Auth(res.Result.Token);
 
+        // Checks if the client was authenticated.
         if (client.IsAuthenticated)
         {
             Console.Out.WriteLine("Client is now authenticated");
@@ -65,6 +73,7 @@ public static class Program
             Console.Out.WriteLine("Client was not authenticated");
         }
 
+        // Dispose client as part of cleanup and free any resources.
         client.Dispose();
     }
 }
