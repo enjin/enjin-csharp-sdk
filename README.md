@@ -21,7 +21,7 @@ Sign up to Enjin Cloud: [Kovan (Testnet)](https://kovan.cloud.enjin.io/),
 
 ## Compatibility
 
-The Enjin C# SDK utilizes the .NET 2.0 Standard Library.
+The Enjin C# SDK is targeted for .NET Standard 2.0.
 
 ## Quick Start
 
