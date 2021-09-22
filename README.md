@@ -83,6 +83,10 @@ You can open issues for bugs and enhancement requests.
 If you make any changes or improvements to the SDK, which you believe are beneficial to others, consider making a pull
 request to merge your changes to be included in the next release.
 
+Ensure that tests are passing when running `TestSuite` and add any necessary test classes or test cases for your code.
+
+Be sure to include your name in the list of contributors.
+
 ## Copyright and Licensing
 
 The license summary below may be copied.
