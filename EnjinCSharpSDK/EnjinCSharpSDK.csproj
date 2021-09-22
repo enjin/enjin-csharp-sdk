@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <RootNamespace>Enjin.SDK</RootNamespace>
+        <Title>Enjin C# SDK</Title>
+        <Company>Enjin Pte Ltd</Company>
+        <Copyright>Enjin Pte Ltd.</Copyright>
+        <Authors>Evan Lindsay</Authors>
+        <Version>2.0.0</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
+        <AssemblyVersion>2.0.0</AssemblyVersion>
         <PackageId>EnjinCSharpSDK</PackageId>
         <PackageVersion>2.0.0</PackageVersion>
-        <Title>Enjin C# SDK</Title>
-        <Authors>Evan Lindsay</Authors>
-        <Copyright>Enjin Pte Ltd</Copyright>
+        <RootNamespace>Enjin.SDK</RootNamespace>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <AssemblyVersion>2.0.0</AssemblyVersion>
-        <Nullable>enable</Nullable>
         <LangVersion>8</LangVersion>
-        <Company>Enjin Pte Ltd</Company>
-        <Version>2.0.0</Version>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
