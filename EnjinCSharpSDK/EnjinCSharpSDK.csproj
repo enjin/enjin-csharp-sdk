@@ -5,11 +5,11 @@
         <Company>Enjin Pte Ltd</Company>
         <Copyright>Enjin Pte Ltd.</Copyright>
         <Authors>Evan Lindsay</Authors>
-        <Version>2.0.0</Version>
+        <Version>1.0.0</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
-        <AssemblyVersion>2.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
         <PackageId>EnjinCSharpSDK</PackageId>
-        <PackageVersion>2.0.0</PackageVersion>
+        <PackageVersion>1.0.0</PackageVersion>
         <RootNamespace>Enjin.SDK</RootNamespace>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>8</LangVersion>
