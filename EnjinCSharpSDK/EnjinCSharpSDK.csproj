@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <Title>Enjin C# SDK</Title>
-        <Company>Enjin Pte Ltd.</Company>
-        <Copyright>Enjin Pte Ltd.</Copyright>
+        <Company>Enjin Pte. Ltd.</Company>
+        <Copyright>Enjin Pte. Ltd.</Copyright>
         <Authors>Evan Lindsay</Authors>
         <Version>1.0.0.1000</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
