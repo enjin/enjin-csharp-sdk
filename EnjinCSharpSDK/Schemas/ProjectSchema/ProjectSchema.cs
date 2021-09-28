@@ -39,7 +39,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <param name="loggerProvider">The logger provider.</param>
-        public ProjectSchema(TrustedPlatformMiddleware middleware, LoggerProvider loggerProvider) :
+        public ProjectSchema(TrustedPlatformMiddleware middleware, LoggerProvider? loggerProvider) :
             base(middleware, SCHEMA, loggerProvider)
         {
             PlayerService = CreateService<IPlayerService>();

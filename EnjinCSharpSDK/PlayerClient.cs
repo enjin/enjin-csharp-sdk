@@ -42,7 +42,7 @@ namespace Enjin.SDK
         /// <param name="baseUri">The base URI.</param>
         /// <param name="loggerProvider">The logger provider.</param>
         /// <param name="debug">Whether debugging is enabled.</param>
-        public PlayerClient(Uri baseUri, LoggerProvider loggerProvider, bool debug = false) :
+        public PlayerClient(Uri baseUri, LoggerProvider? loggerProvider, bool debug = false) :
             base(new TrustedPlatformMiddleware(baseUri, debug), loggerProvider)
         {
         }
