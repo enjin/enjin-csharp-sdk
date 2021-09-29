@@ -41,7 +41,9 @@ namespace TestSuite
         public void BeforeEach()
         {
             _server.Reset();
-            ClassUnderTest = new PlayerClient(new Uri(_server.Urls[0]));
+            ClassUnderTest = PlayerClient.Builder()
+                                         .Host(new Uri(_server.Urls[0]))
+                                         .Build();
         }
 
         [OneTimeTearDown]
@@ -49,7 +51,7 @@ namespace TestSuite
         {
             _server.Stop();
         }
-        
+
         [Test]
         public void IsAuthenticated_AuthenticatedWithValidToken_ReturnsTrue()
         {
@@ -63,7 +65,7 @@ namespace TestSuite
             // Assert
             Assert.IsTrue(actual);
         }
-        
+
         [Test]
         public void IsAuthenticated_AuthenticatedWithInvalidToken_ReturnsFalse([Values("", " ", null)] string fakeToken)
         {
@@ -89,7 +91,7 @@ namespace TestSuite
             // Assert
             Assert.IsTrue(actual);
         }
-        
+
         [Test]
         public void IsClosed_ClientHasNotBeenDisposed_ReturnsFalse()
         {
