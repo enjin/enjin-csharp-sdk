@@ -12,11 +12,12 @@ Sign up to Enjin Cloud: [Kovan (Testnet)](https://kovan.cloud.enjin.io/),
 * [Enjin Docs](https://docs.enjin.io)
 
 ### Table of Contents
+
 * [Compatibility](#compatibility)
 * [Quick Start](#quick-start)
 * [Contributing](#contributing)
-  * [Issues](#issues)
-  * [Pull Requests](#pull-requests)
+    * [Issues](#issues)
+    * [Pull Requests](#pull-requests)
 * [Copyright and Licensing](#copyright-and-licensing)
 
 ## Compatibility
@@ -41,7 +42,9 @@ public static class Program
     {
         // Builds the project client to run on the Kovan test network.
         // See: https://kovan.cloud.enjin.io to sign up for the test network.
-        ProjectClient client = new ProjectClient(EnjinHosts.KOVAN);
+        ProjectClient client = ProjectClient.Builder()
+                                            .Host(EnjinHosts.KOVAN)
+                                            .Build();
 
         // Creates the request to authenticate the client.
         // Replace the appropriate strings with the project's UUID and secret.
@@ -100,7 +103,7 @@ Be sure to include your name in the list of contributors.
 
 The license summary below may be copied.
 
-```
+```text
 Copyright 2021 Enjin Pte. Ltd.
 
 Licensed under the Apache License, Version 2.0 (the "License");

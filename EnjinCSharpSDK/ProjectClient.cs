@@ -26,23 +26,7 @@ namespace Enjin.SDK
     [PublicAPI]
     public class ProjectClient : ProjectSchema.ProjectSchema, IClient
     {
-        /// <summary>
-        /// Constructs a client with the targeted URI, debug setting, and a default logger provider.
-        /// </summary>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="debug">Whether debugging is enabled.</param>
-        public ProjectClient(Uri baseUri, bool debug = false) :
-            this(baseUri, LoggerProvider.CreateDefaultLoggerProvider(), debug)
-        {
-        }
-
-        /// <summary>
-        /// Constructs a client with the given URI, logger provider, and debug setting.
-        /// </summary>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="loggerProvider">The logger provider.</param>
-        /// <param name="debug">Whether debugging is enabled.</param>
-        public ProjectClient(Uri baseUri, LoggerProvider loggerProvider, bool debug = false) :
+        private ProjectClient(Uri baseUri, LoggerProvider? loggerProvider, bool debug) :
             base(new TrustedPlatformMiddleware(baseUri, debug), loggerProvider)
         {
         }
@@ -64,6 +48,82 @@ namespace Enjin.SDK
         {
             Middleware.HttpClient.Dispose();
             IsClosed = true;
+        }
+
+        /// <summary>
+        /// Creates a builder for this class.
+        /// </summary>
+        /// <returns>The builder.</returns>
+        public static ProjectClientBuilder Builder()
+        {
+            return new ProjectClientBuilder();
+        }
+
+        /// <summary>
+        /// Builder class for <see cref="ProjectClient"/>.
+        /// </summary>
+        [PublicAPI]
+        public class ProjectClientBuilder
+        {
+            private bool? _debugEnabled;
+            private Uri? _host;
+            private LoggerProvider? _loggerProvider;
+
+            internal ProjectClientBuilder()
+            {
+            }
+
+            /// <summary>
+            /// Builds the client.
+            /// </summary>
+            /// <returns>The client.</returns>
+            /// <exception cref="ArgumentNullException">
+            /// Thrown if the host URI has not been set to a non-null value.
+            /// </exception>
+            public ProjectClient Build()
+            {
+                if (_host == null)
+                {
+                    throw new ArgumentNullException($"Cannot build {nameof(ProjectClient)} with null host URI",
+                                                    innerException: null);
+                }
+
+                return new ProjectClient(_host, _loggerProvider, _debugEnabled ?? false);
+            }
+
+            /// <summary>
+            /// Sets whether debugging will be set for the client.
+            /// </summary>
+            /// <param name="enabled">Whether debugging is enabled for the client.</param>
+            /// <returns>This builder.</returns>
+            public ProjectClientBuilder DebugEnabled(bool enabled)
+            {
+                _debugEnabled = enabled;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets the host URI the client will be using.
+            /// </summary>
+            /// <param name="host">The host URI.</param>
+            /// <returns>This builder.</returns>
+            /// <seealso cref="EnjinHosts"/>
+            public ProjectClientBuilder Host(Uri host)
+            {
+                _host = host;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets the logger provider for the client to use.
+            /// </summary>
+            /// <param name="loggerProvider">The logger provider.</param>
+            /// <returns>This builder.</returns>
+            public ProjectClientBuilder LoggerProvider(LoggerProvider loggerProvider)
+            {
+                _loggerProvider = loggerProvider;
+                return this;
+            }
         }
     }
 }
