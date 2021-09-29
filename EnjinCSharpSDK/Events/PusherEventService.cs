@@ -47,7 +47,7 @@ namespace Enjin.SDK.Events
         /// Represents the logger provider used by this service.
         /// </summary>
         /// <value>The logger provider.</value>
-        public LoggerProvider LoggerProvider { get; private set; }
+        public LoggerProvider? LoggerProvider { get; private set; }
 
         /// <inheritdoc/>
         public event EventHandler? Connected;
@@ -80,7 +80,7 @@ namespace Enjin.SDK.Events
         /// </summary>
         /// <param name="loggerProvider"></param>
         /// <param name="platform"></param>
-        public PusherEventService(LoggerProvider loggerProvider, Platform platform)
+        public PusherEventService(LoggerProvider? loggerProvider, Platform platform)
         {
             LoggerProvider = loggerProvider;
             Platform = platform;
@@ -112,7 +112,7 @@ namespace Enjin.SDK.Events
             _pusher.Disconnected += sender => { Disconnected?.Invoke(this, EventArgs.Empty); };
             _pusher.Error += (sender, error) =>
             {
-                LoggerProvider.Log(LogLevel.ERROR, "Error on Pusher client: ", error);
+                LoggerProvider?.Log(LogLevel.ERROR, "Error on Pusher client: ", error);
                 Error?.Invoke(this, error);
             };
 
