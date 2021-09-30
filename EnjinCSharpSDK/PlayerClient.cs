@@ -78,7 +78,7 @@ namespace Enjin.SDK
             /// </summary>
             /// <returns>The client.</returns>
             /// <exception cref="InvalidOperationException">
-            /// Thrown if the host URI is a null value at the time this method is called.
+            /// Thrown if the base URI is a null value at the time this method is called.
             /// </exception>
             public PlayerClient Build()
             {
