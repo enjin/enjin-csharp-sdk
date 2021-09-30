@@ -78,7 +78,7 @@ namespace Enjin.SDK
             /// </summary>
             /// <returns>The client.</returns>
             /// <exception cref="ArgumentNullException">
-            /// Thrown if the host URI has not been set to a non-null value.
+            /// Thrown if the host URI is a null value at the time this method is called.
             /// </exception>
             public PlayerClient Build()
             {
@@ -95,7 +95,7 @@ namespace Enjin.SDK
             /// Sets whether debugging will be set for the client.
             /// </summary>
             /// <param name="enabled">Whether debugging is enabled for the client.</param>
-            /// <returns>This builder.</returns>
+            /// <returns>This builder for chaining.</returns>
             public PlayerClientBuilder DebugEnabled(bool enabled)
             {
                 _debugEnabled = enabled;
@@ -106,7 +106,7 @@ namespace Enjin.SDK
             /// Sets the host URI the client will be using.
             /// </summary>
             /// <param name="host">The host URI.</param>
-            /// <returns>This builder.</returns>
+            /// <returns>This builder for chaining.</returns>
             /// <seealso cref="EnjinHosts"/>
             public PlayerClientBuilder Host(Uri host)
             {
@@ -118,7 +118,7 @@ namespace Enjin.SDK
             /// Sets the logger provider for the client to use.
             /// </summary>
             /// <param name="loggerProvider">The logger provider.</param>
-            /// <returns>This builder.</returns>
+            /// <returns>This builder for chaining.</returns>
             public PlayerClientBuilder LoggerProvider(LoggerProvider loggerProvider)
             {
                 _loggerProvider = loggerProvider;

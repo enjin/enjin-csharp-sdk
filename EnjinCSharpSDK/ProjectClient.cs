@@ -95,7 +95,7 @@ namespace Enjin.SDK
             /// Sets whether debugging will be set for the client.
             /// </summary>
             /// <param name="enabled">Whether debugging is enabled for the client.</param>
-            /// <returns>This builder.</returns>
+            /// <returns>This builder for chaining.</returns>
             public ProjectClientBuilder DebugEnabled(bool enabled)
             {
                 _debugEnabled = enabled;
@@ -106,7 +106,7 @@ namespace Enjin.SDK
             /// Sets the host URI the client will be using.
             /// </summary>
             /// <param name="host">The host URI.</param>
-            /// <returns>This builder.</returns>
+            /// <returns>This builder for chaining.</returns>
             /// <seealso cref="EnjinHosts"/>
             public ProjectClientBuilder Host(Uri host)
             {
@@ -118,7 +118,7 @@ namespace Enjin.SDK
             /// Sets the logger provider for the client to use.
             /// </summary>
             /// <param name="loggerProvider">The logger provider.</param>
-            /// <returns>This builder.</returns>
+            /// <returns>This builder for chaining.</returns>
             public ProjectClientBuilder LoggerProvider(LoggerProvider loggerProvider)
             {
                 _loggerProvider = loggerProvider;
