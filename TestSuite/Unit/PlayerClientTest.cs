@@ -42,7 +42,7 @@ namespace TestSuite
         {
             _server.Reset();
             ClassUnderTest = PlayerClient.Builder()
-                                         .Host(new Uri(_server.Urls[0]))
+                                         .BaseUri(new Uri(_server.Urls[0]))
                                          .Build();
         }
 

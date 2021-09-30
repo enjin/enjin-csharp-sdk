@@ -65,8 +65,8 @@ namespace Enjin.SDK
         [PublicAPI]
         public class ProjectClientBuilder
         {
+            private Uri? _baseUri;
             private bool? _debugEnabled;
-            private Uri? _host;
             private LoggerProvider? _loggerProvider;
 
             internal ProjectClientBuilder()
@@ -82,10 +82,22 @@ namespace Enjin.SDK
             /// </exception>
             public ProjectClient Build()
             {
-                if (_host == null)
-                    throw new InvalidOperationException($"Cannot build {nameof(ProjectClient)} with null host URI.");
+                if (_baseUri == null)
+                    throw new InvalidOperationException($"Cannot build {nameof(ProjectClient)} with null base URI.");
 
-                return new ProjectClient(_host, _loggerProvider, _debugEnabled ?? false);
+                return new ProjectClient(_baseUri, _loggerProvider, _debugEnabled ?? false);
+            }
+
+            /// <summary>
+            /// Sets the base URI the client will be using.
+            /// </summary>
+            /// <param name="baseUri">The base URI.</param>
+            /// <returns>This builder for chaining.</returns>
+            /// <seealso cref="EnjinHosts"/>
+            public ProjectClientBuilder BaseUri(Uri baseUri)
+            {
+                _baseUri = baseUri;
+                return this;
             }
 
             /// <summary>
@@ -96,18 +108,6 @@ namespace Enjin.SDK
             public ProjectClientBuilder DebugEnabled(bool enabled)
             {
                 _debugEnabled = enabled;
-                return this;
-            }
-
-            /// <summary>
-            /// Sets the host URI the client will be using.
-            /// </summary>
-            /// <param name="host">The host URI.</param>
-            /// <returns>This builder for chaining.</returns>
-            /// <seealso cref="EnjinHosts"/>
-            public ProjectClientBuilder Host(Uri host)
-            {
-                _host = host;
                 return this;
             }
 

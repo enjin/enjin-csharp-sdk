@@ -43,7 +43,7 @@ public static class Program
         // Builds the project client to run on the Kovan test network.
         // See: https://kovan.cloud.enjin.io to sign up for the test network.
         ProjectClient client = ProjectClient.Builder()
-                                            .Host(EnjinHosts.KOVAN)
+                                            .BaseUri(EnjinHosts.KOVAN)
                                             .Build();
 
         // Creates the request to authenticate the client.
