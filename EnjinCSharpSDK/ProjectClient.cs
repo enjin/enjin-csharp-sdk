@@ -77,16 +77,13 @@ namespace Enjin.SDK
             /// Builds the client.
             /// </summary>
             /// <returns>The client.</returns>
-            /// <exception cref="ArgumentNullException">
-            /// Thrown if the host URI has not been set to a non-null value.
+            /// <exception cref="InvalidOperationException">
+            /// Thrown if the host URI is a null value at the time this method is called.
             /// </exception>
             public ProjectClient Build()
             {
                 if (_host == null)
-                {
-                    throw new ArgumentNullException($"Cannot build {nameof(ProjectClient)} with null host URI",
-                                                    innerException: null);
-                }
+                    throw new InvalidOperationException($"Cannot build {nameof(ProjectClient)} with null host URI.");
 
                 return new ProjectClient(_host, _loggerProvider, _debugEnabled ?? false);
             }
