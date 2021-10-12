@@ -45,14 +45,14 @@ namespace Enjin.SDK.Events
         {
             if (_service.RegisteredListeners.Count == 0)
             {
-                _service.LoggerProvider.Log(LogLevel.INFO, "No registered listeners when event was received.");
+                _service.LoggerProvider?.Log(LogLevel.INFO, "No registered listeners when event was received.");
                 return;
             }
 
             var def = EventTypeDef.GetFromKey(@event);
             if (def.Type == EventType.UNKNOWN)
             {
-                _service.LoggerProvider.Log(LogLevel.WARN, $"Unknown event type for key \"{@event}\".");
+                _service.LoggerProvider?.Log(LogLevel.WARN, $"Unknown event type for key \"{@event}\".");
                 return;
             }
 
