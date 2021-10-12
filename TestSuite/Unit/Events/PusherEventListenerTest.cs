@@ -33,7 +33,9 @@ namespace TestSuite
         [SetUp]
         public void BeforeEach()
         {
-            FakeEventService = new PusherEventService(PlatformUtils.CreateFakePlatform("test"));
+            FakeEventService = PusherEventService.Builder()
+                                                 .Platform(PlatformUtils.CreateFakePlatform("test"))
+                                                 .Build();
             ClassUnderTest = new PusherEventListener(FakeEventService);
         }
 

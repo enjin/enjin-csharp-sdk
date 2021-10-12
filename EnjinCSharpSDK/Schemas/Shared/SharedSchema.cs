@@ -40,7 +40,7 @@ namespace Enjin.SDK.Shared
         /// <param name="middleware">The middleware.</param>
         /// <param name="schema">The schema.</param>
         /// <param name="loggerProvider">The logger provider.</param>
-        protected SharedSchema(TrustedPlatformMiddleware middleware, string schema, LoggerProvider loggerProvider) :
+        protected SharedSchema(TrustedPlatformMiddleware middleware, string schema, LoggerProvider? loggerProvider) :
             base(middleware, schema, loggerProvider)
         {
             AssetService = CreateService<IAssetService>();
