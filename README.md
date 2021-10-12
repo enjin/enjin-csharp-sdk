@@ -56,7 +56,9 @@ public static class Program
     {
         // Builds the project client to run on the Kovan test network.
         // See: https://goerli.cloud.enjin.io to sign up for the test network.
-        ProjectClient client = new ProjectClient(EnjinHosts.GOERLI);
+        ProjectClient client = ProjectClient.Builder()
+                                            .BaseUri(EnjinHosts.GOERLI)
+                                            .Build();
 
         // Creates the request to authenticate the client.
         // Replace the appropriate strings with the project's UUID and secret.
@@ -115,7 +117,7 @@ Be sure to include your name in the list of contributors.
 
 The license summary below may be copied.
 
-```
+```text
 Copyright 2021 Enjin Pte. Ltd.
 
 Licensed under the Apache License, Version 2.0 (the "License");
