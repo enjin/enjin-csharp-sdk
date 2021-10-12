@@ -164,7 +164,12 @@ namespace TestSuite
             }
         }
 
-        private static PusherEventService CreateEventService() => new PusherEventService(FakePlatform);
+        private static PusherEventService CreateEventService()
+        {
+            return PusherEventService.Builder()
+                                     .Platform(FakePlatform)
+                                     .Build();
+        }
 
         private class EventListener : IEventListener
         {

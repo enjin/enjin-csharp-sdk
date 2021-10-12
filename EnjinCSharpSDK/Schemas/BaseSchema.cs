@@ -32,7 +32,7 @@ namespace Enjin.SDK
     [PublicAPI]
     public class BaseSchema
     {
-        public LoggerProvider LoggerProvider { get; private set; }
+        public LoggerProvider? LoggerProvider { get; private set; }
 
         protected readonly TrustedPlatformMiddleware Middleware;
         protected readonly string Schema;
@@ -48,7 +48,7 @@ namespace Enjin.SDK
         /// <param name="middleware">The middleware.</param>
         /// <param name="schema">The schema.</param>
         /// <param name="loggerProvider">The logger provider.</param>
-        protected BaseSchema(TrustedPlatformMiddleware middleware, string schema, LoggerProvider loggerProvider)
+        protected BaseSchema(TrustedPlatformMiddleware middleware, string schema, LoggerProvider? loggerProvider)
         {
             Middleware = middleware;
             Schema = schema;
@@ -118,9 +118,9 @@ namespace Enjin.SDK
                 }
                 catch (Exception e)
                 {
-                    LoggerProvider.Log(LogLevel.SEVERE,
-                                       "An error occured while processing a request or a response.",
-                                       e);
+                    LoggerProvider?.Log(LogLevel.SEVERE,
+                                        "An error occured while processing a request or a response.",
+                                        e);
                     throw;
                 }
             });
