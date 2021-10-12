@@ -372,7 +372,7 @@ namespace TestSuite
             var eventService = CreateEventService();
             eventService.Start().Wait();              // Service is started for the first time and subscribes to the
             eventService.SubscribeToProject(project); // channel
-            Thread.Sleep(500);         //
+            Thread.Sleep(500);                        //
             eventService.Shutdown().Wait(); // Shutdown the service to be restarted on 'Act'
 
             Expect(eventService.IsSubscribedToProject(project)).To.Be.True();
@@ -386,7 +386,12 @@ namespace TestSuite
             Assert.IsTrue(eventService.IsSubscribedToProject(project));
         }
 
-        private static PusherEventService CreateEventService() => new PusherEventService(FakePlatform);
+        private static PusherEventService CreateEventService()
+        {
+            return PusherEventService.Builder()
+                                     .Platform(FakePlatform)
+                                     .Build();
+        }
 
         private class EventListener : IEventListener
         {

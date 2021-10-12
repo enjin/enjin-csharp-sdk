@@ -26,23 +26,7 @@ namespace Enjin.SDK
     [PublicAPI]
     public class PlayerClient : PlayerSchema.PlayerSchema, IClient
     {
-        /// <summary>
-        /// Constructs a client with the targeted URI, debug setting, and a default logger provider.
-        /// </summary>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="debug">Whether debugging is enabled.</param>
-        public PlayerClient(Uri baseUri, bool debug = false) :
-            this(baseUri, LoggerProvider.CreateDefaultLoggerProvider(), debug)
-        {
-        }
-
-        /// <summary>
-        /// Constructs a client with the given URI, logger provider, and debug setting.
-        /// </summary>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="loggerProvider">The logger provider.</param>
-        /// <param name="debug">Whether debugging is enabled.</param>
-        public PlayerClient(Uri baseUri, LoggerProvider loggerProvider, bool debug = false) :
+        private PlayerClient(Uri baseUri, LoggerProvider? loggerProvider, bool debug) :
             base(new TrustedPlatformMiddleware(baseUri, debug), loggerProvider)
         {
         }
@@ -64,6 +48,79 @@ namespace Enjin.SDK
         {
             Middleware.HttpClient.Dispose();
             IsClosed = true;
+        }
+
+        /// <summary>
+        /// Creates a builder for this class.
+        /// </summary>
+        /// <returns>The builder.</returns>
+        public static PlayerClientBuilder Builder()
+        {
+            return new PlayerClientBuilder();
+        }
+
+        /// <summary>
+        /// Builder class for <see cref="PlayerClient"/>.
+        /// </summary>
+        [PublicAPI]
+        public class PlayerClientBuilder
+        {
+            private Uri? _baseUri;
+            private bool? _debugEnabled;
+            private LoggerProvider? _loggerProvider;
+
+            internal PlayerClientBuilder()
+            {
+            }
+
+            /// <summary>
+            /// Builds the client.
+            /// </summary>
+            /// <returns>The client.</returns>
+            /// <exception cref="InvalidOperationException">
+            /// Thrown if the base URI is a null value at the time this method is called.
+            /// </exception>
+            public PlayerClient Build()
+            {
+                if (_baseUri == null)
+                    throw new InvalidOperationException($"Cannot build {nameof(PlayerClient)} with null base URI.");
+
+                return new PlayerClient(_baseUri, _loggerProvider, _debugEnabled ?? false);
+            }
+
+            /// <summary>
+            /// Sets the base URI the client will be using.
+            /// </summary>
+            /// <param name="baseUri">The base URI.</param>
+            /// <returns>This builder for chaining.</returns>
+            /// <seealso cref="EnjinHosts"/>
+            public PlayerClientBuilder BaseUri(Uri baseUri)
+            {
+                _baseUri = baseUri;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets whether debugging will be set for the client.
+            /// </summary>
+            /// <param name="enabled">Whether debugging is enabled for the client.</param>
+            /// <returns>This builder for chaining.</returns>
+            public PlayerClientBuilder DebugEnabled(bool enabled)
+            {
+                _debugEnabled = enabled;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets the logger provider for the client to use.
+            /// </summary>
+            /// <param name="loggerProvider">The logger provider.</param>
+            /// <returns>This builder for chaining.</returns>
+            public PlayerClientBuilder LoggerProvider(LoggerProvider loggerProvider)
+            {
+                _loggerProvider = loggerProvider;
+                return this;
+            }
         }
     }
 }
