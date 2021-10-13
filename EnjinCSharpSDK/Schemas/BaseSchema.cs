@@ -37,6 +37,11 @@ namespace Enjin.SDK
         protected readonly TrustedPlatformMiddleware Middleware;
         protected readonly string Schema;
 
+        private static JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+        };
+
         /// <summary>
         /// Sole constructor.
         /// </summary>
@@ -57,12 +62,14 @@ namespace Enjin.SDK
         /// <returns>The serialized object.</returns>
         protected JObject CreateRequestBody(IGraphqlRequest request)
         {
-            var obj = new JObject
+            var query = Middleware.Registry.GetOperationForName(request.Namespace)?.CompiledContents;
+            var variables = JsonConvert.SerializeObject(request.Variables, Formatting.Indented, _serializerSettings);
+
+            return new JObject
             {
-                {"query", Middleware.Registry.GetOperationForName(request.Namespace)?.CompiledContents},
-                {"variables", JToken.FromObject(request.Variables)}
+                {"query", query},
+                {"variables", variables}
             };
-            return obj;
         }
 
         /// <summary>
@@ -77,7 +84,7 @@ namespace Enjin.SDK
 
         private static RefitSettings CreateRefitSettings()
         {
-            return new RefitSettings()
+            return new RefitSettings
             {
                 ContentSerializer = new NewtonsoftJsonContentSerializer(CreateSerializerSettings())
             };
