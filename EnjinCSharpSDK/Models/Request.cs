@@ -44,7 +44,7 @@ namespace Enjin.SDK.Models
         /// <value>The transaction title.</value>
         [JsonProperty("title")]
         public string? Title { get; private set; }
-        
+
         /// <summary>
         /// Represents the contract address for this transaction.
         /// </summary>
@@ -58,7 +58,7 @@ namespace Enjin.SDK.Models
         /// <value>The type.</value>
         [JsonProperty("type")]
         public RequestType? Type { get; private set; }
-        
+
         /// <summary>
         /// Represents the value of this transaction.
         /// </summary>
@@ -72,21 +72,21 @@ namespace Enjin.SDK.Models
         /// <value>The state.</value>
         [JsonProperty("retryState")]
         public string? RetryState { get; private set; }
-        
+
         /// <summary>
         /// Represents the state of this transaction.
         /// </summary>
         /// <value>The state.</value>
         [JsonProperty("state")]
         public RequestState? State { get; private set; }
-        
+
         /// <summary>
         /// Represents if the transaction has been accepted or not.
         /// </summary>
         /// <value>Whether the transaction was accepted.</value>
         [JsonProperty("accepted")]
         public bool? Accepted { get; private set; }
-        
+
         /// <summary>
         /// Represents if the wallet of the transaction is a project wallet.
         /// </summary>
@@ -100,13 +100,20 @@ namespace Enjin.SDK.Models
         /// <value>The data.</value>
         [JsonProperty("blockchainData")]
         public BlockchainData? BlockchainData { get; private set; }
-        
+
         /// <summary>
         /// Represents the project this transaction belongs to.
         /// </summary>
         /// <value>The project.</value>
         [JsonProperty("project")]
         public Project? Project { get; private set; }
+
+        /// <summary>
+        /// Represents the asset for this transaction.
+        /// </summary>
+        /// <value>The asset.</value>
+        [JsonProperty("asset")]
+        public Asset? Asset { get; private set; }
 
         /// <summary>
         /// Represents the datetime when this transaction was created.
@@ -117,7 +124,7 @@ namespace Enjin.SDK.Models
         /// </remarks>
         [JsonProperty("createdAt")]
         public string? CreatedAt { get; private set; }
-        
+
         /// <summary>
         /// Represents the datetime when this transaction was last updated.
         /// </summary>
