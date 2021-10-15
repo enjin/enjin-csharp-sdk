@@ -5,7 +5,7 @@
         <Company>Enjin Pte. Ltd.</Company>
         <Copyright>Enjin Pte. Ltd.</Copyright>
         <Authors>Evan Lindsay</Authors>
-        <Version>1.0.0.1000</Version>
+        <Version>1.0.0-alpha.1</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
         <AssemblyInformationalVersion>1.0.0-alpha.1</AssemblyInformationalVersion>
         <AssemblyVersion>1.0.0.1000</AssemblyVersion>
