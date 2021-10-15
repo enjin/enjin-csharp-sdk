@@ -14,7 +14,9 @@
  */
 
 using System;
+using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Http;
 using JetBrains.Annotations;
@@ -33,17 +35,30 @@ namespace Enjin.SDK
         /// The handler for communication with the Trusted Platform.
         /// </summary>
         public readonly TrustedPlatformHandler HttpHandler;
-        
+
         /// <summary>
         /// The client for sending requests and receiving responses.
         /// </summary>
         public readonly HttpClient HttpClient;
-        
+
         /// <summary>
         /// The query registry being used.
         /// </summary>
         public readonly GraphqlQueryRegistry Registry;
 
+        private static readonly string USER_AGENT_VERSION;
+
+        static TrustedPlatformMiddleware()
+        {
+            var version = typeof(TrustedPlatformMiddleware).Assembly
+                                                           .GetCustomAttributes<AssemblyInformationalVersionAttribute>()
+                                                           .First()
+                                                           .InformationalVersion;
+
+            // Separates version from commit ID appended by SourceLink
+            USER_AGENT_VERSION = version.Split('+')[0];
+        }
+        
         /// <summary>
         /// Sole constructor.
         /// </summary>
@@ -64,8 +79,7 @@ namespace Enjin.SDK
                 BaseAddress = baseAddress
             };
 
-            client.DefaultRequestHeaders.UserAgent
-                .TryParseAdd($"Enjin C# SDK v{typeof(TrustedPlatformMiddleware).Assembly.GetName().Version}");
+            client.DefaultRequestHeaders.UserAgent.TryParseAdd($"Enjin C# SDK v{USER_AGENT_VERSION}");
 
             return client;
         }
