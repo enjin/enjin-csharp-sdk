@@ -21,7 +21,7 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Models a trade input for requests.
     /// </summary>
-    /// <seealso cref="Enjin.SDK.Shared.CreateTrade"/>
+    /// <seealso cref="Enjin.SDK.ProjectSchema.CreateTrade"/>
     [PublicAPI]
     public class Trade
     {
