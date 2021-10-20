@@ -40,7 +40,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
+        <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.14" />
         <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.14" />
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
