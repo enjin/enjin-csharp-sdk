@@ -1,5 +1,15 @@
 # Common IntelliJ Platform excludes
 
+# Doxygen
+/examples/*/html
+/html
+/latex
+/rtf
+/xml
+/man
+/docbook
+/perlmod
+
 # User specific
 **/.idea
 
