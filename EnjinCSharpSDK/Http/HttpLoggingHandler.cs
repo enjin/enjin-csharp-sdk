@@ -25,7 +25,7 @@ namespace Enjin.SDK.Http
     /// <summary>
     /// Handler used for debugging the HTTP client.
     /// </summary>
-    public class HttpLoggingHandler : DelegatingHandler
+    internal class HttpLoggingHandler : DelegatingHandler
     {
         private readonly HttpLogLevel _logLevel;
         private readonly LoggerProvider _loggerProvider;
@@ -36,9 +36,9 @@ namespace Enjin.SDK.Http
         /// <param name="logLevel">The HTTP logging level.</param>
         /// <param name="loggerProvider">The logger provider.</param>
         /// <param name="innerHandler">The handler to replace the default client handler.</param>
-        public HttpLoggingHandler(HttpLogLevel logLevel,
-                                  LoggerProvider loggerProvider,
-                                  HttpMessageHandler? innerHandler = null)
+        internal HttpLoggingHandler(HttpLogLevel logLevel,
+                                    LoggerProvider loggerProvider,
+                                    HttpMessageHandler? innerHandler = null)
             : base(innerHandler ?? new HttpClientHandler())
         {
             _logLevel = logLevel;
