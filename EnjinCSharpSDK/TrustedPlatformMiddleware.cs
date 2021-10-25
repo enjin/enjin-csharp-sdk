@@ -64,7 +64,7 @@ namespace Enjin.SDK
         {
             var messageHandler = loggerProvider == null
                 ? HttpHandler
-                : (HttpMessageHandler) new HttpLoggingHandler(HttpHandler);
+                : (HttpMessageHandler) new HttpLoggingHandler(logLevel, loggerProvider, HttpHandler);
 
             var client = new HttpClient(messageHandler)
             {

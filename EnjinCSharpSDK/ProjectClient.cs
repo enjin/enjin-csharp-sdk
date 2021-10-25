@@ -28,7 +28,7 @@ namespace Enjin.SDK
     public class ProjectClient : ProjectSchema.ProjectSchema, IClient
     {
         private ProjectClient(Uri baseUri, HttpLogLevel httpLogLevel, LoggerProvider? loggerProvider) :
-            base(new TrustedPlatformMiddleware(baseUri, httpLogLevel), loggerProvider)
+            base(new TrustedPlatformMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
         {
         }
 

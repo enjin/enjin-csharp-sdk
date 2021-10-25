@@ -28,7 +28,7 @@ namespace Enjin.SDK
     public class PlayerClient : PlayerSchema.PlayerSchema, IClient
     {
         private PlayerClient(Uri baseUri, HttpLogLevel httpLogLevel, LoggerProvider? loggerProvider) :
-            base(new TrustedPlatformMiddleware(baseUri, httpLogLevel), loggerProvider)
+            base(new TrustedPlatformMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
         {
         }
 
