@@ -51,9 +51,11 @@ namespace Enjin.SDK.Http
         {
             LogRequest(request);
 
+            var start = DateTimeOffset.Now;
             var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            var end = DateTimeOffset.Now;
 
-            LogResponse(response);
+            LogResponse(response, (end - start).Milliseconds);
 
             return response;
         }
@@ -106,7 +108,7 @@ namespace Enjin.SDK.Http
             _loggerProvider.Debug(builder.ToString());
         }
 
-        private void LogResponse(HttpResponseMessage msg)
+        private void LogResponse(HttpResponseMessage msg, int rtt)
         {
             if (_logLevel == HttpLogLevel.NONE)
                 return;
@@ -116,7 +118,7 @@ namespace Enjin.SDK.Http
             var uri = msg.RequestMessage.RequestUri;
 
             // Line
-            builder.AppendLine($"<-- {status} {uri}");
+            builder.AppendLine($"<-- {status} {uri} ({rtt}ms)");
 
             if (_logLevel == HttpLogLevel.BASIC)
             {
