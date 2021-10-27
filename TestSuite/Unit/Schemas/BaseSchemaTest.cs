@@ -18,6 +18,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Enjin.SDK;
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Http;
 using Enjin.SDK.Shared;
 using Enjin.SDK.Utils;
 using Newtonsoft.Json.Linq;
@@ -49,8 +50,9 @@ namespace TestSuite
         public void BeforeEach()
         {
             _server.Reset();
-            ClassUnderTest = new TestableBaseSchema(new TrustedPlatformMiddleware(new Uri(_server.Urls[0]), false),
-                                                    "test");
+
+            var middleware = new TrustedPlatformMiddleware(new Uri(_server.Urls[0]), HttpLogLevel.NONE);
+            ClassUnderTest = new TestableBaseSchema(middleware, "test");
         }
 
         [OneTimeTearDown]
