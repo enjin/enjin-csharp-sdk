@@ -14,6 +14,7 @@
  */
 
 using System;
+using Enjin.SDK.Http;
 using Enjin.SDK.Utils;
 using JetBrains.Annotations;
 
@@ -26,8 +27,8 @@ namespace Enjin.SDK
     [PublicAPI]
     public class ProjectClient : ProjectSchema.ProjectSchema, IClient
     {
-        private ProjectClient(Uri baseUri, LoggerProvider? loggerProvider, bool debug) :
-            base(new TrustedPlatformMiddleware(baseUri, debug), loggerProvider)
+        private ProjectClient(Uri baseUri, HttpLogLevel httpLogLevel, LoggerProvider? loggerProvider) :
+            base(new TrustedPlatformMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
         {
         }
 
@@ -66,7 +67,7 @@ namespace Enjin.SDK
         public class ProjectClientBuilder
         {
             private Uri? _baseUri;
-            private bool? _debugEnabled;
+            private HttpLogLevel _httpLogLevel = Http.HttpLogLevel.NONE;
             private LoggerProvider? _loggerProvider;
 
             internal ProjectClientBuilder()
@@ -85,7 +86,7 @@ namespace Enjin.SDK
                 if (_baseUri == null)
                     throw new InvalidOperationException($"Cannot build {nameof(ProjectClient)} with null base URI.");
 
-                return new ProjectClient(_baseUri, _loggerProvider, _debugEnabled ?? false);
+                return new ProjectClient(_baseUri, _httpLogLevel, _loggerProvider);
             }
 
             /// <summary>
@@ -101,13 +102,13 @@ namespace Enjin.SDK
             }
 
             /// <summary>
-            /// Sets whether debugging will be set for the client.
+            /// Sets the log level for HTTP traffic.
             /// </summary>
-            /// <param name="enabled">Whether debugging is enabled for the client.</param>
+            /// <param name="logLevel">The log level.</param>
             /// <returns>This builder for chaining.</returns>
-            public ProjectClientBuilder DebugEnabled(bool enabled)
+            public ProjectClientBuilder HttpLogLevel(HttpLogLevel logLevel)
             {
-                _debugEnabled = enabled;
+                _httpLogLevel = logLevel;
                 return this;
             }
 
