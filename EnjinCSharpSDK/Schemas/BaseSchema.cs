@@ -37,7 +37,7 @@ namespace Enjin.SDK
         protected readonly TrustedPlatformMiddleware Middleware;
         protected readonly string Schema;
 
-        private static JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
+        private static readonly JsonSerializerSettings SERIALIZER_SETTINGS = new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Ignore,
         };
@@ -63,7 +63,7 @@ namespace Enjin.SDK
         protected JObject CreateRequestBody(IGraphqlRequest request)
         {
             var query = Middleware.Registry.GetOperationForName(request.Namespace)?.CompiledContents;
-            var variables = JsonConvert.SerializeObject(request.Variables, Formatting.Indented, _serializerSettings);
+            var variables = JsonConvert.SerializeObject(request.Variables, Formatting.Indented, SERIALIZER_SETTINGS);
 
             return new JObject
             {

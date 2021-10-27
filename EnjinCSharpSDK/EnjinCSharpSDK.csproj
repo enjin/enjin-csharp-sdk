@@ -2,25 +2,57 @@
 
     <PropertyGroup>
         <Title>Enjin C# SDK</Title>
+        <Description>A C# SDK for creating games using the Enjin blockchain platform.</Description>
         <Company>Enjin Pte. Ltd.</Company>
         <Copyright>Enjin Pte. Ltd.</Copyright>
-        <Authors>Evan Lindsay</Authors>
-        <Version>1.0.0.1000</Version>
+        <Authors>Evan Lindsay, Bishop Johnson</Authors>
+        <Version>1.0.0-alpha.1</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
         <AssemblyInformationalVersion>1.0.0-alpha.1</AssemblyInformationalVersion>
         <AssemblyVersion>1.0.0.1000</AssemblyVersion>
-        <PackageId>EnjinCSharpSDK</PackageId>
-        <PackageVersion>1.0.0.1000</PackageVersion>
+        <PackageId>Enjin.Sdk.CSharp</PackageId>
+        <PackageVersion>1.0.0-alpha.1</PackageVersion>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>packageIcon.png</PackageIcon>
+        <PackageProjectUrl>https://enjin.io/</PackageProjectUrl>
+        <PackageTags>enjin, sdk, blockchain</PackageTags>
+        <NeutralLanguage>en</NeutralLanguage>
+        <RepositoryUrl>https://github.com/enjin/enjin-csharp-sdk</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <!-- Symbol package -->
+        <IncludeSymbols>true</IncludeSymbols>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
         <RootNamespace>Enjin.SDK</RootNamespace>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>8</LangVersion>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <!-- For deterministic build -->
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
+        <None Include="..\README.md" Pack="true" PackagePath="README.md" />
+        <None Include="..\packageIcon.png" Pack="true" PackagePath="packageIcon.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.14" />
         <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.14" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
         <PackageReference Include="PusherClient" Version="2.1.0" />
         <PackageReference Include="Refit" Version="5.1.67" />

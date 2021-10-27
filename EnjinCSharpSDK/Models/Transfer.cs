@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -22,7 +21,8 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Models transfer input when making requests.
     /// </summary>
-    /// <seealso cref="AdvancedSendAsset"/>
+    /// <seealso cref="Enjin.SDK.PlayerSchema.AdvancedSendAsset"/>
+    /// <seealso cref="Enjin.SDK.ProjectSchema.AdvancedSendAsset"/>
     [PublicAPI]
     public class Transfer
     {

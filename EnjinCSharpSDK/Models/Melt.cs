@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -22,7 +21,8 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Models a melt input for melt requests.
     /// </summary>
-    /// <seealso cref="MeltAsset"/>
+    /// <seealso cref="Enjin.SDK.PlayerSchema.MeltAsset"/>
+    /// <seealso cref="Enjin.SDK.ProjectSchema.MeltAsset"/>
     [PublicAPI]
     public class Melt
     {
