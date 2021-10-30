@@ -27,6 +27,12 @@ namespace Enjin.SDK.Events
     public interface IEventService
     {
         /// <summary>
+        /// Checks if this service is connected for receiving cloud events.
+        /// </summary>
+        /// <value>Whether the service is connected.</value>
+        bool IsConnected { get; }
+
+        /// <summary>
         /// Event handler invoked when this service is connected to its server.
         /// </summary>
         public event EventHandler Connected;
@@ -60,12 +66,6 @@ namespace Enjin.SDK.Events
         /// </summary>
         /// <returns>The task for this operation.</returns>
         Task Shutdown();
-
-        /// <summary>
-        /// Checks if this service is connected to platform.
-        /// </summary>
-        /// <returns>True if connected, else false.</returns>
-        bool IsConnected();
 
         /// <summary>
         /// Registers a event listener and provides the registration object used for it.

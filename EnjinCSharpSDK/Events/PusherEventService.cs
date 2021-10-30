@@ -37,6 +37,9 @@ namespace Enjin.SDK.Events
     [PublicAPI]
     public sealed class PusherEventService : IEventService
     {
+        /// <inheritdoc/>
+        public bool IsConnected => _pusher?.State == ConnectionState.Connected;
+
         /// <summary>
         /// Represents the platform details this service is utilizing.
         /// </summary>
@@ -88,7 +91,9 @@ namespace Enjin.SDK.Events
             var cluster = pusher?.Options?.Cluster;
             var encrypted = pusher?.Options?.Encrypted;
             if (key == null || cluster == null || encrypted == null)
-                return Task.FromException(new InvalidOperationException("Platform has null data for 'key', 'cluster', or 'encrypted'."));
+                return
+                    Task.FromException(new
+                                           InvalidOperationException("Platform has null data for 'key', 'cluster', or 'encrypted'."));
 
             PusherOptions options = new PusherOptions
             {
@@ -127,13 +132,8 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public Task Shutdown()
         {
-            return _pusher?.DisconnectAsync() ?? Task.FromException(new InvalidOperationException("Event service has not been started."));
-        }
-
-        /// <inheritdoc/>
-        public bool IsConnected()
-        {
-            return _pusher?.State == ConnectionState.Connected;
+            return _pusher?.DisconnectAsync() ??
+                   Task.FromException(new InvalidOperationException("Event service has not been started."));
         }
 
         /// <inheritdoc/>
@@ -362,7 +362,8 @@ namespace Enjin.SDK.Events
             public PusherEventService Build()
             {
                 if (_platform == null)
-                    throw new InvalidOperationException($"Cannot build {nameof(PusherEventService)} with null {nameof(Models.Platform)}.");
+                    throw new
+                        InvalidOperationException($"Cannot build {nameof(PusherEventService)} with null {nameof(Models.Platform)}.");
 
                 return new PusherEventService(_loggerProvider, _platform);
             }
