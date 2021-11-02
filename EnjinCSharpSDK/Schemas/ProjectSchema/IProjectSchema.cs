@@ -64,6 +64,27 @@ namespace Enjin.SDK.ProjectSchema
         Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject request);
 
         /// <summary>
+        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.BridgeAsset"/> request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The task.</returns>
+        Task<GraphqlResponse<Request>> BridgeAsset(BridgeAsset request);
+
+        /// <summary>
+        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.BridgeAssets"/> request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The task.</returns>
+        Task<GraphqlResponse<Request>> BridgeAssets(BridgeAssets request);
+
+        /// <summary>
+        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.BridgeClaimAsset"/> request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The task.</returns>
+        Task<GraphqlResponse<Request>> BridgeClaimAsset(BridgeClaimAsset request);
+
+        /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.CompleteTrade"/> request.
         /// </summary>
         /// <param name="request">The request.</param>

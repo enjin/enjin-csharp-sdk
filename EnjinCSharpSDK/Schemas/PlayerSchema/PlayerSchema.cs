@@ -64,6 +64,24 @@ namespace Enjin.SDK.PlayerSchema
         }
 
         /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> BridgeAsset(BridgeAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> BridgeAssets(BridgeAssets request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Request>> BridgeClaimAsset(BridgeClaimAsset request)
+        {
+            return TransactionRequest(request);
+        }
+
+        /// <inheritdoc/>
         public Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request)
         {
             return SendRequest(PlayerService.GetOne(Schema, CreateRequestBody(request)));
