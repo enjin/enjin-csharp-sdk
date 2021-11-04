@@ -91,9 +91,7 @@ namespace Enjin.SDK.Events
             var cluster = pusher?.Options?.Cluster;
             var encrypted = pusher?.Options?.Encrypted;
             if (key == null || cluster == null || encrypted == null)
-                return
-                    Task.FromException(new
-                                           InvalidOperationException("Platform has null data for 'key', 'cluster', or 'encrypted'."));
+                return Task.FromException(new InvalidOperationException("Platform has null data for 'key', 'cluster', or 'encrypted'."));
 
             PusherOptions options = new PusherOptions
             {
@@ -362,8 +360,7 @@ namespace Enjin.SDK.Events
             public PusherEventService Build()
             {
                 if (_platform == null)
-                    throw new
-                        InvalidOperationException($"Cannot build {nameof(PusherEventService)} with null {nameof(Models.Platform)}.");
+                    throw new InvalidOperationException($"Cannot build {nameof(PusherEventService)} with null {nameof(Models.Platform)}.");
 
                 return new PusherEventService(_loggerProvider, _platform);
             }
