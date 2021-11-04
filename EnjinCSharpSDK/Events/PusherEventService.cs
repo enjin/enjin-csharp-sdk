@@ -37,6 +37,9 @@ namespace Enjin.SDK.Events
     [PublicAPI]
     public sealed class PusherEventService : IEventService
     {
+        /// <inheritdoc/>
+        public bool IsConnected => _pusher?.State == ConnectionState.Connected;
+
         /// <summary>
         /// Represents the platform details this service is utilizing.
         /// </summary>
@@ -127,13 +130,8 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public Task Shutdown()
         {
-            return _pusher?.DisconnectAsync() ?? Task.FromException(new InvalidOperationException("Event service has not been started."));
-        }
-
-        /// <inheritdoc/>
-        public bool IsConnected()
-        {
-            return _pusher?.State == ConnectionState.Connected;
+            return _pusher?.DisconnectAsync() ??
+                   Task.FromException(new InvalidOperationException("Event service has not been started."));
         }
 
         /// <inheritdoc/>
