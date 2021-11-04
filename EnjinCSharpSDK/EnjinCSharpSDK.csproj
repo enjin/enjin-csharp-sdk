@@ -66,6 +66,9 @@
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\AdvancedSendAsset.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\ApproveEnj.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\ApproveMaxEnj.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\player\mutation\BridgeAsset.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\player\mutation\BridgeAssets.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\player\mutation\BridgeClaimAsset.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\MeltAsset.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\Message.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\ResetEnjApproval.gql" />
@@ -78,6 +81,9 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\AdvancedSendAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ApproveEnj.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ApproveMaxEnj.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\BridgeAsset.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\BridgeAssets.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\BridgeClaimAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\MeltAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\Message.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ResetEnjApproval.gql" />
@@ -93,6 +99,9 @@
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\AdvancedSendAsset.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\ApproveEnj.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\ApproveMaxEnj.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\project\mutation\BridgeAsset.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\project\mutation\BridgeAssets.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\project\mutation\BridgeClaimAsset.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\CompleteTrade.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\CreateAsset.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\CreatePlayer.gql" />
@@ -124,6 +133,9 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\AdvancedSendAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\ApproveEnj.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\ApproveMaxEnj.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\BridgeAsset.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\BridgeAssets.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\BridgeClaimAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\CompleteTrade.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\CreateAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\CreatePlayer.gql" />
