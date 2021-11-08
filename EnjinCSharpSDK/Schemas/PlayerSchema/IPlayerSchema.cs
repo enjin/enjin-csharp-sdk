@@ -49,6 +49,27 @@ namespace Enjin.SDK.PlayerSchema
         Task<GraphqlResponse<Request>> ApproveMaxEnj(ApproveMaxEnj request);
 
         /// <summary>
+        /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.BridgeAsset"/> request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The task.</returns>
+        Task<GraphqlResponse<Request>> BridgeAsset(BridgeAsset request);
+
+        /// <summary>
+        /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.BridgeAssets"/> request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The task.</returns>
+        Task<GraphqlResponse<Request>> BridgeAssets(BridgeAssets request);
+
+        /// <summary>
+        /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.BridgeClaimAsset"/> request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The task.</returns>
+        Task<GraphqlResponse<Request>> BridgeClaimAsset(BridgeClaimAsset request);
+
+        /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.GetPlayer"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
