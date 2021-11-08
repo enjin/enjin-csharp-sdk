@@ -6,12 +6,12 @@
         <Company>Enjin Pte. Ltd.</Company>
         <Copyright>Enjin Pte. Ltd.</Copyright>
         <Authors>Evan Lindsay, Bishop Johnson</Authors>
-        <Version>1.0.0-alpha.1</Version>
+        <Version>1.0.0-alpha.2</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
-        <AssemblyInformationalVersion>1.0.0-alpha.1</AssemblyInformationalVersion>
-        <AssemblyVersion>1.0.0.1000</AssemblyVersion>
+        <AssemblyInformationalVersion>1.0.0-alpha.2</AssemblyInformationalVersion>
+        <AssemblyVersion>1.0.0.1001</AssemblyVersion>
         <PackageId>Enjin.Sdk.CSharp</PackageId>
-        <PackageVersion>1.0.0-alpha.1</PackageVersion>
+        <PackageVersion>1.0.0-alpha.2</PackageVersion>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageIcon>packageIcon.png</PackageIcon>
