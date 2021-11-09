@@ -10,6 +10,7 @@ Sign up to Enjin Cloud: [Kovan (Testnet)](https://kovan.cloud.enjin.io/),
 ### Resources
 
 * [Enjin Docs](https://docs.enjin.io)
+* [Doxygen Docs](https://enjin.github.io/enjin-csharp-sdk/sdk/latest/)
 
 ### Table of Contents
 * [Compatibility](#compatibility)
