@@ -2,7 +2,7 @@ name: github_pages
 
 on:
   release:
-    types: [released, prereleased]
+    types: [published]
   workflow_dispatch:
 
 permissions: write-all
