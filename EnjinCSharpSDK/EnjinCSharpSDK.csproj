@@ -13,7 +13,10 @@
         <PackageId>Enjin.Sdk.CSharp</PackageId>
         <PackageVersion>1.0.0-alpha.2</PackageVersion>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
+        
+        <!-- Currently fails possibly due to https://github.com/NuGet/Home/issues/10791 -->
+        <!-- <PackageReadmeFile>README.md</PackageReadmeFile> -->
+        
         <PackageIcon>packageIcon.png</PackageIcon>
         <PackageProjectUrl>https://enjin.io/</PackageProjectUrl>
         <PackageTags>enjin, sdk, blockchain</PackageTags>
@@ -41,8 +44,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="README.md" Pack="true" PackagePath="README.md" />
-        <None Include="packageIcon.png" Pack="true" PackagePath="packageIcon.png" />
+        <!-- <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="true" PackagePath="" /> -->
+        <None Include="packageIcon.png" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <ItemGroup>
