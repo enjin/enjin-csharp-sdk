@@ -24,10 +24,6 @@ jobs:
         with:
           nuget-version: 'latest'
 
-      - name: Setup WireMock
-        run: |
-          dotnet dev-certs https
-
       - name: Setup VSTest
         uses: darenm/Setup-VSTest@v1
 
