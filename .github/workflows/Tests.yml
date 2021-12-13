@@ -1,0 +1,41 @@
+﻿name: Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions: read-all
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+        with:
+          nuget-version: 'latest'
+
+      - name: Setup VSTest
+        uses: darenm/Setup-VSTest@v1
+
+      - name: Navigate to Workspace
+        run: cd $GITHUB_WORKSPACE
+
+      - name: Restore Packages
+        run: nuget restore EnjinCSharpSDK.sln
+
+      - name: Build Solution
+        run: |
+          msbuild.exe EnjinCSharpSDK.sln /p:platform="Any CPU" /p:configuration="Release"
+
+      - name: Run Tests
+        run: vstest.console.exe .\TestSuite\bin\Release\net472\TestSuite.dll

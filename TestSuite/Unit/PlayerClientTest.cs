@@ -33,7 +33,7 @@ namespace TestSuite
         {
             _server = WireMockServer.Start(new WireMockServerSettings
             {
-                Urls = new[] {"https://localhost/"},
+                Urls = new[] {"http://localhost/"},
             });
         }
 
