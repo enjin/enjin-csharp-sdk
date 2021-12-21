@@ -33,9 +33,20 @@ namespace Enjin.SDK
     [PublicAPI]
     public class BaseSchema
     {
+        /// <summary>
+        /// Represents the logger provider that this class may use.
+        /// </summary>
+        /// <value>The logger provider.</value>
         public LoggerProvider? LoggerProvider { get; private set; }
 
+        /// <summary>
+        /// The middleware of this class.
+        /// </summary>
         protected readonly TrustedPlatformMiddleware Middleware;
+
+        /// <summary>
+        /// The schema type of this class.
+        /// </summary>
         protected readonly string Schema;
 
         private static readonly Encoding ENCODING = Encoding.UTF8;
@@ -87,7 +98,6 @@ namespace Enjin.SDK
         protected Task<GraphqlResponse<T>> SendRequest<T>(IGraphqlRequest request)
         {
             var uri = new Uri(Middleware.HttpClient.BaseAddress, $"/graphql/{Schema}");
-
             var payload = CreateRequestBody(request).ToString();
             var content = new StringContent(payload, ENCODING, JSON);
 
