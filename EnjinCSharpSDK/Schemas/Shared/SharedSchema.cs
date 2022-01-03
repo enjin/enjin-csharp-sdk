@@ -28,12 +28,6 @@ namespace Enjin.SDK.Shared
     [PublicAPI]
     public class SharedSchema : BaseSchema, ISharedSchema
     {
-        internal readonly IAssetService AssetService;
-        internal readonly IProjectService ProjectService;
-        internal readonly IBalanceService BalanceService;
-        internal readonly IPlatformService PlatformService;
-        internal readonly IRequestService RequestService;
-
         /// <summary>
         /// Sole constructor.
         /// </summary>
@@ -43,53 +37,48 @@ namespace Enjin.SDK.Shared
         protected SharedSchema(TrustedPlatformMiddleware middleware, string schema, LoggerProvider? loggerProvider) :
             base(middleware, schema, loggerProvider)
         {
-            AssetService = CreateService<IAssetService>();
-            ProjectService = CreateService<IProjectService>();
-            BalanceService = CreateService<IBalanceService>();
-            PlatformService = CreateService<IPlatformService>();
-            RequestService = CreateService<IRequestService>();
         }
-        
+
         /// <inheritdoc/>
         public Task<GraphqlResponse<bool?>> CancelTransaction(CancelTransaction request)
         {
-            return SendRequest(RequestService.Delete(Schema, CreateRequestBody(request)));
+            return SendRequest<bool?>(request);
         }
-        
+
         /// <inheritdoc/>
         public Task<GraphqlResponse<Asset>> GetAsset(GetAsset request)
         {
-            return SendRequest(AssetService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest<Asset>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<List<Asset>>> GetAssets(GetAssets request)
         {
-            return SendRequest(AssetService.GetMany(Schema, CreateRequestBody(request)));
+            return SendRequest<List<Asset>>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<List<Balance>>> GetBalances(GetBalances request)
         {
-            return SendRequest(BalanceService.GetMany(Schema, CreateRequestBody(request)));
+            return SendRequest<List<Balance>>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<GasPrices>> GetGasPrices(GetGasPrices request)
         {
-            return SendRequest(PlatformService.GetGasPrices(Schema, CreateRequestBody(request)));
+            return SendRequest<GasPrices>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<Platform>> GetPlatform(GetPlatform request)
         {
-            return SendRequest(PlatformService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest<Platform>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<Project>> GetProject(GetProject request)
         {
-            return SendRequest(ProjectService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest<Project>(request);
         }
 
         /// <inheritdoc/>
@@ -101,7 +90,7 @@ namespace Enjin.SDK.Shared
         /// <inheritdoc/>
         public Task<GraphqlResponse<List<Request>>> GetRequests(GetRequests request)
         {
-            return SendRequest(RequestService.GetMany(Schema, CreateRequestBody(request)));
+            return SendRequest<List<Request>>(request);
         }
 
         /// <summary>
@@ -111,7 +100,7 @@ namespace Enjin.SDK.Shared
         /// <returns>The task.</returns>
         protected Task<GraphqlResponse<Request>> TransactionRequest(IGraphqlRequest request)
         {
-            return SendRequest(RequestService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest<Request>(request);
         }
     }
 }

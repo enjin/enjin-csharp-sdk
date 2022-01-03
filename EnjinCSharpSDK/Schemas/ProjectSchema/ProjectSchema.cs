@@ -29,21 +29,14 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class ProjectSchema : SharedSchema, IProjectSchema
     {
-        private const string SCHEMA = "project";
-
-        internal readonly IPlayerService PlayerService;
-        internal readonly IWalletService WalletService;
-
         /// <summary>
         /// Sole constructor.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <param name="loggerProvider">The logger provider.</param>
         public ProjectSchema(TrustedPlatformMiddleware middleware, LoggerProvider? loggerProvider) :
-            base(middleware, SCHEMA, loggerProvider)
+            base(middleware, "project", loggerProvider)
         {
-            PlayerService = CreateService<IPlayerService>();
-            WalletService = CreateService<IWalletService>();
         }
 
         /// <inheritdoc/>
@@ -67,13 +60,13 @@ namespace Enjin.SDK.ProjectSchema
         /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer request)
         {
-            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
+            return SendRequest<AccessToken>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject request)
         {
-            return SendRequest(ProjectService.Auth(Schema, CreateRequestBody(request)));
+            return SendRequest<AccessToken>(request);
         }
 
         /// <inheritdoc/>
@@ -109,7 +102,7 @@ namespace Enjin.SDK.ProjectSchema
         /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request)
         {
-            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
+            return SendRequest<AccessToken>(request);
         }
 
         /// <inheritdoc/>
@@ -133,37 +126,37 @@ namespace Enjin.SDK.ProjectSchema
         /// <inheritdoc/>
         public Task<GraphqlResponse<bool?>> DeletePlayer(DeletePlayer request)
         {
-            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
+            return SendRequest<bool?>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request)
         {
-            return SendRequest(PlayerService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest<Player>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<List<Player>>> GetPlayers(GetPlayers request)
         {
-            return SendRequest(PlayerService.GetMany(Schema, CreateRequestBody(request)));
+            return SendRequest<List<Player>>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<Wallet>> GetWallet(GetWallet request)
         {
-            return SendRequest(WalletService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest<Wallet>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<List<Wallet>>> GetWallets(GetWallets request)
         {
-            return SendRequest(WalletService.GetMany(Schema, CreateRequestBody(request)));
+            return SendRequest<List<Wallet>>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<bool?>> InvalidateAssetMetadata(InvalidateAssetMetadata request)
         {
-            return SendRequest(AssetService.Delete(Schema, CreateRequestBody(request)));
+            return SendRequest<bool?>(request);
         }
 
         /// <inheritdoc/>
@@ -247,7 +240,7 @@ namespace Enjin.SDK.ProjectSchema
         /// <inheritdoc/>
         public Task<GraphqlResponse<bool?>> UnlinkWallet(UnlinkWallet request)
         {
-            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
+            return SendRequest<bool?>(request);
         }
     }
 }
