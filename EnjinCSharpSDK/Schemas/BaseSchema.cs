@@ -14,6 +14,8 @@
  */
 
 using System;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Enjin.SDK.Graphql;
 using Enjin.SDK.Serialization;
@@ -22,7 +24,6 @@ using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using Refit;
 
 namespace Enjin.SDK
 {
@@ -32,13 +33,29 @@ namespace Enjin.SDK
     [PublicAPI]
     public class BaseSchema
     {
+        /// <summary>
+        /// Represents the logger provider that this class may use.
+        /// </summary>
+        /// <value>The logger provider.</value>
         public LoggerProvider? LoggerProvider { get; private set; }
 
+        /// <summary>
+        /// The middleware of this class.
+        /// </summary>
         protected readonly TrustedPlatformMiddleware Middleware;
+
+        /// <summary>
+        /// The schema type of this class.
+        /// </summary>
         protected readonly string Schema;
+
+        private static readonly Encoding ENCODING = Encoding.UTF8;
+        private static readonly string JSON = "application/json";
 
         private static readonly JsonSerializerSettings SERIALIZER_SETTINGS = new JsonSerializerSettings
         {
+            ContractResolver = new PrivateSetterContractResolver(),
+            Converters = { new StringEnumConverter() },
             NullValueHandling = NullValueHandling.Ignore,
         };
 
@@ -67,61 +84,41 @@ namespace Enjin.SDK
 
             return new JObject
             {
-                {"query", query},
-                {"variables", variables}
-            };
-        }
-
-        /// <summary>
-        /// Creates a rest service for the type.
-        /// </summary>
-        /// <typeparam name="T">The type to create the service for.</typeparam>
-        /// <returns>The type as a rest service.</returns>
-        protected T CreateService<T>()
-        {
-            return RestService.For<T>(Middleware.HttpClient, CreateRefitSettings());
-        }
-
-        private static RefitSettings CreateRefitSettings()
-        {
-            return new RefitSettings
-            {
-                ContentSerializer = new NewtonsoftJsonContentSerializer(CreateSerializerSettings())
-            };
-        }
-
-        private static JsonSerializerSettings CreateSerializerSettings()
-        {
-            return new JsonSerializerSettings()
-            {
-                ContractResolver = new PrivateSetterContractResolver(),
-                Converters = {new StringEnumConverter()}
+                { "query", query },
+                { "variables", variables }
             };
         }
 
         /// <summary>
         /// Sends a request asynchronously.
         /// </summary>
-        /// <param name="taskIn">The task that will start the request.</param>
+        /// <param name="request">The request.</param>
         /// <typeparam name="T">The type of the response.</typeparam>
         /// <returns>The task that will contain the response.</returns>
-        protected Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn)
+        protected Task<GraphqlResponse<T>> SendRequest<T>(IGraphqlRequest request)
         {
-            return taskIn.ContinueWith(task =>
+            var uri = new Uri(Middleware.HttpClient.BaseAddress, $"/graphql/{Schema}");
+            var payload = CreateRequestBody(request).ToString();
+            var content = new StringContent(payload, ENCODING, JSON);
+
+            return Middleware.HttpClient.PostAsync(uri, content).ContinueWith(task =>
             {
+                var result = task.Result;
+
                 try
                 {
-                    var result = task.Result;
-                    return result.IsSuccessStatusCode
-                        ? result.Content
-                        : JsonConvert.DeserializeObject<GraphqlResponse<T>>(result.Error.Content);
+                    return JsonConvert.DeserializeObject<GraphqlResponse<T>>(result.Content.ReadAsStringAsync().Result);
                 }
                 catch (Exception e)
                 {
-                    LoggerProvider?.Log(LogLevel.SEVERE,
+                    LoggerProvider?.Log(LogLevel.ERROR,
                                         "An error occured while processing a request or a response.",
                                         e);
                     throw;
+                }
+                finally
+                {
+                    result?.Dispose();
                 }
             });
         }
