@@ -31,15 +31,17 @@ namespace Enjin.SDK.Http
         private readonly LoggerProvider _loggerProvider;
 
         /// <summary>
-        /// Constructs the handler with an optional inner handler.
+        /// Creates a new instance of the <see cref="HttpLoggingHandler"/> class with a specific inner handler.
         /// </summary>
         /// <param name="logLevel">The HTTP logging level.</param>
         /// <param name="loggerProvider">The logger provider.</param>
-        /// <param name="innerHandler">The handler to replace the default client handler.</param>
+        /// <param name="innerHandler">
+        /// The inner handler which is responsible for processing the HTTP response messages.
+        /// </param>
         internal HttpLoggingHandler(HttpLogLevel logLevel,
                                     LoggerProvider loggerProvider,
-                                    HttpMessageHandler? innerHandler = null)
-            : base(innerHandler ?? new HttpClientHandler())
+                                    HttpMessageHandler innerHandler)
+            : base(innerHandler)
         {
             _logLevel = logLevel;
             _loggerProvider = loggerProvider ?? throw new ArgumentNullException(nameof(loggerProvider));
