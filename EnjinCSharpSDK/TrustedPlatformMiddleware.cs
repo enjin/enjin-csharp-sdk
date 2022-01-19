@@ -59,29 +59,25 @@ namespace Enjin.SDK
             // Separates version from commit ID appended by SourceLink
             USER_AGENT_VERSION = version.Split('+')[0];
         }
-        
+
         /// <summary>
         /// Sole constructor.
         /// </summary>
         /// <param name="baseAddress">The base URI.</param>
         /// <param name="logLevel">The HTTP log level.</param>
         /// <param name="loggerProvider">The logger provider.</param>
-        public TrustedPlatformMiddleware(Uri baseAddress, HttpLogLevel logLevel, LoggerProvider? loggerProvider = null)
+        public TrustedPlatformMiddleware(Uri baseAddress,
+                                         HttpLogLevel logLevel = HttpLogLevel.NONE,
+                                         LoggerProvider? loggerProvider = null)
         {
-            HttpHandler = new TrustedPlatformHandler();
-            HttpClient = CreateHttpClient(baseAddress, logLevel, loggerProvider);
+            HttpHandler = CreateHttpHandler(logLevel, loggerProvider);
+            HttpClient = CreateHttpClient(baseAddress);
             Registry = new GraphqlQueryRegistry();
         }
 
-        private HttpClient CreateHttpClient(Uri baseAddress,
-                                            HttpLogLevel logLevel,
-                                            LoggerProvider? loggerProvider = null)
+        private HttpClient CreateHttpClient(Uri baseAddress)
         {
-            var messageHandler = loggerProvider == null
-                ? HttpHandler
-                : (HttpMessageHandler) new HttpLoggingHandler(logLevel, loggerProvider, HttpHandler);
-
-            var client = new HttpClient(messageHandler)
+            var client = new HttpClient(HttpHandler)
             {
                 BaseAddress = baseAddress,
             };
@@ -89,6 +85,14 @@ namespace Enjin.SDK
             client.DefaultRequestHeaders.UserAgent.TryParseAdd($"Enjin C# SDK v{USER_AGENT_VERSION}");
 
             return client;
+        }
+
+        private TrustedPlatformHandler CreateHttpHandler(HttpLogLevel logLevel, LoggerProvider? loggerProvider = null)
+        {
+            var clientHandler = new HttpClientHandler();
+            return logLevel == HttpLogLevel.NONE || loggerProvider == null
+                ? new TrustedPlatformHandler(clientHandler)
+                : new TrustedPlatformHandler(new HttpLoggingHandler(logLevel, loggerProvider, clientHandler));
         }
     }
 }
