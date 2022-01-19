@@ -28,11 +28,12 @@ namespace Enjin.SDK.Http
         private string? _authToken;
 
         /// <summary>
-        /// Constructs the handler with an optional inner handler.
+        /// Creates a new instance of the <see cref="TrustedPlatformHandler"/> class with a specific inner handler.
         /// </summary>
-        /// <param name="innerHandler">The handler to replace the default client handler.</param>
-        public TrustedPlatformHandler(HttpMessageHandler? innerHandler = null)
-            : base(innerHandler ?? new HttpClientHandler())
+        /// <param name="innerHandler">
+        /// The inner handler which is responsible for processing the HTTP response messages.
+        /// </param>
+        public TrustedPlatformHandler(HttpMessageHandler innerHandler) : base(innerHandler)
         {
         }
 
@@ -52,9 +53,8 @@ namespace Enjin.SDK.Http
         public bool IsAuthenticated => !string.IsNullOrWhiteSpace(_authToken);
 
         /// <inheritdoc/>
-        protected override async Task<HttpResponseMessage> SendAsync(
-            HttpRequestMessage request,
-            CancellationToken cancellationToken
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+                                                                     CancellationToken cancellationToken
         )
         {
             if (IsAuthenticated)
