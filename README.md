@@ -1,6 +1,7 @@
 # Blockchain SDK by Enjin for C#
 
-![Tests](https://github.com/enjin/enjin-csharp-sdk/actions/workflows/Tests.yml/badge.svg?branch=master)
+[![NuGet](https://img.shields.io/nuget/v/Enjin.Sdk.CSharp.svg)](https://www.nuget.org/packages/Enjin.Sdk.CSharp/)
+[![Tests](https://github.com/enjin/enjin-csharp-sdk/actions/workflows/Tests.yml/badge.svg?branch=master)](https://github.com/enjin/enjin-csharp-sdk/actions/workflows/Tests.yml)
 
 Create blockchain video games and applications using the C# programming language.
 
@@ -15,16 +16,27 @@ Sign up to Enjin Cloud: [Kovan (Testnet)](https://kovan.cloud.enjin.io/),
 * [Doxygen Docs](https://enjin.github.io/enjin-csharp-sdk/sdk/latest/)
 
 ### Table of Contents
+
 * [Compatibility](#compatibility)
+* [Installation](#installation)
 * [Quick Start](#quick-start)
 * [Contributing](#contributing)
-  * [Issues](#issues)
-  * [Pull Requests](#pull-requests)
+    * [Issues](#issues)
+    * [Pull Requests](#pull-requests)
 * [Copyright and Licensing](#copyright-and-licensing)
 
 ## Compatibility
 
 The Enjin C# SDK is targeted for .NET Standard 2.0.
+
+## Installation
+
+This SDK is available on [NuGet](https://www.nuget.org/packages/Enjin.Sdk.CSharp) and may be installed with the
+following package manager command:
+
+```
+PM> Install-Package Enjin.Sdk.CSharp
+```
 
 ## Quick Start
 
