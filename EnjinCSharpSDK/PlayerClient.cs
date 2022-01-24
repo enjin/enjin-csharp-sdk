@@ -15,6 +15,7 @@
 
 using System;
 using Enjin.SDK.Http;
+using Enjin.SDK.Models;
 using Enjin.SDK.Utils;
 using JetBrains.Annotations;
 
@@ -27,21 +28,27 @@ namespace Enjin.SDK
     [PublicAPI]
     public class PlayerClient : PlayerSchema.PlayerSchema, IClient
     {
-        private PlayerClient(Uri baseUri, HttpLogLevel httpLogLevel, LoggerProvider? loggerProvider) :
-            base(new TrustedPlatformMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
-        {
-        }
-
         /// <inheritdoc/>
         public bool IsAuthenticated => Middleware.HttpHandler.IsAuthenticated;
 
         /// <inheritdoc/>
         public bool IsClosed { get; private set; }
 
+        private PlayerClient(Uri baseUri, HttpLogLevel httpLogLevel, LoggerProvider? loggerProvider)
+            : base(new TrustedPlatformMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
+        {
+        }
+
         /// <inheritdoc/>
         public void Auth(string? token)
         {
             Middleware.HttpHandler.AuthToken = token;
+        }
+
+        /// <inheritdoc/>
+        public void Auth(AccessToken? accessToken)
+        {
+            Middleware.HttpHandler.AuthToken = accessToken?.Token;
         }
 
         /// <inheritdoc/>
@@ -67,7 +74,7 @@ namespace Enjin.SDK
         public class PlayerClientBuilder
         {
             private Uri? _baseUri;
-            private HttpLogLevel _httpLogLevel = Http.HttpLogLevel.NONE;
+            private HttpLogLevel? _httpLogLevel;
             private LoggerProvider? _loggerProvider;
 
             internal PlayerClientBuilder()
@@ -86,7 +93,9 @@ namespace Enjin.SDK
                 if (_baseUri == null)
                     throw new InvalidOperationException($"Cannot build {nameof(PlayerClient)} with null base URI.");
 
-                return new PlayerClient(_baseUri, _httpLogLevel, _loggerProvider);
+                return new PlayerClient(_baseUri,
+                                        _httpLogLevel ?? Http.HttpLogLevel.NONE,
+                                        _loggerProvider);
             }
 
             /// <summary>
