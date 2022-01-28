@@ -27,8 +27,8 @@ namespace TestSuite
     public class EventTypeDefTest
     {
         [TestCase("project")]
-        [TestCase("enjincloud.kovan.wallet.0x0")]
-        [TestCase("enjincloud.kovan.wallet.0x0", "enjincloud.kovan.asset.0x0")]
+        [TestCase("enjincloud.test.wallet.0x0")]
+        [TestCase("enjincloud.test.wallet.0x0", "enjincloud.test.asset.0x0")]
         public void FilterByChannelTypes_ReturnsDefsWithChannelType(params string[] channels)
         {
             // Arrange

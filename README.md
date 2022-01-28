@@ -55,7 +55,7 @@ public static class Program
     public static void Main()
     {
         // Builds the project client to run on the Kovan test network.
-        // See: https://goerli.cloud.enjin.io/ to sign up for the test network.
+        // See: https://goerli.cloud.enjin.io to sign up for the test network.
         ProjectClient client = new ProjectClient(EnjinHosts.GOERLI);
 
         // Creates the request to authenticate the client.
