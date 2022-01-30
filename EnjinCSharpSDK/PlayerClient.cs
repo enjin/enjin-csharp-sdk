@@ -15,7 +15,6 @@
 
 using System;
 using Enjin.SDK.Http;
-using Enjin.SDK.Models;
 using Enjin.SDK.Utils;
 using JetBrains.Annotations;
 
@@ -43,12 +42,6 @@ namespace Enjin.SDK
         public void Auth(string? token)
         {
             Middleware.HttpHandler.AuthToken = token;
-        }
-
-        /// <inheritdoc/>
-        public void Auth(AccessToken? accessToken)
-        {
-            Middleware.HttpHandler.AuthToken = accessToken?.Token;
         }
 
         /// <inheritdoc/>

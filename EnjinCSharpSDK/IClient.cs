@@ -14,7 +14,6 @@
  */
 
 using System;
-using Enjin.SDK.Models;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK
@@ -36,17 +35,11 @@ namespace Enjin.SDK
         /// </summary>
         /// <value>Whether the client is closed.</value>
         bool IsClosed { get; }
-        
+
         /// <summary>
         /// Authenticates the client with the given token.
         /// </summary>
         /// <param name="token">The auth token.</param>
         void Auth(string? token);
-
-        /// <summary>
-        /// Authenticates the client using the given access token model.
-        /// </summary>
-        /// <param name="accessToken">The access token model.</param>
-        void Auth(AccessToken? accessToken);
     }
 }

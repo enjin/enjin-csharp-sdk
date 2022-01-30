@@ -14,6 +14,7 @@
  */
 
 using System;
+using System.Threading.Tasks;
 using System.Timers;
 using Enjin.SDK.Http;
 using Enjin.SDK.Models;
@@ -31,11 +32,14 @@ namespace Enjin.SDK
     public class ProjectClient : ProjectSchema.ProjectSchema, IClient
     {
         private readonly Timer? _authTimer;
-        private readonly string? _uuid;
-        private readonly string? _secret;
+        private string? _uuid;
+        private string? _secret;
+
+        // Mutexes
+        private readonly object _authMutex = new object();
 
         /// <summary>
-        /// Amount of time in seconds to preempt the expiration period of a access token.
+        /// Amount of time in seconds to preempt the expiration period of an access token.
         /// </summary>
         private const int PreemptAuthExpirationTime = 60;
 
@@ -46,7 +50,7 @@ namespace Enjin.SDK
         /// Represents whether this client is enabled for automatic authentication.
         /// </summary>
         /// <value>Whether this client is enabled for automatic authentication.</value>
-        public bool IsAutomaticAuthenticationEnabled { get; }
+        public bool IsAutomaticReauthenticationEnabled { get; private set; }
 
         /// <inheritdoc/>
         public bool IsClosed { get; private set; }
@@ -55,109 +59,179 @@ namespace Enjin.SDK
         /// Represents whether the authentication timer is running.
         /// </summary>
         /// <value>Whether the authentication timer is running.</value>
-        public bool IsTimerRunning { get; private set; }
+        public bool IsReauthenticationRunning
+        {
+            get
+            {
+                lock (_authMutex)
+                {
+                    return _authTimer?.Enabled ?? false;
+                }
+            }
+        }
 
         /// <summary>
         /// Event handler for when the authentication timer is stopped.
         /// </summary>
-        public EventHandler? OnAutomaticAuthenticationStopped;
+        public EventHandler? OnAutomaticReauthenticationStopped;
 
         private ProjectClient(Uri baseUri,
-                              bool automaticAuthentication,
-                              string? uuid,
-                              string? secret,
+                              bool automaticReauthentication,
                               HttpLogLevel httpLogLevel,
                               LoggerProvider? loggerProvider)
             : base(new TrustedPlatformMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
         {
-            IsAutomaticAuthenticationEnabled = automaticAuthentication;
-            if (!IsAutomaticAuthenticationEnabled)
+            IsAutomaticReauthenticationEnabled = automaticReauthentication;
+            if (!IsAutomaticReauthenticationEnabled)
                 return;
 
-            if (uuid == null || secret == null)
-                throw new ArgumentException("Cannot enable client for automatic authentication without a UUID and secret.");
-
-            _uuid = uuid;
-            _secret = secret;
             _authTimer = new Timer
             {
                 AutoReset = false,
             };
-            _authTimer.Disposed += (sender, args) => IsTimerRunning = false;
             _authTimer.Elapsed += (sender, args) => SendRequestAndAuth();
-            SendRequestAndAuth();
         }
 
         /// <inheritdoc/>
+        /// <remarks>
+        /// If this client has automatic reauthentication enabled, then this method will halt the reauthentication
+        /// timer.
+        /// </remarks>
         public void Auth(string? token)
         {
-            Middleware.HttpHandler.AuthToken = token;
+            Auth(token, null);
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Authenticates the client using the given access token model.
+        /// </summary>
+        /// <param name="accessToken">The access token model.</param>
         /// <exception cref="ArgumentException">
         /// If <paramref name="accessToken"/> is not null and either its <see cref="AccessToken.Token"/> or
         /// <see cref="AccessToken.ExpiresIn"/> properties are null.
         /// </exception>
         /// <remarks>
-        /// If this client has automatic authentication enabled, then this method may restart the timer when
-        /// <paramref name="accessToken"/> has expiration data or stop the timer otherwise.
+        /// If this client has automatic reauthentication enabled, then this method may halt the reauthentication timer
+        /// when <paramref name="accessToken"/> is <c>null</c>. Otherwise the timer will be restarted.
         /// </remarks>
         public void Auth(AccessToken? accessToken)
         {
             if (accessToken != null && (accessToken.Token == null || accessToken.ExpiresIn == null))
-                throw new ArgumentException($"{nameof(accessToken)} has missing token or expiration data.");
+                throw new ArgumentException("Non-null access token has missing token or expiration data.");
 
-            if (IsAutomaticAuthenticationEnabled)
-                RestartAuthenticationTimer(accessToken);
+            Auth(accessToken?.Token, accessToken?.ExpiresIn);
+        }
 
-            Middleware.HttpHandler.AuthToken = accessToken?.Token;
+        /// <summary>
+        /// Sends a request to the platform to authenticate this client.
+        /// </summary>
+        /// <remarks>
+        /// If this client is enabled for automatic reauthentication, then it will cache the UUID and secret and
+        /// reauthenticate itself before the <see cref="AccessToken"/> returned by the platform expires.
+        /// </remarks>
+        /// <param name="uuid">The project's UUID.</param>
+        /// <param name="secret">The project's secret.</param>
+        /// <returns>The task for this operation.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// If <see cref="IsClosed"/>
+        /// If this client is closed at the time this method is called.
+        /// </exception>
+        public Task AuthClient(string uuid, string secret)
+        {
+            lock (_authMutex)
+            {
+                _uuid = uuid ?? throw new ArgumentNullException(nameof(uuid));
+                _secret = secret ?? throw new ArgumentNullException(nameof(secret));
+            }
+
+            return SendRequestAndAuth(uuid, secret);
         }
 
         /// <inheritdoc/>
         public void Dispose()
         {
-            _authTimer?.Close();
+            lock (_authMutex)
+            {
+                _authTimer?.Close();
+            }
+
             Middleware.HttpClient.Dispose();
             IsClosed = true;
         }
 
-        private void RestartAuthenticationTimer(AccessToken? accessToken)
+        /// <summary>
+        /// Sets the auth data for this client.
+        /// </summary>
+        /// <param name="token">The auth token.</param>
+        /// <param name="expiresIn">The time until the auth token expires.</param>
+        private void Auth(string? token, long? expiresIn)
         {
-            if (_authTimer == null)
-                return;
-
-            _authTimer.Stop();
-            IsTimerRunning = false;
-
-            if (accessToken is { ExpiresIn: { } })
+            var timerRestarted = false;
+            lock (_authMutex)
             {
-                var interval = accessToken.ExpiresIn.Value;
-                if (interval - PreemptAuthExpirationTime > 0)
-                    interval -= PreemptAuthExpirationTime;
+                if (IsAutomaticReauthenticationEnabled && _uuid != null && _secret != null)
+                    timerRestarted = RestartAuthenticationTimer(expiresIn);
+            }
 
-                _authTimer.Interval = interval * 1000; // Convert to milliseconds
-                _authTimer.Start();
-                IsTimerRunning = true;
-            }
-            else
+            Middleware.HttpHandler.AuthToken = token;
+
+            if (_authTimer != null && !timerRestarted)
+                OnAutomaticReauthenticationStopped?.Invoke(this, EventArgs.Empty);
+        }
+
+        private bool RestartAuthenticationTimer(long? expiresIn)
+        {
+            _authTimer!.Stop();
+
+            if (expiresIn == null || expiresIn <= 0)
+                return false;
+
+            if (expiresIn - PreemptAuthExpirationTime > 0)
+                expiresIn -= PreemptAuthExpirationTime;
+
+            _authTimer.Interval = expiresIn.Value * 1000; // Convert to milliseconds
+            _authTimer.Start();
+
+            return true;
+        }
+
+        private Task SendRequestAndAuth(string uuid, string secret)
+        {
+            if (uuid == null) throw new ArgumentNullException(nameof(uuid));
+            if (secret == null) throw new ArgumentNullException(nameof(secret));
+
+            var req = new AuthProject().Uuid(uuid).Secret(secret);
+            return AuthProject(req).ContinueWith(task =>
             {
-                OnAutomaticAuthenticationStopped?.Invoke(this, EventArgs.Empty);
-            }
+                if (task.IsFaulted)
+                {
+                    var e = task.Exception!;
+                    LoggerProvider?.Log(LogLevel.ERROR, "Automatic AuthProject request failed.", e);
+                    throw e;
+                }
+
+                var res = task.Result;
+                if (res.IsSuccess)
+                    Auth(res.Result);
+                else
+                    Auth(null, null);
+            });
         }
 
         private void SendRequestAndAuth()
         {
-            if (_uuid == null || _secret == null)
-                throw new InvalidOperationException("Client cannot automatically send auth request without a UUID or secret.");
-
-            var req = new AuthProject().Uuid(_uuid).Secret(_secret);
-            AuthProject(req).ContinueWith(task =>
+            string uuid;
+            string secret;
+            lock (_authMutex)
             {
-                // TODO: Perform checks on the task and the response.
-                var accessToken = task.Result.Result;
-                Auth(accessToken);
-            });
+                if (_uuid == null || _secret == null)
+                    throw new InvalidOperationException("Client cannot authenticate without a UUID and secret.");
+
+                uuid = _uuid;
+                secret = _secret;
+            }
+
+            SendRequestAndAuth(uuid, secret);
         }
 
         /// <summary>
@@ -177,8 +251,6 @@ namespace Enjin.SDK
         {
             private Uri? _baseUri;
             private bool? _automaticAuthentication;
-            private string? _uuid;
-            private string? _secret;
             private HttpLogLevel? _httpLogLevel;
             private LoggerProvider? _loggerProvider;
 
@@ -200,8 +272,6 @@ namespace Enjin.SDK
 
                 return new ProjectClient(_baseUri,
                                          _automaticAuthentication ?? false,
-                                         _uuid,
-                                         _secret,
                                          _httpLogLevel ?? Http.HttpLogLevel.NONE,
                                          _loggerProvider);
             }
@@ -219,16 +289,13 @@ namespace Enjin.SDK
             }
 
             /// <summary>
-            /// Enables the client to automatically authenticate itself.
+            /// Enables the client to automatically reauthenticate itself when authenticated through its
+            /// <see cref="ProjectClient.AuthClient"/> method.
             /// </summary>
-            /// <param name="uuid">The project's UUID.</param>
-            /// <param name="secret">The project's secret.</param>
             /// <returns>This builder for chaining.</returns>
-            public ProjectClientBuilder EnableAutomaticAuthentication(string uuid, string secret)
+            public ProjectClientBuilder EnableAutomaticReauthentication()
             {
                 _automaticAuthentication = true;
-                _uuid = uuid;
-                _secret = secret;
                 return this;
             }
 
