@@ -18,7 +18,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Enjin.SDK;
 using Enjin.SDK.Graphql;
-using Enjin.SDK.Http;
 using Enjin.SDK.Shared;
 using Enjin.SDK.Utils;
 using Newtonsoft.Json.Linq;
@@ -43,7 +42,7 @@ namespace TestSuite
         {
             _server = WireMockServer.Start(new WireMockServerSettings
             {
-                Urls = new[] {"http://localhost/"},
+                Urls = new[] { "http://localhost/" },
             });
         }
 
@@ -52,7 +51,7 @@ namespace TestSuite
         {
             _server.Reset();
 
-            var middleware = new TrustedPlatformMiddleware(new Uri(_server.Urls[0]), HttpLogLevel.NONE);
+            var middleware = new TrustedPlatformMiddleware(new Uri(_server.Urls[0]));
             ClassUnderTest = new TestableBaseSchema(middleware, "test");
         }
 
@@ -60,6 +59,7 @@ namespace TestSuite
         public static void AfterAll()
         {
             _server.Stop();
+            _server.Dispose();
         }
 
         [Test]
@@ -79,6 +79,7 @@ namespace TestSuite
         }
 
         [Test]
+        [Timeout(5000)]
         public void SendRequest_SuccessfulResponse_ReturnsResponseWithContent()
         {
             // Arrange - Data
@@ -91,7 +92,7 @@ namespace TestSuite
                                  .WithPath($"/graphql/{ClassUnderTest.Schema}")
                                  .UsingPost())
                    .RespondWith(Response.Create()
-                                        .WithStatusCode(HttpStatusCode.OK)
+                                        .WithSuccess()
                                         .WithHeader("Content-Type", "application/json")
                                         .WithBody(responseBody));
 
@@ -104,6 +105,7 @@ namespace TestSuite
         }
 
         [Test]
+        [Timeout(5000)]
         public void SendRequest_FailedResponse_ReturnsResponseWithErrors()
         {
             // Arrange - Data
