@@ -27,6 +27,9 @@ namespace Enjin.SDK.Http
     {
         private string? _authToken;
 
+        // Mutexes
+        private readonly object _authMutex = new object();
+
         /// <summary>
         /// Creates a new instance of the <see cref="TrustedPlatformHandler"/> class with a specific inner handler.
         /// </summary>
@@ -43,23 +46,36 @@ namespace Enjin.SDK.Http
         /// <value>The auth token.</value>
         public string? AuthToken
         {
-            set => _authToken = value;
+            set
+            {
+                lock (_authMutex)
+                    _authToken = value;
+            }
         }
 
         /// <summary>
         /// Represents if the SDK is authenticated.
         /// </summary>
         /// <value>Whether the SDK is authenticated.</value>
-        public bool IsAuthenticated => !string.IsNullOrWhiteSpace(_authToken);
+        public bool IsAuthenticated
+        {
+            get
+            {
+                lock (_authMutex)
+                    return !string.IsNullOrWhiteSpace(_authToken);
+            }
+        }
 
         /// <inheritdoc/>
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-                                                                     CancellationToken cancellationToken
-        )
+                                                                     CancellationToken cancellationToken)
         {
-            if (IsAuthenticated)
+            lock (_authMutex)
             {
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _authToken);
+                if (IsAuthenticated)
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _authToken);
+                }
             }
 
             return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
