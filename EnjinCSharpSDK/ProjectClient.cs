@@ -41,24 +41,24 @@ namespace Enjin.SDK
         /// <summary>
         /// Amount of time in seconds to preempt the expiration period of an access token.
         /// </summary>
-        private const int PreemptAuthExpirationTime = 60;
+        private static readonly short PREEMPT_AUTH_EXPIRATION_TIME = 60;
 
         /// <inheritdoc/>
         public bool IsAuthenticated => Middleware.HttpHandler.IsAuthenticated;
 
         /// <summary>
-        /// Represents whether this client is enabled for automatic authentication.
+        /// Represents whether this client is enabled for automatic reauthentication.
         /// </summary>
-        /// <value>Whether this client is enabled for automatic authentication.</value>
+        /// <value>Whether this client is enabled for automatic reauthentication.</value>
         public bool IsAutomaticReauthenticationEnabled { get; private set; }
 
         /// <inheritdoc/>
         public bool IsClosed { get; private set; }
 
         /// <summary>
-        /// Represents whether the authentication timer is running.
+        /// Represents whether the reauthentication timer is running.
         /// </summary>
-        /// <value>Whether the authentication timer is running.</value>
+        /// <value>Whether the reauthentication timer is running.</value>
         public bool IsReauthenticationRunning
         {
             get
@@ -132,12 +132,15 @@ namespace Enjin.SDK
         /// <param name="uuid">The project's UUID.</param>
         /// <param name="secret">The project's secret.</param>
         /// <returns>The task for this operation.</returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="InvalidOperationException">
         /// If <see cref="IsClosed"/>
         /// If this client is closed at the time this method is called.
         /// </exception>
         public Task AuthClient(string uuid, string secret)
         {
+            if (IsClosed)
+                throw new InvalidOperationException("Cannot authenticate after client was closed.");
+
             lock (_authMutex)
             {
                 _uuid = uuid ?? throw new ArgumentNullException(nameof(uuid));
@@ -186,8 +189,8 @@ namespace Enjin.SDK
             if (expiresIn == null || expiresIn <= 0)
                 return false;
 
-            if (expiresIn - PreemptAuthExpirationTime > 0)
-                expiresIn -= PreemptAuthExpirationTime;
+            if (expiresIn - PREEMPT_AUTH_EXPIRATION_TIME > 0)
+                expiresIn -= PREEMPT_AUTH_EXPIRATION_TIME;
 
             _authTimer.Interval = expiresIn.Value * 1000; // Convert to milliseconds
             _authTimer.Start();
@@ -250,7 +253,7 @@ namespace Enjin.SDK
         public class ProjectClientBuilder
         {
             private Uri? _baseUri;
-            private bool? _automaticAuthentication;
+            private bool? _automaticReauthentication;
             private HttpLogLevel? _httpLogLevel;
             private LoggerProvider? _loggerProvider;
 
@@ -271,7 +274,7 @@ namespace Enjin.SDK
                     throw new InvalidOperationException($"Cannot build {nameof(ProjectClient)} with null base URI.");
 
                 return new ProjectClient(_baseUri,
-                                         _automaticAuthentication ?? false,
+                                         _automaticReauthentication ?? false,
                                          _httpLogLevel ?? Http.HttpLogLevel.NONE,
                                          _loggerProvider);
             }
@@ -295,7 +298,7 @@ namespace Enjin.SDK
             /// <returns>This builder for chaining.</returns>
             public ProjectClientBuilder EnableAutomaticReauthentication()
             {
-                _automaticAuthentication = true;
+                _automaticReauthentication = true;
                 return this;
             }
 

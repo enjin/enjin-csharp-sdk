@@ -123,8 +123,8 @@ namespace TestSuite
     [TestFixture]
     public class ProjectClientReauthenticateTest
     {
-        private const string FakeUuid = "FakeUuid";
-        private const string FakeSecret = "FakeSecret";
+        private const string FakeUuid = "Fake Uuid";
+        private const string FakeSecret = "Fake Secret";
 
         private static WireMockServer _server;
 
@@ -166,7 +166,7 @@ namespace TestSuite
         public void Auth_GivenAccessTokenWhileClientHasNullUuidAndSecret_DoesNotStartReauthenticationTimer()
         {
             // Arrange
-            AccessToken fakeToken = CreateFakeAccessToken("xyz", 5000);
+            AccessToken fakeToken = CreateFakeAccessToken("xyz", 1000);
 
             // Assumption
             Assume.That(ClassUnderTest.IsAutomaticReauthenticationEnabled, "Automatic reauthentication is disabled.");
@@ -191,13 +191,14 @@ namespace TestSuite
             string expectedHeaderValue = $"Bearer {authToken}";
             IRequestBuilder requestBuilder = Request.Create().WithPath(expectedPath).UsingPost();
             AccessToken fakeToken = CreateFakeAccessToken(authToken, 1);
+            string responseBody = $"{{\"data\":{{\"result\":{JObject.FromObject(fakeToken)}}}}}";
 
-            // Arrange - Stubbing
+            // Arrange - Mocking
             _server.Given(requestBuilder)
                    .RespondWith(Response.Create()
                                         .WithSuccess()
                                         .WithHeader("Content-Type", "application/json")
-                                        .WithBody($"{{\"data\":{{\"result\":{JObject.FromObject(fakeToken)}}}}}"));
+                                        .WithBody(responseBody));
 
             // Assumption
             Assume.That(ClassUnderTest.IsAutomaticReauthenticationEnabled, "Automatic reauthentication is disabled.");
@@ -233,6 +234,7 @@ namespace TestSuite
             // Arrange - Data
             bool verificationFlag = false;
             AccessToken fakeToken = CreateFakeAccessToken("xyz", 1000);
+            string responseBody = $"{{\"data\":{{\"result\":{JObject.FromObject(fakeToken)}}}}}";
 
             // Arrange - Stubbing
             _server.Given(Request.Create()
@@ -241,11 +243,11 @@ namespace TestSuite
                    .RespondWith(Response.Create()
                                         .WithSuccess()
                                         .WithHeader("Content-Type", "application/json")
-                                        .WithBody($"{{\"data\":{{\"result\":{JObject.FromObject(fakeToken)}}}}}"));
+                                        .WithBody(responseBody));
 
             // Arrange - Data (continued)
-            ClassUnderTest.AuthClient(FakeUuid, FakeSecret).Wait();
             ClassUnderTest.OnAutomaticReauthenticationStopped += (sender, args) => verificationFlag = true;
+            ClassUnderTest.AuthClient(FakeUuid, FakeSecret).Wait();
 
             // Assumption
             Assume.That(ClassUnderTest.IsAuthenticated, "Is not authenticated.");
@@ -272,6 +274,7 @@ namespace TestSuite
             bool verificationFlag = false;
             AccessToken badToken = CreateFakeAccessToken("xyz", expiresIn);
             AccessToken fakeToken = CreateFakeAccessToken("xyz", 1000);
+            string responseBody = $"{{\"data\":{{\"result\":{JObject.FromObject(fakeToken)}}}}}";
 
             // Arrange - Stubbing
             _server.Given(Request.Create()
@@ -280,11 +283,11 @@ namespace TestSuite
                    .RespondWith(Response.Create()
                                         .WithSuccess()
                                         .WithHeader("Content-Type", "application/json")
-                                        .WithBody($"{{\"data\":{{\"result\":{JObject.FromObject(fakeToken)}}}}}"));
+                                        .WithBody(responseBody));
 
             // Arrange - Data (continued)
-            ClassUnderTest.AuthClient(FakeUuid, FakeSecret).Wait();
             ClassUnderTest.OnAutomaticReauthenticationStopped += (sender, args) => verificationFlag = true;
+            ClassUnderTest.AuthClient(FakeUuid, FakeSecret).Wait();
 
             // Assumption
             Assume.That(ClassUnderTest.IsAuthenticated, "Is not authenticated.");
