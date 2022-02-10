@@ -35,7 +35,7 @@ namespace Enjin.SDK
         /// </summary>
         /// <value>Whether the client is closed.</value>
         bool IsClosed { get; }
-        
+
         /// <summary>
         /// Authenticates the client with the given token.
         /// </summary>
