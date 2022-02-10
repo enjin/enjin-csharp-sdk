@@ -50,7 +50,7 @@ namespace Enjin.SDK
         /// Represents whether this client is enabled for automatic reauthentication.
         /// </summary>
         /// <value>Whether this client is enabled for automatic reauthentication.</value>
-        public bool IsAutomaticReauthenticationEnabled { get; private set; }
+        public bool IsAutomaticReauthenticationEnabled { get; }
 
         /// <inheritdoc/>
         public bool IsClosed { get; private set; }
@@ -162,11 +162,6 @@ namespace Enjin.SDK
             IsClosed = true;
         }
 
-        /// <summary>
-        /// Sets the auth data for this client.
-        /// </summary>
-        /// <param name="token">The auth token.</param>
-        /// <param name="expiresIn">The time until the auth token expires.</param>
         private void Auth(string? token, long? expiresIn)
         {
             var timerRestarted = false;
