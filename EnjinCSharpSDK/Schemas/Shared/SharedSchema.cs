@@ -51,7 +51,7 @@ namespace Enjin.SDK.Shared
         }
         
         /// <inheritdoc/>
-        public Task<GraphqlResponse<bool>> CancelTransaction(CancelTransaction request)
+        public Task<GraphqlResponse<bool?>> CancelTransaction(CancelTransaction request)
         {
             return SendRequest(RequestService.Delete(Schema, CreateRequestBody(request)));
         }

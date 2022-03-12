@@ -32,7 +32,7 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<bool>> CancelTransaction(CancelTransaction request);
+        Task<GraphqlResponse<bool?>> CancelTransaction(CancelTransaction request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Shared.GetAsset"/> request.

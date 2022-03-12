@@ -131,7 +131,7 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer request)
+        public Task<GraphqlResponse<bool?>> DeletePlayer(DeletePlayer request)
         {
             return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
         }
@@ -161,7 +161,7 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<bool>> InvalidateAssetMetadata(InvalidateAssetMetadata request)
+        public Task<GraphqlResponse<bool?>> InvalidateAssetMetadata(InvalidateAssetMetadata request)
         {
             return SendRequest(AssetService.Delete(Schema, CreateRequestBody(request)));
         }
@@ -245,7 +245,7 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request)
+        public Task<GraphqlResponse<bool?>> UnlinkWallet(UnlinkWallet request)
         {
             return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
         }
