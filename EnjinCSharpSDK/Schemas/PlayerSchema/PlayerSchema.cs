@@ -130,7 +130,7 @@ namespace Enjin.SDK.PlayerSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request)
+        public Task<GraphqlResponse<bool?>> UnlinkWallet(UnlinkWallet request)
         {
             return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
         }

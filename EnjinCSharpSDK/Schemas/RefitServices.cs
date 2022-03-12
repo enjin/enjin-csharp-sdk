@@ -90,7 +90,7 @@ namespace Enjin.SDK
     internal interface IDelete
     {
         [Post("/graphql/{schema}")]
-        Task<ApiResponse<GraphqlResponse<bool>>> Delete(string schema,
+        Task<ApiResponse<GraphqlResponse<bool?>>> Delete(string schema,
             [Body(BodySerializationMethod.Serialized)] JObject body);
     }
 }
