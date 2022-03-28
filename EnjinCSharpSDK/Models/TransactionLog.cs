@@ -16,7 +16,6 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Enjin.SDK.Models
 {
@@ -32,35 +31,35 @@ namespace Enjin.SDK.Models
         /// <value>The block number.</value>
         [JsonProperty("blockNumber")]
         public int? BlockNumber { get; private set; }
-        
+
         /// <summary>
         /// Represents the originating address.
         /// </summary>
         /// <value>The address.</value>
         [JsonProperty("address")]
         public string? Address { get; private set; }
-        
+
         /// <summary>
         /// Represents the hash of the transaction.
         /// </summary>
         /// <value>The transaction hash.</value>
         [JsonProperty("transactionHash")]
         public string? TransactionHash { get; private set; }
-        
+
         /// <summary>
         /// Represents the list of data objects.
         /// </summary>
         /// <value>The list of data.</value>
         [JsonProperty("data")]
-        public List<JObject>? Data { get; private set; }
-        
+        public List<IDictionary<string, object>>? Data { get; private set; }
+
         /// <summary>
         /// Represents the list of topics.
         /// </summary>
         /// <value>The list of topics.</value>
         [JsonProperty("topics")]
-        public List<JObject>? Topics { get; private set; }
-        
+        public List<IDictionary<string, object>>? Topics { get; private set; }
+
         /// <summary>
         /// Represents the transaction event.
         /// </summary>
