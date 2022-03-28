@@ -63,22 +63,6 @@ namespace TestSuite
         }
 
         [Test]
-        public void CreateRequestBody_ReturnHasQueryAndVariableAttributes()
-        {
-            // Arrange
-            const string queryKey = "query";
-            const string variablesKey = "variables";
-            var request = CreateValidRequest();
-
-            // Act
-            var body = ClassUnderTest.CreateRequestBody(request);
-
-            // Assert
-            Assert.NotNull(body[queryKey]);
-            Assert.NotNull(body[variablesKey]);
-        }
-
-        [Test]
         [Timeout(5000)]
         public void SendRequest_SuccessfulResponse_ReturnsResponseWithContent()
         {
@@ -138,8 +122,6 @@ namespace TestSuite
                 LoggerProvider.CreateDefaultLoggerProvider())
             {
             }
-
-            public new JToken CreateRequestBody(IGraphqlRequest request) => base.CreateRequestBody(request);
 
             public new Task<GraphqlResponse<T>> SendRequest<T>(IGraphqlRequest request) => base.SendRequest<T>(request);
         }
