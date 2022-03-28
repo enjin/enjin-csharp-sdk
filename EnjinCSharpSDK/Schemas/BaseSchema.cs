@@ -73,23 +73,6 @@ namespace Enjin.SDK
         }
 
         /// <summary>
-        /// Creates the serialized request body to be sent to the platform.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>The serialized object.</returns>
-        protected JObject CreateRequestBody(IGraphqlRequest request)
-        {
-            var query = Middleware.Registry.GetOperationForName(request.Namespace)?.CompiledContents;
-            var variables = JsonConvert.SerializeObject(request.Variables, Formatting.Indented, SERIALIZER_SETTINGS);
-
-            return new JObject
-            {
-                { "query", query },
-                { "variables", variables }
-            };
-        }
-
-        /// <summary>
         /// Sends a request asynchronously.
         /// </summary>
         /// <param name="request">The request.</param>
@@ -121,6 +104,23 @@ namespace Enjin.SDK
                     result?.Dispose();
                 }
             });
+        }
+
+        /// <summary>
+        /// Creates the serialized request body to be sent to the platform.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The serialized object.</returns>
+        private JObject CreateRequestBody(IGraphqlRequest request)
+        {
+            var query = Middleware.Registry.GetOperationForName(request.Namespace)?.CompiledContents;
+            var variables = JsonConvert.SerializeObject(request.Variables, Formatting.Indented, SERIALIZER_SETTINGS);
+
+            return new JObject
+            {
+                { "query", query },
+                { "variables", variables }
+            };
         }
     }
 }
