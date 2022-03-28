@@ -14,12 +14,15 @@
  */
 
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 [assembly: InternalsVisibleTo("TestSuite")]
+
 namespace Enjin.SDK.Models
 {
     /// <summary>
@@ -52,23 +55,27 @@ namespace Enjin.SDK.Models
         /// Represents the deserialized data of the notification.
         /// </summary>
         /// <value>The data (lazy loaded).</value>
-        public JObject Data => _data.Value;
+        public IDictionary<string, object> Data => _data.Value;
 
-        private readonly Lazy<JObject> _data;
+        private readonly Lazy<IDictionary<string, object>> _data;
 
         internal NotificationEvent(EventType type, string channel, string message)
         {
             Type = type;
             Channel = channel ?? throw new ArgumentNullException(nameof(channel));
             Message = message ?? throw new ArgumentNullException(nameof(message));
-            _data = new Lazy<JObject>(CreateEventData);
+            _data = new Lazy<IDictionary<string, object>>(CreateEventData);
         }
 
-        private JObject CreateEventData()
+        private IDictionary<string, object> CreateEventData()
         {
             if (Message == null)
                 throw new InvalidOperationException("Cannot deserialize null message");
-            return JsonConvert.DeserializeObject<JObject>(Message);
+
+            var obj = JsonConvert.DeserializeObject<JObject>(Message);
+            var dict = obj.ToObject<IDictionary<string, object>>() ?? new Dictionary<string, object>();
+
+            return new ReadOnlyDictionary<string, object>(dict);
         }
     }
 }

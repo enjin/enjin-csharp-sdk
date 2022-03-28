@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Enjin.SDK.Models
 {
@@ -31,28 +31,28 @@ namespace Enjin.SDK.Models
         /// <value>The ID.</value>
         [JsonProperty("id")]
         public int? Id { get; private set; }
-        
+
         /// <summary>
         /// Represents the ID of the asset this variant belongs to.
         /// </summary>
         /// <value>The ID.</value>
         [JsonProperty("assetId")]
         public string? AssetId { get; private set; }
-        
+
         /// <summary>
         /// Represents the metadata for this variant.
         /// </summary>
         /// <value>The metadata.</value>
         [JsonProperty("variantMetadata")]
-        public JObject? VariantMetadata { get; private set; }
-        
+        public IDictionary<string, object>? VariantMetadata { get; private set; }
+
         /// <summary>
         /// Represents the usage count of this variant.
         /// </summary>
         /// <value>The usage count.</value>
         [JsonProperty("usageCount")]
         public int? UsageCount { get; private set; }
-        
+
         /// <summary>
         /// Represents the datetime when this variant was created.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Enjin.SDK.Models
         /// </remarks>
         [JsonProperty("createdAt")]
         public string? CreatedAt { get; private set; }
-        
+
         /// <summary>
         /// Represents the datetime when this variant was last updated.
         /// </summary>
