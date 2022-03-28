@@ -131,7 +131,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<bool>> DeletePlayer(DeletePlayer request);
+        Task<GraphqlResponse<bool?>> DeletePlayer(DeletePlayer request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.GetPlayer"/> request.
@@ -166,7 +166,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<bool>> InvalidateAssetMetadata(InvalidateAssetMetadata request);
+        Task<GraphqlResponse<bool?>> InvalidateAssetMetadata(InvalidateAssetMetadata request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.MeltAsset"/> request.
@@ -264,6 +264,6 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request);
+        Task<GraphqlResponse<bool?>> UnlinkWallet(UnlinkWallet request);
     }
 }

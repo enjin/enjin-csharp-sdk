@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.3] - 2022-03-28
+### Fixed
+- Boolean responses of the `Delete` method in `IDelete` Refit service are now nullable.
+
 ## [1.0.0-alpha.2] - 2021-11-09
 ### Added
 - Added [Enjin Bridge mutations](https://docs.enjin.io/enjin-api/sending-and-receiving-requests/enjin-bridge)
@@ -27,6 +31,7 @@ requests which implement `ITransactionFragmentArguments`.
 ### Added
 - Initial alpha release.
 
-[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.alpha.2...HEAD
+[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.alpha.3...HEAD
+[1.0.0-alpha.3]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.alpha.2...1.0.0.alpha.3
 [1.0.0-alpha.2]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.1000...1.0.0.alpha.2
 [1.0.0.1000]: https://github.com/enjin/enjin-csharp-sdk/releases/tag/1.0.0.1000

@@ -130,6 +130,6 @@ namespace Enjin.SDK.PlayerSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<bool>> UnlinkWallet(UnlinkWallet request);
+        Task<GraphqlResponse<bool?>> UnlinkWallet(UnlinkWallet request);
     }
 }
