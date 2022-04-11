@@ -39,7 +39,7 @@ requests which implement `ITransactionFragmentArguments`.
 - Initial alpha release.
 
 [Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.4...HEAD
-[1.0.0-alpha.3]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.3...1.0.0-alpha.4
+[1.0.0-alpha.4]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.3...1.0.0-alpha.4
 [1.0.0-alpha.3]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.2...1.0.0-alpha.3
 [1.0.0-alpha.2]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.1000...1.0.0-alpha.2
 [1.0.0.1000]: https://github.com/enjin/enjin-csharp-sdk/releases/tag/1.0.0.1000
