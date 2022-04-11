@@ -27,8 +27,7 @@ namespace Enjin.SDK.ProjectSchema
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
     public class GetWallets : GraphqlRequest<GetWallets>,
-                              IWalletFragmentArguments<GetWallets>,
-                              IPaginationArguments<GetWallets>
+                              IWalletFragmentArguments<GetWallets>
     {
         /// <summary>
         /// Sole constructor.
