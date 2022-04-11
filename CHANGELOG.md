@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.4] - 2022-04-11
+### Changed
+- `GetWallets` query in project schema no longer implements `IPaginationArguments`.
+
+### Fixed
+- Fixed typo for `result` in `GetWallets.gql` template file for project schema.
+
 ## [1.0.0-alpha.3] - 2022-03-28
 ### Fixed
 - Boolean responses of the `Delete` method in `IDelete` Refit service are now nullable.
@@ -31,7 +38,8 @@ requests which implement `ITransactionFragmentArguments`.
 ### Added
 - Initial alpha release.
 
-[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.alpha.3...HEAD
-[1.0.0-alpha.3]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.alpha.2...1.0.0.alpha.3
-[1.0.0-alpha.2]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.1000...1.0.0.alpha.2
+[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.4...HEAD
+[1.0.0-alpha.3]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.3...1.0.0-alpha.4
+[1.0.0-alpha.3]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.2...1.0.0-alpha.3
+[1.0.0-alpha.2]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0.1000...1.0.0-alpha.2
 [1.0.0.1000]: https://github.com/enjin/enjin-csharp-sdk/releases/tag/1.0.0.1000
