@@ -27,12 +27,6 @@ namespace Enjin.SDK.Models
     [PublicAPI]
     public class BalanceFilter : Filter<BalanceFilter>
     {
-        [JsonProperty("projectUuid")]
-        private string? _projectUuid;
-
-        [JsonProperty("projectUuid_in")]
-        private List<string>? _projectUuidIn;
-
         [JsonProperty("assetId")]
         private string? _assetId;
 
@@ -50,28 +44,6 @@ namespace Enjin.SDK.Models
 
         [JsonProperty("value_is")]
         private Operator? _valueIs;
-
-        /// <summary>
-        /// Sets the project UUID to filter for.
-        /// </summary>
-        /// <param name="projectUuid">The project UUID.</param>
-        /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ProjectUuid(string? projectUuid)
-        {
-            _projectUuid = projectUuid;
-            return this;
-        }
-
-        /// <summary>
-        /// Sets the project UUIDs to filter for.
-        /// </summary>
-        /// <param name="projectUuids">The project UUIDs.</param>
-        /// <returns>This filter for chaining.</returns>
-        public BalanceFilter ProjectUuidIn(params string[]? projectUuids)
-        {
-            _projectUuidIn = projectUuids?.ToList();
-            return this;
-        }
 
         /// <summary>
         /// Sets the asset ID to filter for.
