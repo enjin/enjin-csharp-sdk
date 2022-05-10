@@ -79,7 +79,7 @@ namespace Enjin.SDK
                               bool automaticReauthentication,
                               HttpLogLevel httpLogLevel,
                               LoggerProvider? loggerProvider)
-            : base(new TrustedPlatformMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
+            : base(new ClientMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
         {
             IsAutomaticReauthenticationEnabled = automaticReauthentication;
             if (!IsAutomaticReauthenticationEnabled)

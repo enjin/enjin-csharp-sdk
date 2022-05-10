@@ -23,16 +23,16 @@ using NUnit.Framework;
 namespace TestSuite
 {
     [TestFixture]
-    public class TrustedPlatformHandlerTest
+    public class ClientHandlerTest
     {
         private HttpMessageHandler MockMessageHandler { get; set; }
-        private TestableTrustedPlatformHandler ClassUnderTest { get; set; }
+        private TestableClientHandler ClassUnderTest { get; set; }
 
         [SetUp]
         public void BeforeEach()
         {
             MockMessageHandler = Mock.Of<HttpMessageHandler>();
-            ClassUnderTest = new TestableTrustedPlatformHandler(MockMessageHandler);
+            ClassUnderTest = new TestableClientHandler(MockMessageHandler);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace TestSuite
             Assert.AreEqual(expectedSchema, request.Headers.Authorization.Scheme);
             Assert.AreEqual(expectedToken, request.Headers.Authorization.Parameter);
         }
-        
+
         [Test]
         public void SendAsync_AuthTokenIsNullOrWhiteSpace_AuthorizationIsNotSet([Values("", "   ", null)] string token)
         {
@@ -62,7 +62,7 @@ namespace TestSuite
             ClassUnderTest.AuthToken = token;
 
             Assume.That(request.Headers.Authorization, Is.Null);
-            
+
             // Act
             ClassUnderTest.SendAsync(request, dummyCancellationToken);
 
@@ -82,7 +82,7 @@ namespace TestSuite
             // Assert
             Assert.IsTrue(actual);
         }
-        
+
         [Test]
         public void IsAuthenticated_AuthTokenIsNullOrWhiteSpace_ReturnsFalse([Values("", "   ", null)] string token)
         {
@@ -96,15 +96,17 @@ namespace TestSuite
             Assert.IsFalse(actual);
         }
 
-        private class TestableTrustedPlatformHandler : TrustedPlatformHandler
+        private class TestableClientHandler : ClientHandler
         {
-            public TestableTrustedPlatformHandler(HttpMessageHandler innerHandler) : base(innerHandler)
+            public TestableClientHandler(HttpMessageHandler innerHandler) : base(innerHandler)
             {
             }
 
             public new Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-                                                           CancellationToken cancellationToken) =>
-                base.SendAsync(request, cancellationToken);
+                                                           CancellationToken cancellationToken)
+            {
+                return base.SendAsync(request, cancellationToken);
+            }
         }
     }
 }

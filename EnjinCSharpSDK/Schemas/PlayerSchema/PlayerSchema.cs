@@ -33,7 +33,7 @@ namespace Enjin.SDK.PlayerSchema
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <param name="loggerProvider">The logger provider.</param>
-        public PlayerSchema(TrustedPlatformMiddleware middleware, LoggerProvider? loggerProvider) :
+        public PlayerSchema(ClientMiddleware middleware, LoggerProvider? loggerProvider) :
             base(middleware, "player", loggerProvider)
         {
         }

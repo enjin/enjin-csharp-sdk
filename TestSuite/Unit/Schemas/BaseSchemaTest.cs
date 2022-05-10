@@ -51,7 +51,7 @@ namespace TestSuite
         {
             _server.Reset();
 
-            var middleware = new TrustedPlatformMiddleware(new Uri(_server.Urls[0]));
+            var middleware = new ClientMiddleware(new Uri(_server.Urls[0]));
             ClassUnderTest = new TestableBaseSchema(middleware, "test");
         }
 
@@ -118,7 +118,7 @@ namespace TestSuite
         {
             public new string Schema => base.Schema;
 
-            public TestableBaseSchema(TrustedPlatformMiddleware middleware, string schema) : base(middleware, schema,
+            public TestableBaseSchema(ClientMiddleware middleware, string schema) : base(middleware, schema,
                 LoggerProvider.CreateDefaultLoggerProvider())
             {
             }

@@ -34,7 +34,7 @@ namespace Enjin.SDK
         public bool IsClosed { get; private set; }
 
         private PlayerClient(Uri baseUri, HttpLogLevel httpLogLevel, LoggerProvider? loggerProvider)
-            : base(new TrustedPlatformMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
+            : base(new ClientMiddleware(baseUri, httpLogLevel, loggerProvider), loggerProvider)
         {
         }
 
