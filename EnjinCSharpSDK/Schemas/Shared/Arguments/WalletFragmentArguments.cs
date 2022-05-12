@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-using Enjin.SDK.Graphql;
+using Enjin.SDK.Models;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.Shared
@@ -24,16 +24,31 @@ namespace Enjin.SDK.Shared
     /// <typeparam name="T">The type of the implementing class.</typeparam>
     /// <seealso cref="Enjin.SDK.Models.Wallet"/>
     [PublicAPI]
-    public interface IWalletFragmentArguments<out T> : IAssetFragmentArguments<T>
+    public interface IWalletFragmentArguments<out T> : IAssetFragmentArguments<T>,
+                                                       IBalanceFragmentArguments<T>,
+                                                       ITransactionFragmentArguments<T>
     {
     }
-    
+
     /// <summary>
     /// Class with extension methods for <see cref="IWalletFragmentArguments{T}"/>.
     /// </summary>
     [PublicAPI]
     public static class WalletFragmentArguments
     {
+        /// <summary>
+        /// Sets the balance filter.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <param name="filter">The filter.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        public static T WalletBalanceFilter<T>(this T instance, BalanceFilter? filter)
+            where T : IWalletFragmentArguments<T>
+        {
+            return instance.SetVariable("walletBalanceFilter", filter);
+        }
+
         /// <summary>
         /// Sets the request to include the assets the wallet created with the wallet.
         /// </summary>
@@ -43,6 +58,28 @@ namespace Enjin.SDK.Shared
         public static T WithAssetsCreated<T>(this T instance) where T : IWalletFragmentArguments<T>
         {
             return instance.SetVariable("withAssetsCreated", true);
+        }
+
+        /// <summary>
+        /// Sets the request to include the balances with the wallet.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        public static T WithWalletBalances<T>(this T instance) where T : IWalletFragmentArguments<T>
+        {
+            return instance.SetVariable("withWalletBalances", true);
+        }
+
+        /// <summary>
+        /// Sets the request to include the balances with the wallet.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        public static T WithWalletTransactions<T>(this T instance) where T : IWalletFragmentArguments<T>
+        {
+            return instance.SetVariable("withWalletTransactions", true);
         }
     }
 }
