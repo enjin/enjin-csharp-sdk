@@ -183,6 +183,17 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
+        /// Sets the request to include the Project with its UUID that the transaction belongs to.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        public static T WithTransactionWalletAddress<T>(this T instance) where T : ITransactionFragmentArguments<T>
+        {
+            return instance.SetVariable("withTransactionWalletAddress", true);
+        }
+
+        /// <summary>
         /// Sets the desired asset ID format when used with <see cref="WithAssetData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
