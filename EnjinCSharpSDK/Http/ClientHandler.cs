@@ -21,9 +21,9 @@ using System.Threading.Tasks;
 namespace Enjin.SDK.Http
 {
     /// <summary>
-    /// Handler used by the HTTP client.
+    /// HTTP handler for platform clients.
     /// </summary>
-    public class TrustedPlatformHandler : DelegatingHandler
+    public class ClientHandler : DelegatingHandler
     {
         private string? _authToken;
 
@@ -31,17 +31,17 @@ namespace Enjin.SDK.Http
         private readonly object _authMutex = new object();
 
         /// <summary>
-        /// Creates a new instance of the <see cref="TrustedPlatformHandler"/> class with a specific inner handler.
+        /// Creates a new instance of the <see cref="ClientHandler"/> class with a specific inner handler.
         /// </summary>
         /// <param name="innerHandler">
         /// The inner handler which is responsible for processing the HTTP response messages.
         /// </param>
-        public TrustedPlatformHandler(HttpMessageHandler innerHandler) : base(innerHandler)
+        public ClientHandler(HttpMessageHandler innerHandler) : base(innerHandler)
         {
         }
 
         /// <summary>
-        /// Represents the authentication token for the SDK.
+        /// Represents the authentication token for the client.
         /// </summary>
         /// <value>The auth token.</value>
         public string? AuthToken
@@ -54,7 +54,7 @@ namespace Enjin.SDK.Http
         }
 
         /// <summary>
-        /// Represents if the SDK is authenticated.
+        /// Represents if the client is authenticated.
         /// </summary>
         /// <value>Whether the SDK is authenticated.</value>
         public bool IsAuthenticated
