@@ -42,7 +42,7 @@ namespace Enjin.SDK
         /// <summary>
         /// The middleware of this class.
         /// </summary>
-        protected readonly TrustedPlatformMiddleware Middleware;
+        protected readonly ClientMiddleware Middleware;
 
         /// <summary>
         /// The schema type of this class.
@@ -65,7 +65,7 @@ namespace Enjin.SDK
         /// <param name="middleware">The middleware.</param>
         /// <param name="schema">The schema.</param>
         /// <param name="loggerProvider">The logger provider.</param>
-        protected BaseSchema(TrustedPlatformMiddleware middleware, string schema, LoggerProvider? loggerProvider)
+        protected BaseSchema(ClientMiddleware middleware, string schema, LoggerProvider? loggerProvider)
         {
             Middleware = middleware;
             Schema = schema;
