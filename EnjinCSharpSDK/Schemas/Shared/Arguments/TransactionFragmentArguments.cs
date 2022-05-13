@@ -200,10 +200,10 @@ namespace Enjin.SDK.Shared
         /// <param name="assetIdFormat">The format.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T AssetIdFormat<T>(this T instance, AssetIdFormat? assetIdFormat)
+        public static T TransactionAssetIdFormat<T>(this T instance, AssetIdFormat? assetIdFormat)
             where T : ITransactionFragmentArguments<T>
         {
-            return instance.SetVariable("assetIdFormat", assetIdFormat);
+            return instance.SetVariable("transactionAssetIdFormat", assetIdFormat);
         }
     }
 }
