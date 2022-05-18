@@ -23,10 +23,10 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Represents the transaction type when creating or updating a transaction.
     /// </summary>
-    /// <seealso cref="Request"/>
+    /// <seealso cref="Transaction"/>
     [JsonConverter(typeof(StringEnumConverter))]
     [PublicAPI]
-    public enum RequestType
+    public enum TransactionType
     {
         [EnumMember(Value = "ACCEPT_ASSIGNMENT")]
         ACCEPT_ASSIGNMENT,

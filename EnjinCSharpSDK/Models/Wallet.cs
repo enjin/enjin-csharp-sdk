@@ -72,6 +72,6 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The list of transactions.</value>
         [JsonProperty("transactions")]
-        public List<Request>? Transactions { get; private set; }
+        public List<Transaction>? Transactions { get; private set; }
     }
 }

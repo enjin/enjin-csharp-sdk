@@ -23,7 +23,7 @@ namespace Enjin.SDK.Shared
     /// Fragment interface used to request certain information from transactions returned by the platform.
     /// </summary>
     /// <typeparam name="T">The type of the implementing class.</typeparam>
-    /// <seealso cref="Enjin.SDK.Models.Request"/>
+    /// <seealso cref="Transaction"/>
     [PublicAPI]
     public interface ITransactionFragmentArguments<out T> : IVariableHolder<T>
     {

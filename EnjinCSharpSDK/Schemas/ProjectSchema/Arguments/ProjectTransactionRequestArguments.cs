@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
@@ -22,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// Interface used to set common arguments used in transaction requests in the project schema.
     /// </summary>
     /// <typeparam name="T">The type of the implementing class.</typeparam>
-    /// <seealso cref="Enjin.SDK.Models.Request"/>
+    /// <seealso cref="Transaction"/>
     [PublicAPI]
     public interface IProjectTransactionRequestArguments<out T> : ITransactionFragmentArguments<T>
     {

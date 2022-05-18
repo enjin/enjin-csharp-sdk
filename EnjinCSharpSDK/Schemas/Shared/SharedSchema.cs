@@ -82,15 +82,15 @@ namespace Enjin.SDK.Shared
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> GetRequest(GetRequest request)
+        public Task<GraphqlResponse<Transaction>> GetRequest(GetTransaction transaction)
         {
-            return TransactionRequest(request);
+            return TransactionRequest(transaction);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<List<Request>>> GetRequests(GetRequests request)
+        public Task<GraphqlResponse<List<Transaction>>> GetRequests(GetTransactions transaction)
         {
-            return SendRequest<List<Request>>(request);
+            return SendRequest<List<Transaction>>(transaction);
         }
 
         /// <summary>
@@ -98,9 +98,9 @@ namespace Enjin.SDK.Shared
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        protected Task<GraphqlResponse<Request>> TransactionRequest(IGraphqlRequest request)
+        protected Task<GraphqlResponse<Transaction>> TransactionRequest(IGraphqlRequest request)
         {
-            return SendRequest<Request>(request);
+            return SendRequest<Transaction>(request);
         }
     }
 }

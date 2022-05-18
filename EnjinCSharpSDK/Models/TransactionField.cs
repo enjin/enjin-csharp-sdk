@@ -21,7 +21,7 @@ using Newtonsoft.Json.Converters;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// The fields of the <see cref="Request"/> type.
+    /// The fields of the <see cref="Transaction"/> type.
     /// </summary>
     /// <seealso cref="TransactionSort"/>
     [JsonConverter(typeof(StringEnumConverter))]
