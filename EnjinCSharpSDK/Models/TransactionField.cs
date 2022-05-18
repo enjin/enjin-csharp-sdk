@@ -23,7 +23,7 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// The fields of the <see cref="Transaction"/> type.
     /// </summary>
-    /// <seealso cref="TransactionSort"/>
+    /// <seealso cref="TransactionSortInput"/>
     [JsonConverter(typeof(StringEnumConverter))]
     [PublicAPI]
     public enum TransactionField

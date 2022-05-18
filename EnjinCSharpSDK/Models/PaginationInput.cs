@@ -23,7 +23,7 @@ namespace Enjin.SDK.Models
     /// </summary>
     /// <seealso cref="Enjin.SDK.Shared.PaginationArguments"/>
     [PublicAPI]
-    public class PaginationOptions
+    public class PaginationInput
     {
         /// <summary>
         /// Represents the page number to start at for the pagination.
@@ -31,7 +31,7 @@ namespace Enjin.SDK.Models
         /// <value>The page to start at.</value>
         [JsonProperty("page")]
         public int? Page { get; set; }
-        
+
         /// <summary>
         /// Represents the number of results per page for the pagination.
         /// </summary>

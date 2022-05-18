@@ -49,9 +49,9 @@ namespace Enjin.SDK.Shared
         /// <summary>
         /// Sets the request to sort the results by the specified options.
         /// </summary>
-        /// <param name="sort">The sort options.</param>
+        /// <param name="sort">The sort input.</param>
         /// <returns>This request for chaining.</returns>
-        public GetTransactions Sort(TransactionSort? sort)
+        public GetTransactions Sort(TransactionSortInput? sort)
         {
             return SetVariable("sort", sort);
         }
