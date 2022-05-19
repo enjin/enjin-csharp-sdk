@@ -22,10 +22,11 @@ namespace Enjin.SDK.Models
     /// Models sorting input for transactions.
     /// </summary>
     [PublicAPI]
-    public class TransactionSort
+    public class TransactionSortInput
     {
         [JsonProperty("field")]
         private TransactionField? _field;
+
         [JsonProperty("direction")]
         private SortDirection? _direction;
 
@@ -34,7 +35,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="field">The field.</param>
         /// <returns>This input for chaining.</returns>
-        public TransactionSort Field(TransactionField? field)
+        public TransactionSortInput Field(TransactionField? field)
         {
             _field = field;
             return this;
@@ -45,7 +46,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="direction">The direction.</param>
         /// <returns>This input for chaining.</returns>
-        public TransactionSort Direction(SortDirection? direction)
+        public TransactionSortInput Direction(SortDirection? direction)
         {
             _direction = direction;
             return this;

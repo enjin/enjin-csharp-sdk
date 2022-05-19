@@ -183,8 +183,8 @@
         <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetGasPrices.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetPlatform.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetProject.gql" />
-        <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetRequest.gql" />
-        <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetRequests.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetTransaction.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetTransactions.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Asset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Balance.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\PaginationCursor.gql" />
@@ -199,8 +199,8 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetGasPrices.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetPlatform.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetProject.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetRequest.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetRequests.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetTransaction.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetTransactions.gql" />
     </ItemGroup>
 
 </Project>

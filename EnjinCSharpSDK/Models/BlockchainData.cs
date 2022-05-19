@@ -20,7 +20,7 @@ using Newtonsoft.Json.Linq;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models the blockchain data of a <see cref="Request"/>.
+    /// Models the blockchain data of a <see cref="Transaction"/>.
     /// </summary>
     [PublicAPI]
     public class BlockchainData

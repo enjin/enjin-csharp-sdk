@@ -77,17 +77,17 @@ namespace Enjin.SDK.Shared
         Task<GraphqlResponse<Project>> GetProject(GetProject request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.Shared.GetRequest"/> request.
+        /// Creates a task and sends the <see cref="GetTransaction"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> GetRequest(GetRequest request);
+        Task<GraphqlResponse<Transaction>> GetRequest(GetTransaction request);
 
         /// <summary>
-        /// Creates a task and sends the <see cref="Enjin.SDK.Shared.GetRequests"/> request.
+        /// Creates a task and sends the <see cref="GetTransactions"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<List<Request>>> GetRequests(GetRequests request);
+        Task<GraphqlResponse<List<Transaction>>> GetRequests(GetTransactions request);
     }
 }

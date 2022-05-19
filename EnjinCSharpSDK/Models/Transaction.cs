@@ -22,7 +22,7 @@ namespace Enjin.SDK.Models
     /// Models a transaction on the platform.
     /// </summary>
     [PublicAPI]
-    public class Request
+    public class Transaction
     {
         /// <summary>
         /// Represents the ID of this transaction.
@@ -57,7 +57,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The type.</value>
         [JsonProperty("type")]
-        public RequestType? Type { get; private set; }
+        public TransactionType? Type { get; private set; }
 
         /// <summary>
         /// Represents the value of this transaction.
@@ -78,7 +78,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <value>The state.</value>
         [JsonProperty("state")]
-        public RequestState? State { get; private set; }
+        public TransactionState? State { get; private set; }
 
         /// <summary>
         /// Represents if the transaction has been accepted or not.

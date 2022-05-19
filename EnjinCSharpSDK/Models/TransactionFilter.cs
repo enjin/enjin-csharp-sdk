@@ -15,6 +15,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -23,7 +24,7 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// Models a filter input for transaction queries.
     /// </summary>
-    /// <seealso cref="Enjin.SDK.Shared.GetRequests"/>
+    /// <seealso cref="GetTransactions"/>
     [PublicAPI]
     public class TransactionFilter: Filter<TransactionFilter>
     {
@@ -46,10 +47,10 @@ namespace Enjin.SDK.Models
         private List<string>? _assetIdIn;
 
         [JsonProperty("type")]
-        private RequestType? _type;
+        private TransactionType? _type;
 
         [JsonProperty("type_in")]
-        private List<RequestType>? _typeIn;
+        private List<TransactionType>? _typeIn;
 
         [JsonProperty("value")]
         private int? _value;
@@ -67,10 +68,10 @@ namespace Enjin.SDK.Models
         private int? _valueLte;
 
         [JsonProperty("state")]
-        private RequestState? _state;
+        private TransactionState? _state;
 
         [JsonProperty("state_in")]
-        private List<RequestState>? _stateIn;
+        private List<TransactionState>? _stateIn;
         
         [JsonProperty("wallet")]
         private string? _wallet;
@@ -149,7 +150,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter Type(RequestType? type)
+        public TransactionFilter Type(TransactionType? type)
         {
             _type = type;
             return this;
@@ -160,7 +161,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="types">The types.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter Types(params RequestType[]? types)
+        public TransactionFilter Types(params TransactionType[]? types)
         {
             _typeIn = types?.ToList();
             return this;
@@ -226,7 +227,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="state">The state.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter State(RequestState? state)
+        public TransactionFilter State(TransactionState? state)
         {
             _state = state;
             return this;
@@ -237,7 +238,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="states">The states.</param>
         /// <returns>This filter for chaining.</returns>
-        public TransactionFilter StateIn(params RequestState[]? states)
+        public TransactionFilter StateIn(params TransactionState[]? states)
         {
             _stateIn = states?.ToList();
             return this;

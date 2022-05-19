@@ -38,7 +38,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="melts">The melts.</param>
         /// <returns>This request for chaining.</returns>
-        public MeltAsset Melts(params Melt[]? melts)
+        public MeltAsset Melts(params MeltInput[]? melts)
         {
             return SetVariable("melts", melts);
         }

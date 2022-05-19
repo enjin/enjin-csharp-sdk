@@ -33,21 +33,21 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> AdvancedSendAsset(AdvancedSendAsset request);
+        Task<GraphqlResponse<Transaction>> AdvancedSendAsset(AdvancedSendAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.ApproveEnj"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> ApproveEnj(ApproveEnj request);
+        Task<GraphqlResponse<Transaction>> ApproveEnj(ApproveEnj request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.ApproveMaxEnj"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> ApproveMaxEnj(ApproveMaxEnj request);
+        Task<GraphqlResponse<Transaction>> ApproveMaxEnj(ApproveMaxEnj request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.AuthPlayer"/> request.
@@ -68,35 +68,35 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> BridgeAsset(BridgeAsset request);
+        Task<GraphqlResponse<Transaction>> BridgeAsset(BridgeAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.BridgeAssets"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> BridgeAssets(BridgeAssets request);
+        Task<GraphqlResponse<Transaction>> BridgeAssets(BridgeAssets request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.BridgeClaimAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> BridgeClaimAsset(BridgeClaimAsset request);
+        Task<GraphqlResponse<Transaction>> BridgeClaimAsset(BridgeClaimAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.CompleteTrade"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> CompleteTrade(CompleteTrade request);
+        Task<GraphqlResponse<Transaction>> CompleteTrade(CompleteTrade request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.CreateAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> CreateAsset(CreateAsset request);
+        Task<GraphqlResponse<Transaction>> CreateAsset(CreateAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.CreatePlayer"/> request.
@@ -110,21 +110,21 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> CreateTrade(CreateTrade request);
+        Task<GraphqlResponse<Transaction>> CreateTrade(CreateTrade request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.DecreaseMaxMeltFee"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request);
+        Task<GraphqlResponse<Transaction>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.DecreaseMaxTransferFee"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request);
+        Task<GraphqlResponse<Transaction>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.DeletePlayer"/> request.
@@ -173,91 +173,91 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> MeltAsset(MeltAsset request);
+        Task<GraphqlResponse<Transaction>> MeltAsset(MeltAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.Message"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> Message(Message request);
+        Task<GraphqlResponse<Transaction>> Message(Message request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.MintAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> MintAsset(MintAsset request);
+        Task<GraphqlResponse<Transaction>> MintAsset(MintAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.ReleaseReserve"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> ReleaseReserve(ReleaseReserve request);
+        Task<GraphqlResponse<Transaction>> ReleaseReserve(ReleaseReserve request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.ResetEnjApproval"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> ResetEnjApproval(ResetEnjApproval request);
+        Task<GraphqlResponse<Transaction>> ResetEnjApproval(ResetEnjApproval request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.SendAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SendAsset(SendAsset request);
+        Task<GraphqlResponse<Transaction>> SendAsset(SendAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.SendEnj"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SendEnj(SendEnj request);
+        Task<GraphqlResponse<Transaction>> SendEnj(SendEnj request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.SetApprovalForAll"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SetApprovalForAll(SetApprovalForAll request);
+        Task<GraphqlResponse<Transaction>> SetApprovalForAll(SetApprovalForAll request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.SetMeltFee"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SetMeltFee(SetMeltFee request);
+        Task<GraphqlResponse<Transaction>> SetMeltFee(SetMeltFee request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.SetTransferable"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SetTransferable(SetTransferable request);
+        Task<GraphqlResponse<Transaction>> SetTransferable(SetTransferable request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.SetTransferFee"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SetTransferFee(SetTransferFee request);
+        Task<GraphqlResponse<Transaction>> SetTransferFee(SetTransferFee request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.SetUri"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SetUri(SetUri request);
+        Task<GraphqlResponse<Transaction>> SetUri(SetUri request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.SetWhitelisted"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SetWhitelisted(SetWhitelisted request);
+        Task<GraphqlResponse<Transaction>> SetWhitelisted(SetWhitelisted request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.UnlinkWallet"/> request.

@@ -21,12 +21,12 @@ using Newtonsoft.Json.Converters;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Represents the state of a request.
+    /// Represents the state of a transaction.
     /// </summary>
-    /// <seealso cref="Request"/>
+    /// <seealso cref="Transaction"/>
     [JsonConverter(typeof(StringEnumConverter))]
     [PublicAPI]
-    public enum RequestState
+    public enum TransactionState
     {
         [EnumMember(Value = "PENDING")]
         PENDING,
