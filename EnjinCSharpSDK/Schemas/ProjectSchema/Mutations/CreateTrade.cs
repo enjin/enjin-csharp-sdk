@@ -39,7 +39,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assets">The assets.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateTrade AskingAssets(params Trade[]? assets)
+        public CreateTrade AskingAssets(params TradeInput[]? assets)
         {
             return SetVariable("askingAssets", assets);
         }
@@ -49,7 +49,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="assets">The assets.</param>
         /// <returns>This request for chaining.</returns>
-        public CreateTrade OfferingAssets(params Trade[]? assets)
+        public CreateTrade OfferingAssets(params TradeInput[]? assets)
         {
             return SetVariable("offeringAssets", assets);
         }

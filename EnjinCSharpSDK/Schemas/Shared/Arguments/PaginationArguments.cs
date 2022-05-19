@@ -38,10 +38,10 @@ namespace Enjin.SDK.Shared
         /// Sets the pagination options.
         /// </summary>
         /// <param name="instance">The caller.</param>
-        /// <param name="pagination">The options.</param>
+        /// <param name="pagination">The input.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T Paginate<T>(this T instance, PaginationOptions? pagination) where T : IPaginationArguments<T>
+        public static T Paginate<T>(this T instance, PaginationInput? pagination) where T : IPaginationArguments<T>
         {
             return instance.SetVariable("pagination", pagination);
         }
@@ -56,7 +56,7 @@ namespace Enjin.SDK.Shared
         /// <returns>The caller for chaining.</returns>
         public static T Paginate<T>(this T instance, int? page, int? limit) where T : IPaginationArguments<T>
         {
-            return Paginate(instance, new PaginationOptions
+            return Paginate(instance, new PaginationInput
             {
                 Page = page,
                 Limit = limit

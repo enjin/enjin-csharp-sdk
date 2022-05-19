@@ -14,43 +14,46 @@
  */
 
 using Enjin.SDK.Graphql;
+using Enjin.SDK.Models;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.Shared
 {
     /// <summary>
-    /// Request for getting a transaction on platform.
+    /// Request for getting transactions on the platform.
     /// </summary>
-    /// <seealso cref="Enjin.SDK.Models.Request"/>
+    /// <seealso cref="Transaction"/>
     /// <seealso cref="ISharedSchema"/>
     [PublicAPI]
-    public class GetRequest : GraphqlRequest<GetRequest>, ITransactionFragmentArguments<GetRequest>
+    public class GetTransactions : GraphqlRequest<GetTransactions>,
+                                   ITransactionFragmentArguments<GetTransactions>,
+                                   IPaginationArguments<GetTransactions>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public GetRequest() : base("enjin.sdk.shared.GetRequest")
+        public GetTransactions() : base("enjin.sdk.shared.GetTransactions")
         {
         }
 
         /// <summary>
-        /// Sets the transaction ID.
+        /// Sets the filter the request will use.
         /// </summary>
-        /// <param name="id">The ID.</param>
+        /// <param name="filter">The filter.</param>
         /// <returns>This request for chaining.</returns>
-        public GetRequest Id(int? id)
+        public GetTransactions Filter(TransactionFilter? filter)
         {
-            return SetVariable("id", id);
+            return SetVariable("filter", filter);
         }
 
         /// <summary>
-        /// Sets the transaction hash ID.
+        /// Sets the request to sort the results by the specified options.
         /// </summary>
-        /// <param name="id">The hash ID.</param>
+        /// <param name="sort">The sort input.</param>
         /// <returns>This request for chaining.</returns>
-        public GetRequest TransactionId(string? id)
+        public GetTransactions Sort(TransactionSortInput? sort)
         {
-            return SetVariable("transactionId", id);
+            return SetVariable("sort", sort);
         }
     }
 }

@@ -183,7 +183,7 @@ namespace TestSuite
         public void Types_PassedArguments_FieldContainsArgument()
         {
             // Arrange
-            var args = (RequestType[]) Enum.GetValues(typeof(RequestType));
+            var args = (TransactionType[]) Enum.GetValues(typeof(TransactionType));
             var filter = new TestableTransactionFilter();
 
             Assume.That(args, Is.Not.Null.And.Not.Empty);
@@ -231,7 +231,7 @@ namespace TestSuite
         public void StateIn_PassedArguments_FieldContainsArgument()
         {
             // Arrange
-            var args = (RequestState[]) Enum.GetValues(typeof(RequestState));
+            var args = (TransactionState[]) Enum.GetValues(typeof(TransactionState));
             var filter = new TestableTransactionFilter();
 
             Assume.That(args, Is.Not.Null.And.Not.Empty);
@@ -349,9 +349,9 @@ namespace TestSuite
             
             public List<string> GetAssetIdIn() => ASSET_ID_IN_FIELD.GetValue(this) as List<string>;
             
-            public List<RequestType> GetTypes() => TYPE_IN_FIELD.GetValue(this) as List<RequestType>;
+            public List<TransactionType> GetTypes() => TYPE_IN_FIELD.GetValue(this) as List<TransactionType>;
             
-            public List<RequestState> GetStateIn() => STATE_IN_FIELD.GetValue(this) as List<RequestState>;
+            public List<TransactionState> GetStateIn() => STATE_IN_FIELD.GetValue(this) as List<TransactionState>;
             
             public List<string> GetWalletIn() => WALLET_IN_FIELD.GetValue(this) as List<string>;
         }

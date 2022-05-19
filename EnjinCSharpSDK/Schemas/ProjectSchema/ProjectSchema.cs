@@ -40,19 +40,19 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> AdvancedSendAsset(AdvancedSendAsset request)
+        public Task<GraphqlResponse<Transaction>> AdvancedSendAsset(AdvancedSendAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> ApproveEnj(ApproveEnj request)
+        public Task<GraphqlResponse<Transaction>> ApproveEnj(ApproveEnj request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> ApproveMaxEnj(ApproveMaxEnj request)
+        public Task<GraphqlResponse<Transaction>> ApproveMaxEnj(ApproveMaxEnj request)
         {
             return TransactionRequest(request);
         }
@@ -70,31 +70,31 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> BridgeAsset(BridgeAsset request)
+        public Task<GraphqlResponse<Transaction>> BridgeAsset(BridgeAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> BridgeAssets(BridgeAssets request)
+        public Task<GraphqlResponse<Transaction>> BridgeAssets(BridgeAssets request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> BridgeClaimAsset(BridgeClaimAsset request)
+        public Task<GraphqlResponse<Transaction>> BridgeClaimAsset(BridgeClaimAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CompleteTrade(CompleteTrade request)
+        public Task<GraphqlResponse<Transaction>> CompleteTrade(CompleteTrade request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CreateAsset(CreateAsset request)
+        public Task<GraphqlResponse<Transaction>> CreateAsset(CreateAsset request)
         {
             return TransactionRequest(request);
         }
@@ -106,19 +106,19 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CreateTrade(CreateTrade request)
+        public Task<GraphqlResponse<Transaction>> CreateTrade(CreateTrade request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request)
+        public Task<GraphqlResponse<Transaction>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request)
+        public Task<GraphqlResponse<Transaction>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request)
         {
             return TransactionRequest(request);
         }
@@ -160,79 +160,79 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> MeltAsset(MeltAsset request)
+        public Task<GraphqlResponse<Transaction>> MeltAsset(MeltAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> Message(Message request)
+        public Task<GraphqlResponse<Transaction>> Message(Message request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> MintAsset(MintAsset request)
+        public Task<GraphqlResponse<Transaction>> MintAsset(MintAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> ReleaseReserve(ReleaseReserve request)
+        public Task<GraphqlResponse<Transaction>> ReleaseReserve(ReleaseReserve request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> ResetEnjApproval(ResetEnjApproval request)
+        public Task<GraphqlResponse<Transaction>> ResetEnjApproval(ResetEnjApproval request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SendEnj(SendEnj request)
+        public Task<GraphqlResponse<Transaction>> SendEnj(SendEnj request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SendAsset(SendAsset request)
+        public Task<GraphqlResponse<Transaction>> SendAsset(SendAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetApprovalForAll(SetApprovalForAll request)
+        public Task<GraphqlResponse<Transaction>> SetApprovalForAll(SetApprovalForAll request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetMeltFee(SetMeltFee request)
+        public Task<GraphqlResponse<Transaction>> SetMeltFee(SetMeltFee request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetTransferable(SetTransferable request)
+        public Task<GraphqlResponse<Transaction>> SetTransferable(SetTransferable request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetTransferFee(SetTransferFee request)
+        public Task<GraphqlResponse<Transaction>> SetTransferFee(SetTransferFee request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetUri(SetUri request)
+        public Task<GraphqlResponse<Transaction>> SetUri(SetUri request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetWhitelisted(SetWhitelisted request)
+        public Task<GraphqlResponse<Transaction>> SetWhitelisted(SetWhitelisted request)
         {
             return TransactionRequest(request);
         }

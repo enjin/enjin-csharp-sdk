@@ -32,42 +32,42 @@ namespace Enjin.SDK.PlayerSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> AdvancedSendAsset(AdvancedSendAsset request);
+        Task<GraphqlResponse<Transaction>> AdvancedSendAsset(AdvancedSendAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.ApproveEnj"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> ApproveEnj(ApproveEnj request);
+        Task<GraphqlResponse<Transaction>> ApproveEnj(ApproveEnj request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.ApproveMaxEnj"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> ApproveMaxEnj(ApproveMaxEnj request);
+        Task<GraphqlResponse<Transaction>> ApproveMaxEnj(ApproveMaxEnj request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.BridgeAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> BridgeAsset(BridgeAsset request);
+        Task<GraphqlResponse<Transaction>> BridgeAsset(BridgeAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.BridgeAssets"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> BridgeAssets(BridgeAssets request);
+        Task<GraphqlResponse<Transaction>> BridgeAssets(BridgeAssets request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.BridgeClaimAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> BridgeClaimAsset(BridgeClaimAsset request);
+        Task<GraphqlResponse<Transaction>> BridgeClaimAsset(BridgeClaimAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.GetPlayer"/> request.
@@ -88,42 +88,42 @@ namespace Enjin.SDK.PlayerSchema
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> MeltAsset(MeltAsset request);
+        Task<GraphqlResponse<Transaction>> MeltAsset(MeltAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.Message"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> Message(Message request);
+        Task<GraphqlResponse<Transaction>> Message(Message request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.ResetEnjApproval"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> ResetEnjApproval(ResetEnjApproval request);
+        Task<GraphqlResponse<Transaction>> ResetEnjApproval(ResetEnjApproval request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.SendAsset"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SendAsset(SendAsset request);
+        Task<GraphqlResponse<Transaction>> SendAsset(SendAsset request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.SendEnj"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SendEnj(SendEnj request);
+        Task<GraphqlResponse<Transaction>> SendEnj(SendEnj request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.SetApprovalForAll"/> request.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
-        Task<GraphqlResponse<Request>> SetApprovalForAll(SetApprovalForAll request);
+        Task<GraphqlResponse<Transaction>> SetApprovalForAll(SetApprovalForAll request);
 
         /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.PlayerSchema.UnlinkWallet"/> request.

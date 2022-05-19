@@ -40,7 +40,7 @@ namespace Enjin.SDK.PlayerSchema
         /// </summary>
         /// <param name="transfers">The transfers.</param>
         /// <returns>This request for chaining.</returns>
-        public AdvancedSendAsset Transfers(params Transfer[]? transfers)
+        public AdvancedSendAsset Transfers(params TransferInput[]? transfers)
         {
             return SetVariable("transfers", transfers);
         }

@@ -22,10 +22,11 @@ namespace Enjin.SDK.Models
     /// Models sorting input for assets.
     /// </summary>
     [PublicAPI]
-    public class AssetSort
+    public class AssetSortInput
     {
         [JsonProperty("field")]
         private AssetField? _field;
+
         [JsonProperty("direction")]
         private SortDirection? _direction;
 
@@ -34,7 +35,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="field">The field.</param>
         /// <returns>This input for chaining.</returns>
-        public AssetSort Field(AssetField? field)
+        public AssetSortInput Field(AssetField? field)
         {
             _field = field;
             return this;
@@ -45,7 +46,7 @@ namespace Enjin.SDK.Models
         /// </summary>
         /// <param name="direction"></param>
         /// <returns>This input for chaining.</returns>
-        public AssetSort Direction(SortDirection? direction)
+        public AssetSortInput Direction(SortDirection? direction)
         {
             _direction = direction;
             return this;
