@@ -31,33 +31,47 @@ namespace Enjin.SDK.Models
         /// <value>The address.</value>
         [JsonProperty("ethAddress")]
         public string? EthAddress { get; private set; }
-        
+
         /// <summary>
         /// Represents the ENJ allowance given to crypto items.
         /// </summary>
         /// <value>The allowance.</value>
         [JsonProperty("enjAllowance")]
         public float? EnjAllowance { get; private set; }
-        
+
         /// <summary>
         /// Represents the ENJ balance for this wallet.
         /// </summary>
         /// <value>The balance.</value>
         [JsonProperty("enjBalance")]
         public float? EnjBalance { get; private set; }
-        
+
         /// <summary>
         /// Represents the ETH balance for this wallet.
         /// </summary>
         /// <value>The balance.</value>
         [JsonProperty("ethBalance")]
         public float? EthBalance { get; private set; }
-        
+
         /// <summary>
         /// Represents the assets this wallet has created.
         /// </summary>
         /// <value>The list of assets.</value>
         [JsonProperty("assetsCreated")]
         public List<Asset>? AssetsCreated { get; private set; }
+
+        /// <summary>
+        /// Represents the balances of this wallet.
+        /// </summary>
+        /// <value>The list of balances.</value>
+        [JsonProperty("balances")]
+        public List<Balance>? Balances { get; private set; }
+
+        /// <summary>
+        /// Represents the transactions this wallet has signed.
+        /// </summary>
+        /// <value>The list of transactions.</value>
+        [JsonProperty("transactions")]
+        public List<Request>? Transactions { get; private set; }
     }
 }

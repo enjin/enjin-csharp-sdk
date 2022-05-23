@@ -116,6 +116,13 @@ namespace Enjin.SDK.Models
         public Asset? Asset { get; private set; }
 
         /// <summary>
+        /// Represents the wallet for this transaction.
+        /// </summary>
+        /// <value>The wallet.</value>
+        [JsonProperty("wallet")]
+        public Wallet? Wallet { get; private set; }
+
+        /// <summary>
         /// Represents the datetime when this transaction was created.
         /// </summary>
         /// <value>The datetime.</value>

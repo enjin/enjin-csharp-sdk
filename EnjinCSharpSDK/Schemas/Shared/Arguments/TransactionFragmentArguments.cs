@@ -36,11 +36,12 @@ namespace Enjin.SDK.Shared
     public static class TransactionFragmentArguments
     {
         /// <summary>
-        /// Sets the request to include the blockchain data with the transaction.
+        /// Sets the request to include the blockchain data of the transaction.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="BlockchainData"/>
         /// <seealso cref="WithEncodedData{T}"/>
         /// <seealso cref="WithSignedTxs{T}"/>
         /// <seealso cref="WithReceipt{T}"/>
@@ -52,7 +53,7 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the request to include the metadata with transaction.
+        /// Sets the request to include the metadata of the transaction.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
@@ -63,7 +64,7 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the request to include the encoded data with the transaction when used with
+        /// Sets the request to include the encoded data of the transaction when used with
         /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
@@ -75,19 +76,19 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the request to include the asset data with the transaction.
+        /// Sets the request to include the asset data of the transaction.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        /// <seealso cref="AssetIdFormat{T}"/>
+        /// <seealso cref="TransactionAssetIdFormat{T}"/>
         public static T WithAssetData<T>(this T instance) where T : ITransactionFragmentArguments<T>
         {
             return instance.SetVariable("withAssetData", true);
         }
 
         /// <summary>
-        /// Sets the request to include the signed transactions with the transaction when used with
+        /// Sets the request to include the signed transactions of the transaction when used with
         /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
@@ -99,7 +100,7 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the request to include the error with the transaction when used with
+        /// Sets the request to include the error of the transaction when used with
         /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
@@ -111,7 +112,7 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the request to include the nonce with the transaction when used with
+        /// Sets the request to include the nonce of the transaction when used with
         /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
@@ -123,23 +124,25 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the request to include the state with the transaction.
+        /// Sets the request to include the state of the transaction.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="RequestState"/>
         public static T WithState<T>(this T instance) where T : ITransactionFragmentArguments<T>
         {
             return instance.SetVariable("withState", true);
         }
 
         /// <summary>
-        /// Sets the request to include the receipt with the transaction when used with
+        /// Sets the request to include the transaction receipt of the transaction when used with
         /// <see cref="WithBlockchainData{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="TransactionReceipt"/>
         /// <seealso cref="WithReceiptLogs{T}"/>
         public static T WithReceipt<T>(this T instance) where T : ITransactionFragmentArguments<T>
         {
@@ -147,12 +150,13 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the request to include the logs in the receipt with the transaction when used with
-        /// <see cref="WithReceipt{T}"/>.
+        /// Sets the request to include the logs of the transaction receipt when used with <see cref="WithReceipt{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="TransactionLog"/>
+        /// <seealso cref="TransactionReceipt"/>
         /// <seealso cref="WithLogEvent{T}"/>
         public static T WithReceiptLogs<T>(this T instance) where T : ITransactionFragmentArguments<T>
         {
@@ -160,26 +164,41 @@ namespace Enjin.SDK.Shared
         }
 
         /// <summary>
-        /// Sets the request to include the event data in the receipt logs when used with
+        /// Sets the request to include the event data of the receipt logs when used with
         /// <see cref="WithReceiptLogs{T}"/>.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="TransactionEvent"/>
+        /// <seealso cref="TransactionLog"/>
         public static T WithLogEvent<T>(this T instance) where T : ITransactionFragmentArguments<T>
         {
             return instance.SetVariable("withLogEvent", true);
         }
 
         /// <summary>
-        /// Sets the request to include the Project with its UUID that the transaction belongs to.
+        /// Sets the request to include the project with its UUID that the transaction belongs to.
         /// </summary>
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
+        /// <see cref="Project"/>
         public static T WithTransactionProjectUuid<T>(this T instance) where T : ITransactionFragmentArguments<T>
         {
             return instance.SetVariable("withTransactionProjectUuid", true);
+        }
+
+        /// <summary>
+        /// Sets the request to include the wallet with its Ethereum address that belongs to the transaction.
+        /// </summary>
+        /// <param name="instance">The caller.</param>
+        /// <typeparam name="T">The caller type.</typeparam>
+        /// <returns>The caller for chaining.</returns>
+        /// <seealso cref="Wallet"/>
+        public static T WithTransactionWalletAddress<T>(this T instance) where T : ITransactionFragmentArguments<T>
+        {
+            return instance.SetVariable("withTransactionWalletAddress", true);
         }
 
         /// <summary>
@@ -189,10 +208,10 @@ namespace Enjin.SDK.Shared
         /// <param name="assetIdFormat">The format.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T AssetIdFormat<T>(this T instance, AssetIdFormat? assetIdFormat)
+        public static T TransactionAssetIdFormat<T>(this T instance, AssetIdFormat? assetIdFormat)
             where T : ITransactionFragmentArguments<T>
         {
-            return instance.SetVariable("assetIdFormat", assetIdFormat);
+            return instance.SetVariable("transactionAssetIdFormat", assetIdFormat);
         }
     }
 }
