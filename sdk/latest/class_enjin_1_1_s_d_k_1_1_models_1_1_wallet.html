@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="doxygenIcon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Enjin C# SDK
-   &#160;<span id="projectnumber">1.0.0-alpha.5</span>
+   &#160;<span id="projectnumber">1.0.0-alpha.6</span>
    </div>
    <div id="projectbrief">A C# SDK for creating games using the Enjin blockchain platform.</div>
   </td>
@@ -96,6 +96,12 @@ Properties</h2></td></tr>
 <tr class="memitem:a6a511dd71a53ede617c7cc2ba1de4ff2"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_asset.html">Asset</a> &gt;?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_wallet.html#a6a511dd71a53ede617c7cc2ba1de4ff2">AssetsCreated</a><code> [get]</code></td></tr>
 <tr class="memdesc:a6a511dd71a53ede617c7cc2ba1de4ff2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the assets this wallet has created.  <a href="class_enjin_1_1_s_d_k_1_1_models_1_1_wallet.html#a6a511dd71a53ede617c7cc2ba1de4ff2">More...</a><br /></td></tr>
 <tr class="separator:a6a511dd71a53ede617c7cc2ba1de4ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acab41110c3c485c3e8906d881955c402"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_balance.html">Balance</a> &gt;?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_wallet.html#acab41110c3c485c3e8906d881955c402">Balances</a><code> [get]</code></td></tr>
+<tr class="memdesc:acab41110c3c485c3e8906d881955c402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the balances of this wallet.  <a href="class_enjin_1_1_s_d_k_1_1_models_1_1_wallet.html#acab41110c3c485c3e8906d881955c402">More...</a><br /></td></tr>
+<tr class="separator:acab41110c3c485c3e8906d881955c402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a0ef70939b21ebf82b4308a5645c8f1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_request.html">Request</a> &gt;?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_wallet.html#a6a0ef70939b21ebf82b4308a5645c8f1">Transactions</a><code> [get]</code></td></tr>
+<tr class="memdesc:a6a0ef70939b21ebf82b4308a5645c8f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the transactions this wallet has signed.  <a href="class_enjin_1_1_s_d_k_1_1_models_1_1_wallet.html#a6a0ef70939b21ebf82b4308a5645c8f1">More...</a><br /></td></tr>
+<tr class="separator:a6a0ef70939b21ebf82b4308a5645c8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Models a wallet on the platform. </p>
@@ -122,6 +128,31 @@ Properties</h2></td></tr>
 
 <p>Represents the assets this wallet has created. </p>
 <p>The list of assets.</p>
+
+</div>
+</div>
+<a id="acab41110c3c485c3e8906d881955c402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acab41110c3c485c3e8906d881955c402">&#9670;&nbsp;</a></span>Balances</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_balance.html">Balance</a>&gt;? Enjin.SDK.Models.Wallet.Balances</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Represents the balances of this wallet. </p>
+<p>The list of balances.</p>
 
 </div>
 </div>
@@ -222,6 +253,31 @@ Properties</h2></td></tr>
 
 <p>Represents the ETH balance for this wallet. </p>
 <p>The balance.</p>
+
+</div>
+</div>
+<a id="a6a0ef70939b21ebf82b4308a5645c8f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a0ef70939b21ebf82b4308a5645c8f1">&#9670;&nbsp;</a></span>Transactions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_request.html">Request</a>&gt;? Enjin.SDK.Models.Wallet.Transactions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Represents the transactions this wallet has signed. </p>
+<p>The list of transactions.</p>
 
 </div>
 </div>
