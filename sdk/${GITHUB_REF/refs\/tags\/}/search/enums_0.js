@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['assetfield_966',['AssetField',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a8a4ff2ea5722bf9408da77775e914812',1,'Enjin::SDK::Models']]],
-  ['assetidformat_967',['AssetIdFormat',['../namespace_enjin_1_1_s_d_k_1_1_models.html#abbf1aabe6472318cc2776d928c3ba25e',1,'Enjin::SDK::Models']]],
-  ['assetindexformat_968',['AssetIndexFormat',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a8a4599164550803c2fc50d1e979665cd',1,'Enjin::SDK::Models']]],
-  ['assetsupplymodel_969',['AssetSupplyModel',['../namespace_enjin_1_1_s_d_k_1_1_models.html#aaa948c382060f83391a1567be50c07a4',1,'Enjin::SDK::Models']]],
-  ['assettransferable_970',['AssetTransferable',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a41ce4dba118482e32be9ff0b111963fc',1,'Enjin::SDK::Models']]],
-  ['assettransferfeetype_971',['AssetTransferFeeType',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a34551c81e9d3d6c0884a1ee7728deb36',1,'Enjin::SDK::Models']]],
-  ['assetvariantmode_972',['AssetVariantMode',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a30e8cc34636ef4ea46ec77531f5da429',1,'Enjin::SDK::Models']]]
+  ['assetfield_980',['AssetField',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a8a4ff2ea5722bf9408da77775e914812',1,'Enjin::SDK::Models']]],
+  ['assetidformat_981',['AssetIdFormat',['../namespace_enjin_1_1_s_d_k_1_1_models.html#abbf1aabe6472318cc2776d928c3ba25e',1,'Enjin::SDK::Models']]],
+  ['assetindexformat_982',['AssetIndexFormat',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a8a4599164550803c2fc50d1e979665cd',1,'Enjin::SDK::Models']]],
+  ['assetsupplymodel_983',['AssetSupplyModel',['../namespace_enjin_1_1_s_d_k_1_1_models.html#aaa948c382060f83391a1567be50c07a4',1,'Enjin::SDK::Models']]],
+  ['assettransferable_984',['AssetTransferable',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a41ce4dba118482e32be9ff0b111963fc',1,'Enjin::SDK::Models']]],
+  ['assettransferfeetype_985',['AssetTransferFeeType',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a34551c81e9d3d6c0884a1ee7728deb36',1,'Enjin::SDK::Models']]],
+  ['assetvariantmode_986',['AssetVariantMode',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a30e8cc34636ef4ea46ec77531f5da429',1,'Enjin::SDK::Models']]]
 ];
