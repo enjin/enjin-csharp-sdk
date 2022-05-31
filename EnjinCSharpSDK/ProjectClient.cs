@@ -92,6 +92,11 @@ namespace Enjin.SDK
             _authTimer.Elapsed += (sender, args) => SendRequestAndAuth();
         }
 
+        ~ProjectClient()
+        {
+            Dispose();
+        }
+
         /// <inheritdoc/>
         /// <remarks>
         /// If this client has automatic reauthentication enabled, then this method will halt the reauthentication

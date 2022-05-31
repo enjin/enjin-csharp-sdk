@@ -38,6 +38,11 @@ namespace Enjin.SDK
         {
         }
 
+        ~PlayerClient()
+        {
+            Dispose();
+        }
+
         /// <inheritdoc/>
         public void Auth(string? token)
         {
