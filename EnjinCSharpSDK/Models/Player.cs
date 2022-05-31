@@ -15,7 +15,6 @@
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Enjin.SDK.Models
 {
