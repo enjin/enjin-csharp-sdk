@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class MeltAsset : GraphqlRequest<MeltAsset>, IProjectTransactionRequestArguments<MeltAsset>
+    public class MeltAsset : GraphqlRequest<MeltAsset>, ITransactionRequestArguments<MeltAsset>
     {
         /// <summary>
         /// Sole constructor.

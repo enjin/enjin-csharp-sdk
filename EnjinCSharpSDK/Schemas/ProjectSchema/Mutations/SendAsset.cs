@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
     /// <seealso cref="AdvancedSendAsset"/>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SendAsset : GraphqlRequest<SendAsset>, IProjectTransactionRequestArguments<SendAsset>
+    public class SendAsset : GraphqlRequest<SendAsset>, ITransactionRequestArguments<SendAsset>
     {
         /// <summary>
         /// Sole constructor.

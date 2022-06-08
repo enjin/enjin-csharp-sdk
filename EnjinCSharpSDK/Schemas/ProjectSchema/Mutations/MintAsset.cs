@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class MintAsset : GraphqlRequest<MintAsset>, IProjectTransactionRequestArguments<MintAsset>
+    public class MintAsset : GraphqlRequest<MintAsset>, ITransactionRequestArguments<MintAsset>
     {
         /// <summary>
         /// Sole constructor.

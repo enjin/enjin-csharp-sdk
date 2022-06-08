@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetTransferable : GraphqlRequest<SetTransferable>, IProjectTransactionRequestArguments<SetTransferable>
+    public class SetTransferable : GraphqlRequest<SetTransferable>, ITransactionRequestArguments<SetTransferable>
     {
         /// <summary>
         /// Sole constructor.

@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class ApproveMaxEnj : GraphqlRequest<ApproveMaxEnj>, IProjectTransactionRequestArguments<ApproveMaxEnj>
+    public class ApproveMaxEnj : GraphqlRequest<ApproveMaxEnj>, ITransactionRequestArguments<ApproveMaxEnj>
     {
         /// <summary>
         /// Sole constructor.

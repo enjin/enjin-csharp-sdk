@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
     /// <seealso cref="BridgeAssets"/>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class BridgeAsset : GraphqlRequest<BridgeAsset>, IProjectTransactionRequestArguments<BridgeAsset>
+    public class BridgeAsset : GraphqlRequest<BridgeAsset>, ITransactionRequestArguments<BridgeAsset>
     {
         /// <summary>
         /// Sole constructor.

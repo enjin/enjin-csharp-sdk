@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetApprovalForAll : GraphqlRequest<SetApprovalForAll>, IProjectTransactionRequestArguments<SetApprovalForAll>
+    public class SetApprovalForAll : GraphqlRequest<SetApprovalForAll>, ITransactionRequestArguments<SetApprovalForAll>
     {
         /// <summary>
         /// Sole constructor.

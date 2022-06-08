@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
     /// <seealso cref="CreateTrade"/>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class CompleteTrade : GraphqlRequest<CompleteTrade>, IProjectTransactionRequestArguments<CompleteTrade>
+    public class CompleteTrade : GraphqlRequest<CompleteTrade>, ITransactionRequestArguments<CompleteTrade>
     {
         /// <summary>
         /// Sole constructor.

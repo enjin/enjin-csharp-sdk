@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class CreateAsset : GraphqlRequest<CreateAsset>, IProjectTransactionRequestArguments<CreateAsset>
+    public class CreateAsset : GraphqlRequest<CreateAsset>, ITransactionRequestArguments<CreateAsset>
     {
         /// <summary>
         /// Sole constructor.
