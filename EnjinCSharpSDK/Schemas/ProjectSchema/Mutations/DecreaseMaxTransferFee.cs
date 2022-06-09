@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class DecreaseMaxTransferFee : GraphqlRequest<DecreaseMaxTransferFee>, IProjectTransactionRequestArguments<DecreaseMaxTransferFee>
+    public class DecreaseMaxTransferFee : GraphqlRequest<DecreaseMaxTransferFee>, ITransactionRequestArguments<DecreaseMaxTransferFee>
     {
         /// <summary>
         /// Sole constructor.

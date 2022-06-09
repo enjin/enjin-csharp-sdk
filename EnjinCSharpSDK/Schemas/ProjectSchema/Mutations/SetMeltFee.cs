@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetMeltFee : GraphqlRequest<SetMeltFee>, IProjectTransactionRequestArguments<SetMeltFee>
+    public class SetMeltFee : GraphqlRequest<SetMeltFee>, ITransactionRequestArguments<SetMeltFee>
     {
         /// <summary>
         /// Sole constructor.

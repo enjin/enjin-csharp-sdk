@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class ResetEnjApproval : GraphqlRequest<ResetEnjApproval>, IProjectTransactionRequestArguments<ResetEnjApproval>
+    public class ResetEnjApproval : GraphqlRequest<ResetEnjApproval>, ITransactionRequestArguments<ResetEnjApproval>
     {
         /// <summary>
         /// Sole constructor.
