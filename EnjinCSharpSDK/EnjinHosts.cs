@@ -30,13 +30,6 @@ namespace Enjin.SDK
         public static readonly Uri GOERLI = new Uri("https://goerli.cloud.enjin.io/");
 
         /// <summary>
-        /// The URI for the Enjin Platform on the Kovan test network.
-        /// </summary>
-        /// <deprecated>This host may no longer be supported. Use the <see cref="GOERLI"/> host.</deprecated>
-        [Obsolete("Kovan is deprecated, please use Goerli instead for a test network.", false)]
-        public static readonly Uri KOVAN = new Uri("https://kovan.cloud.enjin.io/");
-
-        /// <summary>
         /// The URI for the Enjin Platform on the main network.
         /// </summary>
         public static readonly Uri MAIN_NET = new Uri("https://cloud.enjin.io/");
