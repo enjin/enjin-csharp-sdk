@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-alpha.7] - 2022-07-05
+
+### Added
+
+- Added `GOERLI` to `EnjinHosts`.
+
+### Removed
+
+- Removed `KOVAN` from `EnjinHosts`.
+
 ## [1.0.0-alpha.6] - 2022-05-23
 
 ### Added
@@ -76,7 +86,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial alpha release.
 
-[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.6...HEAD
+[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.7...HEAD
+
+[1.0.0-alpha.7]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.6...1.0.0-alpha.7
 
 [1.0.0-alpha.6]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.5...1.0.0-alpha.6
 
