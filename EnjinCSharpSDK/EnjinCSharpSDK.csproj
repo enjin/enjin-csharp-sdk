@@ -6,12 +6,12 @@
         <Company>Enjin Pte. Ltd.</Company>
         <Copyright>Enjin Pte. Ltd.</Copyright>
         <Authors>Evan Lindsay, Bishop Johnson</Authors>
-        <Version>1.0.0-alpha.6</Version>
+        <Version>1.0.0-alpha.7</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
-        <AssemblyInformationalVersion>1.0.0-alpha.6</AssemblyInformationalVersion>
-        <AssemblyVersion>1.0.0.1005</AssemblyVersion>
+        <AssemblyInformationalVersion>1.0.0-alpha.7</AssemblyInformationalVersion>
+        <AssemblyVersion>1.0.0.1006</AssemblyVersion>
         <PackageId>Enjin.Sdk.CSharp</PackageId>
-        <PackageVersion>1.0.0-alpha.6</PackageVersion>
+        <PackageVersion>1.0.0-alpha.7</PackageVersion>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         
         <!-- Currently fails possibly due to https://github.com/NuGet/Home/issues/10791 -->
