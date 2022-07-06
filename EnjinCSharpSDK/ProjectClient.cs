@@ -73,7 +73,7 @@ namespace Enjin.SDK
         /// <summary>
         /// Event handler for when the authentication timer is stopped.
         /// </summary>
-        public EventHandler? OnAutomaticReauthenticationStopped;
+        public event EventHandler? OnAutomaticReauthenticationStopped;
 
         private ProjectClient(Uri baseUri,
                               bool automaticReauthentication,
