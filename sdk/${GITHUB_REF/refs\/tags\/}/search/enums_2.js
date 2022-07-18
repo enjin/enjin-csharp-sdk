@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loglevel_988',['LogLevel',['../namespace_enjin_1_1_s_d_k_1_1_utils.html#a3f05f1dae6492dfc8dbccf9f87870955',1,'Enjin::SDK::Utils']]]
+  ['httploglevel_1009',['HttpLogLevel',['../namespace_enjin_1_1_s_d_k_1_1_http.html#ad924ecab88950a719900119bf86eafa3',1,'Enjin::SDK::Http']]]
 ];

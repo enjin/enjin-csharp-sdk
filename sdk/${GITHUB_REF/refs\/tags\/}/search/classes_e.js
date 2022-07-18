@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['sendasset_727',['SendAsset',['../class_enjin_1_1_s_d_k_1_1_player_schema_1_1_send_asset.html',1,'Enjin.SDK.PlayerSchema.SendAsset'],['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_send_asset.html',1,'Enjin.SDK.ProjectSchema.SendAsset']]],
-  ['sendenj_728',['SendEnj',['../class_enjin_1_1_s_d_k_1_1_player_schema_1_1_send_enj.html',1,'Enjin.SDK.PlayerSchema.SendEnj'],['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_send_enj.html',1,'Enjin.SDK.ProjectSchema.SendEnj']]],
-  ['setapprovalforall_729',['SetApprovalForAll',['../class_enjin_1_1_s_d_k_1_1_player_schema_1_1_set_approval_for_all.html',1,'Enjin.SDK.PlayerSchema.SetApprovalForAll'],['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_set_approval_for_all.html',1,'Enjin.SDK.ProjectSchema.SetApprovalForAll']]],
-  ['setmeltfee_730',['SetMeltFee',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_set_melt_fee.html',1,'Enjin::SDK::ProjectSchema']]],
-  ['settransferable_731',['SetTransferable',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_set_transferable.html',1,'Enjin::SDK::ProjectSchema']]],
-  ['settransferfee_732',['SetTransferFee',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_set_transfer_fee.html',1,'Enjin::SDK::ProjectSchema']]],
-  ['seturi_733',['SetUri',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_set_uri.html',1,'Enjin::SDK::ProjectSchema']]],
-  ['setwhitelisted_734',['SetWhitelisted',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_set_whitelisted.html',1,'Enjin::SDK::ProjectSchema']]],
-  ['sharedschema_735',['SharedSchema',['../class_enjin_1_1_s_d_k_1_1_shared_1_1_shared_schema.html',1,'Enjin::SDK::Shared']]],
-  ['stringextension_736',['StringExtension',['../class_enjin_1_1_s_d_k_1_1_utils_1_1_string_extension.html',1,'Enjin::SDK::Utils']]],
-  ['supplymodels_737',['SupplyModels',['../class_enjin_1_1_s_d_k_1_1_models_1_1_supply_models.html',1,'Enjin::SDK::Models']]]
+  ['textformatting_756',['TextFormatting',['../class_enjin_1_1_s_d_k_1_1_utils_1_1_text_formatting.html',1,'Enjin::SDK::Utils']]],
+  ['tradeinput_757',['TradeInput',['../class_enjin_1_1_s_d_k_1_1_models_1_1_trade_input.html',1,'Enjin::SDK::Models']]],
+  ['transaction_758',['Transaction',['../class_enjin_1_1_s_d_k_1_1_models_1_1_transaction.html',1,'Enjin::SDK::Models']]],
+  ['transactionevent_759',['TransactionEvent',['../class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_event.html',1,'Enjin::SDK::Models']]],
+  ['transactionfilter_760',['TransactionFilter',['../class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_filter.html',1,'Enjin::SDK::Models']]],
+  ['transactionfragmentarguments_761',['TransactionFragmentArguments',['../class_enjin_1_1_s_d_k_1_1_shared_1_1_transaction_fragment_arguments.html',1,'Enjin::SDK::Shared']]],
+  ['transactionlog_762',['TransactionLog',['../class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_log.html',1,'Enjin::SDK::Models']]],
+  ['transactionreceipt_763',['TransactionReceipt',['../class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_receipt.html',1,'Enjin::SDK::Models']]],
+  ['transactionrequestarguments_764',['TransactionRequestArguments',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_transaction_request_arguments.html',1,'Enjin::SDK::ProjectSchema']]],
+  ['transactionsortinput_765',['TransactionSortInput',['../class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_sort_input.html',1,'Enjin::SDK::Models']]],
+  ['transferinput_766',['TransferInput',['../class_enjin_1_1_s_d_k_1_1_models_1_1_transfer_input.html',1,'Enjin::SDK::Models']]]
 ];

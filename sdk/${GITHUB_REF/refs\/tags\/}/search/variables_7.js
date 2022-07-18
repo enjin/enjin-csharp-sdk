@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['registry_979',['Registry',['../class_enjin_1_1_s_d_k_1_1_trusted_platform_middleware.html#ac7ad21bf62b048148b8e35a20b592db3',1,'Enjin::SDK::TrustedPlatformMiddleware']]]
+  ['registry_999',['Registry',['../class_enjin_1_1_s_d_k_1_1_client_middleware.html#a79550c85b008b20b52647736270bf107',1,'Enjin::SDK::ClientMiddleware']]]
 ];

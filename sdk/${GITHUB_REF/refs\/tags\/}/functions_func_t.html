@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="doxygenIcon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Enjin C# SDK
-   &#160;<span id="projectnumber">1.0.0-alpha.7</span>
+   &#160;<span id="projectnumber">1.0.0-beta.1</span>
    </div>
    <div id="projectbrief">A C# SDK for creating games using the Enjin blockchain platform.</div>
   </td>
@@ -69,7 +69,7 @@ $(function() {
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>To()
 : <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_mint_input.html#a3a457216fe01f11ff5c482e4b106270e">Enjin.SDK.Models.MintInput</a>
-, <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_transfer.html#a3dae227ba7705a66eef9287fa7017609">Enjin.SDK.Models.Transfer</a>
+, <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_transfer_input.html#a3773b07de270fbae2fdd87e9d9c08869">Enjin.SDK.Models.TransferInput</a>
 </li>
 <li>ToString()
 : <a class="el" href="class_enjin_1_1_s_d_k_1_1_graphql_1_1_graphql_data.html#a500fb2d48d0504d741bc57a79ba20376">Enjin.SDK.Graphql.GraphqlData&lt; T &gt;</a>
@@ -87,13 +87,13 @@ $(function() {
 </li>
 <li>TransactionId()
 : <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_filter.html#ad38ea40f5518c4b6386bda828e2ba560">Enjin.SDK.Models.TransactionFilter</a>
-, <a class="el" href="class_enjin_1_1_s_d_k_1_1_shared_1_1_get_request.html#ae3160d08f65d3d5d7c952797ec36b660">Enjin.SDK.Shared.GetRequest</a>
+, <a class="el" href="class_enjin_1_1_s_d_k_1_1_shared_1_1_get_transaction.html#a9faf96f7f62581dba186980d63f31f7c">Enjin.SDK.Shared.GetTransaction</a>
 </li>
 <li>TransactionIdIn()
 : <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_filter.html#a7c86ad6d8e5bff203660d0267c8b32eb">Enjin.SDK.Models.TransactionFilter</a>
 </li>
 <li>TransactionRequest()
-: <a class="el" href="class_enjin_1_1_s_d_k_1_1_shared_1_1_shared_schema.html#a37754efcf539cb2b47a7a12e07d8f5d3">Enjin.SDK.Shared.SharedSchema</a>
+: <a class="el" href="class_enjin_1_1_s_d_k_1_1_shared_1_1_shared_schema.html#af43052af253ae53a54d9684d5b337489">Enjin.SDK.Shared.SharedSchema</a>
 </li>
 <li>Transferable()
 : <a class="el" href="class_enjin_1_1_s_d_k_1_1_project_schema_1_1_create_asset.html#a6dd980c120f2fe5199f83b09aa188a7a">Enjin.SDK.ProjectSchema.CreateAsset</a>
@@ -106,21 +106,15 @@ $(function() {
 : <a class="el" href="class_enjin_1_1_s_d_k_1_1_project_schema_1_1_create_asset.html#ad9b18c66de4fea1bdc5a89c515da2a81">Enjin.SDK.ProjectSchema.CreateAsset</a>
 </li>
 <li>Transfers()
-: <a class="el" href="class_enjin_1_1_s_d_k_1_1_player_schema_1_1_advanced_send_asset.html#ac62e3ad5c10ecddb83e18a7547abc99c">Enjin.SDK.PlayerSchema.AdvancedSendAsset</a>
-, <a class="el" href="class_enjin_1_1_s_d_k_1_1_project_schema_1_1_advanced_send_asset.html#a37fd1c80ecc1d08419271c29a786692e">Enjin.SDK.ProjectSchema.AdvancedSendAsset</a>
-</li>
-<li>TrustedPlatformHandler()
-: <a class="el" href="class_enjin_1_1_s_d_k_1_1_http_1_1_trusted_platform_handler.html#a776c2d52d9be4f3c3c5c4b34e912e9ca">Enjin.SDK.Http.TrustedPlatformHandler</a>
-</li>
-<li>TrustedPlatformMiddleware()
-: <a class="el" href="class_enjin_1_1_s_d_k_1_1_trusted_platform_middleware.html#aa4e67c8c3ce6e9b5ff5c8a79d77b288e">Enjin.SDK.TrustedPlatformMiddleware</a>
+: <a class="el" href="class_enjin_1_1_s_d_k_1_1_player_schema_1_1_advanced_send_asset.html#a84904136c8bede46feebb801264e7f7d">Enjin.SDK.PlayerSchema.AdvancedSendAsset</a>
+, <a class="el" href="class_enjin_1_1_s_d_k_1_1_project_schema_1_1_advanced_send_asset.html#a6737012be17aabcf850ca9c617d3e688">Enjin.SDK.ProjectSchema.AdvancedSendAsset</a>
 </li>
 <li>Type()
-: <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_asset_transfer_fee_settings_input.html#a8cb754901f0dc34c5b70a819ec9fe262">Enjin.SDK.Models.AssetTransferFeeSettingsInput</a>
-, <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_filter.html#a4590dac6d7426a3345ab6218b3faa4a6">Enjin.SDK.Models.TransactionFilter</a>
+: <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_asset_transfer_fee_settings_input.html#ac44a6b51491d76857e2dd5f3dd4d3b50">Enjin.SDK.Models.AssetTransferFeeSettingsInput</a>
+, <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_filter.html#adeccdc7a903b82f36f5eb12ea74199bb">Enjin.SDK.Models.TransactionFilter</a>
 </li>
 <li>Types()
-: <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_filter.html#af25c56e68412e48052d0e38012295cfd">Enjin.SDK.Models.TransactionFilter</a>
+: <a class="el" href="class_enjin_1_1_s_d_k_1_1_models_1_1_transaction_filter.html#a5ffe5c1a39456db99bfa29c401989752">Enjin.SDK.Models.TransactionFilter</a>
 </li>
 </ul>
 </div><!-- contents -->
