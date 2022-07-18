@@ -7,6 +7,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-beta.1] - 2022-07-18
+
+### Added
+
+- Added `HttpLogLevel` enum values.
+- Added reauthentication features to `ProjectClient`.
+
+### Changed
+
+- Renamed `AssetSort` to `AssetSortInput`.
+- Renamed `Melt` to `MeltInput`.
+- Renamed `PaginationOptions` to `PaginationInput`.
+- Renamed `Request` to `Transaction`.
+- Renamed `RequestState` to `TransactionState`.
+- Renamed `RequestType` to `TransactionType`.
+- Renamed `Trade` to `TradeInput`.
+- Renamed `TransactionSort` to `TransactionSortInput`.
+- Renamed `Transfers` to `TransferInput`.
+- Renamed `GetRequest` to `GetTransaction`.
+- Renamed `GetRequests` to `GetTransactions`.
+- Renamed `IProjectTransactionRequestArguments` to `ITransactionRequestArguments`.
+- Renamed `TrustedPlatformMiddleware` to `ClientMiddleware`.
+- Renamed `TrustedPlatformHandler` to `ClientHandler`.
+- `ClientHandler` now locks its authentication token with a mutex.
+- Platform clients and event services now utilize builders.
+- Replaced Boolean input to set HTTP debugging in platform clients and middleware with `HttpLogLevel` enum value.
+- Replaced `JObject` type with `IDictionary<string, object>`.
+- Replaced `IsConnected()` method in `IEventService` with property of the same name.
+- Logger provider input for platform clients is now nullable.
+- Logger provider input for `PusherEventService` is now nullable.
+- The logger provider passed to the platform clients now handles HTTP logs when HTTP debugging is enabled.
+- Reformatted HTTP log messages.
+- Changed access of `HttpLoggingHandler` from public to internal.
+- Changed access of `CreateRequestBody(OGraphqlRequest)` method in `BaseSchema` from protected to private.
+- Changed access of JSON constructor in `GraphqlData` from public to internal.
+- Added finalizers to platform clients.
+
+### Removed
+
+- Removed Refit as a dependency.
+- Removed constructors from platform clients and event services.
+
 ## [1.0.0-alpha.7] - 2022-07-05
 
 ### Added
@@ -86,7 +128,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial alpha release.
 
-[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.7...HEAD
+[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.1...HEAD
+
+[1.0.0-beta.1]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.7...1.0.0-beta.1
 
 [1.0.0-alpha.7]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.6...1.0.0-alpha.7
 
