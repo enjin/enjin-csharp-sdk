@@ -29,37 +29,30 @@ namespace Enjin.SDK.ProjectSchema
     [PublicAPI]
     public class ProjectSchema : SharedSchema, IProjectSchema
     {
-        private const string SCHEMA = "project";
-
-        internal readonly IPlayerService PlayerService;
-        internal readonly IWalletService WalletService;
-
         /// <summary>
         /// Sole constructor.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <param name="loggerProvider">The logger provider.</param>
-        public ProjectSchema(TrustedPlatformMiddleware middleware, LoggerProvider loggerProvider) :
-            base(middleware, SCHEMA, loggerProvider)
+        public ProjectSchema(ClientMiddleware middleware, LoggerProvider? loggerProvider) :
+            base(middleware, "project", loggerProvider)
         {
-            PlayerService = CreateService<IPlayerService>();
-            WalletService = CreateService<IWalletService>();
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> AdvancedSendAsset(AdvancedSendAsset request)
+        public Task<GraphqlResponse<Transaction>> AdvancedSendAsset(AdvancedSendAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> ApproveEnj(ApproveEnj request)
+        public Task<GraphqlResponse<Transaction>> ApproveEnj(ApproveEnj request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> ApproveMaxEnj(ApproveMaxEnj request)
+        public Task<GraphqlResponse<Transaction>> ApproveMaxEnj(ApproveMaxEnj request)
         {
             return TransactionRequest(request);
         }
@@ -67,41 +60,41 @@ namespace Enjin.SDK.ProjectSchema
         /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> AuthPlayer(AuthPlayer request)
         {
-            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
+            return SendRequest<AccessToken>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> AuthProject(AuthProject request)
         {
-            return SendRequest(ProjectService.Auth(Schema, CreateRequestBody(request)));
+            return SendRequest<AccessToken>(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> BridgeAsset(BridgeAsset request)
+        public Task<GraphqlResponse<Transaction>> BridgeAsset(BridgeAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> BridgeAssets(BridgeAssets request)
+        public Task<GraphqlResponse<Transaction>> BridgeAssets(BridgeAssets request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> BridgeClaimAsset(BridgeClaimAsset request)
+        public Task<GraphqlResponse<Transaction>> BridgeClaimAsset(BridgeClaimAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CompleteTrade(CompleteTrade request)
+        public Task<GraphqlResponse<Transaction>> CompleteTrade(CompleteTrade request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CreateAsset(CreateAsset request)
+        public Task<GraphqlResponse<Transaction>> CreateAsset(CreateAsset request)
         {
             return TransactionRequest(request);
         }
@@ -109,23 +102,23 @@ namespace Enjin.SDK.ProjectSchema
         /// <inheritdoc/>
         public Task<GraphqlResponse<AccessToken>> CreatePlayer(CreatePlayer request)
         {
-            return SendRequest(PlayerService.Auth(Schema, CreateRequestBody(request)));
+            return SendRequest<AccessToken>(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> CreateTrade(CreateTrade request)
+        public Task<GraphqlResponse<Transaction>> CreateTrade(CreateTrade request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request)
+        public Task<GraphqlResponse<Transaction>> DecreaseMaxMeltFee(DecreaseMaxMeltFee request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request)
+        public Task<GraphqlResponse<Transaction>> DecreaseMaxTransferFee(DecreaseMaxTransferFee request)
         {
             return TransactionRequest(request);
         }
@@ -133,113 +126,113 @@ namespace Enjin.SDK.ProjectSchema
         /// <inheritdoc/>
         public Task<GraphqlResponse<bool?>> DeletePlayer(DeletePlayer request)
         {
-            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
+            return SendRequest<bool?>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request)
         {
-            return SendRequest(PlayerService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest<Player>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<List<Player>>> GetPlayers(GetPlayers request)
         {
-            return SendRequest(PlayerService.GetMany(Schema, CreateRequestBody(request)));
+            return SendRequest<List<Player>>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<Wallet>> GetWallet(GetWallet request)
         {
-            return SendRequest(WalletService.GetOne(Schema, CreateRequestBody(request)));
+            return SendRequest<Wallet>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<List<Wallet>>> GetWallets(GetWallets request)
         {
-            return SendRequest(WalletService.GetMany(Schema, CreateRequestBody(request)));
+            return SendRequest<List<Wallet>>(request);
         }
 
         /// <inheritdoc/>
         public Task<GraphqlResponse<bool?>> InvalidateAssetMetadata(InvalidateAssetMetadata request)
         {
-            return SendRequest(AssetService.Delete(Schema, CreateRequestBody(request)));
+            return SendRequest<bool?>(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> MeltAsset(MeltAsset request)
+        public Task<GraphqlResponse<Transaction>> MeltAsset(MeltAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> Message(Message request)
+        public Task<GraphqlResponse<Transaction>> Message(Message request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> MintAsset(MintAsset request)
+        public Task<GraphqlResponse<Transaction>> MintAsset(MintAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> ReleaseReserve(ReleaseReserve request)
+        public Task<GraphqlResponse<Transaction>> ReleaseReserve(ReleaseReserve request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> ResetEnjApproval(ResetEnjApproval request)
+        public Task<GraphqlResponse<Transaction>> ResetEnjApproval(ResetEnjApproval request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SendEnj(SendEnj request)
+        public Task<GraphqlResponse<Transaction>> SendEnj(SendEnj request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SendAsset(SendAsset request)
+        public Task<GraphqlResponse<Transaction>> SendAsset(SendAsset request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetApprovalForAll(SetApprovalForAll request)
+        public Task<GraphqlResponse<Transaction>> SetApprovalForAll(SetApprovalForAll request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetMeltFee(SetMeltFee request)
+        public Task<GraphqlResponse<Transaction>> SetMeltFee(SetMeltFee request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetTransferable(SetTransferable request)
+        public Task<GraphqlResponse<Transaction>> SetTransferable(SetTransferable request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetTransferFee(SetTransferFee request)
+        public Task<GraphqlResponse<Transaction>> SetTransferFee(SetTransferFee request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetUri(SetUri request)
+        public Task<GraphqlResponse<Transaction>> SetUri(SetUri request)
         {
             return TransactionRequest(request);
         }
 
         /// <inheritdoc/>
-        public Task<GraphqlResponse<Request>> SetWhitelisted(SetWhitelisted request)
+        public Task<GraphqlResponse<Transaction>> SetWhitelisted(SetWhitelisted request)
         {
             return TransactionRequest(request);
         }
@@ -247,7 +240,7 @@ namespace Enjin.SDK.ProjectSchema
         /// <inheritdoc/>
         public Task<GraphqlResponse<bool?>> UnlinkWallet(UnlinkWallet request)
         {
-            return SendRequest(PlayerService.Delete(Schema, CreateRequestBody(request)));
+            return SendRequest<bool?>(request);
         }
     }
 }

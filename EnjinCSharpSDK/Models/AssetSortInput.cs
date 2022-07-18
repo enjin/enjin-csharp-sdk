@@ -19,31 +19,37 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models transfer fee settings for an asset.
+    /// Models sorting input for assets.
     /// </summary>
-    /// <seealso cref="Asset"/>
     [PublicAPI]
-    public class AssetTransferFeeSettings
+    public class AssetSortInput
     {
-        /// <summary>
-        /// Represents the transfer fee type.
-        /// </summary>
-        /// <value>The type.</value>
-        [JsonProperty("type")]
-        public AssetTransferFeeType? Type { get; private set; }
+        [JsonProperty("field")]
+        private AssetField? _field;
+
+        [JsonProperty("direction")]
+        private SortDirection? _direction;
 
         /// <summary>
-        /// Represents the asset ID or "0" if ENJ.
+        /// Sets the field to sort by.
         /// </summary>
-        /// <value>The ID.</value>
-        [JsonProperty("assetId")]
-        public string? AssetId { get; private set; }
+        /// <param name="field">The field.</param>
+        /// <returns>This input for chaining.</returns>
+        public AssetSortInput Field(AssetField? field)
+        {
+            _field = field;
+            return this;
+        }
 
         /// <summary>
-        /// Represents the fee value in Wei.
+        /// Sets the direction to sort by.
         /// </summary>
-        /// <value>The value.</value>
-        [JsonProperty("value")]
-        public string? Value { get; private set; }
+        /// <param name="direction"></param>
+        /// <returns>This input for chaining.</returns>
+        public AssetSortInput Direction(SortDirection? direction)
+        {
+            _direction = direction;
+            return this;
+        }
     }
 }

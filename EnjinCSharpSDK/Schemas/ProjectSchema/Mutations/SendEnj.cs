@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SendEnj : GraphqlRequest<SendEnj>, IProjectTransactionRequestArguments<SendEnj>
+    public class SendEnj : GraphqlRequest<SendEnj>, ITransactionRequestArguments<SendEnj>
     {
         /// <summary>
         /// Sole constructor.

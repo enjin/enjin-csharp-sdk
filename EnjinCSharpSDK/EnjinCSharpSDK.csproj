@@ -6,12 +6,12 @@
         <Company>Enjin Pte. Ltd.</Company>
         <Copyright>Enjin Pte. Ltd.</Copyright>
         <Authors>Evan Lindsay, Bishop Johnson</Authors>
-        <Version>1.0.0-alpha.7</Version>
+        <Version>1.0.0-beta.1</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
-        <AssemblyInformationalVersion>1.0.0-alpha.7</AssemblyInformationalVersion>
-        <AssemblyVersion>1.0.0.1006</AssemblyVersion>
+        <AssemblyInformationalVersion>1.0.0-beta.1</AssemblyInformationalVersion>
+        <AssemblyVersion>1.0.0.2000</AssemblyVersion>
         <PackageId>Enjin.Sdk.CSharp</PackageId>
-        <PackageVersion>1.0.0-alpha.7</PackageVersion>
+        <PackageVersion>1.0.0-beta.1</PackageVersion>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         
         <!-- Currently fails possibly due to https://github.com/NuGet/Home/issues/10791 -->
@@ -58,7 +58,6 @@
         </PackageReference>
         <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
         <PackageReference Include="PusherClient" Version="2.1.0" />
-        <PackageReference Include="Refit" Version="5.1.67" />
     </ItemGroup>
 
     <ItemGroup>
@@ -184,8 +183,8 @@
         <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetGasPrices.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetPlatform.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetProject.gql" />
-        <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetRequest.gql" />
-        <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetRequests.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetTransaction.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\shared\query\GetTransactions.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Asset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\Balance.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\fragment\PaginationCursor.gql" />
@@ -200,8 +199,8 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetGasPrices.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetPlatform.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetProject.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetRequest.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetRequests.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetTransaction.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\shared\query\GetTransactions.gql" />
     </ItemGroup>
 
 </Project>

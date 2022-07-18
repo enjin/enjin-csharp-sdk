@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetUri : GraphqlRequest<SetUri>, IProjectTransactionRequestArguments<SetUri>
+    public class SetUri : GraphqlRequest<SetUri>, ITransactionRequestArguments<SetUri>
     {
         /// <summary>
         /// Sole constructor.

@@ -24,7 +24,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class SetWhitelisted : GraphqlRequest<SetWhitelisted>, IProjectTransactionRequestArguments<SetWhitelisted>
+    public class SetWhitelisted : GraphqlRequest<SetWhitelisted>, ITransactionRequestArguments<SetWhitelisted>
     {
         /// <summary>
         /// Sole constructor.

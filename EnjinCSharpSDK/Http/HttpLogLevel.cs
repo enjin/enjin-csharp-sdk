@@ -1,4 +1,4 @@
-/* Copyright 2021 Enjin Pte. Ltd.
+﻿/* Copyright 2021 Enjin Pte. Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,29 +14,33 @@
  */
 
 using JetBrains.Annotations;
-using Newtonsoft.Json;
 
-namespace Enjin.SDK.Models
+namespace Enjin.SDK.Http
 {
     /// <summary>
-    /// Models a pagination input for pagination requests.
+    /// Enum for different logging levels of HTTP traffic.
     /// </summary>
-    /// <seealso cref="Enjin.SDK.Shared.PaginationArguments"/>
     [PublicAPI]
-    public class PaginationOptions
+    public enum HttpLogLevel
     {
         /// <summary>
-        /// Represents the page number to start at for the pagination.
+        /// No logging.
         /// </summary>
-        /// <value>The page to start at.</value>
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-        
+        NONE,
+
         /// <summary>
-        /// Represents the number of results per page for the pagination.
+        /// Logs request and response lines.
         /// </summary>
-        /// <value>The number of items per page.</value>
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
+        BASIC,
+
+        /// <summary>
+        /// Logs request and response lines as well as their respective headers.
+        /// </summary>
+        HEADERS,
+
+        /// <summary>
+        /// Logs request and response lines as well as their respective headers and bodies if present.
+        /// </summary>
+        BODY,
     }
 }

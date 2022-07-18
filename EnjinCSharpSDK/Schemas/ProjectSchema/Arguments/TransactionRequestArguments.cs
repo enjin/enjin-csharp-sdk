@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+using Enjin.SDK.Models;
 using Enjin.SDK.Shared;
 using JetBrains.Annotations;
 
@@ -22,17 +23,17 @@ namespace Enjin.SDK.ProjectSchema
     /// Interface used to set common arguments used in transaction requests in the project schema.
     /// </summary>
     /// <typeparam name="T">The type of the implementing class.</typeparam>
-    /// <seealso cref="Enjin.SDK.Models.Request"/>
+    /// <seealso cref="Transaction"/>
     [PublicAPI]
-    public interface IProjectTransactionRequestArguments<out T> : ITransactionFragmentArguments<T>
+    public interface ITransactionRequestArguments<out T> : ITransactionFragmentArguments<T>
     {
     }
-    
+
     /// <summary>
-    /// Class with extension methods for <see cref="IProjectTransactionRequestArguments{T}"/>.
+    /// Class with extension methods for <see cref="ITransactionRequestArguments{T}"/>.
     /// </summary>
     [PublicAPI]
-    public static class ProjectTransactionRequestArguments
+    public static class TransactionRequestArguments
     {
         /// <summary>
         /// Sets the Ethereum address of the sender.
@@ -41,7 +42,7 @@ namespace Enjin.SDK.ProjectSchema
         /// <param name="ethAddress">The address.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        public static T EthAddress<T>(this T instance, string? ethAddress) where T : IProjectTransactionRequestArguments<T>
+        public static T EthAddress<T>(this T instance, string? ethAddress) where T : ITransactionRequestArguments<T>
         {
             return instance.SetVariable("ethAddress", ethAddress);
         }

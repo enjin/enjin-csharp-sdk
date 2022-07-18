@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class ReleaseReserve : GraphqlRequest<ReleaseReserve>, IProjectTransactionRequestArguments<ReleaseReserve>
+    public class ReleaseReserve : GraphqlRequest<ReleaseReserve>, ITransactionRequestArguments<ReleaseReserve>
     {
         /// <summary>
         /// Sole constructor.

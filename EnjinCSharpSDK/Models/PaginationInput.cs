@@ -19,36 +19,24 @@ using Newtonsoft.Json;
 namespace Enjin.SDK.Models
 {
     /// <summary>
-    /// Models sorting input for assets.
+    /// Models a pagination input for pagination requests.
     /// </summary>
+    /// <seealso cref="Enjin.SDK.Shared.PaginationArguments"/>
     [PublicAPI]
-    public class AssetSort
+    public class PaginationInput
     {
-        [JsonProperty("field")]
-        private AssetField? _field;
-        [JsonProperty("direction")]
-        private SortDirection? _direction;
+        /// <summary>
+        /// Represents the page number to start at for the pagination.
+        /// </summary>
+        /// <value>The page to start at.</value>
+        [JsonProperty("page")]
+        public int? Page { get; set; }
 
         /// <summary>
-        /// Sets the field to sort by.
+        /// Represents the number of results per page for the pagination.
         /// </summary>
-        /// <param name="field">The field.</param>
-        /// <returns>This input for chaining.</returns>
-        public AssetSort Field(AssetField? field)
-        {
-            _field = field;
-            return this;
-        }
-
-        /// <summary>
-        /// Sets the direction to sort by.
-        /// </summary>
-        /// <param name="direction"></param>
-        /// <returns>This input for chaining.</returns>
-        public AssetSort Direction(SortDirection? direction)
-        {
-            _direction = direction;
-            return this;
-        }
+        /// <value>The number of items per page.</value>
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
     }
 }

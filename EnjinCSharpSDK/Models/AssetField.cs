@@ -23,7 +23,7 @@ namespace Enjin.SDK.Models
     /// <summary>
     /// The fields of the <see cref="Asset"/> type.
     /// </summary>
-    /// <seealso cref="AssetSort"/>
+    /// <seealso cref="AssetSortInput"/>
     [JsonConverter(typeof(StringEnumConverter))]
     [PublicAPI]
     public enum AssetField

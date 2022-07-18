@@ -22,8 +22,9 @@ using Enjin.SDK.Shared;
 using Enjin.SDK.Utils;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-using Refit;
 using TestSuite.Utils;
+using WireMock.RequestBuilders;
+using WireMock.ResponseBuilders;
 using WireMock.Server;
 using WireMock.Settings;
 
@@ -41,7 +42,7 @@ namespace TestSuite
         {
             _server = WireMockServer.Start(new WireMockServerSettings
             {
-                Urls = new[] {"http://localhost/"},
+                Urls = new[] { "http://localhost/" },
             });
         }
 
@@ -49,144 +50,63 @@ namespace TestSuite
         public void BeforeEach()
         {
             _server.Reset();
-            ClassUnderTest = new TestableBaseSchema(new TrustedPlatformMiddleware(new Uri(_server.Urls[0]), false),
-                                                    "test");
+
+            var middleware = new ClientMiddleware(new Uri(_server.Urls[0]));
+            ClassUnderTest = new TestableBaseSchema(middleware, "test");
         }
 
         [OneTimeTearDown]
         public static void AfterAll()
         {
             _server.Stop();
+            _server.Dispose();
         }
 
         [Test]
-        public void CreateRequestBody_ReturnHasQueryAndVariableAttributes()
-        {
-            // Arrange
-            const string queryKey = "query";
-            const string variablesKey = "variables";
-            var request = CreateValidRequest();
-
-            // Act
-            var body = ClassUnderTest.CreateRequestBody(request);
-
-            // Assert
-            Assert.NotNull(body[queryKey]);
-            Assert.NotNull(body[variablesKey]);
-        }
-
-        [Test]
-        public void CreateService_IBalanceService_CreatesTheService()
-        {
-            // Act
-            var actual = ClassUnderTest.CreateService<IBalanceService>();
-
-            // Assert
-            Assert.NotNull(actual);
-        }
-
-        [Test]
-        public void CreateService_IPlatformService_CreatesTheService()
-        {
-            // Act
-            var actual = ClassUnderTest.CreateService<IPlatformService>();
-
-            // Assert
-            Assert.NotNull(actual);
-        }
-
-        [Test]
-        public void CreateService_IPlayerService_CreatesTheService()
-        {
-            // Act
-            var actual = ClassUnderTest.CreateService<IPlayerService>();
-
-            // Assert
-            Assert.NotNull(actual);
-        }
-
-        [Test]
-        public void CreateService_IProjectService_CreatesTheService()
-        {
-            // Act
-            var actual = ClassUnderTest.CreateService<IProjectService>();
-
-            // Assert
-            Assert.NotNull(actual);
-        }
-
-        [Test]
-        public void CreateService_IRequestService_CreatesTheService()
-        {
-            // Act
-            var actual = ClassUnderTest.CreateService<IRequestService>();
-
-            // Assert
-            Assert.NotNull(actual);
-        }
-
-        [Test]
-        public void CreateService_IAssetService_CreatesTheService()
-        {
-            // Act
-            var actual = ClassUnderTest.CreateService<IAssetService>();
-
-            // Assert
-            Assert.NotNull(actual);
-        }
-
-        [Test]
-        public void CreateService_IWalletService_CreatesTheService()
-        {
-            // Act
-            var actual = ClassUnderTest.CreateService<IWalletService>();
-
-            // Assert
-            Assert.NotNull(actual);
-        }
-
-        [Test]
+        [Timeout(5000)]
         public void SendRequest_SuccessfulResponse_ReturnsResponseWithContent()
         {
-            // Arrange
+            // Arrange - Data
             var expected = new DummyObject(1);
             var responseBody = $"{{\"data\": {{\"result\": {JObject.FromObject(expected)}}}}}";
-            var service = ClassUnderTest.CreateService<IFakeService>();
-            var taskIn = service.Post(ClassUnderTest.Schema, JObject.Parse(@"{}"));
-            _server.Given(WireMock.RequestBuilders.Request.Create()
-                                  .WithPath($"/graphql/{ClassUnderTest.Schema}")
-                                  .UsingPost())
-                   .RespondWith(WireMock.ResponseBuilders.Response.Create()
-                                        .WithStatusCode(HttpStatusCode.OK)
+            var dummyRequest = CreateValidRequest();
+
+            // Arrange - Stubbing
+            _server.Given(Request.Create()
+                                 .WithPath($"/graphql/{ClassUnderTest.Schema}")
+                                 .UsingPost())
+                   .RespondWith(Response.Create()
+                                        .WithSuccess()
                                         .WithHeader("Content-Type", "application/json")
                                         .WithBody(responseBody));
 
             // Act
-            var response = ClassUnderTest.SendRequest(taskIn).Result;
-            var actual = response.Result;
+            var response = ClassUnderTest.SendRequest<DummyObject>(dummyRequest).Result;
 
             // Assert
-            Assert.IsFalse(response.HasErrors);
-            Assert.AreEqual(expected, actual);
+            Assert.IsFalse(response.HasErrors, "The response has errors.");
+            Assert.AreEqual(expected, response.Result, "The response does not have the expected data.");
         }
 
         [Test]
+        [Timeout(5000)]
         public void SendRequest_FailedResponse_ReturnsResponseWithErrors()
         {
-            // Arrange
+            // Arrange - Data
             const string responseBody = @"{""errors"":[{""message"":""generic error""}]}";
-            var service = ClassUnderTest.CreateService<IFakeService>();
-            var taskIn = service.Post(ClassUnderTest.Schema, JObject.Parse(@"{}"));
-            _server.Given(WireMock.RequestBuilders.Request.Create()
-                                  .WithPath($"/graphql/{ClassUnderTest.Schema}")
-                                  .UsingPost())
-                   .RespondWith(WireMock.ResponseBuilders.Response.Create()
+            var dummyRequest = CreateValidRequest();
+
+            // Arrange - Stubbing
+            _server.Given(Request.Create()
+                                 .WithPath($"/graphql/{ClassUnderTest.Schema}")
+                                 .UsingPost())
+                   .RespondWith(Response.Create()
                                         .WithStatusCode(HttpStatusCode.BadRequest)
                                         .WithHeader("Content-Type", "application/json")
                                         .WithBody(responseBody));
 
             // Act
-            var response = ClassUnderTest.SendRequest(taskIn).Result;
+            var response = ClassUnderTest.SendRequest<DummyObject>(dummyRequest).Result;
 
             // Assert
             Assert.IsTrue(response.HasErrors);
@@ -194,30 +114,16 @@ namespace TestSuite
 
         private static IGraphqlRequest CreateValidRequest() => new GetPlatform();
 
-        [Headers("Content-Type: application/json")]
-        internal interface IFakeService
-        {
-            [Post("/graphql/{schema}")]
-            Task<ApiResponse<GraphqlResponse<DummyObject>>> Post(string schema,
-                                                                 [Body(BodySerializationMethod.Serialized)]
-                                                                 JObject body);
-        }
-
         private class TestableBaseSchema : BaseSchema
         {
             public new string Schema => base.Schema;
 
-            public TestableBaseSchema(TrustedPlatformMiddleware middleware, string schema) : base(middleware, schema,
+            public TestableBaseSchema(ClientMiddleware middleware, string schema) : base(middleware, schema,
                 LoggerProvider.CreateDefaultLoggerProvider())
             {
             }
 
-            public new JToken CreateRequestBody(IGraphqlRequest request) => base.CreateRequestBody(request);
-
-            public new T CreateService<T>() => base.CreateService<T>();
-
-            public new Task<GraphqlResponse<T>> SendRequest<T>(Task<ApiResponse<GraphqlResponse<T>>> taskIn) =>
-                base.SendRequest(taskIn);
+            public new Task<GraphqlResponse<T>> SendRequest<T>(IGraphqlRequest request) => base.SendRequest<T>(request);
         }
     }
 }

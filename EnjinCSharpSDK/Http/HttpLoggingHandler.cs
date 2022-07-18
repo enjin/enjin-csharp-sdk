@@ -14,110 +14,144 @@
  */
 
 using System;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Enjin.SDK.Utils;
 
 namespace Enjin.SDK.Http
 {
     /// <summary>
     /// Handler used for debugging the HTTP client.
     /// </summary>
-    public class HttpLoggingHandler : DelegatingHandler
+    internal class HttpLoggingHandler : DelegatingHandler
     {
-        private readonly string[] _types = {"html", "text", "xml", "json", "txt", "x-www-form-urlencoded"};
+        private readonly HttpLogLevel _logLevel;
+        private readonly LoggerProvider _loggerProvider;
 
         /// <summary>
-        /// Constructs the handler with an optional inner handler.
+        /// Creates a new instance of the <see cref="HttpLoggingHandler"/> class with a specific inner handler.
         /// </summary>
-        /// <param name="innerHandler">The handler to replace the default client handler.</param>
-        public HttpLoggingHandler(HttpMessageHandler? innerHandler = null)
-            : base(innerHandler ?? new HttpClientHandler())
+        /// <param name="logLevel">The HTTP logging level.</param>
+        /// <param name="loggerProvider">The logger provider.</param>
+        /// <param name="innerHandler">
+        /// The inner handler which is responsible for processing the HTTP response messages.
+        /// </param>
+        internal HttpLoggingHandler(HttpLogLevel logLevel,
+                                    LoggerProvider loggerProvider,
+                                    HttpMessageHandler innerHandler)
+            : base(innerHandler)
         {
+            _logLevel = logLevel;
+            _loggerProvider = loggerProvider ?? throw new ArgumentNullException(nameof(loggerProvider));
         }
 
         /// <inheritdoc/>
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-            CancellationToken cancellationToken)
+                                                                     CancellationToken cancellationToken)
         {
-            var req = request;
-            var id = Guid.NewGuid().ToString();
-            var msg = $"[{id} -   Request]";
+            LogRequest(request);
 
-            Console.Out.WriteLine($"{msg}========Start==========");
-            Console.Out.WriteLine(
-                $"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
-            Console.Out.WriteLine($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
-
-            foreach (var header in req.Headers)
-                Console.Out.WriteLine($"{msg} {header.Key}: {string.Join(" ", header.Value)}");
-
-            if (req.Content != null)
-            {
-                foreach (var header in req.Content.Headers)
-                    Console.Out.WriteLine($"{msg} {header.Key}: {string.Join(" ", header.Value)}");
-
-                if (req.Content is StringContent || this.IsTextBasedContentType(req.Headers) ||
-                    this.IsTextBasedContentType(req.Content.Headers))
-                {
-                    var result = await req.Content.ReadAsStringAsync();
-
-                    Console.Out.WriteLine($"{msg} Content:");
-                    Console.Out.WriteLine($"{msg} {string.Join("", result)}");
-                }
-            }
-
-            var start = DateTime.Now;
-
+            var start = DateTimeOffset.Now;
             var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            var end = DateTimeOffset.Now;
 
-            var end = DateTime.Now;
+            LogResponse(response, (end - start).Milliseconds);
 
-            Console.Out.WriteLine($"{msg} Duration: {end - start}");
-            Console.Out.WriteLine($"{msg}==========End==========");
-
-            msg = $"[{id} - Response]";
-            Console.Out.WriteLine($"{msg}=========Start=========");
-
-            var resp = response;
-
-            Console.Out.WriteLine(
-                $"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int) resp.StatusCode} {resp.ReasonPhrase}");
-
-            foreach (var header in resp.Headers)
-                Console.Out.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
-
-            if (resp.Content != null)
-            {
-                foreach (var header in resp.Content.Headers)
-                    Console.Out.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
-
-                if (resp.Content is StringContent || this.IsTextBasedContentType(resp.Headers) ||
-                    this.IsTextBasedContentType(resp.Content.Headers))
-                {
-                    start = DateTime.Now;
-                    var result = await resp.Content.ReadAsStringAsync();
-                    end = DateTime.Now;
-
-                    Console.Out.WriteLine($"{msg} Content:");
-                    Console.Out.WriteLine($"{msg} {string.Join("", result)}");
-                    Console.Out.WriteLine($"{msg} Duration: {end - start}");
-                }
-            }
-
-            Console.Out.WriteLine($"{msg}==========End==========");
             return response;
         }
 
-        private bool IsTextBasedContentType(HttpHeaders headers)
+        private void LogRequest(HttpRequestMessage msg)
         {
-            if (!headers.TryGetValues("Content-Type", out var values))
-                return false;
-            var header = string.Join(" ", values).ToLowerInvariant();
+            if (_logLevel == HttpLogLevel.NONE)
+                return;
 
-            return _types.Any(t => header.Contains(t));
+            var builder = new StringBuilder();
+            var method = msg.Method.Method.ToUpper();
+            var uri = msg.RequestUri;
+            var contentLength = msg.Content.Headers.ContentLength;
+
+            // Line
+            if (_logLevel == HttpLogLevel.BASIC)
+            {
+                builder.AppendLine($"--> {method} {uri} ({contentLength}-byte body)");
+                _loggerProvider.Debug(builder.ToString());
+                return;
+            }
+
+            builder.AppendLine($"--> {method} {uri}");
+
+            // Headers
+            foreach (var header in msg.Headers)
+            {
+                var key = header.Key;
+                var values = header.Value;
+                if (key == null || values == null)
+                    continue;
+
+                builder.AppendLine(key.Equals("User-Agent")
+                                       ? $"{key}: {string.Join(" ", values)}"
+                                       : $"{key}: {string.Join(", ", values)}");
+            }
+
+            if (_logLevel == HttpLogLevel.HEADERS)
+            {
+                builder.AppendLine($"<-- END {method}");
+                _loggerProvider.Debug(builder.ToString());
+                return;
+            }
+
+            // Body
+            builder.AppendLine() // Line break between headers and body
+                   .AppendLine(msg.Content.ReadAsStringAsync().Result)
+                   .AppendLine($"<-- END {method} ({contentLength}-byte body)");
+
+            _loggerProvider.Debug(builder.ToString());
+        }
+
+        private void LogResponse(HttpResponseMessage msg, int rtt)
+        {
+            if (_logLevel == HttpLogLevel.NONE)
+                return;
+
+            var builder = new StringBuilder();
+            var status = (int) msg.StatusCode;
+            var uri = msg.RequestMessage.RequestUri;
+
+            // Line
+            builder.AppendLine($"<-- {status} {uri} ({rtt}ms)");
+
+            if (_logLevel == HttpLogLevel.BASIC)
+            {
+                _loggerProvider.Debug(builder.ToString());
+                return;
+            }
+
+            // Headers
+            foreach (var header in msg.Headers)
+            {
+                var key = header.Key;
+                var values = header.Value;
+                if (key == null || values == null)
+                    continue;
+
+                builder.AppendLine($"{key}: {string.Join(", ", values)}");
+            }
+
+            if (_logLevel == HttpLogLevel.HEADERS)
+            {
+                builder.AppendLine("<-- END HTTP");
+                _loggerProvider.Debug(builder.ToString());
+                return;
+            }
+
+            // Body
+            builder.AppendLine() // Line break between headers and body
+                   .AppendLine(msg.Content.ReadAsStringAsync().Result)
+                   .AppendLine("<-- END HTTP");
+
+            _loggerProvider.Debug(builder.ToString());
         }
     }
 }

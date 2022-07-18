@@ -20,38 +20,38 @@ using JetBrains.Annotations;
 namespace Enjin.SDK.Shared
 {
     /// <summary>
-    /// Request for getting transactions on the platform.
+    /// Request for getting a transaction on platform.
     /// </summary>
-    /// <seealso cref="Request"/>
+    /// <seealso cref="Transaction"/>
     /// <seealso cref="ISharedSchema"/>
     [PublicAPI]
-    public class GetRequests : GraphqlRequest<GetRequests>, ITransactionFragmentArguments<GetRequests>, IPaginationArguments<GetRequests>
+    public class GetTransaction : GraphqlRequest<GetTransaction>, ITransactionFragmentArguments<GetTransaction>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public GetRequests() : base("enjin.sdk.shared.GetRequests")
+        public GetTransaction() : base("enjin.sdk.shared.GetTransaction")
         {
         }
 
         /// <summary>
-        /// Sets the filter the request will use.
+        /// Sets the transaction ID.
         /// </summary>
-        /// <param name="filter">The filter.</param>
+        /// <param name="id">The ID.</param>
         /// <returns>This request for chaining.</returns>
-        public GetRequests Filter(TransactionFilter? filter)
+        public GetTransaction Id(int? id)
         {
-            return SetVariable("filter", filter);
+            return SetVariable("id", id);
         }
 
         /// <summary>
-        /// Sets the request to sort the results by the specified options.
+        /// Sets the transaction hash ID.
         /// </summary>
-        /// <param name="sort">The sort options.</param>
+        /// <param name="id">The hash ID.</param>
         /// <returns>This request for chaining.</returns>
-        public GetRequests Sort(TransactionSort? sort)
+        public GetTransaction TransactionId(string? id)
         {
-            return SetVariable("sort", sort);
+            return SetVariable("transactionId", id);
         }
     }
 }

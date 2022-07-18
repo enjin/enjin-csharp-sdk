@@ -14,10 +14,13 @@
  */
 
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Enjin.SDK.Models;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+
+[assembly: InternalsVisibleTo("TestSuite")]
 
 namespace Enjin.SDK.Graphql
 {
@@ -37,13 +40,13 @@ namespace Enjin.SDK.Graphql
         /// <see cref="GraphqlResponse{T}.IsSuccess"/> if the result equals the types default value.
         /// </remarks>
         public T Result { get; private set; } = default!;
-        
+
         /// <summary>
         /// Represents the errors of this response if any exist.
         /// </summary>
         /// <value>The errors.</value>
         public List<GraphqlError>? Errors { get; private set; }
-        
+
         /// <summary>
         /// Represents the pagination cursor.
         /// </summary>
@@ -65,7 +68,7 @@ namespace Enjin.SDK.Graphql
         /// <see cref="GraphqlResponse{T}.IsSuccess"/> instead.
         /// </remarks>
         public bool IsEmpty => Result == null;
-        
+
         /// <summary>
         /// Represents whether the response is paginated or not.
         /// </summary>
@@ -80,7 +83,7 @@ namespace Enjin.SDK.Graphql
         /// A response is considered successful if it has no errors and is not empty.
         /// </remarks>
         public bool IsSuccess => !(IsEmpty || HasErrors);
-        
+
         /// <summary>
         /// Sole constructor.
         /// </summary>
@@ -124,7 +127,7 @@ namespace Enjin.SDK.Graphql
         /// </summary>
         /// <value>The result.</value>
         public T Result { get; private set; } = default!;
-        
+
         /// <summary>
         /// Represents the deserialized cursor.
         /// </summary>
@@ -136,11 +139,11 @@ namespace Enjin.SDK.Graphql
         /// </summary>
         /// <param name="result">The serialized result.</param>
         [JsonConstructor]
-        public GraphqlData(JToken result)
+        internal GraphqlData(JToken result)
         {
             ProcessJsonResult(result);
         }
-        
+
         /// <summary>
         /// Returns a string that represents the result in the data.
         /// </summary>
@@ -153,7 +156,7 @@ namespace Enjin.SDK.Graphql
         private void ProcessJsonResult(JToken result)
         {
             if (result.Type == JTokenType.Object)
-                ProcessResultObject((JObject) result);
+                ProcessResultObject((JObject)result);
             else
             {
                 Result = result.ToObject<T>()!;
@@ -166,11 +169,11 @@ namespace Enjin.SDK.Graphql
             if (isPaginated)
             {
                 var items = result[ItemsKey];
-                if (items is {Type: JTokenType.Array})
+                if (items is { Type: JTokenType.Array })
                 {
                     Result = items.ToObject<T>()!;
                 }
-                
+
                 if (result.ContainsKey(CursorKey))
                     Cursor = result[CursorKey]?.ToObject<PaginationCursor>();
             }

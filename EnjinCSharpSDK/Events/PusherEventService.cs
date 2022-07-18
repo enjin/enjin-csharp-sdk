@@ -37,6 +37,9 @@ namespace Enjin.SDK.Events
     [PublicAPI]
     public sealed class PusherEventService : IEventService
     {
+        /// <inheritdoc/>
+        public bool IsConnected => _pusher?.State == ConnectionState.Connected;
+
         /// <summary>
         /// Represents the platform details this service is utilizing.
         /// </summary>
@@ -47,7 +50,7 @@ namespace Enjin.SDK.Events
         /// Represents the logger provider used by this service.
         /// </summary>
         /// <value>The logger provider.</value>
-        public LoggerProvider LoggerProvider { get; private set; }
+        public LoggerProvider? LoggerProvider { get; private set; }
 
         /// <inheritdoc/>
         public event EventHandler? Connected;
@@ -65,22 +68,7 @@ namespace Enjin.SDK.Events
         private Pusher? _pusher;
         private readonly PusherEventListener _listener;
 
-        /// <summary>
-        /// Constructs the service and assigns the given platform details and a default logger provider. See
-        /// <see cref="Start()"/> to start the service.
-        /// </summary>
-        /// <param name="platform">The platform details.</param>
-        public PusherEventService(Platform platform) : this(LoggerProvider.CreateDefaultLoggerProvider(), platform)
-        {
-        }
-
-        /// <summary>
-        /// Constructs the event service and assigns the given logger provider and platform details. See
-        /// <see cref="Start()"/> to start the service.
-        /// </summary>
-        /// <param name="loggerProvider"></param>
-        /// <param name="platform"></param>
-        public PusherEventService(LoggerProvider loggerProvider, Platform platform)
+        private PusherEventService(LoggerProvider? loggerProvider, Platform platform)
         {
             LoggerProvider = loggerProvider;
             Platform = platform;
@@ -88,6 +76,11 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
+        /// <remarks>
+        /// The task returned may complete exceptionally if the <see cref="Platform"/> property lacks the required
+        /// Pusher data to connect. Ensure that <see cref="Enjin.SDK.Shared.GetPlatform.WithNotificationDrivers"/> is
+        /// called on the <see cref="Enjin.SDK.Shared.GetPlatform"/> request before sending it to the platform.
+        /// </remarks>
         public Task Start()
         {
             Shutdown();
@@ -112,7 +105,7 @@ namespace Enjin.SDK.Events
             _pusher.Disconnected += sender => { Disconnected?.Invoke(this, EventArgs.Empty); };
             _pusher.Error += (sender, error) =>
             {
-                LoggerProvider.Log(LogLevel.ERROR, "Error on Pusher client: ", error);
+                LoggerProvider?.Log(LogLevel.ERROR, "Error on Pusher client: ", error);
                 Error?.Invoke(this, error);
             };
 
@@ -123,6 +116,11 @@ namespace Enjin.SDK.Events
         }
 
         /// <inheritdoc/>
+        /// <remarks>
+        /// The task returned may complete exceptionally if the <see cref="Platform"/> property lacks the required
+        /// Pusher data to connect. Ensure that <see cref="Enjin.SDK.Shared.GetPlatform.WithNotificationDrivers"/> is
+        /// called on the <see cref="Enjin.SDK.Shared.GetPlatform"/> request before sending it to the platform.
+        /// </remarks>
         public Task Start(Platform platform)
         {
             Platform = platform;
@@ -132,13 +130,8 @@ namespace Enjin.SDK.Events
         /// <inheritdoc/>
         public Task Shutdown()
         {
-            return _pusher?.DisconnectAsync() ?? Task.FromException(new InvalidOperationException("Event service has not been started."));
-        }
-
-        /// <inheritdoc/>
-        public bool IsConnected()
-        {
-            return _pusher?.State == ConnectionState.Connected;
+            return _pusher?.DisconnectAsync() ??
+                   Task.FromException(new InvalidOperationException("Event service has not been started."));
         }
 
         /// <inheritdoc/>
@@ -336,6 +329,63 @@ namespace Enjin.SDK.Events
             EventTypeDef.Values()
                         .Where(d => d.Type != EventType.UNKNOWN)
                         .Do(d => _pusher!.Bind(d.Key, _listener.OnEvent));
+        }
+
+        /// <summary>
+        /// Creates a builder for this class.
+        /// </summary>
+        /// <returns>The builder.</returns>
+        public static PusherEventServiceBuilder Builder()
+        {
+            return new PusherEventServiceBuilder();
+        }
+
+        /// <summary>
+        /// Builder class for <see cref="PusherEventService"/>
+        /// </summary>
+        [PublicAPI]
+        public class PusherEventServiceBuilder
+        {
+            private LoggerProvider? _loggerProvider;
+            private Platform? _platform;
+
+            internal PusherEventServiceBuilder()
+            {
+            }
+
+            /// <summary>
+            /// Builds the service.
+            /// </summary>
+            /// <returns>The service.</returns>
+            public PusherEventService Build()
+            {
+                if (_platform == null)
+                    throw new InvalidOperationException($"Cannot build {nameof(PusherEventService)} with null {nameof(Models.Platform)}.");
+
+                return new PusherEventService(_loggerProvider, _platform);
+            }
+
+            /// <summary>
+            /// Sets the logger provider for the service to use.
+            /// </summary>
+            /// <param name="loggerProvider">The logger provider.</param>
+            /// <returns>This builder for chaining.</returns>
+            public PusherEventServiceBuilder LoggerProvider(LoggerProvider loggerProvider)
+            {
+                _loggerProvider = loggerProvider;
+                return this;
+            }
+
+            /// <summary>
+            /// Sets the platform data for the service to use.
+            /// </summary>
+            /// <param name="platform">The platform data.</param>
+            /// <returns>This builder for chaining.</returns>
+            public PusherEventServiceBuilder Platform(Platform platform)
+            {
+                _platform = platform;
+                return this;
+            }
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Enjin.SDK.ProjectSchema
     /// <seealso cref="SendAsset"/>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class AdvancedSendAsset : GraphqlRequest<AdvancedSendAsset>, IProjectTransactionRequestArguments<AdvancedSendAsset>
+    public class AdvancedSendAsset : GraphqlRequest<AdvancedSendAsset>, ITransactionRequestArguments<AdvancedSendAsset>
     {
         /// <summary>
         /// Sole constructor.
@@ -39,7 +39,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="transfers">The transfers.</param>
         /// <returns>This request for chaining.</returns>
-        public AdvancedSendAsset Transfers(params Transfer[]? transfers)
+        public AdvancedSendAsset Transfers(params TransferInput[]? transfers)
         {
             return SetVariable("transfers", transfers);
         }

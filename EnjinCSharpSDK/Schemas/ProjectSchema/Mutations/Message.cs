@@ -23,7 +23,7 @@ namespace Enjin.SDK.ProjectSchema
     /// </summary>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class Message : GraphqlRequest<Message>, IProjectTransactionRequestArguments<Message>
+    public class Message : GraphqlRequest<Message>, ITransactionRequestArguments<Message>
     {
         /// <summary>
         /// Sole constructor. Sets the message to sign.
