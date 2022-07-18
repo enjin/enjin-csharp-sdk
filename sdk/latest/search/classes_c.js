@@ -1,20 +1,5 @@
 var searchData=
 [
-  ['paginationarguments_707',['PaginationArguments',['../class_enjin_1_1_s_d_k_1_1_shared_1_1_pagination_arguments.html',1,'Enjin::SDK::Shared']]],
-  ['paginationcursor_708',['PaginationCursor',['../class_enjin_1_1_s_d_k_1_1_models_1_1_pagination_cursor.html',1,'Enjin::SDK::Models']]],
-  ['paginationoptions_709',['PaginationOptions',['../class_enjin_1_1_s_d_k_1_1_models_1_1_pagination_options.html',1,'Enjin::SDK::Models']]],
-  ['platform_710',['Platform',['../class_enjin_1_1_s_d_k_1_1_models_1_1_platform.html',1,'Enjin::SDK::Models']]],
-  ['player_711',['Player',['../class_enjin_1_1_s_d_k_1_1_models_1_1_player.html',1,'Enjin::SDK::Models']]],
-  ['playerclient_712',['PlayerClient',['../class_enjin_1_1_s_d_k_1_1_player_client.html',1,'Enjin::SDK']]],
-  ['playerfilter_713',['PlayerFilter',['../class_enjin_1_1_s_d_k_1_1_models_1_1_player_filter.html',1,'Enjin::SDK::Models']]],
-  ['playerfragmentarguments_714',['PlayerFragmentArguments',['../class_enjin_1_1_s_d_k_1_1_shared_1_1_player_fragment_arguments.html',1,'Enjin::SDK::Shared']]],
-  ['playerschema_715',['PlayerSchema',['../class_enjin_1_1_s_d_k_1_1_player_schema_1_1_player_schema.html',1,'Enjin::SDK::PlayerSchema']]],
-  ['project_716',['Project',['../class_enjin_1_1_s_d_k_1_1_models_1_1_project.html',1,'Enjin::SDK::Models']]],
-  ['projectclient_717',['ProjectClient',['../class_enjin_1_1_s_d_k_1_1_project_client.html',1,'Enjin::SDK']]],
-  ['projectschema_718',['ProjectSchema',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_project_schema.html',1,'Enjin::SDK::ProjectSchema']]],
-  ['projecttransactionrequestarguments_719',['ProjectTransactionRequestArguments',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_project_transaction_request_arguments.html',1,'Enjin::SDK::ProjectSchema']]],
-  ['pusher_720',['Pusher',['../class_enjin_1_1_s_d_k_1_1_models_1_1_pusher.html',1,'Enjin::SDK::Models']]],
-  ['pusherchannels_721',['PusherChannels',['../class_enjin_1_1_s_d_k_1_1_models_1_1_pusher_channels.html',1,'Enjin::SDK::Models']]],
-  ['pushereventservice_722',['PusherEventService',['../class_enjin_1_1_s_d_k_1_1_events_1_1_pusher_event_service.html',1,'Enjin::SDK::Events']]],
-  ['pusheroptions_723',['PusherOptions',['../class_enjin_1_1_s_d_k_1_1_models_1_1_pusher_options.html',1,'Enjin::SDK::Models']]]
+  ['releasereserve_743',['ReleaseReserve',['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_release_reserve.html',1,'Enjin::SDK::ProjectSchema']]],
+  ['resetenjapproval_744',['ResetEnjApproval',['../class_enjin_1_1_s_d_k_1_1_player_schema_1_1_reset_enj_approval.html',1,'Enjin.SDK.PlayerSchema.ResetEnjApproval'],['../class_enjin_1_1_s_d_k_1_1_project_schema_1_1_reset_enj_approval.html',1,'Enjin.SDK.ProjectSchema.ResetEnjApproval']]]
 ];

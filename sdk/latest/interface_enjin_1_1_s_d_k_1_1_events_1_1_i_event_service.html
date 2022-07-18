@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="doxygenIcon.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Enjin C# SDK
-   &#160;<span id="projectnumber">1.0.0-alpha.7</span>
+   &#160;<span id="projectnumber">1.0.0-beta.1</span>
    </div>
    <div id="projectbrief">A C# SDK for creating games using the Enjin blockchain platform.</div>
   </td>
@@ -70,6 +70,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
 <a href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -100,9 +101,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a52a25489be736cf5bb53b70822903337"><td class="memItemLeft" align="right" valign="top">Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#a52a25489be736cf5bb53b70822903337">Shutdown</a> ()</td></tr>
 <tr class="memdesc:a52a25489be736cf5bb53b70822903337"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down this service.  <a href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#a52a25489be736cf5bb53b70822903337">More...</a><br /></td></tr>
 <tr class="separator:a52a25489be736cf5bb53b70822903337"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace75c8507017df152b59d4c7f2fb7e52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#ace75c8507017df152b59d4c7f2fb7e52">IsConnected</a> ()</td></tr>
-<tr class="memdesc:ace75c8507017df152b59d4c7f2fb7e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this service is connected to platform.  <a href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#ace75c8507017df152b59d4c7f2fb7e52">More...</a><br /></td></tr>
-<tr class="separator:ace75c8507017df152b59d4c7f2fb7e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8e325fa17b303e591c9149eab193b80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_enjin_1_1_s_d_k_1_1_events_1_1_event_listener_registration.html">EventListenerRegistration</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#ac8e325fa17b303e591c9149eab193b80">RegisterListener</a> (<a class="el" href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_listener.html">IEventListener</a> listener)</td></tr>
 <tr class="memdesc:ac8e325fa17b303e591c9149eab193b80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a event listener and provides the registration object used for it.  <a href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#ac8e325fa17b303e591c9149eab193b80">More...</a><br /></td></tr>
 <tr class="separator:ac8e325fa17b303e591c9149eab193b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,6 +153,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a776816bebb8b44fbac924c1b7a4fcda4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the channel is open for the specified wallet address.  <a href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#a776816bebb8b44fbac924c1b7a4fcda4">More...</a><br /></td></tr>
 <tr class="separator:a776816bebb8b44fbac924c1b7a4fcda4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a6028a8bd2c289927800c1ff09b5e0e0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#a6028a8bd2c289927800c1ff09b5e0e0a">IsConnected</a><code> [get]</code></td></tr>
+<tr class="memdesc:a6028a8bd2c289927800c1ff09b5e0e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this service is connected for receiving cloud events.  <a href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#a6028a8bd2c289927800c1ff09b5e0e0a">More...</a><br /></td></tr>
+<tr class="separator:a6028a8bd2c289927800c1ff09b5e0e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="events"></a>
 Events</h2></td></tr>
 <tr class="memitem:aeb2f7e53374c4cd0402ae8183f260857"><td class="memItemLeft" align="right" valign="top">EventHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_enjin_1_1_s_d_k_1_1_events_1_1_i_event_service.html#aeb2f7e53374c4cd0402ae8183f260857">Connected</a></td></tr>
@@ -170,28 +174,6 @@ Events</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Event service interface for subscribing to and registering for events from the Enjin Cloud. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ace75c8507017df152b59d4c7f2fb7e52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace75c8507017df152b59d4c7f2fb7e52">&#9670;&nbsp;</a></span>IsConnected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Enjin.SDK.Events.IEventService.IsConnected </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Checks if this service is connected to platform. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if connected, else false.</dd></dl>
-
-<p>Implemented in <a class="el" href="class_enjin_1_1_s_d_k_1_1_events_1_1_pusher_event_service.html#a4f1dd014de46a2072042dedbfb824810">Enjin.SDK.Events.PusherEventService</a>.</p>
-
-</div>
-</div>
 <a id="ac6b2349194eae83dd072aad13c0f800c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6b2349194eae83dd072aad13c0f800c">&#9670;&nbsp;</a></span>IsSubscribedToAsset()</h2>
 
@@ -812,6 +794,32 @@ Events</h2></td></tr>
 </dl>
 
 <p>Implemented in <a class="el" href="class_enjin_1_1_s_d_k_1_1_events_1_1_pusher_event_service.html#a4419af6c357dcb5b8191949311654e1f">Enjin.SDK.Events.PusherEventService</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a6028a8bd2c289927800c1ff09b5e0e0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6028a8bd2c289927800c1ff09b5e0e0a">&#9670;&nbsp;</a></span>IsConnected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Enjin.SDK.Events.IEventService.IsConnected</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if this service is connected for receiving cloud events. </p>
+<p>Whether the service is connected.</p>
 
 </div>
 </div>

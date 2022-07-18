@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unknown_996',['UNKNOWN',['../namespace_enjin_1_1_s_d_k_1_1_models.html#a129d0e0a0a195ecd1eb0a864c1d4b355a696b031073e74bf2cb98e5ef201d4aa3',1,'Enjin::SDK::Models']]]
+  ['basic_1018',['BASIC',['../namespace_enjin_1_1_s_d_k_1_1_http.html#ad924ecab88950a719900119bf86eafa3ae4ac03f6c9f00665644e868dd1fb9f1e',1,'Enjin::SDK::Http']]],
+  ['body_1019',['BODY',['../namespace_enjin_1_1_s_d_k_1_1_http.html#ad924ecab88950a719900119bf86eafa3a786329b34bbe53ab40a54a19cd597f2d',1,'Enjin::SDK::Http']]]
 ];
