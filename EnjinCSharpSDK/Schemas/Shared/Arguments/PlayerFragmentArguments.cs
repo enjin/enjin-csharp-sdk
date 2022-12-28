@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-using Enjin.SDK.Graphql;
 using JetBrains.Annotations;
 
 namespace Enjin.SDK.Shared
@@ -45,7 +44,7 @@ namespace Enjin.SDK.Shared
         {
             return instance.SetVariable("withLinkingInfo", true);
         }
-        
+
         /// <summary>
         /// Sets the request to include the wallet with the player.
         /// </summary>
@@ -56,7 +55,7 @@ namespace Enjin.SDK.Shared
         {
             return instance.SetVariable("withPlayerWallet", true);
         }
-        
+
         /// <summary>
         /// Sets the desired size of the QR image in pixels. Must be used with <see cref="WithLinkingInfo{T}"/>.
         /// </summary>
