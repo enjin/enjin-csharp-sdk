@@ -80,6 +80,7 @@
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\query\GetWallet.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\AdvancedSendAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ApproveEnj.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ApproveMaxEnj.gql" />
@@ -95,6 +96,7 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetWallet.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
     </ItemGroup>
 
     <ItemGroup>

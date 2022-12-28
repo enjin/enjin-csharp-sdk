@@ -265,5 +265,12 @@ namespace Enjin.SDK.ProjectSchema
         /// <param name="request">The request.</param>
         /// <returns>The task.</returns>
         Task<GraphqlResponse<bool?>> UnlinkWallet(UnlinkWallet request);
+
+        /// <summary>
+        /// Creates a task and sends the <see cref="Enjin.SDK.ProjectSchema.UpdateName"/> request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The task.</returns>
+        Task<GraphqlResponse<Transaction>> UpdateName(UpdateName request);
     }
 }
