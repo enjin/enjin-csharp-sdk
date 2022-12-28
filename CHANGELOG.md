@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed GraphQL template argument type for `BridgeClaimAsset`.
 
+### Security
+
+- Updated dependency Newtonsoft.Json to `13.0.2` to address security vulnerability in library.
+
 ## [1.0.0-beta.1] - 2022-07-18
 
 ### Added
