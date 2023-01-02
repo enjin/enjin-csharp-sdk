@@ -54,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The logger provider passed to the platform clients now handles HTTP logs when HTTP debugging is enabled.
 - Reformatted HTTP log messages.
 - Changed access of `HttpLoggingHandler` from public to internal.
-- Changed access of `CreateRequestBody(OGraphqlRequest)` method in `BaseSchema` from protected to private.
+- Changed access of `CreateRequestBody(GraphqlRequest)` method in `BaseSchema` from protected to private.
 - Changed access of JSON constructor in `GraphqlData` from public to internal.
 - Added finalizers to platform clients.
 
