@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-beta.2] - 2023-01-02
+
+### Added
+
+- Added `UpdateName` request to `IProjectSchema`.
+
+### Fixed
+
+- Fixed GraphQL template argument type for `BridgeClaimAsset`.
+
+### Security
+
+- Updated dependency Newtonsoft.Json to `13.0.2` to address security vulnerability in library.
+
 ## [1.0.0-beta.1] - 2022-07-18
 
 ### Added
@@ -40,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The logger provider passed to the platform clients now handles HTTP logs when HTTP debugging is enabled.
 - Reformatted HTTP log messages.
 - Changed access of `HttpLoggingHandler` from public to internal.
-- Changed access of `CreateRequestBody(OGraphqlRequest)` method in `BaseSchema` from protected to private.
+- Changed access of `CreateRequestBody(GraphqlRequest)` method in `BaseSchema` from protected to private.
 - Changed access of JSON constructor in `GraphqlData` from public to internal.
 - Added finalizers to platform clients.
 
@@ -128,7 +142,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial alpha release.
 
-[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.1...HEAD
+[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.2...HEAD
+
+[1.0.0-beta.2]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.1...1.0.0-beta.2
 
 [1.0.0-beta.1]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.7...1.0.0-beta.1
 

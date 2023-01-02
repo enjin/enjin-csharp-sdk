@@ -129,7 +129,7 @@ namespace Enjin.SDK.Shared
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        /// <seealso cref="RequestState"/>
+        /// <seealso cref="TransactionState"/>
         public static T WithState<T>(this T instance) where T : ITransactionFragmentArguments<T>
         {
             return instance.SetVariable("withState", true);

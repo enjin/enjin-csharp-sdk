@@ -6,12 +6,12 @@
         <Company>Enjin Pte. Ltd.</Company>
         <Copyright>Enjin Pte. Ltd.</Copyright>
         <Authors>Evan Lindsay, Bishop Johnson</Authors>
-        <Version>1.0.0-beta.1</Version>
+        <Version>1.0.0-beta.2</Version>
         <AssemblyName>EnjinCSharpSDK</AssemblyName>
-        <AssemblyInformationalVersion>1.0.0-beta.1</AssemblyInformationalVersion>
-        <AssemblyVersion>1.0.0.2000</AssemblyVersion>
+        <AssemblyInformationalVersion>1.0.0-beta.2</AssemblyInformationalVersion>
+        <AssemblyVersion>1.0.0.2001</AssemblyVersion>
         <PackageId>Enjin.Sdk.CSharp</PackageId>
-        <PackageVersion>1.0.0-beta.1</PackageVersion>
+        <PackageVersion>1.0.0-beta.2</PackageVersion>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         
         <!-- Currently fails possibly due to https://github.com/NuGet/Home/issues/10791 -->
@@ -56,7 +56,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
         <PackageReference Include="PusherClient" Version="2.1.0" />
     </ItemGroup>
 
@@ -80,6 +80,7 @@
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\query\GetWallet.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\AdvancedSendAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ApproveEnj.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ApproveMaxEnj.gql" />
@@ -95,6 +96,7 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetWallet.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
     </ItemGroup>
 
     <ItemGroup>

@@ -80,17 +80,18 @@ namespace Enjin.SDK
         /// <returns>The task that will contain the response.</returns>
         protected Task<GraphqlResponse<T>> SendRequest<T>(IGraphqlRequest request)
         {
-            var uri = new Uri(Middleware.HttpClient.BaseAddress, $"/graphql/{Schema}");
-            var payload = CreateRequestBody(request).ToString();
-            var content = new StringContent(payload, ENCODING, JSON);
+            Uri uri = new Uri(Middleware.HttpClient.BaseAddress, $"/graphql/{Schema}");
+            string payload = CreateRequestBody(request).ToString();
+            StringContent content = new StringContent(payload, ENCODING, JSON);
 
             return Middleware.HttpClient.PostAsync(uri, content).ContinueWith(task =>
             {
-                var result = task.Result;
+                HttpResponseMessage? response = task.Result;
 
                 try
                 {
-                    return JsonConvert.DeserializeObject<GraphqlResponse<T>>(result.Content.ReadAsStringAsync().Result);
+                    string result = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<GraphqlResponse<T>>(result)!;
                 }
                 catch (Exception e)
                 {
@@ -101,7 +102,7 @@ namespace Enjin.SDK
                 }
                 finally
                 {
-                    result?.Dispose();
+                    response?.Dispose();
                 }
             });
         }

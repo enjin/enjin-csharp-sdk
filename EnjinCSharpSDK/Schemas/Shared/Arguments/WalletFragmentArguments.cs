@@ -80,7 +80,7 @@ namespace Enjin.SDK.Shared
         /// <param name="instance">The caller.</param>
         /// <typeparam name="T">The caller type.</typeparam>
         /// <returns>The caller for chaining.</returns>
-        /// <seealso cref="Request"/>
+        /// <seealso cref="Transaction"/>
         public static T WithWalletTransactions<T>(this T instance) where T : IWalletFragmentArguments<T>
         {
             return instance.SetVariable("withWalletTransactions", true);

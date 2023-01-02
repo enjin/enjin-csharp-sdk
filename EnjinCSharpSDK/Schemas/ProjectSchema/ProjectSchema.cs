@@ -242,5 +242,11 @@ namespace Enjin.SDK.ProjectSchema
         {
             return SendRequest<bool?>(request);
         }
+
+        /// <inheritdoc/>
+        public Task<GraphqlResponse<Transaction>> UpdateName(UpdateName request)
+        {
+            return TransactionRequest(request);
+        }
     }
 }
