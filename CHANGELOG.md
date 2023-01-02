@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-beta.2] - 2023-01-02
+
 ### Added
 
 - Added `UpdateName` request to `IProjectSchema`.
@@ -140,7 +142,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial alpha release.
 
-[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.1...HEAD
+[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.2...HEAD
+
+[1.0.0-beta.2]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.1...1.0.0-beta.2
 
 [1.0.0-beta.1]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-alpha.7...1.0.0-beta.1
 
