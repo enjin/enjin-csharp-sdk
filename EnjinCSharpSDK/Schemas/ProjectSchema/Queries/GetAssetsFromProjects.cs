@@ -25,14 +25,14 @@ namespace Enjin.SDK.ProjectSchema
     /// <seealso cref="Asset"/>
     /// <seealso cref="IProjectSchema"/>
     [PublicAPI]
-    public class GetAssetsFromProject : GraphqlRequest<GetAssetsFromProject>,
-                                        IAssetFragmentArguments<GetAssetsFromProject>,
-                                        IPaginationArguments<GetAssetsFromProject>
+    public class GetAssetsFromProjects : GraphqlRequest<GetAssetsFromProjects>,
+                                         IAssetFragmentArguments<GetAssetsFromProjects>,
+                                         IPaginationArguments<GetAssetsFromProjects>
     {
         /// <summary>
         /// Sole constructor.
         /// </summary>
-        public GetAssetsFromProject() : base("enjin.sdk.project.GetAssetsFromProject")
+        public GetAssetsFromProjects() : base("enjin.sdk.project.GetAssetsFromProjects")
         {
         }
 
@@ -41,7 +41,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="projects">The UUIDs.</param>
         /// <returns>This request for chaining.</returns>
-        public GetAssetsFromProject Projects(params string[]? projects)
+        public GetAssetsFromProjects Projects(params string[]? projects)
         {
             return SetVariable("projects", projects);
         }
@@ -51,7 +51,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="filter">The filter.</param>
         /// <returns>This request for chaining.</returns>
-        public GetAssetsFromProject Filter(AssetFilter? filter)
+        public GetAssetsFromProjects Filter(AssetFilter? filter)
         {
             return SetVariable("filter", filter);
         }
@@ -61,7 +61,7 @@ namespace Enjin.SDK.ProjectSchema
         /// </summary>
         /// <param name="sort">The sort input.</param>
         /// <returns>This request for chaining.</returns>
-        public GetAssetsFromProject Sort(AssetSortInput? sort)
+        public GetAssetsFromProjects Sort(AssetSortInput? sort)
         {
             return SetVariable("sort", sort);
         }

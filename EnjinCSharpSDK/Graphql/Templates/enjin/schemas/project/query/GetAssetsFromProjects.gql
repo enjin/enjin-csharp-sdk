@@ -1,4 +1,4 @@
-#namespace enjin.sdk.project.GetAssetsFromProject
+#namespace enjin.sdk.project.GetAssetsFromProjects
 #import enjin.sdk.shared.Asset
 #import enjin.sdk.shared.PaginationCursor
 
@@ -8,7 +8,7 @@
 #arg pagination PaginationInput {page:1,limit:100}
 
 query {
-    result: GetAssetsFromProject(
+    result: GetAssetsFromProjects(
         projects: $projects,
         filter: $filter,
         sort: $sort,
