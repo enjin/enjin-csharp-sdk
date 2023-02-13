@@ -130,6 +130,12 @@ namespace Enjin.SDK.ProjectSchema
         }
 
         /// <inheritdoc/>
+        public Task<GraphqlResponse<List<Asset>>> GetAssetsFromProjects(GetAssetsFromProjects request)
+        {
+            return SendRequest<List<Asset>>(request);
+        }
+
+        /// <inheritdoc/>
         public Task<GraphqlResponse<Player>> GetPlayer(GetPlayer request)
         {
             return SendRequest<Player>(request);

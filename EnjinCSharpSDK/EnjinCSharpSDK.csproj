@@ -80,7 +80,6 @@
         <None Remove="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\player\query\GetWallet.gql" />
-        <None Remove="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\AdvancedSendAsset.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ApproveEnj.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\ApproveMaxEnj.gql" />
@@ -96,7 +95,6 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\mutation\UnlinkWallet.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetPlayer.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\player\query\GetWallet.gql" />
-        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
     </ItemGroup>
 
     <ItemGroup>
@@ -128,8 +126,10 @@
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\SetUri.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\SetWhitelisted.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\mutation\UnlinkWallet.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\query\AuthPlayer.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\query\AuthProject.gql" />
+        <None Remove="Graphql\Templates\enjin\schemas\project\query\GetAssetsFromProjects.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\query\GetPlayer.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\query\GetPlayers.gql" />
         <None Remove="Graphql\Templates\enjin\schemas\project\query\GetWallet.gql" />
@@ -162,8 +162,10 @@
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetUri.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\SetWhitelisted.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UnlinkWallet.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\mutation\UpdateName.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\AuthPlayer.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\AuthProject.gql" />
+        <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetAssetsFromProjects.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetPlayer.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetPlayers.gql" />
         <EmbeddedResource Include="Graphql\Templates\enjin\schemas\project\query\GetWallet.gql" />
