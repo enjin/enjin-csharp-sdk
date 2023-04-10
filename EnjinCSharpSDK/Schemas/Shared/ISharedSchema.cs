@@ -56,6 +56,13 @@ namespace Enjin.SDK.Shared
         Task<GraphqlResponse<List<Balance>>> GetBalances(GetBalances request);
 
         /// <summary>
+        /// Creates a task and sends the <see cref="Enjin.SDK.Shared.GetBalancesFromProjects"/> request.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The task.</returns>
+        Task<GraphqlResponse<List<Balance>>> GetBalancesFromProjects(GetBalancesFromProjects request);
+
+        /// <summary>
         /// Creates a task and sends the <see cref="Enjin.SDK.Shared.GetGasPrices"/> request.
         /// </summary>
         /// <param name="request">The request.</param>

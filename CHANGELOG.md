@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-beta.3] - 2023-04-10
+
+- Added `GetAssetsFromProjects` request to `IProjectSchema`.
+- Added `GetBalancesFromProjects` request to `ISharedSchema`.
+
 ## [1.0.0-beta.2] - 2023-01-02
 
 ### Added
@@ -142,7 +147,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial alpha release.
 
-[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.2...HEAD
+[Unreleased]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.3...HEAD
+
+[1.0.0-beta.3]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.2...1.0.0-beta.3
 
 [1.0.0-beta.2]: https://github.com/enjin/enjin-csharp-sdk/compare/1.0.0-beta.1...1.0.0-beta.2
 
