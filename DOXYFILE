@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "Enjin C# SDK"
-PROJECT_NUMBER         = 1.0.0-beta.2
+PROJECT_NUMBER         = 1.0.0-beta.3
 PROJECT_BRIEF          = "A C# SDK for creating games using the Enjin blockchain platform."
 PROJECT_LOGO           = doxygenIcon.png
 OUTPUT_DIRECTORY       =
