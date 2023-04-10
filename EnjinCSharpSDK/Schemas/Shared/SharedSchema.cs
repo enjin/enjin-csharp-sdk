@@ -64,6 +64,12 @@ namespace Enjin.SDK.Shared
         }
 
         /// <inheritdoc/>
+        public Task<GraphqlResponse<List<Balance>>> GetBalancesFromProjects(GetBalancesFromProjects request)
+        {
+            return SendRequest<List<Balance>>(request);
+        }
+
+        /// <inheritdoc/>
         public Task<GraphqlResponse<GasPrices>> GetGasPrices(GetGasPrices request)
         {
             return SendRequest<GasPrices>(request);
